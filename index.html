@@ -1,1 +1,1430 @@
 
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آزمون ICDL - موسسه آموزشی خوارزمی</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #159895;
+            --accent-color: #ffc107;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazir', 'Tanha', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* استایل هدر */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            border-radius: 0 0 15px 15px;
+        }
+        
+        header h1 {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        /* استایل دکمه‌ها */
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 5px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        button.selected {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+        }
+        
+        button.correct {
+            background-color: var(--success-color);
+        }
+        
+        button.incorrect {
+            background-color: var(--danger-color);
+        }
+        
+        button.nav-btn {
+            background-color: var(--primary-color);
+        }
+        
+        button.submit-btn {
+            background-color: var(--success-color);
+        }
+        
+        button.submit-btn:hover {
+            background-color: #218838;
+        }
+        
+        /* استایل منوی اصلی */
+        .main-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+            padding: 20px;
+        }
+        
+        .exam-info {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .exam-info h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .exam-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #6c757d;
+        }
+        
+        /* استایل بخش سوالات */
+        .quiz-container {
+            display: none;
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .lesson-title {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .timer {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+        
+        .question {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 20px 0;
+            text-align: right;
+            line-height: 1.6;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-right: 4px solid var(--primary-color);
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .option-btn {
+            width: 100%;
+            height: 60px;
+            text-align: right;
+            font-size: 18px;
+            padding: 0 20px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .option-btn:hover {
+            transform: translateX(-5px);
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .question-numbers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin: 20px 0;
+        }
+        
+        .number-btn {
+            width: 45px;
+            height: 45px;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        /* استایل صفحه نتایج */
+        .results-container {
+            display: none;
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .summary {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .detailed-results {
+            margin: 20px 0;
+        }
+        
+        .category-result {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-right: 4px solid var(--primary-color);
+        }
+        
+        /* استایل راهنما */
+        .help-container {
+            display: none;
+            text-align: right;
+            line-height: 2;
+            font-size: 18px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .help-container h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        /* استایل صفحه ورود رمز */
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+            padding: 20px;
+        }
+        
+        .login-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        .login-box h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .login-box input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .login-message {
+            margin-top: 15px;
+            color: var(--danger-color);
+            font-weight: bold;
+        }
+        
+        /* استایل جدید برای آپلود فایل */
+        .file-upload {
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .file-upload-label {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .file-upload-label:hover {
+            background-color: var(--primary-color);
+        }
+        
+        #file-name {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #6c757d;
+        }
+        
+        /* استایل فوتر */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #6c757d;
+            background-color: var(--light-color);
+            border-top: 1px solid #dee2e6;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        /* رسپانسیو */
+        @media (max-width: 768px) {
+            .exam-stats {
+                flex-direction: column;
+            }
+            
+            .question {
+                font-size: 18px;
+            }
+            
+            .option-btn {
+                font-size: 16px;
+                height: 55px;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .navigation button {
+                width: 100%;
+                margin: 5px 0;
+            }
+            
+            .login-box {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>آزمون ICDL - موسسه آموزشی خوارزمی</h1>
+    </header>
+    
+    <div class="container">
+        <!-- صفحه ورود رمز -->
+        <div id="login-container" class="login-container">
+            <div class="login-box">
+                <h2><i class="fas fa-lock"></i> ورود به سیستم آزمون</h2>
+                <p>لطفاً فایل رمز عبور (password.txt) را انتخاب کنید:</p>
+                
+                <div class="file-upload">
+                    <label for="password-file" class="file-upload-label">
+                        <i class="fas fa-file-upload"></i> انتخاب فایل رمز عبور
+                    </label>
+                    <input type="file" id="password-file" accept=".txt" style="display: none;">
+                    <div id="file-name"></div>
+                </div>
+                
+                <button onclick="checkPasswordFromFile()"><i class="fas fa-sign-in-alt"></i> ورود</button>
+                <p id="login-message" class="login-message"></p>
+                <div style="margin-top: 15px; padding: 10px; background-color: #f8f9fa; border-radius: 5px;">
+                    <p style="font-size: 14px; color: #6c757d; margin: 0;">محتویات فایل password.txt باید شامل رمز عبور باشد: <strong>icdltest</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- منوی اصلی -->
+        <div id="main-menu" class="main-menu" style="display: none;">
+            <div class="exam-info">
+                <h2><i class="fas fa-info-circle"></i> اطلاعات آزمون ICDL</h2>
+                <p>این آزمون شامل 30 سوال تصادفی از بین 70 سوال موجود از تمامی مباحث ICDL می‌باشد.</p>
+                
+                <div class="exam-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">30</div>
+                        <div class="stat-label">تعداد سوالات</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">45</div>
+                        <div class="stat-label">دقیقه زمان</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">70%</div>
+                        <div class="stat-label">حداقل نمره قبولی</div>
+                    </div>
+                </div>
+                
+                <p>مباحث آزمون: سخت‌افزار، ویندوز، Word، Excel، PowerPoint، اینترنت، Access</p>
+                <p style="color: var(--accent-color); font-weight: bold; margin-top: 10px;">
+                    <i class="fas fa-random"></i> در هر بار اجرا، 30 سوال تصادفی انتخاب می‌شوند
+                </p>
+            </div>
+            
+            <button onclick="startRandomExam()" style="font-size: 20px; padding: 15px 30px;">
+                <i class="fas fa-play-circle"></i> شروع آزمون
+            </button>
+            <button onclick="showHelp()"><i class="fas fa-question-circle"></i> راهنما</button>
+            <button onclick="logout()" style="background-color: var(--danger-color);"><i class="fas fa-sign-out-alt"></i> خروج</button>
+        </div>
+
+        <!-- صفحه آزمون -->
+        <div id="quiz-container" class="quiz-container">
+            <div class="lesson-title" id="lesson-title">آزمون ICDL</div>
+            <div class="timer" id="timer">زمان: 45:00</div>
+            <div class="question" id="question"></div>
+            <div class="options" id="options">
+                <button class="option-btn" onclick="selectOption(0)"></button>
+                <button class="option-btn" onclick="selectOption(1)"></button>
+                <button class="option-btn" onclick="selectOption(2)"></button>
+                <button class="option-btn" onclick="selectOption(3)"></button>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn" onclick="prevQuestion()"><i class="fas fa-arrow-right"></i> قبلی</button>
+                <button class="nav-btn" onclick="nextQuestion()">بعدی <i class="fas fa-arrow-left"></i></button>
+                <button class="submit-btn" onclick="submitQuiz()"><i class="fas fa-check-circle"></i> پایان آزمون</button>
+            </div>
+            <div class="question-numbers" id="question-numbers"></div>
+        </div>
+
+        <!-- صفحه نتایج -->
+        <div id="results-container" class="results-container">
+            <div class="summary" id="summary"></div>
+            
+            <div class="detailed-results" id="detailed-results">
+                <!-- نتایج تفکیکی هر بخش در اینجا نمایش داده می‌شود -->
+            </div>
+            
+            <div class="question" id="result-question"></div>
+            <div class="options" id="result-options">
+                <button class="option-btn" disabled></button>
+                <button class="option-btn" disabled></button>
+                <button class="option-btn" disabled></button>
+                <button class="option-btn" disabled></button>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn" onclick="prevResultQuestion()"><i class="fas fa-arrow-right"></i> قبلی</button>
+                <button class="nav-btn" onclick="nextResultQuestion()">بعدی <i class="fas fa-arrow-left"></i></button>
+                <button class="nav-btn" onclick="backToMainMenu()"><i class="fas fa-home"></i> بازگشت به منو</button>
+                <button class="nav-btn" onclick="startRandomExam()" style="background-color: var(--secondary-color);">
+                    <i class="fas fa-redo"></i> آزمون جدید
+                </button>
+            </div>
+            <div class="question-numbers" id="result-numbers"></div>
+        </div>
+
+        <!-- صفحه راهنما -->
+        <div id="help-container" class="help-container">
+            <h2><i class="fas fa-info-circle"></i> راهنمای استفاده از آزمون ICDL</h2>
+            <p>
+                <i class="fas fa-check"></i> این آزمون شامل 30 سوال تصادفی از بین 70 سوال موجود می‌باشد.<br>
+                <i class="fas fa-check"></i> زمان آزمون 45 دقیقه می‌باشد.<br>
+                <i class="fas fa-check"></i> شماره سوال‌ها پایین صفحه برای رفتن به سوال دلخواه است.<br>
+                <i class="fas fa-check"></i> با کلیدهای جهت‌نما می‌توانید بین سوالات حرکت کنید.<br>
+                <i class="fas fa-check"></i> پس از پاسخ دادن به همه سوالات، روی پایان آزمون کلیک کنید.<br>
+                <i class="fas fa-check"></i> در صفحه نتایج می‌توانید پاسخ صحیح و غلط خود را ببینید.<br>
+                <i class="fas fa-check"></i> برای قبولی در آزمون، حداقل 70% نمره لازم است.<br>
+                <i class="fas fa-check"></i> آزمون شامل مباحث: سخت‌افزار، ویندوز، Word، Excel، PowerPoint، اینترنت، Access می‌باشد.<br>
+                <i class="fas fa-check"></i> در هر بار اجرا، 30 سوال تصادفی از بین 70 سوال موجود انتخاب می‌شوند.<br><br>
+                موفق باشید!
+            </p>
+            <button onclick="backToMainMenu()"><i class="fas fa-arrow-right"></i> بازگشت به منو</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2023 آزمون ICDL - موسسه آموزشی خوارزمی. تمام حقوق محفوظ است.</p>
+    </footer>
+
+    <script>
+        // داده‌های سوالات ICDL (70 سوال)
+        const allQuestions = [
+            // سخت‌افزار (10 سوال)
+            {
+                question: "کدام یک از بخش‌های CPU واحد مناسب عملیات ریاضی و منطقی نامیده می‌شود؟",
+                options: ["CU", "ALU", "Register", "Cache"],
+                answer: "ALU",
+                category: "سخت‌افزار"
+            },
+            {
+                question: "محتوای کدام یک از حافظه‌های زیر با قطع جریان برق از بین می‌رود؟",
+                options: ["ROM", "RAM", "EPROM", "PROM"],
+                answer: "RAM",
+                category: "سخت‌افزار"
+            },
+            {
+                question: "کوچکترین واحد حافظه چیست؟",
+                options: ["Word", "KB", "Bit", "Byte"],
+                answer: "Bit",
+                category: "سخت‌افزار"
+            },
+            {
+                question: "اطلاعات در حافظه کامپیوتر بصورت ...... ذخیره می‌شوند.",
+                options: ["دسیمال", "هگزادسیمال", "اکتال", "باینری"],
+                answer: "باینری",
+                category: "سخت‌افزار"
+            },
+            {
+                question: "کدامیک از گزینه‌های زیر جزء وسایل کنترل کننده اشاره‌گر محسوب نمی‌شوند؟",
+                options: ["ماوس", "صفحه لمسی", "دسته بازی", "اسکنر"],
+                answer: "اسکنر",
+                category: "سخت‌افزار"
+            },
+            {
+                question: "کدام یک از کلیدهای زیر دو حالته نیست؟",
+                options: ["Caps Lock", "Num Lock", "Scroll Lock", "Shift"],
+                answer: "Shift",
+                category: "سخت‌افزار"
+            },
+            {
+                question: "سرعت پردازش و ظرفیت ذخیره‌سازی اطلاعات در کدام نوع از کامپیوترهای زیر بیشتر است؟",
+                options: ["Super Computer", "Micro Computers", "Mini Computer", "Main Frame"],
+                answer: "Super Computer",
+                category: "سخت‌افزار"
+            },
+            {
+                question: "کوچکترین عنصر صفحه نمایش چه نام دارد؟",
+                options: ["Pixel", "Pin", "Dots", "کاراکتر"],
+                answer: "Pixel",
+                category: "سخت‌افزار"
+            },
+            {
+                question: "برای تایپ حروف بزرگ لاتین باید دکمه ...... را فعال نمود.",
+                options: ["Caps Lock", "Scroll Lock", "Serial Lock", "Shift"],
+                answer: "Caps Lock",
+                category: "سخت‌افزار"
+            },
+            {
+                question: "کلید میانبر فرمان paste چیست؟",
+                options: ["Ctrl+C", "Ctrl+P", "Ctrl+V", "Ctrl+X"],
+                answer: "Ctrl+V",
+                category: "سخت‌افزار"
+            },
+            
+            // ویندوز (10 سوال)
+            {
+                question: "برای مشاهده مشخصات پوشه‌ها باید از چه روشی استفاده کرد؟",
+                options: [
+                    "کلیک راست روی آیکن پوشه و انتخاب گزینه Open",
+                    "کلیک راست روی آیکن پوشه و انتخاب گزینه Properties",
+                    "دابل کلیک روی آیکن پوشه مورد نظر",
+                    "درگ کردن آیکن پوشه مورد نظر"
+                ],
+                answer: "کلیک راست روی آیکن پوشه و انتخاب گزینه Properties",
+                category: "ویندوز"
+            },
+            {
+                question: "اگر در کنار نام آیکن پوشه در ساختار درختی علامت (+) نمایش یابد، نشانه چیست؟",
+                options: ["داشتن فایل", "داشتن زیر پوشه", "خالی بودن پوشه", "میانبر بودن پوشه"],
+                answer: "داشتن زیر پوشه",
+                category: "ویندوز"
+            },
+            {
+                question: "برای حذف دائم یک فایل به طوری که در سطل بازیافت قرار نگیرد از کدام کلید همراه دکمه Delete استفاده می‌شود؟",
+                options: ["Shift", "Alt", "Ctrl", "Tab"],
+                answer: "Shift",
+                category: "ویندوز"
+            },
+            {
+                question: "کدام یک از اسامی زیر برای نام پوشه غیر مجاز است؟",
+                options: ["Con", "Directory", "Listname", "Asp"],
+                answer: "Con",
+                category: "ویندوز"
+            },
+            {
+                question: "چگونه می‌توان چند فایل پراکنده یک پوشه را انتخاب کرد؟",
+                options: [
+                    "با کلیک روی فایل‌های مورد نظر",
+                    "با فشار دادن کلید اولین حرف نام فایل",
+                    "هنگام کلیک کردن روی فایل‌های مورد نظر کلید CTRL را پایین نگه داشت",
+                    "هنگام کلیک کردن روی فایل‌های مورد نظر کلید SHIFT را پایین نگه داشت"
+                ],
+                answer: "هنگام کلیک کردن روی فایل‌های مورد نظر کلید CTRL را پایین نگه داشت",
+                category: "ویندوز"
+            },
+            {
+                question: "برای مرتب نمودن آیکن‌های پنجره براساس نوع فایلها از کدام گزینه استفاده می‌شود؟",
+                options: ["Name", "Type", "Date", "Size"],
+                answer: "Type",
+                category: "ویندوز"
+            },
+            {
+                question: "کلیدهای میانبر برای بستن پنجره‌های باز کدام است؟",
+                options: ["Ctrl+Alt+F4", "Alt+F4", "Ctrl+F4", "Shift+F4"],
+                answer: "Alt+F4",
+                category: "ویندوز"
+            },
+            {
+                question: "برای جستجوی فایلی که با S شروع می‌شود و به T ختم می‌شود در کادر جستجو چگونه باید تایپ کرد؟",
+                options: ["S ? T", "~T ? S", "S * T", "T * S"],
+                answer: "S * T",
+                category: "ویندوز"
+            },
+            {
+                question: "کدامیک از گزینه‌های زیر فایل‌ها و پوشه را همراه با جزئیات نشان می‌دهد؟",
+                options: ["Large Icon", "Details", "List", "Small Icon"],
+                answer: "Details",
+                category: "ویندوز"
+            },
+            {
+                question: "اولین پنجره یا اساسی‌ترین پنجره ویندوز کدام گزینه می‌باشد؟",
+                options: ["Window", "Desktop", "Explorer", "Taskbar"],
+                answer: "Desktop",
+                category: "ویندوز"
+            },
+            
+            // Word (10 سوال)
+            {
+                question: "برای درج پاورقی از چه گزینه‌ای استفاده می‌کنیم؟",
+                options: [
+                    "سربرگ Revive گزینه Header",
+                    "سربرگ References گزینه Footnotes",
+                    "سربرگ References Insert گزینه",
+                    "سربرگ References Insert Endnote گزینه"
+                ],
+                answer: "سربرگ References گزینه Footnotes",
+                category: "Word"
+            },
+            {
+                question: "کدام کلید ترکیبی میانبر برای کاهش سایز قلم به کار می‌رود؟",
+                options: ["Ctrl + [", "Ctrl + <", "Ctrl + >", "Ctrl + ]"],
+                answer: "Ctrl + <",
+                category: "Word"
+            },
+            {
+                question: "برای ذخیره کردن یک سند تحت نامی دیگر از کدام فرمان استفاده می‌شود؟",
+                options: ["Save", "Save As", "Save In", "Look In"],
+                answer: "Save As",
+                category: "Word"
+            },
+            {
+                question: "کدام گزینه در پنجره Word برای نمایش خطوط راهنما (Gridlines) در جدول بکار می‌رود؟",
+                options: ["View Gridlines", "Show Grid", "Table Grid", "Layout Grid"],
+                answer: "View Gridlines",
+                category: "Word"
+            },
+            {
+                question: "برای وارد کردن یک فایل تصویری در محیط سند، از کدام گزینه استفاده می‌کنید؟",
+                options: ["Insert \\ picture", "Home \\ picture", "View \\ picture", "Insert \\ chart"],
+                answer: "Insert \\ picture",
+                category: "Word"
+            },
+            {
+                question: "اگر بخواهیم کاغذ چاپ به صورت افقی و خوابیده باشد، کدام گزینه باید در نظر گرفته شود؟",
+                options: ["Portrait", "Landscape", "Duplex", "Reverse"],
+                answer: "Landscape",
+                category: "Word"
+            },
+            {
+                question: "اگر بخواهیم صفحات ۲ و ۳ و ۴ از یک سند چاپ شوند، از کدام عملگر استفاده می‌کنیم؟",
+                options: [",", "–", ":", ";"],
+                answer: ",",
+                category: "Word"
+            },
+            {
+                question: "از کدام حالت نمایش برای طراحی صفحه وب در محیط Word استفاده می‌شود؟",
+                options: ["Print Layout", "Web Layout", "Outline", "Draft"],
+                answer: "Web Layout",
+                category: "Word"
+            },
+            {
+                question: "برای ذخیره کردن یک الگو به عنوان یک template کافی است در لیست ...... گزینه ...... را انتخاب کنید.",
+                options: ["Save in", "Save as type", "Save as name", "File name"],
+                answer: "Save as type",
+                category: "Word"
+            },
+            {
+                question: "از کدام گزینه برای تعیین نحوه نمایش و قالب‌بندی شماره‌ها استفاده می‌شود؟",
+                options: ["Numbering", "Number Format", "Page Layout", "Tab"],
+                answer: "Number Format",
+                category: "Word"
+            },
+            
+            // Excel (10 سوال)
+            {
+                question: "علامت مساوی در شروع یک خانه در اکسل نشانه چیست؟",
+                options: ["شروع یک فرمول", "شروع یک جستجو", "Filtering", "شروع عملیات"],
+                answer: "شروع یک فرمول",
+                category: "Excel"
+            },
+            {
+                question: "کدام تابع برای محاسبه میانگین بکار می‌رود؟",
+                options: ["SUM", "MAX", "AVERAGE", "IF"],
+                answer: "AVERAGE",
+                category: "Excel"
+            },
+            {
+                question: "برای مرتب کردن اطلاعات موجود در لیست (بر اساس حروف الفبا) از کدام گزینه استفاده می‌شود؟",
+                options: ["Data \\ Sort", "Data \\ Filter", "Insert \\ Sort", "Home \\ Find"],
+                answer: "Data \\ Sort",
+                category: "Excel"
+            },
+            {
+                question: "برای حذف یک سطر در اکسل از چه گزینه‌ای استفاده می‌شود؟",
+                options: [
+                    "سربرگ Home گزینه Delete sheet Rows",
+                    "سربرگ Home گزینه Clear Rows",
+                    "سربرگ Data گزینه Delete columns",
+                    "سربرگ Home گروه Clear گزینه Clear Format"
+                ],
+                answer: "سربرگ Home گزینه Delete sheet Rows",
+                category: "Excel"
+            },
+            {
+                question: "تابع VLOOKUP در اکسل برای چه منظوری استفاده می‌شود؟",
+                options: [
+                    "جستجوی عمودی یک مقدار در یک ستون و برگرداندن مقدار متناظر از ستون دیگر",
+                    "جمع کردن مقادیر یک محدوده",
+                    "شمارش سلول‌های پر",
+                    "پیدا کردن بزرگترین مقدار در یک محدوده"
+                ],
+                answer: "جستجوی عمودی یک مقدار در یک ستون و برگرداندن مقدار متناظر از ستون دیگر",
+                category: "Excel"
+            },
+            {
+                question: "برای محاسبه مجموع سلول‌های A1 تا A10 در اکسل از کدام تابع استفاده می‌شود؟",
+                options: ["=SUM(A1:A10)", "=TOTAL(A1:A10)", "=ADD(A1:A10)", "=PLUS(A1:A10)"],
+                answer: "=SUM(A1:A10)",
+                category: "Excel"
+            },
+            {
+                question: "کدام گزینه یک پروتکل می‌باشد؟",
+                options: ["URL", "Https", "Security", "Connect"],
+                answer: "Https",
+                category: "Excel"
+            },
+            {
+                question: "مناسب‌ترین نمودار جهت نشان دادن \"درصد اطلاعات\" کدام است؟",
+                options: ["Line", "Column", "Bar", "Pie"],
+                answer: "Pie",
+                category: "Excel"
+            },
+            {
+                question: "اشکال مربوط به طراحی فلوچارت در کدام قسمت وجود دارد؟",
+                options: ["Basic Shapes", "Flowchart", "Lines", "Callouts"],
+                answer: "Flowchart",
+                category: "Excel"
+            },
+            {
+                question: "اشکال هندسی پایه در کدام قسمت از ابزار Shape قرار دارند؟",
+                options: ["Flowchart", "Callouts", "Basic Shapes", "Stars and Banners"],
+                answer: "Basic Shapes",
+                category: "Excel"
+            },
+            
+            // PowerPoint (10 سوال)
+            {
+                question: "کدام منو در نرم‌افزار Powerpoint برای ایجاد انیمیشن کاربرد دارد؟",
+                options: ["Animations", "Slide Show", "Design", "Review"],
+                answer: "Animations",
+                category: "PowerPoint"
+            },
+            {
+                question: "برای درج متن در پاورپوینت از چه روشی استفاده می‌شود؟",
+                options: ["Format", "Text Box", "بدنه‌ی اسلاید", "یک شی خارجی"],
+                answer: "Text Box",
+                category: "PowerPoint"
+            },
+            {
+                question: "در پاورپوینت، از نمای ...... برای جابجایی و مدیریت کردن اسلایدها استفاده می‌شود.",
+                options: ["Slide Sorter", "Normal", "Reading View", "Slide Show"],
+                answer: "Slide Sorter",
+                category: "PowerPoint"
+            },
+            {
+                question: "در پاورپوینت، برای خاتمه دادن به نمایش اسلایدها کدام کلید را باید فشرد؟",
+                options: ["E", "Esc", "Home", "End"],
+                answer: "Esc",
+                category: "PowerPoint"
+            },
+            {
+                question: "اگر بخواهیم متحرک‌سازی یک شی همراه با متحرک‌سازی قبلی اجرا شود، کدام گزینه را انتخاب می‌کنیم؟",
+                options: ["On click", "With Previous", "After Previous", "Direction"],
+                answer: "With Previous",
+                category: "PowerPoint"
+            },
+            {
+                question: "کدام یک از گزینه‌های کادر محاوره‌ای Print امکان چاپ صفحه جاری سند را فراهم می‌کند؟",
+                options: ["Collate", "Selection", "Current page", "All"],
+                answer: "Current page",
+                category: "PowerPoint"
+            },
+            {
+                question: "برای توقف و از سرگیری مجدد عمل چاپ یک سند چگونه عمل می‌کنیم؟",
+                options: [
+                    "از Document گزینه Pause را برای توقف و گزینه Resume را برای ادامه چاپ در نظر می‌گیریم",
+                    "از Properties گزینه Preference Printing انتخاب می‌کنیم",
+                    "از Document گزینه Pause را انتخاب می‌کنیم",
+                    "از منوی Document گزینه Pause را برای توقف و گزینه Pause را برای ادامه چاپ در نظر می‌گیریم"
+                ],
+                answer: "از Document گزینه Pause را برای توقف و گزینه Resume را برای ادامه چاپ در نظر می‌گیریم",
+                category: "PowerPoint"
+            },
+            {
+                question: "کدام یک از موارد زیر یک سیستم عامل محسوب می‌شوند؟",
+                options: ["Netscape", "Windows", "PowerPoint", "Photoshop"],
+                answer: "Windows",
+                category: "PowerPoint"
+            },
+            {
+                question: "اگر بخواهیم هنگام طراحی، شکل دایره رسم کنیم، کدام کلید را باید نگه داریم？",
+                options: ["Ctrl", "Shift", "Alt", "Tab"],
+                answer: "Shift",
+                category: "PowerPoint"
+            },
+            {
+                question: "برای وارد کردن یک فایل تصویری در محیط سند، از کدام گزینه استفاده می‌کنید؟",
+                options: ["Insert \\ picture", "Home \\ picture", "View \\ picture", "Insert \\ chart"],
+                answer: "Insert \\ picture",
+                category: "PowerPoint"
+            },
+            
+            // اینترنت (10 سوال)
+            {
+                question: "به شرکت‌های ارائه دهنده خدمات اینترنتی چه می‌گویند؟",
+                options: ["ISDN", "PSTN", "ISP", "ADSL"],
+                answer: "ISP",
+                category: "اینترنت"
+            },
+            {
+                question: "آدرس‌های عددی مورد استفاده در شبکه را اصطلاحاً چه می‌نامند؟",
+                options: ["IP", "TCP", "DNS", "PASSWORD"],
+                answer: "IP",
+                category: "اینترنت"
+            },
+            {
+                question: "به دریافت فایل از اینترنت .... و ارسال فایل به اینترنت را ...... می‌گویند.",
+                options: ["Receiving, Sending", "Download, Upload", "Upload, Download", "Sending, Receiving"],
+                answer: "Download, Upload",
+                category: "اینترنت"
+            },
+            {
+                question: "اینترنت جز کدام شبکه محسوب می‌شود؟",
+                options: ["محلی", "گسترده", "شهری", "خانگی"],
+                answer: "گسترده",
+                category: "اینترنت"
+            },
+            {
+                question: "دستگاهی که سیگنال‌های دیجیتال را به آنالوگ و برعکس تبدیل می‌کند؟",
+                options: ["تلفن", "مودم", "سیستم عامل", "اینترنت"],
+                answer: "مودم",
+                category: "اینترنت"
+            },
+            {
+                question: "کدام یک از دامنه‌های زیر مختص کشور ایران است؟",
+                options: ["TR", "IR", "UK", "US"],
+                answer: "IR",
+                category: "اینترنت"
+            },
+            {
+                question: "صفحه خانگی یک وب سایت را .... گویند.",
+                options: ["First page", "Home page", "Web page", "Current page"],
+                answer: "Home page",
+                category: "اینترنت"
+            },
+            {
+                question: "برای اینکه عبارت مورد جستجو به همان شکل در اینترنت جستجو شود (دقیقاً همان عبارت) از کدام کاراکتر استفاده می‌شود؟",
+                options: ["{ }", "[ ]", "( )", "\" \""],
+                answer: "\" \"",
+                category: "اینترنت"
+            },
+            {
+                question: "دریافت اطلاعات از اینترنت را .... می‌گویند.",
+                options: ["Load", "Upload", "Move", "Download"],
+                answer: "Download",
+                category: "اینترنت"
+            },
+            {
+                question: "کدام یک از نرم‌افزارهای زیر برای کار با اینترنت لازم است؟",
+                options: ["Internet Explorer", "Windows Explorer", "Documents", "Control Panel"],
+                answer: "Internet Explorer",
+                category: "اینترنت"
+            },
+            
+            // Access (10 سوال)
+            {
+                question: "کوچکترین جزء اطلاعاتی در پایگاه داده چه گفته می‌شود؟",
+                options: ["جدول", "رکورد", "بانک اطلاعاتی", "فیلد"],
+                answer: "فیلد",
+                category: "Access"
+            },
+            {
+                question: "کدام نوع داده زیر برای متن‌های طولانی استفاده می‌شود؟",
+                options: ["Text", "Number", "Long Text", "Currency"],
+                answer: "Long Text",
+                category: "Access"
+            },
+            {
+                question: "به ارتباطات بین جداول در پایگاه داده چه می‌گویند؟",
+                options: ["Relationship", "Entity", "Integrity Rules", "Database"],
+                answer: "Relationship",
+                category: "Access"
+            },
+            {
+                question: "جهت جمع‌آوری و سازماندهی اطلاعات در مورد یک موضوع از کدام نرم‌افزار استفاده می‌شود؟",
+                options: ["بانک اطلاعاتی", "واژه‌پرداز", "برنامه نمایشی", "جدول"],
+                answer: "بانک اطلاعاتی",
+                category: "Access"
+            },
+            {
+                question: "کدام نوع داده در اکسس برای ذخیره‌سازی واحد پولی یا ارزی به کار می‌رود؟",
+                options: ["Currency", "Memo", "Text", "Ole Object"],
+                answer: "Currency",
+                category: "Access"
+            },
+            {
+                question: "کدام نوع داده در اکسس برای ایجاد فیلدی که به صورت خودکار شماره می‌خورد استفاده می‌شود؟",
+                options: ["Number", "Text", "AutoNumber", "Currency"],
+                answer: "AutoNumber",
+                category: "Access"
+            },
+            {
+                question: "در یک Query به کمک کدامیک از گزینه‌های زیر می‌توان شرط مورد نظر در ستون مربوط وارد کرد؟",
+                options: ["Sort", "Criteria", "Table", "Show"],
+                answer: "Criteria",
+                category: "Access"
+            },
+            {
+                question: "کدام گزینه جزء اجزای اصلی یک پایگاه داده (Database) نیست؟",
+                options: ["جدول (Table)", "پرس و جو (Query)", "فرم (Form)", "نمودار (Chart)"],
+                answer: "نمودار (Chart)",
+                category: "Access"
+            },
+            {
+                question: "برای تبدیل دستورات غیر قابل فهم به زبان قابل درک کامپیوتر کدام برنامه وظیفه این کار برعهده دارد؟",
+                options: ["سیستم عامل", "مترجم", "نرم‌افزارهای کاربردی", "نرم‌افزارهای کمکی"],
+                answer: "مترجم",
+                category: "Access"
+            },
+            {
+                question: "کدام یک از انواع نرم‌افزار برای ویرایش متن مناسب است؟",
+                options: ["سیستمی", "بانک اطلاعاتی", "پایگاه داده", "واژه‌پردازها"],
+                answer: "واژه‌پردازها",
+                category: "Access"
+            }
+        ];
+
+        // متغیرهای جهانی
+        let questions = [];
+        let currentQuestionIndex = 0;
+        let timerSeconds = 45 * 60; // 45 دقیقه
+        let timerInterval;
+        let currentLesson = "";
+        let correctPassword = "icdltest";
+
+        // مدیریت نمایش نام فایل آپلود شده
+        document.getElementById('password-file').addEventListener('change', function(e) {
+            const fileName = e.target.files[0] ? e.target.files[0].name : 'هیچ فایلی انتخاب نشده';
+            document.getElementById('file-name').textContent = `فایل انتخاب شده: ${fileName}`;
+        });
+
+        // بررسی رمز از فایل آپلود شده
+        function checkPasswordFromFile() {
+            const fileInput = document.getElementById('password-file');
+            const messageElement = document.getElementById('login-message');
+            
+            if (!fileInput.files.length) {
+                messageElement.textContent = 'لطفاً فایل رمز عبور را انتخاب کنید';
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const uploadedPassword = e.target.result.trim();
+                
+                if (uploadedPassword === correctPassword) {
+                    // نمایش منوی اصلی
+                    document.getElementById('login-container').style.display = 'none';
+                    document.getElementById('main-menu').style.display = 'flex';
+                    messageElement.textContent = '';
+                } else {
+                    messageElement.textContent = 'رمز عبور اشتباه است';
+                }
+            };
+            
+            reader.onerror = function() {
+                messageElement.textContent = 'خطا در خواندن فایل';
+            };
+            
+            reader.readAsText(file);
+        }
+
+        // خروج از سیستم
+        function logout() {
+            document.getElementById('main-menu').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('results-container').style.display = 'none';
+            document.getElementById('help-container').style.display = 'none';
+            document.getElementById('login-container').style.display = 'flex';
+            document.getElementById('password-file').value = '';
+            document.getElementById('file-name').textContent = '';
+            
+            // توقف تایمر اگر فعال باشد
+            clearInterval(timerInterval);
+        }
+
+        // شروع آزمون با سوالات تصادفی
+        function startRandomExam() {
+            document.getElementById('main-menu').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'block';
+            document.getElementById('results-container').style.display = 'none';
+            document.getElementById('help-container').style.display = 'none';
+            
+            currentLesson = "آزمون ICDL (30 سوال تصادفی)";
+            document.getElementById('lesson-title').textContent = currentLesson;
+            
+            // انتخاب 30 سوال تصادفی از بین 70 سوال
+            questions = getRandomQuestions(30);
+            
+            // به هم ریختن گزینه‌های هر سوال
+            questions.forEach(q => {
+                // ذخیره پاسخ صحیح
+                const correctAnswer = q.answer;
+                // به هم ریختن گزینه‌ها
+                const shuffledOptions = [...q.options];
+                shuffleArray(shuffledOptions);
+                q.options = shuffledOptions;
+                
+                // پیدا کردن موقعیت جدید پاسخ صحیح
+                q.correctIndex = q.options.indexOf(correctAnswer);
+                q.selected = null;
+            });
+            
+            currentQuestionIndex = 0;
+            createQuestionNumberButtons();
+            startTimer();
+            showQuestion();
+        }
+
+        // انتخاب سوالات تصادفی
+        function getRandomQuestions(count) {
+            // ایجاد کپی از تمام سوالات
+            const allQuestionsCopy = [...allQuestions];
+            const selectedQuestions = [];
+            
+            // انتخاب تصادفی سوالات
+            for (let i = 0; i < count; i++) {
+                if (allQuestionsCopy.length === 0) break;
+                
+                const randomIndex = Math.floor(Math.random() * allQuestionsCopy.length);
+                selectedQuestions.push(allQuestionsCopy[randomIndex]);
+                allQuestionsCopy.splice(randomIndex, 1);
+            }
+            
+            return selectedQuestions;
+        }
+
+        // نمایش سوال فعلی
+        function showQuestion() {
+            const question = questions[currentQuestionIndex];
+            document.getElementById('question').textContent = question.question;
+            
+            const optionButtons = document.querySelectorAll('#options .option-btn');
+            for (let i = 0; i < 4; i++) {
+                optionButtons[i].textContent = question.options[i];
+                optionButtons[i].className = 'option-btn';
+                
+                if (question.selected === i) {
+                    optionButtons[i].classList.add('selected');
+                }
+            }
+            
+            updateQuestionNumberButtons();
+        }
+
+        // انتخاب گزینه
+        function selectOption(index) {
+            questions[currentQuestionIndex].selected = index;
+            showQuestion();
+        }
+
+        // ایجاد دکمه‌های شماره سوالات
+        function createQuestionNumberButtons() {
+            const container = document.getElementById('question-numbers');
+            container.innerHTML = '';
+            
+            for (let i = 0; i < questions.length; i++) {
+                const button = document.createElement('button');
+                button.textContent = i + 1;
+                button.className = 'number-btn';
+                button.onclick = () => goToQuestion(i);
+                container.appendChild(button);
+            }
+        }
+
+        // بروزرسانی دکمه‌های شماره سوالات
+        function updateQuestionNumberButtons() {
+            const numberButtons = document.querySelectorAll('#question-numbers .number-btn');
+            
+            for (let i = 0; i < questions.length; i++) {
+                if (i === currentQuestionIndex) {
+                    numberButtons[i].className = 'number-btn selected';
+                } else if (questions[i].selected !== null) {
+                    numberButtons[i].className = 'number-btn correct';
+                } else {
+                    numberButtons[i].className = 'number-btn';
+                }
+            }
+        }
+
+        // رفتن به سوال مشخص
+        function goToQuestion(index) {
+            currentQuestionIndex = index;
+            showQuestion();
+        }
+
+        // سوال بعدی
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                showQuestion();
+            }
+        }
+
+        // سوال قبلی
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion();
+            }
+        }
+
+        // شروع تایمر
+        function startTimer() {
+            clearInterval(timerInterval);
+            timerSeconds = 45 * 60;
+            
+            timerInterval = setInterval(() => {
+                if (timerSeconds >= 0) {
+                    const minutes = Math.floor(timerSeconds / 60);
+                    const seconds = timerSeconds % 60;
+                    document.getElementById('timer').textContent = `زمان: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    timerSeconds--;
+                } else {
+                    clearInterval(timerInterval);
+                    alert('زمان آزمون به پایان رسید!');
+                    submitQuiz();
+                }
+            }, 1000);
+        }
+
+        // ارسال آزمون
+        function submitQuiz() {
+            clearInterval(timerInterval);
+            
+            // بررسی سوالات بی‌پاسخ
+            const unanswered = [];
+            for (let i = 0; i < questions.length; i++) {
+                if (questions[i].selected === null) {
+                    unanswered.push(i + 1);
+                }
+            }
+            
+            if (unanswered.length > 0) {
+                if (!confirm(`به ${unanswered.length} سوال پاسخ نداده‌اید. آیا مطمئن هستید که می‌خواهید آزمون را پایان دهید؟`)) {
+                    // اگر کاربر انصراف داد، تایمر را دوباره شروع می‌کنیم
+                    startTimer();
+                    return;
+                }
+            }
+            
+            showResults();
+        }
+
+        // نمایش نتایج
+        function showResults() {
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('results-container').style.display = 'block';
+            
+            // محاسبه نتایج کلی
+            let correctCount = 0;
+            for (const q of questions) {
+                if (q.selected === q.correctIndex) {
+                    correctCount++;
+                }
+            }
+            
+            const total = questions.length;
+            const percentage = Math.round((correctCount / total) * 100);
+            
+            let resultMessage = `درست: ${correctCount}  غلط: ${total - correctCount}  درصد: ${percentage}%`;
+            
+            if (percentage >= 70) {
+                resultMessage += " - قبول شدید! 🎉";
+            } else {
+                resultMessage += " - مردود شدید! 😔";
+            }
+            
+            document.getElementById('summary').textContent = resultMessage;
+            
+            // محاسبه نتایج تفکیکی
+            const categoryResults = calculateCategoryResults();
+            displayCategoryResults(categoryResults);
+            
+            currentQuestionIndex = 0;
+            createResultNumberButtons();
+            showResultQuestion();
+        }
+
+        // محاسبه نتایج تفکیکی
+        function calculateCategoryResults() {
+            const categories = {};
+            
+            // گروه‌بندی سوالات بر اساس دسته‌بندی
+            questions.forEach(q => {
+                if (!categories[q.category]) {
+                    categories[q.category] = {
+                        total: 0,
+                        correct: 0
+                    };
+                }
+                
+                categories[q.category].total++;
+                if (q.selected === q.correctIndex) {
+                    categories[q.category].correct++;
+                }
+            });
+            
+            return categories;
+        }
+
+        // نمایش نتایج تفکیکی
+        function displayCategoryResults(categoryResults) {
+            const container = document.getElementById('detailed-results');
+            container.innerHTML = '<h3 style="color: var(--primary-color); margin-bottom: 15px;">نتایج تفکیکی:</h3>';
+            
+            for (const category in categoryResults) {
+                const result = categoryResults[category];
+                const percentage = Math.round((result.correct / result.total) * 100);
+                
+                const categoryElement = document.createElement('div');
+                categoryElement.className = 'category-result';
+                categoryElement.innerHTML = `
+                    <strong>${category}:</strong> ${result.correct} از ${result.total} (${percentage}%)
+                    <div style="height: 10px; background-color: #e9ecef; border-radius: 5px; margin-top: 5px;">
+                        <div style="height: 100%; width: ${percentage}%; background-color: ${percentage >= 70 ? '#28a745' : '#dc3545'}; border-radius: 5px;"></div>
+                    </div>
+                `;
+                
+                container.appendChild(categoryElement);
+            }
+        }
+
+        // نمایش سوال در صفحه نتایج
+        function showResultQuestion() {
+            const question = questions[currentQuestionIndex];
+            document.getElementById('result-question').textContent = question.question;
+            
+            const optionButtons = document.querySelectorAll('#result-options .option-btn');
+            for (let i = 0; i < 4; i++) {
+                optionButtons[i].textContent = question.options[i];
+                optionButtons[i].className = 'option-btn';
+                
+                if (i === question.correctIndex) {
+                    optionButtons[i].classList.add('correct');
+                } else if (i === question.selected && question.selected !== question.correctIndex) {
+                    optionButtons[i].classList.add('incorrect');
+                }
+            }
+            
+            updateResultNumberButtons();
+        }
+
+        // ایجاد دکمه‌های شماره سوالات در صفحه نتایج
+        function createResultNumberButtons() {
+            const container = document.getElementById('result-numbers');
+            container.innerHTML = '';
+            
+            for (let i = 0; i < questions.length; i++) {
+                const button = document.createElement('button');
+                button.textContent = i + 1;
+                button.className = 'number-btn';
+                button.onclick = () => goToResultQuestion(i);
+                container.appendChild(button);
+            }
+        }
+
+        // بروزرسانی دکمه‌های شماره سوالات در صفحه نتایج
+        function updateResultNumberButtons() {
+            const numberButtons = document.querySelectorAll('#result-numbers .number-btn');
+            
+            for (let i = 0; i < questions.length; i++) {
+                const q = questions[i];
+                
+                if (i === currentQuestionIndex) {
+                    numberButtons[i].className = 'number-btn selected';
+                } else if (q.selected === q.correctIndex) {
+                    numberButtons[i].className = 'number-btn correct';
+                } else if (q.selected !== null) {
+                    numberButtons[i].className = 'number-btn incorrect';
+                } else {
+                    numberButtons[i].className = 'number-btn';
+                }
+            }
+        }
+
+        // رفتن به سوال مشخص در صفحه نتایج
+        function goToResultQuestion(index) {
+            currentQuestionIndex = index;
+            showResultQuestion();
+        }
+
+        // سوال بعدی در صفحه نتایج
+        function nextResultQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                showResultQuestion();
+            }
+        }
+
+        // سوال قبلی در صفحه نتایج
+        function prevResultQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showResultQuestion();
+            }
+        }
+
+        // نمایش راهنما
+        function showHelp() {
+            document.getElementById('main-menu').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('results-container').style.display = 'none';
+            document.getElementById('help-container').style.display = 'block';
+        }
+
+        // بازگشت به منوی اصلی
+        function backToMainMenu() {
+            document.getElementById('main-menu').style.display = 'flex';
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('results-container').style.display = 'none';
+            document.getElementById('help-container').style.display = 'none';
+            clearInterval(timerInterval);
+        }
+
+        // به هم ریختن آرایه (برای تصادفی کردن گزینه‌ها)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // مدیریت کلیدهای صفحه کلید
+        document.addEventListener('keydown', function(event) {
+            // کلیدهای جهت‌دار برای ناوبری
+            if (event.key === 'ArrowRight') {
+                prevQuestion();
+            } else if (event.key === 'ArrowLeft') {
+                nextQuestion();
+            }
+            
+            // کلید Enter در صفحه ورود رمز
+            if (event.key === 'Enter' && document.getElementById('login-container').style.display !== 'none') {
+                checkPasswordFromFile();
+            }
+        });
+    </script>
+</body>
+</html>
