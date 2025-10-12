@@ -334,6 +334,11 @@
             font-weight: bold;
         }
         
+        .loading {
+            color: var(--primary-color);
+            margin-top: 15px;
+        }
+        
         /* استایل فوتر */
         footer {
             text-align: center;
@@ -391,6 +396,9 @@
                 <input type="password" id="password-input" placeholder="رمز عبور">
                 <button onclick="checkPassword()"><i class="fas fa-sign-in-alt"></i> ورود</button>
                 <p id="login-message" class="login-message"></p>
+                <p id="loading-message" class="loading" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i> در حال بارگذاری رمز از سرور...
+                </p>
             </div>
         </div>
 
@@ -742,7 +750,7 @@
                 category: "Excel"
             },
             {
-                question: "برای محاسبه مجموع سلول‌های A1 تا A10 در اکسل از کدام تابع استفاده می‌شود؟",
+                question: "برای محاسبه مجموع سلول‌های A1 تا A10 در اکسل از کدام تابع استفاده می‌شود？",
                 options: ["=SUM(A1:A10)", "=TOTAL(A1:A10)", "=ADD(A1:A10)", "=PLUS(A1:A10)"],
                 answer: "=SUM(A1:A10)",
                 category: "Excel"
@@ -970,12 +978,55 @@
         let timerSeconds = 45 * 60; // 45 دقیقه
         let timerInterval;
         let currentLesson = "";
-        let correctPassword = "icdltest";
+        let correctPassword = "";
+
+        // آدرس فایل رمز در GitHub
+        const PASSWORD_URL = "https://raw.githubusercontent.com/KHARAZMIedu/qizICDL/main/password.txt";
+
+        // بارگذاری رمز از GitHub
+        async function loadPasswordFromGitHub() {
+            const loadingMessage = document.getElementById('loading-message');
+            const loginMessage = document.getElementById('login-message');
+            
+            try {
+                loadingMessage.style.display = 'block';
+                loginMessage.textContent = '';
+                
+                const response = await fetch(PASSWORD_URL);
+                
+                if (!response.ok) {
+                    throw new Error(`خطا در بارگذاری رمز: ${response.status}`);
+                }
+                
+                const passwordText = await response.text();
+                correctPassword = passwordText.trim();
+                
+                loadingMessage.style.display = 'none';
+                loginMessage.textContent = 'رمز با موفقیت بارگذاری شد';
+                loginMessage.style.color = 'var(--success-color)';
+                
+                console.log('رمز بارگذاری شد:', correctPassword);
+                
+            } catch (error) {
+                loadingMessage.style.display = 'none';
+                loginMessage.textContent = 'خطا در بارگذاری رمز از سرور';
+                console.error('خطا در بارگذاری رمز:', error);
+                
+                // در صورت خطا، از رمز پیش‌فرض استفاده می‌کنیم
+                correctPassword = "icdltest";
+                loginMessage.textContent += ' - از رمز پیش‌فرض استفاده می‌شود';
+            }
+        }
 
         // بررسی رمز ورودی
         function checkPassword() {
             const inputPassword = document.getElementById('password-input').value;
             const messageElement = document.getElementById('login-message');
+            
+            if (!correctPassword) {
+                messageElement.textContent = 'لطفاً صبر کنید تا رمز بارگذاری شود';
+                return;
+            }
             
             if (inputPassword === correctPassword) {
                 // نمایش منوی اصلی
@@ -984,6 +1035,7 @@
                 messageElement.textContent = '';
             } else {
                 messageElement.textContent = 'رمز عبور اشتباه است';
+                messageElement.style.color = 'var(--danger-color)';
             }
         }
 
@@ -1361,6 +1413,11 @@
             if (event.key === 'Enter' && document.getElementById('login-container').style.display !== 'none') {
                 checkPassword();
             }
+        });
+
+        // بارگذاری رمز از GitHub هنگام بارگذاری صفحه
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPasswordFromGitHub();
         });
     </script>
 </body>
