@@ -6,7 +6,6 @@
     <title>آزمون ICDL - موسسه آموزشی خوارزمی</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* استایل‌های قبلی بدون تغییر باقی می‌مانند */
         :root {
             --primary-color: #1a5f7a;
             --secondary-color: #159895;
@@ -335,21 +334,6 @@
             font-weight: bold;
         }
         
-        .loading-spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
-            margin-right: 10px;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
         /* استایل فوتر */
         footer {
             text-align: center;
@@ -407,8 +391,6 @@
                 <input type="password" id="password-input" placeholder="رمز عبور">
                 <button onclick="checkPassword()"><i class="fas fa-sign-in-alt"></i> ورود</button>
                 <p id="login-message" class="login-message"></p>
-                <div style="margin-top: 15px; padding: 10px; background-color: #f8f9fa; border-radius: 5px;">
-                </div>
             </div>
         </div>
 
@@ -515,7 +497,7 @@
     </footer>
 
     <script>
-        // داده‌های سوالات ICDL (70 سوال) - بدون تغییر
+        // داده‌های سوالات ICDL (70 سوال)
         const allQuestions = [
             // سخت‌افزار (10 سوال)
             {
@@ -524,7 +506,462 @@
                 answer: "ALU",
                 category: "سخت‌افزار"
             },
-            // ... سایر سوالات بدون تغییر
+            {
+                question: "محتوای کدام یک از حافظه‌های زیر با قطع جریان برق از بین می‌رود؟",
+                options: ["ROM", "RAM", "EPROM", "PROM"],
+                answer: "RAM",
+                category: "سخت‌افزار"
+            },
+            {
+                question: "کوچکترین واحد حافظه چیست؟",
+                options: ["Word", "KB", "Bit", "Byte"],
+                answer: "Bit",
+                category: "سخت‌افزار"
+            },
+            {
+                question: "اطلاعات در حافظه کامپیوتر بصورت ...... ذخیره می‌شوند.",
+                options: ["دسیمال", "هگزادسیمال", "اکتال", "باینری"],
+                answer: "باینری",
+                category: "سخت‌افزار"
+            },
+            {
+                question: "کدامیک از گزینه‌های زیر جزء وسایل کنترل کننده اشاره‌گر محسوب نمی‌شوند؟",
+                options: ["ماوس", "صفحه لمسی", "دسته بازی", "اسکنر"],
+                answer: "اسکنر",
+                category: "سخت‌افزار"
+            },
+            {
+                question: "کدام یک از کلیدهای زیر دو حالته نیست؟",
+                options: ["Caps Lock", "Num Lock", "Scroll Lock", "Shift"],
+                answer: "Shift",
+                category: "سخت‌افزار"
+            },
+            {
+                question: "سرعت پردازش و ظرفیت ذخیره‌سازی اطلاعات در کدام نوع از کامپیوترهای زیر بیشتر است؟",
+                options: ["Super Computer", "Micro Computers", "Mini Computer", "Main Frame"],
+                answer: "Super Computer",
+                category: "سخت‌افزار"
+            },
+            {
+                question: "کوچکترین عنصر صفحه نمایش چه نام دارد؟",
+                options: ["Pixel", "Pin", "Dots", "کاراکتر"],
+                answer: "Pixel",
+                category: "سخت‌افزار"
+            },
+            {
+                question: "برای تایپ حروف بزرگ لاتین باید دکمه ...... را فعال نمود.",
+                options: ["Caps Lock", "Scroll Lock", "Serial Lock", "Shift"],
+                answer: "Caps Lock",
+                category: "سخت‌افزار"
+            },
+            {
+                question: "کلید میانبر فرمان paste چیست؟",
+                options: ["Ctrl+C", "Ctrl+P", "Ctrl+V", "Ctrl+X"],
+                answer: "Ctrl+V",
+                category: "سخت‌افزار"
+            },
+            
+            // ویندوز (10 سوال)
+            {
+                question: "برای مشاهده مشخصات پوشه‌ها باید از چه روشی استفاده کرد؟",
+                options: [
+                    "کلیک راست روی آیکن پوشه و انتخاب گزینه Open",
+                    "کلیک راست روی آیکن پوشه و انتخاب گزینه Properties",
+                    "دابل کلیک روی آیکن پوشه مورد نظر",
+                    "درگ کردن آیکن پوشه مورد نظر"
+                ],
+                answer: "کلیک راست روی آیکن پوشه و انتخاب گزینه Properties",
+                category: "ویندوز"
+            },
+            {
+                question: "اگر در کنار نام آیکن پوشه در ساختار درختی علامت (+) نمایش یابد، نشانه چیست؟",
+                options: ["داشتن فایل", "داشتن زیر پوشه", "خالی بودن پوشه", "میانبر بودن پوشه"],
+                answer: "داشتن زیر پوشه",
+                category: "ویندوز"
+            },
+            {
+                question: "برای حذف دائم یک فایل به طوری که در سطل بازیافت قرار نگیرد از کدام کلید همراه دکمه Delete استفاده می‌شود؟",
+                options: ["Shift", "Alt", "Ctrl", "Tab"],
+                answer: "Shift",
+                category: "ویندوز"
+            },
+            {
+                question: "کدام یک از اسامی زیر برای نام پوشه غیر مجاز است؟",
+                options: ["Con", "Directory", "Listname", "Asp"],
+                answer: "Con",
+                category: "ویندوز"
+            },
+            {
+                question: "چگونه می‌توان چند فایل پراکنده یک پوشه را انتخاب کرد؟",
+                options: [
+                    "با کلیک روی فایل‌های مورد نظر",
+                    "با فشار دادن کلید اولین حرف نام فایل",
+                    "هنگام کلیک کردن روی فایل‌های مورد نظر کلید CTRL را پایین نگه داشت",
+                    "هنگام کلیک کردن روی فایل‌های مورد نظر کلید SHIFT را پایین نگه داشت"
+                ],
+                answer: "هنگام کلیک کردن روی فایل‌های مورد نظر کلید CTRL را پایین نگه داشت",
+                category: "ویندوز"
+            },
+            {
+                question: "برای مرتب نمودن آیکن‌های پنجره براساس نوع فایلها از کدام گزینه استفاده می‌شود؟",
+                options: ["Name", "Type", "Date", "Size"],
+                answer: "Type",
+                category: "ویندوز"
+            },
+            {
+                question: "کلیدهای میانبر برای بستن پنجره‌های باز کدام است؟",
+                options: ["Ctrl+Alt+F4", "Alt+F4", "Ctrl+F4", "Shift+F4"],
+                answer: "Alt+F4",
+                category: "ویندوز"
+            },
+            {
+                question: "برای جستجوی فایلی که با S شروع می‌شود و به T ختم می‌شود در کادر جستجو چگونه باید تایپ کرد؟",
+                options: ["S ? T", "~T ? S", "S * T", "T * S"],
+                answer: "S * T",
+                category: "ویندوز"
+            },
+            {
+                question: "کدامیک از گزینه‌های زیر فایل‌ها و پوشه را همراه با جزئیات نشان می‌دهد؟",
+                options: ["Large Icon", "Details", "List", "Small Icon"],
+                answer: "Details",
+                category: "ویندوز"
+            },
+            {
+                question: "اولین پنجره یا اساسی‌ترین پنجره ویندوز کدام گزینه می‌باشد؟",
+                options: ["Window", "Desktop", "Explorer", "Taskbar"],
+                answer: "Desktop",
+                category: "ویندوز"
+            },
+            
+            // Word (10 سوال)
+            {
+                question: "برای درج پاورقی از چه گزینه‌ای استفاده می‌کنیم؟",
+                options: [
+                    "سربرگ Revive گزینه Header",
+                    "سربرگ References گزینه Footnotes",
+                    "سربرگ References Insert گزینه",
+                    "سربرگ References Insert Endnote گزینه"
+                ],
+                answer: "سربرگ References گزینه Footnotes",
+                category: "Word"
+            },
+            {
+                question: "کدام کلید ترکیبی میانبر برای کاهش سایز قلم به کار می‌رود؟",
+                options: ["Ctrl + [", "Ctrl + <", "Ctrl + >", "Ctrl + ]"],
+                answer: "Ctrl + <",
+                category: "Word"
+            },
+            {
+                question: "برای ذخیره کردن یک سند تحت نامی دیگر از کدام فرمان استفاده می‌شود؟",
+                options: ["Save", "Save As", "Save In", "Look In"],
+                answer: "Save As",
+                category: "Word"
+            },
+            {
+                question: "کدام گزینه در پنجره Word برای نمایش خطوط راهنما (Gridlines) در جدول بکار می‌رود؟",
+                options: ["View Gridlines", "Show Grid", "Table Grid", "Layout Grid"],
+                answer: "View Gridlines",
+                category: "Word"
+            },
+            {
+                question: "برای وارد کردن یک فایل تصویری در محیط سند، از کدام گزینه استفاده می‌کنید؟",
+                options: ["Insert \\ picture", "Home \\ picture", "View \\ picture", "Insert \\ chart"],
+                answer: "Insert \\ picture",
+                category: "Word"
+            },
+            {
+                question: "اگر بخواهیم کاغذ چاپ به صورت افقی و خوابیده باشد، کدام گزینه باید در نظر گرفته شود؟",
+                options: ["Portrait", "Landscape", "Duplex", "Reverse"],
+                answer: "Landscape",
+                category: "Word"
+            },
+            {
+                question: "اگر بخواهیم صفحات ۲ و ۳ و ۴ از یک سند چاپ شوند، از کدام عملگر استفاده می‌کنیم؟",
+                options: [",", "–", ":", ";"],
+                answer: ",",
+                category: "Word"
+            },
+            {
+                question: "از کدام حالت نمایش برای طراحی صفحه وب در محیط Word استفاده می‌شود؟",
+                options: ["Print Layout", "Web Layout", "Outline", "Draft"],
+                answer: "Web Layout",
+                category: "Word"
+            },
+            {
+                question: "برای ذخیره کردن یک الگو به عنوان یک template کافی است در لیست ...... گزینه ...... را انتخاب کنید.",
+                options: ["Save in", "Save as type", "Save as name", "File name"],
+                answer: "Save as type",
+                category: "Word"
+            },
+            {
+                question: "از کدام گزینه برای تعیین نحوه نمایش و قالب‌بندی شماره‌ها استفاده می‌شود؟",
+                options: ["Numbering", "Number Format", "Page Layout", "Tab"],
+                answer: "Number Format",
+                category: "Word"
+            },
+            
+            // Excel (10 سوال)
+            {
+                question: "علامت مساوی در شروع یک خانه در اکسل نشانه چیست؟",
+                options: ["شروع یک فرمول", "شروع یک جستجو", "Filtering", "شروع عملیات"],
+                answer: "شروع یک فرمول",
+                category: "Excel"
+            },
+            {
+                question: "کدام تابع برای محاسبه میانگین بکار می‌رود؟",
+                options: ["SUM", "MAX", "AVERAGE", "IF"],
+                answer: "AVERAGE",
+                category: "Excel"
+            },
+            {
+                question: "برای مرتب کردن اطلاعات موجود در لیست (بر اساس حروف الفبا) از کدام گزینه استفاده می‌شود؟",
+                options: ["Data \\ Sort", "Data \\ Filter", "Insert \\ Sort", "Home \\ Find"],
+                answer: "Data \\ Sort",
+                category: "Excel"
+            },
+            {
+                question: "برای حذف یک سطر در اکسل از چه گزینه‌ای استفاده می‌شود؟",
+                options: [
+                    "سربرگ Home گزینه Delete sheet Rows",
+                    "سربرگ Home گزینه Clear Rows",
+                    "سربرگ Data گزینه Delete columns",
+                    "سربرگ Home گروه Clear گزینه Clear Format"
+                ],
+                answer: "سربرگ Home گزینه Delete sheet Rows",
+                category: "Excel"
+            },
+            {
+                question: "تابع VLOOKUP در اکسل برای چه منظوری استفاده می‌شود؟",
+                options: [
+                    "جستجوی عمودی یک مقدار در یک ستون و برگرداندن مقدار متناظر از ستون دیگر",
+                    "جمع کردن مقادیر یک محدوده",
+                    "شمارش سلول‌های پر",
+                    "پیدا کردن بزرگترین مقدار در یک محدوده"
+                ],
+                answer: "جستجوی عمودی یک مقدار در یک ستون و برگرداندن مقدار متناظر از ستون دیگر",
+                category: "Excel"
+            },
+            {
+                question: "برای محاسبه مجموع سلول‌های A1 تا A10 در اکسل از کدام تابع استفاده می‌شود؟",
+                options: ["=SUM(A1:A10)", "=TOTAL(A1:A10)", "=ADD(A1:A10)", "=PLUS(A1:A10)"],
+                answer: "=SUM(A1:A10)",
+                category: "Excel"
+            },
+            {
+                question: "کدام گزینه یک پروتکل می‌باشد؟",
+                options: ["URL", "Https", "Security", "Connect"],
+                answer: "Https",
+                category: "Excel"
+            },
+            {
+                question: "مناسب‌ترین نمودار جهت نشان دادن \"درصد اطلاعات\" کدام است؟",
+                options: ["Line", "Column", "Bar", "Pie"],
+                answer: "Pie",
+                category: "Excel"
+            },
+            {
+                question: "اشکال مربوط به طراحی فلوچارت در کدام قسمت وجود دارد؟",
+                options: ["Basic Shapes", "Flowchart", "Lines", "Callouts"],
+                answer: "Flowchart",
+                category: "Excel"
+            },
+            {
+                question: "اشکال هندسی پایه در کدام قسمت از ابزار Shape قرار دارند؟",
+                options: ["Flowchart", "Callouts", "Basic Shapes", "Stars and Banners"],
+                answer: "Basic Shapes",
+                category: "Excel"
+            },
+            
+            // PowerPoint (10 سوال)
+            {
+                question: "کدام منو در نرم‌افزار Powerpoint برای ایجاد انیمیشن کاربرد دارد؟",
+                options: ["Animations", "Slide Show", "Design", "Review"],
+                answer: "Animations",
+                category: "PowerPoint"
+            },
+            {
+                question: "برای درج متن در پاورپوینت از چه روشی استفاده می‌شود؟",
+                options: ["Format", "Text Box", "بدنه‌ی اسلاید", "یک شی خارجی"],
+                answer: "Text Box",
+                category: "PowerPoint"
+            },
+            {
+                question: "در پاورپوینت، از نمای ...... برای جابجایی و مدیریت کردن اسلایدها استفاده می‌شود.",
+                options: ["Slide Sorter", "Normal", "Reading View", "Slide Show"],
+                answer: "Slide Sorter",
+                category: "PowerPoint"
+            },
+            {
+                question: "در پاورپوینت، برای خاتمه دادن به نمایش اسلایدها کدام کلید را باید فشرد؟",
+                options: ["E", "Esc", "Home", "End"],
+                answer: "Esc",
+                category: "PowerPoint"
+            },
+            {
+                question: "اگر بخواهیم متحرک‌سازی یک شی همراه با متحرک‌سازی قبلی اجرا شود، کدام گزینه را انتخاب می‌کنیم؟",
+                options: ["On click", "With Previous", "After Previous", "Direction"],
+                answer: "With Previous",
+                category: "PowerPoint"
+            },
+            {
+                question: "کدام یک از گزینه‌های کادر محاوره‌ای Print امکان چاپ صفحه جاری سند را فراهم می‌کند؟",
+                options: ["Collate", "Selection", "Current page", "All"],
+                answer: "Current page",
+                category: "PowerPoint"
+            },
+            {
+                question: "برای توقف و از سرگیری مجدد عمل چاپ یک سند چگونه عمل می‌کنیم؟",
+                options: [
+                    "از Document گزینه Pause را برای توقف و گزینه Resume را برای ادامه چاپ در نظر می‌گیریم",
+                    "از Properties گزینه Preference Printing انتخاب می‌کنیم",
+                    "از Document گزینه Pause را انتخاب می‌کنیم",
+                    "از منوی Document گزینه Pause را برای توقف و گزینه Pause را برای ادامه چاپ در نظر می‌گیریم"
+                ],
+                answer: "از Document گزینه Pause را برای توقف و گزینه Resume را برای ادامه چاپ در نظر می‌گیریم",
+                category: "PowerPoint"
+            },
+            {
+                question: "کدام یک از موارد زیر یک سیستم عامل محسوب می‌شوند؟",
+                options: ["Netscape", "Windows", "PowerPoint", "Photoshop"],
+                answer: "Windows",
+                category: "PowerPoint"
+            },
+            {
+                question: "اگر بخواهیم هنگام طراحی، شکل دایره رسم کنیم، کدام کلید را باید نگه داریم؟",
+                options: ["Ctrl", "Shift", "Alt", "Tab"],
+                answer: "Shift",
+                category: "PowerPoint"
+            },
+            {
+                question: "برای وارد کردن یک فایل تصویری در محیط سند، از کدام گزینه استفاده می‌کنید؟",
+                options: ["Insert \\ picture", "Home \\ picture", "View \\ picture", "Insert \\ chart"],
+                answer: "Insert \\ picture",
+                category: "PowerPoint"
+            },
+            
+            // اینترنت (10 سوال)
+            {
+                question: "به شرکت‌های ارائه دهنده خدمات اینترنتی چه می‌گویند؟",
+                options: ["ISDN", "PSTN", "ISP", "ADSL"],
+                answer: "ISP",
+                category: "اینترنت"
+            },
+            {
+                question: "آدرس‌های عددی مورد استفاده در شبکه را اصطلاحاً چه می‌نامند؟",
+                options: ["IP", "TCP", "DNS", "PASSWORD"],
+                answer: "IP",
+                category: "اینترنت"
+            },
+            {
+                question: "به دریافت فایل از اینترنت .... و ارسال فایل به اینترنت را ...... می‌گویند.",
+                options: ["Receiving, Sending", "Download, Upload", "Upload, Download", "Sending, Receiving"],
+                answer: "Download, Upload",
+                category: "اینترنت"
+            },
+            {
+                question: "اینترنت جز کدام شبکه محسوب می‌شود؟",
+                options: ["محلی", "گسترده", "شهری", "خانگی"],
+                answer: "گسترده",
+                category: "اینترنت"
+            },
+            {
+                question: "دستگاهی که سیگنال‌های دیجیتال را به آنالوگ و برعکس تبدیل می‌کند؟",
+                options: ["تلفن", "مودم", "سیستم عامل", "اینترنت"],
+                answer: "مودم",
+                category: "اینترنت"
+            },
+            {
+                question: "کدام یک از دامنه‌های زیر مختص کشور ایران است؟",
+                options: ["TR", "IR", "UK", "US"],
+                answer: "IR",
+                category: "اینترنت"
+            },
+            {
+                question: "صفحه خانگی یک وب سایت را .... گویند.",
+                options: ["First page", "Home page", "Web page", "Current page"],
+                answer: "Home page",
+                category: "اینترنت"
+            },
+            {
+                question: "برای اینکه عبارت مورد جستجو به همان شکل در اینترنت جستجو شود (دقیقاً همان عبارت) از کدام کاراکتر استفاده می‌شود؟",
+                options: ["{ }", "[ ]", "( )", "\" \""],
+                answer: "\" \"",
+                category: "اینترنت"
+            },
+            {
+                question: "دریافت اطلاعات از اینترنت را .... می‌گویند.",
+                options: ["Load", "Upload", "Move", "Download"],
+                answer: "Download",
+                category: "اینترنت"
+            },
+            {
+                question: "کدام یک از نرم‌افزارهای زیر برای کار با اینترنت لازم است؟",
+                options: ["Internet Explorer", "Windows Explorer", "Documents", "Control Panel"],
+                answer: "Internet Explorer",
+                category: "اینترنت"
+            },
+            
+            // Access (10 سوال)
+            {
+                question: "کوچکترین جزء اطلاعاتی در پایگاه داده چه گفته می‌شود؟",
+                options: ["جدول", "رکورد", "بانک اطلاعاتی", "فیلد"],
+                answer: "فیلد",
+                category: "Access"
+            },
+            {
+                question: "کدام نوع داده زیر برای متن‌های طولانی استفاده می‌شود؟",
+                options: ["Text", "Number", "Long Text", "Currency"],
+                answer: "Long Text",
+                category: "Access"
+            },
+            {
+                question: "به ارتباطات بین جداول در پایگاه داده چه می‌گویند؟",
+                options: ["Relationship", "Entity", "Integrity Rules", "Database"],
+                answer: "Relationship",
+                category: "Access"
+            },
+            {
+                question: "جهت جمع‌آوری و سازماندهی اطلاعات در مورد یک موضوع از کدام نرم‌افزار استفاده می‌شود؟",
+                options: ["بانک اطلاعاتی", "واژه‌پرداز", "برنامه نمایشی", "جدول"],
+                answer: "بانک اطلاعاتی",
+                category: "Access"
+            },
+            {
+                question: "کدام نوع داده در اکسس برای ذخیره‌سازی واحد پولی یا ارزی به کار می‌رود؟",
+                options: ["Currency", "Memo", "Text", "Ole Object"],
+                answer: "Currency",
+                category: "Access"
+            },
+            {
+                question: "کدام نوع داده در اکسس برای ایجاد فیلدی که به صورت خودکار شماره می‌خورد استفاده می‌شود؟",
+                options: ["Number", "Text", "AutoNumber", "Currency"],
+                answer: "AutoNumber",
+                category: "Access"
+            },
+            {
+                question: "در یک Query به کمک کدامیک از گزینه‌های زیر می‌توان شرط مورد نظر در ستون مربوط وارد کرد؟",
+                options: ["Sort", "Criteria", "Table", "Show"],
+                answer: "Criteria",
+                category: "Access"
+            },
+            {
+                question: "کدام گزینه جزء اجزای اصلی یک پایگاه داده (Database) نیست؟",
+                options: ["جدول (Table)", "پرس و جو (Query)", "فرم (Form)", "نمودار (Chart)"],
+                answer: "نمودار (Chart)",
+                category: "Access"
+            },
+            {
+                question: "برای تبدیل دستورات غیر قابل فهم به زبان قابل درک کامپیوتر کدام برنامه وظیفه این کار برعهده دارد؟",
+                options: ["سیستم عامل", "مترجم", "نرم‌افزارهای کاربردی", "نرم‌افزارهای کمکی"],
+                answer: "مترجم",
+                category: "Access"
+            },
+            {
+                question: "کدام یک از انواع نرم‌افزار برای ویرایش متن مناسب است؟",
+                options: ["سیستمی", "بانک اطلاعاتی", "پایگاه داده", "واژه‌پردازها"],
+                answer: "واژه‌پردازها",
+                category: "Access"
+            }
         ];
 
         // متغیرهای جهانی
@@ -533,36 +970,12 @@
         let timerSeconds = 45 * 60; // 45 دقیقه
         let timerInterval;
         let currentLesson = "";
-        let correctPassword = "";
-
-        // بارگذاری رمز از فایل
-        function loadPasswordFromFile() {
-            fetch('password.txt')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('رمز تعیین نشده');
-                    }
-                    return response.text();
-                })
-                .then(text => {
-                    correctPassword = text.trim();
-                })
-                .catch(error => {
-                    document.getElementById('login-message').textContent = 
-                        'خطا در بارگذاری رمز: ' + error.message;
-                    console.error('خطا در خواندن فایل رمز:', error);
-                });
-        }
+        let correctPassword = "icdltest";
 
         // بررسی رمز ورودی
         function checkPassword() {
             const inputPassword = document.getElementById('password-input').value;
             const messageElement = document.getElementById('login-message');
-            
-            if (!correctPassword) {
-                messageElement.textContent = 'رمز سیستم بارگذاری نشده است';
-                return;
-            }
             
             if (inputPassword === correctPassword) {
                 // نمایش منوی اصلی
@@ -948,11 +1361,6 @@
             if (event.key === 'Enter' && document.getElementById('login-container').style.display !== 'none') {
                 checkPassword();
             }
-        });
-
-        // بارگذاری رمز از فایل هنگام بارگذاری صفحه
-        document.addEventListener('DOMContentLoaded', function() {
-            loadPasswordFromFile();
         });
     </script>
 </body>
