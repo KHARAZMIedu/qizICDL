@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -320,45 +319,25 @@
             margin-bottom: 20px;
         }
         
-        .login-box input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        
         .login-message {
             margin-top: 15px;
             color: var(--danger-color);
             font-weight: bold;
         }
         
-        /* استایل جدید برای آپلود فایل */
-        .file-upload {
-            margin: 15px 0;
-            text-align: center;
-        }
-        
-        .file-upload-label {
+        .loading-spinner {
             display: inline-block;
-            padding: 10px 15px;
-            background-color: var(--secondary-color);
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
         }
         
-        .file-upload-label:hover {
-            background-color: var(--primary-color);
-        }
-        
-        #file-name {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #6c757d;
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
         
         /* استایل فوتر */
@@ -414,20 +393,16 @@
         <div id="login-container" class="login-container">
             <div class="login-box">
                 <h2><i class="fas fa-lock"></i> ورود به سیستم آزمون</h2>
-                <p>لطفاً فایل رمز عبور (password.txt) را انتخاب کنید:</p>
+                <p>در حال بررسی رمز عبور از فایل Password.txt...</p>
                 
-                <div class="file-upload">
-                    <label for="password-file" class="file-upload-label">
-                        <i class="fas fa-file-upload"></i> انتخاب فایل رمز عبور
-                    </label>
-                    <input type="file" id="password-file" accept=".txt" style="display: none;">
-                    <div id="file-name"></div>
-                </div>
+                <button id="login-btn" onclick="checkPassword()" disabled>
+                    <span id="spinner" class="loading-spinner"></span>
+                    لطفاً صبر کنید
+                </button>
                 
-                <button onclick="checkPasswordFromFile()"><i class="fas fa-sign-in-alt"></i> ورود</button>
                 <p id="login-message" class="login-message"></p>
                 <div style="margin-top: 15px; padding: 10px; background-color: #f8f9fa; border-radius: 5px;">
-                    <p style="font-size: 14px; color: #6c757d; margin: 0;">محتویات فایل password.txt باید شامل رمز عبور باشد: <strong>icdltest</strong></p>
+                    <p style="font-size: 14px; color: #6c757d; margin: 0;">بررسی خودکار از فایل Password.txt در مخزن گیت‌هاب</p>
                 </div>
             </div>
         </div>
@@ -804,7 +779,7 @@
                 category: "Excel"
             },
             {
-                question: "اشکال هندسی پایه در کدام قسمت از ابزار Shape قرار دارند؟",
+                question: "اشکال هندسی پایه در کدام قسمت از ابزار Shape قرار دارند？",
                 options: ["Flowchart", "Callouts", "Basic Shapes", "Stars and Banners"],
                 answer: "Basic Shapes",
                 category: "Excel"
@@ -848,7 +823,7 @@
                 category: "PowerPoint"
             },
             {
-                question: "برای توقف و از سرگیری مجدد عمل چاپ یک سند چگونه عمل می‌کنیم؟",
+                question: "برای توقف و از سرگیری مجدد عمل چاپ یک سند چگونه عمل می‌کنیم？",
                 options: [
                     "از Document گزینه Pause را برای توقف و گزینه Resume را برای ادامه چاپ در نظر می‌گیریم",
                     "از Properties گزینه Preference Printing انتخاب می‌کنیم",
@@ -859,7 +834,7 @@
                 category: "PowerPoint"
             },
             {
-                question: "کدام یک از موارد زیر یک سیستم عامل محسوب می‌شوند؟",
+                question: "کدام یک از موارد زیر یک سیستم عامل محسوب می‌شوند？",
                 options: ["Netscape", "Windows", "PowerPoint", "Photoshop"],
                 answer: "Windows",
                 category: "PowerPoint"
@@ -871,7 +846,7 @@
                 category: "PowerPoint"
             },
             {
-                question: "برای وارد کردن یک فایل تصویری در محیط سند، از کدام گزینه استفاده می‌کنید؟",
+                question: "برای وارد کردن یک فایل تصویری در محیط سند، از کدام گزینه استفاده می‌کنید？",
                 options: ["Insert \\ picture", "Home \\ picture", "View \\ picture", "Insert \\ chart"],
                 answer: "Insert \\ picture",
                 category: "PowerPoint"
@@ -879,13 +854,13 @@
             
             // اینترنت (10 سوال)
             {
-                question: "به شرکت‌های ارائه دهنده خدمات اینترنتی چه می‌گویند؟",
+                question: "به شرکت‌های ارائه دهنده خدمات اینترنتی چه می‌گویند？",
                 options: ["ISDN", "PSTN", "ISP", "ADSL"],
                 answer: "ISP",
                 category: "اینترنت"
             },
             {
-                question: "آدرس‌های عددی مورد استفاده در شبکه را اصطلاحاً چه می‌نامند؟",
+                question: "آدرس‌های عددی مورد استفاده در شبکه را اصطلاحاً چه می‌نامند？",
                 options: ["IP", "TCP", "DNS", "PASSWORD"],
                 answer: "IP",
                 category: "اینترنت"
@@ -897,19 +872,19 @@
                 category: "اینترنت"
             },
             {
-                question: "اینترنت جز کدام شبکه محسوب می‌شود؟",
+                question: "اینترنت جز کدام شبکه محسوب می‌شود？",
                 options: ["محلی", "گسترده", "شهری", "خانگی"],
                 answer: "گسترده",
                 category: "اینترنت"
             },
             {
-                question: "دستگاهی که سیگنال‌های دیجیتال را به آنالوگ و برعکس تبدیل می‌کند؟",
+                question: "دستگاهی که سیگنال‌های دیجیتال را به آنالوگ و برعکس تبدیل می‌کند？",
                 options: ["تلفن", "مودم", "سیستم عامل", "اینترنت"],
                 answer: "مودم",
                 category: "اینترنت"
             },
             {
-                question: "کدام یک از دامنه‌های زیر مختص کشور ایران است؟",
+                question: "کدام یک از دامنه‌های زیر مختص کشور ایران است？",
                 options: ["TR", "IR", "UK", "US"],
                 answer: "IR",
                 category: "اینترنت"
@@ -921,7 +896,7 @@
                 category: "اینترنت"
             },
             {
-                question: "برای اینکه عبارت مورد جستجو به همان شکل در اینترنت جستجو شود (دقیقاً همان عبارت) از کدام کاراکتر استفاده می‌شود؟",
+                question: "برای اینکه عبارت مورد جستجو به همان شکل در اینترنت جستجو شود (دقیقاً همان عبارت) از کدام کاراکتر استفاده می‌شود？",
                 options: ["{ }", "[ ]", "( )", "\" \""],
                 answer: "\" \"",
                 category: "اینترنت"
@@ -933,7 +908,7 @@
                 category: "اینترنت"
             },
             {
-                question: "کدام یک از نرم‌افزارهای زیر برای کار با اینترنت لازم است؟",
+                question: "کدام یک از نرم‌افزارهای زیر برای کار با اینترنت لازم است？",
                 options: ["Internet Explorer", "Windows Explorer", "Documents", "Control Panel"],
                 answer: "Internet Explorer",
                 category: "اینترنت"
@@ -941,25 +916,25 @@
             
             // Access (10 سوال)
             {
-                question: "کوچکترین جزء اطلاعاتی در پایگاه داده چه گفته می‌شود؟",
+                question: "کوچکترین جزء اطلاعاتی در پایگاه داده چه گفته می‌شود？",
                 options: ["جدول", "رکورد", "بانک اطلاعاتی", "فیلد"],
                 answer: "فیلد",
                 category: "Access"
             },
             {
-                question: "کدام نوع داده زیر برای متن‌های طولانی استفاده می‌شود؟",
+                question: "کدام نوع داده زیر برای متن‌های طولانی استفاده می‌شود？",
                 options: ["Text", "Number", "Long Text", "Currency"],
                 answer: "Long Text",
                 category: "Access"
             },
             {
-                question: "به ارتباطات بین جداول در پایگاه داده چه می‌گویند؟",
+                question: "به ارتباطات بین جداول در پایگاه داده چه می‌گویند？",
                 options: ["Relationship", "Entity", "Integrity Rules", "Database"],
                 answer: "Relationship",
                 category: "Access"
             },
             {
-                question: "جهت جمع‌آوری و سازماندهی اطلاعات در مورد یک موضوع از کدام نرم‌افزار استفاده می‌شود؟",
+                question: "جهت جمع‌آوری و سازماندهی اطلاعات در مورد یک موضوع از کدام نرم‌افزار استفاده می‌شود？",
                 options: ["بانک اطلاعاتی", "واژه‌پرداز", "برنامه نمایشی", "جدول"],
                 answer: "بانک اطلاعاتی",
                 category: "Access"
@@ -977,25 +952,25 @@
                 category: "Access"
             },
             {
-                question: "در یک Query به کمک کدامیک از گزینه‌های زیر می‌توان شرط مورد نظر در ستون مربوط وارد کرد؟",
+                question: "در یک Query به کمک کدامیک از گزینه‌های زیر می‌توان شرط مورد نظر در ستون مربوط وارد کرد？",
                 options: ["Sort", "Criteria", "Table", "Show"],
                 answer: "Criteria",
                 category: "Access"
             },
             {
-                question: "کدام گزینه جزء اجزای اصلی یک پایگاه داده (Database) نیست؟",
+                question: "کدام گزینه جزء اجزای اصلی یک پایگاه داده (Database) نیست？",
                 options: ["جدول (Table)", "پرس و جو (Query)", "فرم (Form)", "نمودار (Chart)"],
                 answer: "نمودار (Chart)",
                 category: "Access"
             },
             {
-                question: "برای تبدیل دستورات غیر قابل فهم به زبان قابل درک کامپیوتر کدام برنامه وظیفه این کار برعهده دارد؟",
+                question: "برای تبدیل دستورات غیر قابل فهم به زبان قابل درک کامپیوتر کدام برنامه وظیفه این کار برعهده دارد？",
                 options: ["سیستم عامل", "مترجم", "نرم‌افزارهای کاربردی", "نرم‌افزارهای کمکی"],
                 answer: "مترجم",
                 category: "Access"
             },
             {
-                question: "کدام یک از انواع نرم‌افزار برای ویرایش متن مناسب است؟",
+                question: "کدام یک از انواع نرم‌افزار برای ویرایش متن مناسب است？",
                 options: ["سیستمی", "بانک اطلاعاتی", "پایگاه داده", "واژه‌پردازها"],
                 answer: "واژه‌پردازها",
                 category: "Access"
@@ -1009,44 +984,53 @@
         let timerInterval;
         let currentLesson = "";
         let correctPassword = "icdltest";
+        let passwordFromFile = "";
 
-        // مدیریت نمایش نام فایل آپلود شده
-        document.getElementById('password-file').addEventListener('change', function(e) {
-            const fileName = e.target.files[0] ? e.target.files[0].name : 'هیچ فایلی انتخاب نشده';
-            document.getElementById('file-name').textContent = `فایل انتخاب شده: ${fileName}`;
+        // خواندن خودکار فایل Password.txt هنگام بارگذاری صفحه
+        window.addEventListener('DOMContentLoaded', function() {
+            loadPasswordFromFile();
         });
 
-        // بررسی رمز از فایل آپلود شده
-        function checkPasswordFromFile() {
-            const fileInput = document.getElementById('password-file');
+        // تابع برای خواندن فایل Password.txt از گیت‌هاب
+        async function loadPasswordFromFile() {
+            try {
+                // این آدرس را با آدرس فایل Password.txt در مخزن گیت‌هاب خود جایگزین کنید
+                const response = await fetch('https://raw.githubusercontent.com/your-username/your-repository/main/Password.txt');
+                
+                if (!response.ok) {
+                    throw new Error(`خطا در دریافت فایل: ${response.status}`);
+                }
+                
+                passwordFromFile = (await response.text()).trim();
+                
+                // فعال کردن دکمه ورود
+                document.getElementById('login-btn').disabled = false;
+                document.getElementById('login-btn').innerHTML = '<i class="fas fa-sign-in-alt"></i> ورود';
+                
+                // بررسی خودکار رمز
+                checkPassword();
+                
+            } catch (error) {
+                console.error('خطا در خواندن فایل:', error);
+                document.getElementById('login-message').textContent = 'خطا در خواندن فایل Password.txt: ' + error.message;
+                document.getElementById('login-btn').disabled = false;
+                document.getElementById('login-btn').innerHTML = '<i class="fas fa-redo"></i> تلاش مجدد';
+            }
+        }
+
+        // بررسی رمز
+        function checkPassword() {
             const messageElement = document.getElementById('login-message');
             
-            if (!fileInput.files.length) {
-                messageElement.textContent = 'لطفاً فایل رمز عبور را انتخاب کنید';
-                return;
+            if (passwordFromFile === correctPassword) {
+                // نمایش منوی اصلی
+                document.getElementById('login-container').style.display = 'none';
+                document.getElementById('main-menu').style.display = 'flex';
+                messageElement.textContent = '';
+            } else {
+                messageElement.textContent = 'رمز عبور اشتباه است یا فایل Password.txt پیدا نشد';
+                document.getElementById('login-btn').innerHTML = '<i class="fas fa-redo"></i> تلاش مجدد';
             }
-            
-            const file = fileInput.files[0];
-            const reader = new FileReader();
-            
-            reader.onload = function(e) {
-                const uploadedPassword = e.target.result.trim();
-                
-                if (uploadedPassword === correctPassword) {
-                    // نمایش منوی اصلی
-                    document.getElementById('login-container').style.display = 'none';
-                    document.getElementById('main-menu').style.display = 'flex';
-                    messageElement.textContent = '';
-                } else {
-                    messageElement.textContent = 'رمز عبور اشتباه است';
-                }
-            };
-            
-            reader.onerror = function() {
-                messageElement.textContent = 'خطا در خواندن فایل';
-            };
-            
-            reader.readAsText(file);
         }
 
         // خروج از سیستم
@@ -1056,11 +1040,16 @@
             document.getElementById('results-container').style.display = 'none';
             document.getElementById('help-container').style.display = 'none';
             document.getElementById('login-container').style.display = 'flex';
-            document.getElementById('password-file').value = '';
-            document.getElementById('file-name').textContent = '';
+            
+            // ریست کردن دکمه ورود
+            document.getElementById('login-btn').disabled = true;
+            document.getElementById('login-btn').innerHTML = '<span class="loading-spinner"></span> لطفاً صبر کنید';
             
             // توقف تایمر اگر فعال باشد
             clearInterval(timerInterval);
+            
+            // بارگذاری مجدد فایل رمز
+            loadPasswordFromFile();
         }
 
         // شروع آزمون با سوالات تصادفی
@@ -1418,11 +1407,6 @@
                 prevQuestion();
             } else if (event.key === 'ArrowLeft') {
                 nextQuestion();
-            }
-            
-            // کلید Enter در صفحه ورود رمز
-            if (event.key === 'Enter' && document.getElementById('login-container').style.display !== 'none') {
-                checkPasswordFromFile();
             }
         });
     </script>
