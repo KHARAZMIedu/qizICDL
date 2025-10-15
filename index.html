@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+تمام سوالات رو جای گذاری کن به جای سوالات این <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -507,1206 +507,769 @@
     <script>
         // داده‌های سوالات ICDL (120 سوال)
         const allQuestions = [
+            // سخت‌افزار (17 سوال)
             {
-                "question": "قابلیت کوچک نمایی برای مشاهده کل اطلاعات به صورت یکجا را ...... می گویند.",
-                "options": ["Zoom in", "Zoom out", "Font Size", "Fit"],
-                "answer": "Zoom out",
-                "category": "PowerPoint"
+                question: "کدام یک از بخش‌های CPU واحد مناسب عملیات ریاضی و منطقی نامیده می‌شود؟",
+                options: ["CU", "ALU", "Register", "Cache"],
+                answer: "ALU",
+                category: "سخت‌افزار"
             },
             {
-                "question": "به نحوه قرار گرفتن متن، تصویر، نمودار و .... در اسلاید چه می گویند؟",
-                "options": ["Slide Layout", "Slide Design", "Themes", "Templates"],
-                "answer": "Slide Layout",
-                "category": "PowerPoint"
+                question: "محتوای کدام یک از حافظه‌های زیر با قطع جریان برق از بین می‌رود؟",
+                options: ["ROM", "RAM", "EPROM", "PROM"],
+                answer: "RAM",
+                category: "سخت‌افزار"
             },
             {
-                "question": "برای انتخاب رنگ و طرح زمینه دلخواه برای اسلایدها از سربرگ Design کدام گزینه استفاده می شود؟",
-                "options": ["Themes", "Background Style", "Color", "Effects"],
-                "answer": "Themes",
-                "category": "PowerPoint"
+                question: "کوچکترین واحد حافظه چیست؟",
+                options: ["Word", "KB", "Bit", "Byte"],
+                answer: "Bit",
+                category: "سخت‌افزار"
             },
             {
-                "question": "برای درج آرم های ذخیره شده از سربرگ Insert کدام گزینه را انتخاب کنیم؟",
-                "options": ["Picture", "Clip Art", "Shapes", "Table"],
-                "answer": "Picture",
-                "category": "PowerPoint"
+                question: "اطلاعات در حافظه کامپیوتر بصورت ...... ذخیره می‌شوند.",
+                options: ["دسیمال", "هگزادسیمال", "اکتال", "باینری"],
+                answer: "باینری",
+                category: "سخت‌افزار"
             },
             {
-                "question": "کدام گزینه متن انتخاب شده را سایه دار می کند؟",
-                "options": ["Outline", "Underline", "Engrave", "Shadow"],
-                "answer": "Shadow",
-                "category": "PowerPoint"
+                question: "کدامیک از گزینه‌های زیر جزء وسایل کنترل کننده اشاره‌گر محسوب نمی‌شوند؟",
+                options: ["ماوس", "صفحه لمسی", "دسته بازی", "اسکنر"],
+                answer: "اسکنر",
+                category: "سخت‌افزار"
             },
             {
-                "question": "در تنظیمات پارگراف، توفرقگی ابتدای آن را از کدام بخش انجام می دهیم؟",
-                "options": ["Spacing", "Indentation", "Direction", "Alignment"],
-                "answer": "Indentation",
-                "category": "PowerPoint"
+                question: "کدام یک از کلیدهای زیر دو حالته نیست؟",
+                options: ["Caps Lock", "Num Lock", "Scroll Lock", "Shift"],
+                answer: "Shift",
+                category: "سخت‌افزار"
             },
             {
-                "question": "از کدام گزینه برای اعمال جلوه های فانتزی به متن استفاده می شود؟",
-                "options": ["Shape", "Text Box", "Font", "Word Art"],
-                "answer": "Word Art",
-                "category": "PowerPoint"
+                question: "سرعت پردازش و ظرفیت ذخیره‌سازی اطلاعات در کدام نوع از کامپیوترهای زیر بیشتر است؟",
+                options: ["Super Computer", "Micro Computers", "Mini Computer", "Main Frame"],
+                answer: "Super Computer",
+                category: "سخت‌افزار"
             },
             {
-                "question": "پس از درج جدول توسط کدام ابزار می توان مدل خطوط را تغییر داد؟",
-                "options": ["Eraser", "Pen Color", "Pen Style", "Table Style"],
-                "answer": "Table Style",
-                "category": "PowerPoint"
+                question: "کوچکترین عنصر صفحه نمایش چه نام دارد؟",
+                options: ["Pixel", "Pin", "Dots", "کاراکتر"],
+                answer: "Pixel",
+                category: "سخت‌افزار"
             },
             {
-                "question": "مناسب ترین نمودار جهت نشان دادن 'درصد اطلاعات' کدام است؟",
-                "options": ["Line", "Column", "Bar", "Pie"],
-                "answer": "Pie",
-                "category": "PowerPoint"
+                question: "برای تایپ حروف بزرگ لاتین باید دکمه ...... را فعال نمود.",
+                options: ["Caps Lock", "Scroll Lock", "Serial Lock", "Shift"],
+                answer: "Caps Lock",
+                category: "سخت‌افزار"
             },
             {
-                "question": "برای افزودن عنوان به نمودار از کدام گزینه استفاده می شود؟",
-                "options": ["Chart Layout", "Data Label", "Chart Title", "Chart Type"],
-                "answer": "Chart Title",
-                "category": "PowerPoint"
+                question: "کلید میانبر فرمان paste چیست؟",
+                options: ["Ctrl+C", "Ctrl+P", "Ctrl+V", "Ctrl+X"],
+                answer: "Ctrl+V",
+                category: "سخت‌افزار"
             },
             {
-                "question": "برای ایجاد یک نمودار سازمانی در اسلاید از سربرگ Insert کدام گزینه را انتخاب کنیم؟",
-                "options": ["Chart", "Organization Chart", "Smart Art", "Shapes"],
-                "answer": "Smart Art",
-                "category": "PowerPoint"
+                question: "کدام یک از دستگاه‌های زیر جهت انتقال تصاویر به کامپیوتر به کار می‌رود؟",
+                options: ["اسکنر", "پلاتر", "صفحه کلید", "ماوس"],
+                answer: "اسکنر",
+                category: "سخت‌افزار"
             },
             {
-                "question": "توسط کدام ابزار در سربرگ Insert می توان مجموعه ای از تصاویر را به صورت آلبوم ایجاد کرد؟",
-                "options": ["Picture", "Clip Art", "Photo Album", "Shapes"],
-                "answer": "Photo Album",
-                "category": "PowerPoint"
+                question: "کدام یک از حافظه‌های زیر فقط خواندنی هستند؟",
+                options: ["Diskette", "Hard Disk", "ROM", "RAM"],
+                answer: "ROM",
+                category: "سخت‌افزار"
             },
             {
-                "question": "کدام گزینه برای استفاده از جلوه های آماده متحرک سازی است؟",
-                "options": ["Animate", "Advanced Slide", "Slide Show", "Slide Transition"],
-                "answer": "Animate",
-                "category": "PowerPoint"
+                question: "برنامه‌ها جهت اجرا در کدام واحد قرار می‌گیرند؟",
+                options: ["حافظه اصلی", "منبع تغذیه", "حافظه کمکی ثانویه", "واحد خروجی"],
+                answer: "حافظه اصلی",
+                category: "سخت‌افزار"
             },
             {
-                "question": "اگر بخواهیم متحرک سازی یک شی همراه با متحرک سازی قبلی اجرا شود، کدام گزینه را انتخاب می کنیم؟",
-                "options": ["On Click", "With Previous", "After Previous", "Direction"],
-                "answer": "With Previous",
-                "category": "PowerPoint"
+                question: "کدامیک از بخش‌های زیر جزء واحدهای CPU نمی‌باشد؟",
+                options: ["ALU", "CU", "ثبات (REGISTER)", "ثبات MEMORY SECONDRY"],
+                answer: "ثبات MEMORY SECONDRY",
+                category: "سخت‌افزار"
             },
             {
-                "question": "برای تصحیح خودکار کلمات اشتباه آن ها را به کدام بخش اضافه می کنیم؟",
-                "options": ["Auto Correct", "Spelling", "Dictionary", "Language"],
-                "answer": "Auto Correct",
-                "category": "PowerPoint"
+                question: "کدامیک از بخش‌های CPU واحد کنترل نامیده می‌شود؟",
+                options: ["Alu", "Cu", "REGISTER", "CACHE"],
+                answer: "Cu",
+                category: "سخت‌افزار"
             },
             {
-                "question": "کدام یک از موارد زیر تعریف کامپیوتر می باشد؟",
-                "options": ["کامپیوتر یک ماشین حساب قابل برنامه ریزی است که می تواند عملیات محاسباتی را با سرعت بالا انجام دهد", "وسیله ای است که می تواند داده هایی را به عنوان ورودی دریافت کرده و عملیات خاصی روی آن انجام داده و خروجی های مورد نیاز را تولید کند", "کامپیوتر وسیله ای است هوشمند، خلاق و قابل اطمینان است که می تواند در بسیاری از کارها انسان را یاری کند", "دستگاهی است الکترونیکی که قادر است همه کارهای انسان را با سرعت و دقت بالا انجام دهد"],
-                "answer": "وسیله ای است که می تواند داده هایی را به عنوان ورودی دریافت کرده و عملیات خاصی روی آن انجام داده و خروجی های مورد نیاز را تولید کند",
-                "category": "مبانی کامپیوتر"
+                question: "کدام گزینه یک کامپیوتر شخصی محسوب می‌شود؟",
+                options: ["Desktop - Laptop", "mainframe", "mini computer", "super computer"],
+                answer: "Desktop - Laptop",
+                category: "سخت‌افزار"
             },
             {
-                "question": "کدامیک از موارد زیر یک سیستم عامل محسوب می شوند؟",
-                "options": ["Netscape", "Windows", "PowerPoint", "Photoshop"],
-                "answer": "Windows",
-                "category": "سیستم عامل"
+                question: "هر مگابایت معادل چند بایت است؟",
+                options: ["1024", "1000", "1048576", "1000000"],
+                answer: "1048576",
+                category: "سخت‌افزار"
+            },
+            
+            // ویندوز (17 سوال)
+            {
+                question: "برای مشاهده مشخصات پوشه‌ها باید از چه روشی استفاده کرد؟",
+                options: [
+                    "کلیک راست روی آیکن پوشه و انتخاب گزینه Open",
+                    "کلیک راست روی آیکن پوشه و انتخاب گزینه Properties",
+                    "دابل کلیک روی آیکن پوشه مورد نظر",
+                    "درگ کردن آیکن پوشه مورد نظر"
+                ],
+                answer: "کلیک راست روی آیکن پوشه و انتخاب گزینه Properties",
+                category: "ویندوز"
             },
             {
-                "question": "از کدام مورد برای اتصال به اینترنت استفاده می شود؟",
-                "options": ["شبکه LAN", "کارت صدا", "مودم", "کارت گرافیک"],
-                "answer": "مودم",
-                "category": "شبکه"
+                question: "اگر در کنار نام آیکن پوشه در ساختار درختی علامت (+) نمایش یابد، نشانه چیست؟",
+                options: ["داشتن فایل", "داشتن زیر پوشه", "خالی بودن پوشه", "میانبر بودن پوشه"],
+                answer: "داشتن زیر پوشه",
+                category: "ویندوز"
             },
             {
-                "question": "برای استفاده از صوت و موزیک در کامپیوتر کدام یک از گزینه های زیر ضروری نیست؟",
-                "options": ["کارت صدا", "مودم", "فایل صوتی یا ویدئویی", "بلندگو"],
-                "answer": "مودم",
-                "category": "سخت افزار"
+                question: "برای حذف دائم یک فایل به طوری که در سطل بازیافت قرار نگیرد از کدام کلید همراه دکمه Delete استفاده می‌شود؟",
+                options: ["Shift", "Alt", "Ctrl", "Tab"],
+                answer: "Shift",
+                category: "ویندوز"
             },
             {
-                "question": "به ورودیهای خام سیستم چه می گویند؟",
-                "options": ["سیستم", "اطلاعات", "پردازش", "داده"],
-                "answer": "داده",
-                "category": "مبانی کامپیوتر"
+                question: "کدام یک از اسامی زیر برای نام پوشه غیر مجاز است؟",
+                options: ["Con", "Directory", "Listname", "Asp"],
+                answer: "Con",
+                category: "ویندوز"
             },
             {
-                "question": "جهت اعمال فیلتر از کدام گزینه استفاده می شود؟",
-                "options": ["Delete Filter", "Apply Filter", "Auto Filter", "Toggle Filter"],
-                "answer": "Apply Filter",
-                "category": "Access"
+                question: "چگونه می‌توان چند فایل پراکنده یک پوشه را انتخاب کرد؟",
+                options: [
+                    "با کلیک روی فایل‌های مورد نظر",
+                    "با فشار دادن کلید اولین حرف نام فایل",
+                    "هنگام کلیک کردن روی فایل‌های مورد نظر کلید CTRL را پایین نگه داشت",
+                    "هنگام کلیک کردن روی فایل‌های مورد نظر کلید SHIFT را پایین نگه داشت"
+                ],
+                answer: "هنگام کلیک کردن روی فایل‌های مورد نظر کلید CTRL را پایین نگه داشت",
+                category: "ویندوز"
             },
             {
-                "question": "برای اینکه در پرس و جو، شرط ورودی را موقع اجرا درخواست کند، از کدام علامت استفاده می کنید؟",
-                "options": ["[ ]", "( )", "{ }", "به علامتی نیاز نیست"],
-                "answer": "[ ]",
-                "category": "Access"
+                question: "برای مرتب نمودن آیکن‌های پنجره براساس نوع فایلها از کدام گزینه استفاده می‌شود؟",
+                options: ["Name", "Type", "Date", "Size"],
+                answer: "Type",
+                category: "ویندوز"
             },
             {
-                "question": "در صورتیکه مشخصه......فیلد دارای مقدار......باشد می توان فیلد را خالی رها نمود؟",
-                "options": ["Yes-Required", "No-Required", "Yes-Default Value", "No-Default Value"],
-                "answer": "No-Required",
-                "category": "Access"
+                question: "کلیدهای میانبر برای بستن پنجره‌های باز کدام است؟",
+                options: ["Ctrl+Alt+F4", "Alt+F4", "Ctrl+F4", "Shift+F4"],
+                answer: "Alt+F4",
+                category: "ویندوز"
             },
             {
-                "question": "کدام گزینه به معنای Sort Descending می باشد؟",
-                "options": ["مرتب سازی صعودی", "مرتب سازی به روش نزولی", "مرتب سازی بالتخاب کردن", "بدون مرتب سازی"],
-                "answer": "مرتب سازی به روش نزولی",
-                "category": "Access"
+                question: "برای جستجوی فایلی که با S شروع می‌شود و به T ختم می‌شود در کادر جستجو چگونه باید تایپ کرد؟",
+                options: ["S ? T", "~T ? S", "S * T", "T * S"],
+                answer: "S * T",
+                category: "ویندوز"
             },
             {
-                "question": "چنانچه گزارش ما پیش از یک صفحه بوده و بخواهیم یک عبارت ثابت را فقط در ابتدای اولین صفحه از گزارش ببینیم، آن عبارت را می بایستی در کدام بخش قرار داد؟",
-                "options": ["Page Header/Footer", "Detail", "Group Header/Footer", "Report Header/Footer"],
-                "answer": "Report Header/Footer",
-                "category": "Access"
+                question: "کدامیک از گزینه‌های زیر فایل‌ها و پوشه را همراه با جزئیات نشان می‌دهد؟",
+                options: ["Large Icon", "Details", "List", "Small Icon"],
+                answer: "Details",
+                category: "ویندوز"
             },
             {
-                "question": "سندی که به صورت ساخت یافته اطلاعات استخراج شده از بانک اطلاعاتی را نشان می دهد چه نامیده می شود؟",
-                "options": ["Query", "Table", "Report", "Form"],
-                "answer": "Report",
-                "category": "Access"
+                question: "اولین پنجره یا اساسی‌ترین پنجره ویندوز کدام گزینه می‌باشد؟",
+                options: ["Window", "Desktop", "Explorer", "Taskbar"],
+                answer: "Desktop",
+                category: "ویندوز"
             },
             {
-                "question": "در کدام نما، همزمان با اینکه داده ها در گزارش نمایش داده می شوند می توانیم گزارش را قالب بندی کنیم؟",
-                "options": ["Print Preview", "Design View", "Layout View", "Report View"],
-                "answer": "Layout View",
-                "category": "Access"
+                question: "برای مشاهده خصوصیات فایل ها و پوشه ها پس از کلیک راست روی آن ها چه گزینه ای را انتخاب می کنیم؟",
+                options: ["Shortcut", "Properties", "Refresh", "Attributes"],
+                answer: "Properties",
+                category: "ویندوز"
             },
             {
-                "question": "برای گروه بندی گزارش کدام گزینه استفاده می شود؟",
-                "options": ["Add", "Field", "Sort", "Group & Sort"],
-                "answer": "Group & Sort",
-                "category": "Access"
+                question: "پسوند فایل های پشتیبان چیست؟",
+                options: [".bkf", ".bak", ".zip", ".rar"],
+                answer: ".bak",
+                category: "ویندوز"
             },
             {
-                "question": "برای چاپ صفحه 3 تا 4 یک فرم از کدام بخش کادر استفاده کنیم؟",
-                "options": ["All", "Pages", "Selection Record", "Number of Copies"],
-                "answer": "Pages",
-                "category": "Access"
+                question: "برای بازکردن فایل فشرده کدام گزینه صحیح است؟",
+                options: ["امکان باز کردن فایل فشرده وجود ندارد", "بر روی آن کلیک راست نموده و گزینه Send انتخاب نمایید", "بر روی آن کلیک راست نموده و گزینه Extract All انتخاب نمایید", "بر روی آن کلیک راست نموده و گزینه Properties را انتخاب نمایید"],
+                answer: "بر روی آن کلیک راست نموده و گزینه Extract All انتخاب نمایید",
+                category: "ویندوز"
             },
             {
-                "question": "برای اینکه اجرای صوت تا پایان اسلایدها ادامه داشته باشد کدام گزینه را باید انتخاب کرد؟",
-                "options": ["Automatically", "Clicked", "Play Across Slides", "Play Sound"],
-                "answer": "Play Across Slides",
-                "category": "PowerPoint"
+                question: "برای لغو آخرین عمل انجام شده بکار می رود؟",
+                options: ["ctrl + y", "ctrl + x", "ctrl + z", "ctrl + v"],
+                answer: "ctrl + z",
+                category: "ویندوز"
             },
             {
-                "question": "استفاده از گزینه From Current Slide اجرای برنامه نمایشی از کدام اسلاید انجام می شود؟",
-                "options": ["اسلاید اول", "اسلاید مبانی", "اسلاید آخر", "اسلاید جاری"],
-                "answer": "اسلاید جاری",
-                "category": "PowerPoint"
+                question: "اطلاعات حذف شده در کجا نگه داری می شوند؟",
+                options: ["Document", "Microsoft Outlook", "Recycle Bin", "Control Panel"],
+                answer: "Recycle Bin",
+                category: "ویندوز"
             },
             {
-                "question": "فایل های Powerpoint با پسوند...... ذخیره می شود؟",
-                "options": ["Doc-Document", "Pptx-Presentation", "Pxt-Slide", "Xls-Spreadsheet"],
-                "answer": "Pptx-Presentation",
-                "category": "PowerPoint"
+                question: "کدام گزینه برای انتخاب آیکن‌های همجوار استفاده می‌شود؟",
+                options: ["Alt", "Ctrl", "Home", "Shift"],
+                answer: "Shift",
+                category: "ویندوز"
             },
             {
-                "question": "در نمای Outline فشردن کدام کلید بر روی عناوین اسلاید، اسلایدی جدید ایجاد می شود؟",
-                "options": ["Space Bar", "Ctrl+Enter", "Enter", "F6"],
-                "answer": "Enter",
-                "category": "PowerPoint"
+                question: "برای تغییر نام فایل‌ها و پوشه ها از کدام گزینه استفاده می شود؟",
+                options: ["Send To Properties", "Rename", "Delete"],
+                answer: "Rename",
+                category: "ویندوز"
+            },
+            
+            // Word (17 سوال)
+            {
+                question: "برای درج پاورقی از چه گزینه‌ای استفاده می‌کنیم؟",
+                options: [
+                    "سربرگ Revive گزینه Header",
+                    "سربرگ References گزینه Footnotes",
+                    "سربرگ References Insert گزینه",
+                    "سربرگ References Insert Endnote گزینه"
+                ],
+                answer: "سربرگ References گزینه Footnotes",
+                category: "Word"
             },
             {
-                "question": "کدام منو در نرم افزار Powerpoint برای ایجاد انیمیشن کاربرد دارد؟",
-                "options": ["Animations", "Slide Show", "Design", "Review"],
-                "answer": "Animations",
-                "category": "PowerPoint"
+                question: "کدام کلید ترکیبی میانبر برای کاهش سایز قلم به کار می‌رود؟",
+                options: ["Ctrl + [", "Ctrl + <", "Ctrl + >", "Ctrl + ]"],
+                answer: "Ctrl + <",
+                category: "Word"
             },
             {
-                "question": "برای درج متن از چه روشی استفاده می شود؟",
-                "options": ["Format", "Text Box", "بدنه اسلاید", "یک شی خارجی"],
-                "answer": "Text Box",
-                "category": "PowerPoint"
+                question: "برای ذخیره کردن یک سند تحت نامی دیگر از کدام فرمان استفاده می‌شود؟",
+                options: ["Save", "Save As", "Save In", "Look In"],
+                answer: "Save As",
+                category: "Word"
             },
             {
-                "question": "به نحوه قرار گرفتن محتوای اسلایدها ...... می گویند.",
-                "options": ["Slide Design", "Slide Layout", "Slide Sorter", "Color Schemes"],
-                "answer": "Slide Layout",
-                "category": "PowerPoint"
+                question: "کدام گزینه در پنجره Word برای نمایش خطوط راهنما (Gridlines) در جدول بکار می‌رود؟",
+                options: ["View Gridlines", "Show Grid", "Table Grid", "Layout Grid"],
+                answer: "View Gridlines",
+                category: "Word"
             },
             {
-                "question": "جهت زمانبندی کردن تعویض اسلاید از کدام گزینه استفاده می شود؟",
-                "options": ["Advanced Slide", "Preview", "Transition to this Slide", "Animation"],
-                "answer": "Transition to this Slide",
-                "category": "PowerPoint"
+                question: "برای وارد کردن یک فایل تصویری در محیط سند، از کدام گزینه استفاده می‌کنید؟",
+                options: ["Insert \\ picture", "Home \\ picture", "View \\ picture", "Insert \\ chart"],
+                answer: "Insert \\ picture",
+                category: "Word"
             },
             {
-                "question": "برای افزودن مقادیر داده ها بر روی نمودار کدام گزینه کاربرد دارد؟",
-                "options": ["Data Label", "Chart Title", "Chart Type", "Chart Layout"],
-                "answer": "Data Label",
-                "category": "PowerPoint"
+                question: "اگر بخواهیم کاغذ چاپ به صورت افقی و خوابیده باشد، کدام گزینه باید در نظر گرفته شود؟",
+                options: ["Portrait", "Landscape", "Duplex", "Reverse"],
+                answer: "Landscape",
+                category: "Word"
             },
             {
-                "question": "کدام گزینه برای تغییر نوع نمودار رسم شده در اسلاید است؟",
-                "options": ["Chart Layout", "Data Label", "Chart Title", "Chart Type"],
-                "answer": "Chart Type",
-                "category": "PowerPoint"
+                question: "اگر بخواهیم صفحات ۲ و ۳ و ۴ از یک سند چاپ شوند، از کدام عملگر استفاده می‌کنیم؟",
+                options: [",", "–", ":", ";"],
+                answer: ",",
+                category: "Word"
             },
             {
-                "question": "سریع ترین و راحتترین روش برای ایجاد فایل نمایشی کدام است؟",
-                "options": ["انتخاب گزینه New از منوی Office", "فشردن کلیدهای Ctrl+N", "فشردن کلیدهای Ctrl+M", "انتخاب گزینه Recent Document Office در منوی Office"],
-                "answer": "فشردن کلیدهای Ctrl+N",
-                "category": "PowerPoint"
+                question: "از کدام حالت نمایش برای طراحی صفحه وب در محیط Word استفاده می‌شود؟",
+                options: ["Print Layout", "Web Layout", "Outline", "Draft"],
+                answer: "Web Layout",
+                category: "Word"
             },
             {
-                "question": "فایل های Access با چه قالبی ذخیره می شوند؟",
-                "options": ["DOCX", "BMP", "ACCDB", "PPTX"],
-                "answer": "ACCDB",
-                "category": "Access"
+                question: "برای ذخیره کردن یک الگو به عنوان یک template کافی است در لیست ...... گزینه ...... را انتخاب کنید.",
+                options: ["Save in", "Save as type", "Save as name", "File name"],
+                answer: "Save as type",
+                category: "Word"
             },
             {
-                "question": "جهت جمع آوری و سازماندهی اطلاعات در مورد یک موضوع از کدام نرم افزار استفاده می شود؟",
-                "options": ["بانک اطلاعاتی", "واژه پرداز", "برنامه نمایشی", "جدول"],
-                "answer": "بانک اطلاعاتی",
-                "category": "Access"
+                question: "از کدام گزینه برای تعیین نحوه نمایش و قالب‌بندی شماره‌ها استفاده می‌شود؟",
+                options: ["Numbering", "Number Format", "Page Layout", "Tab"],
+                answer: "Number Format",
+                category: "Word"
             },
             {
-                "question": "به مجموعه ای از یک یا چند رکورد......می گویند.",
-                "options": ["فیلد", "جدول", "فایل", "بانک اطلاعاتی"],
-                "answer": "جدول",
-                "category": "Access"
+                question: "گزینه های مربوط به حاشیه بندی صفحه در کدام زبانه قرار دارند؟",
+                options: ["Insert", "page layout", "View", "home"],
+                answer: "page layout",
+                category: "Word"
             },
             {
-                "question": "کوچکترین جزء اطلاعاتی در پایگاه داده چه گفته می شود؟",
-                "options": ["جدول", "رکورد", "بانک اطلاعاتی", "فیلد"],
-                "answer": "فیلد",
-                "category": "Access"
+                question: "با فشردن کدام کلید تابعی مکان نما از حالت متن خارج و سربرگها فعال می شود؟",
+                options: ["F10", "F4", "F1", "F2"],
+                answer: "F10",
+                category: "Word"
             },
             {
-                "question": "کدام نوع داده زیر برای متن های طولانی استفاده می شود؟",
-                "options": ["Text", "Number", "Long Text", "Currency"],
-                "answer": "Long Text",
-                "category": "Access"
+                question: "کدام گزینه برای تغییر حروف نوشته شده به لاتین بزرگ است؟",
+                options: ["Lowercase", "Toggle Case", "Uppercase", "Sentence Case"],
+                answer: "Uppercase",
+                category: "Word"
             },
             {
-                "question": "به ارتباطات بین جداول در پایگاه داده چه می گویند؟",
-                "options": ["Relationship", "Entity", "Integrity Rules", "Database"],
-                "answer": "Relationship",
-                "category": "Access"
+                question: "جهت ایجاد لیست علامت گذاری کدام ابزار مناسب است؟",
+                options: ["Bullets", "Numbering", "Table", "Symbol"],
+                answer: "Bullets",
+                category: "Word"
             },
             {
-                "question": "به هنگام تعریف داده های عددی کدام نوع جهت عددهای اعشاری مناسب است؟",
-                "options": ["Byte", "Integer", "Long Integer", "Decimal"],
-                "answer": "Decimal",
-                "category": "Access"
+                question: "برای تغییر رنگ قلم متن نوشته شده از ...... استفاده می شود؟",
+                options: ["Font Color", "Fill Color", "Font", "Highlight"],
+                answer: "Font Color",
+                category: "Word"
             },
             {
-                "question": "کدام نوع رابطه در بین جداول اشتباه است؟",
-                "options": ["رابطه یک به یک", "رابطه یک به چند", "رابطه چند به یک", "رابطه چند به چند"],
-                "answer": "رابطه چند به یک",
-                "category": "Access"
+                question: "کدام کلید ترکیبی وسط چین نمودن متن است؟",
+                options: ["Ctrl + R", "Ctrl + E", "Ctrl + L", "Ctrl + J"],
+                answer: "Ctrl + E",
+                category: "Word"
             },
             {
-                "question": "حداکثر چه عددی در فیلد عددی از نوع Byte قرار می گیرد؟",
-                "options": ["65000", "1024", "255", "نامحدود"],
-                "answer": "255",
-                "category": "Access"
+                question: "برای درج شماره صفحه به چه صورت باید عمل نمود؟",
+                options: ["Insert>Header & Footer >Page Number", "Home>Page Number", "View>Page Number", "Page Layout>Macros>Page Number"],
+                answer: "Insert>Header & Footer >Page Number",
+                category: "Word"
+            },
+            
+            // Excel (17 سوال)
+            {
+                question: "علامت مساوی در شروع یک خانه در اکسل نشانه چیست؟",
+                options: ["شروع یک فرمول", "شروع یک جستجو", "Filtering", "شروع عملیات"],
+                answer: "شروع یک فرمول",
+                category: "Excel"
             },
             {
-                "question": "کدام گزینه از اجزای بانک اطلاعاتی Access نمی باشد؟",
-                "options": ["Form", "Table", "Report", "Database"],
-                "answer": "Database",
-                "category": "Access"
+                question: "کدام تابع برای محاسبه میانگین بکار می‌رود؟",
+                options: ["SUM", "MAX", "AVERAGE", "IF"],
+                answer: "AVERAGE",
+                category: "Excel"
             },
             {
-                "question": "کدام یک از خصوصیات زیر درمورد فیلدها تعیین کننده مقدار پیش فرض می باشد؟",
-                "options": ["Default Value", "Caption", "New Value", "Input Mask"],
-                "answer": "Default Value",
-                "category": "Access"
+                question: "برای مرتب کردن اطلاعات موجود در لیست (بر اساس حروف الفبا) از کدام گزینه استفاده می‌شود؟",
+                options: ["Data \\ Sort", "Data \\ Filter", "Insert \\ Sort", "Home \\ Find"],
+                answer: "Data \\ Sort",
+                category: "Excel"
             },
             {
-                "question": "برای ایجاد ارتباط بین دو جدول از سربرگ ...... گزینه ...... استفاده می شود؟",
-                "options": ["Relationships Data Base Tools", "Form Create Create", "Relationships Home Home", "Create Table"],
-                "answer": "Relationships Data Base Tools",
-                "category": "Access"
+                question: "برای حذف یک سطر در اکسل از چه گزینه‌ای استفاده می‌شود؟",
+                options: [
+                    "سربرگ Home گزینه Delete sheet Rows",
+                    "سربرگ Home گزینه Clear Rows",
+                    "سربرگ Data گزینه Delete columns",
+                    "سربرگ Home گروه Clear گزینه Clear Format"
+                ],
+                answer: "سربرگ Home گزینه Delete sheet Rows",
+                category: "Excel"
             },
             {
-                "question": "تنظیم کدام مشخصه می‌تواند فیلد نام را طوری تنظیم کند که بیشتر از 20 کاراکتر دریافت نکند؟",
-                "options": ["Required", "Validation Text", "Field Size", "Format"],
-                "answer": "Field Size",
-                "category": "Access"
+                question: "تابع VLOOKUP در اکسل برای چه منظوری استفاده می‌شود؟",
+                options: [
+                    "جستجوی عمودی یک مقدار در یک ستون و برگرداندن مقدار متناظر از ستون دیگر",
+                    "جمع کردن مقادیر یک محدوده",
+                    "شمارش سلول‌های پر",
+                    "پیدا کردن بزرگترین مقدار در یک محدوده"
+                ],
+                answer: "جستجوی عمودی یک مقدار در یک ستون و برگرداندن مقدار متناظر از ستون دیگر",
+                category: "Excel"
             },
             {
-                "question": "اگر بخواهیم جدول را طوری تنظیم کنیم که با خالی رها کردن یک فیلد از طرف سیستم پیغام اخطار ظاهر شود از کدام مشخصه استفاده می کنیم؟",
-                "options": ["Format", "Required", "Caption", "Name"],
-                "answer": "Required",
-                "category": "Access"
+                question: "برای محاسبه مجموع سلول‌های A1 تا A10 در اکسل از کدام تابع استفاده می‌شود？",
+                options: ["=SUM(A1:A10)", "=TOTAL(A1:A10)", "=ADD(A1:A10)", "=PLUS(A1:A10)"],
+                answer: "=SUM(A1:A10)",
+                category: "Excel"
             },
             {
-                "question": "کدام خاصیت زیر قانون صحت ورود اطلاعات را مشخص می کند؟",
-                "options": ["Field Size", "Caption", "Validation Rule", "Required"],
-                "answer": "Validation Rule",
-                "category": "Access"
+                question: "کدام گزینه یک پروتکل می‌باشد؟",
+                options: ["URL", "Https", "Security", "Connect"],
+                answer: "Https",
+                category: "Excel"
             },
             {
-                "question": "برای ایجاد فیلد کلیدی چه مسیری را انتخاب می کنیم؟",
-                "options": ["Design → Tools → Primary Key", "Design→Builder", "Design→Show/Hide→Index", "Design→Key"],
-                "answer": "Design → Tools → Primary Key",
-                "category": "Access"
+                question: "مناسب‌ترین نمودار جهت نشان دادن \"درصد اطلاعات\" کدام است؟",
+                options: ["Line", "Column", "Bar", "Pie"],
+                answer: "Pie",
+                category: "Excel"
             },
             {
-                "question": "برای ایجاد جدول یا فرم و گزارش در بانک اطلاعاتی از کدام سربرگ استفاده می شود؟",
-                "options": ["Home", "Create", "External Data", "Data base Tools"],
-                "answer": "Create",
-                "category": "Access"
+                question: "اشکال مربوط به طراحی فلوچارت در کدام قسمت وجود دارد؟",
+                options: ["Basic Shapes", "Flowchart", "Lines", "Callouts"],
+                answer: "Flowchart",
+                category: "Excel"
             },
             {
-                "question": "با استفاده از کدام گزینه می توان یک پرس و جو تهیه کرد؟",
-                "options": ["Table", "Report", "Macro", "Query"],
-                "answer": "Query",
-                "category": "Access"
+                question: "اشکال هندسی پایه در کدام قسمت از ابزار Shape قرار دارند؟",
+                options: ["Flowchart", "Callouts", "Basic Shapes", "Stars and Banners"],
+                answer: "Basic Shapes",
+                category: "Excel"
             },
             {
-                "question": "اگر در یک Query برای فیلد تاریخ تولد عبارت Between #01/01/1360# And #01/01/1367# ظاهر شود کدام مورد زیر ظاهر می شود؟",
-                "options": ["فقط اطلاعات افرادی که تاریخ تولد آنها از 1367 کمتر است", "اطلاعات افرادی که تولد آنها از 1360 تا 1367 است", "فقط اطلاعات افرادی که تاریخ تولد آنها از 1360 بیشتر است", "اطلاعات افرادی که تاریخ تولد آنها از 1367 کمتر و از 1360 بیشتر است"],
-                "answer": "اطلاعات افرادی که تولد آنها از 1360 تا 1367 است",
-                "category": "Access"
+                question: "هر یک از خانه ها در صفحه کاری چه نام دارد؟",
+                options: ["cell", "work book", "file"],
+                answer: "cell",
+                category: "Excel"
             },
             {
-                "question": "برای جستجوی رکوردی با مشخصات خاص در یک جدول از کدام فرمان استفاده می شود؟",
-                "options": ["Form", "Filter", "Find", "Search"],
-                "answer": "Find",
-                "category": "Access"
+                question: "کدامیک از توابع زیر می تواند تعداد اعداد بزرگتر از 3 را در چند سلول محاسبه کند؟",
+                options: ["count", "count if", "sum if"],
+                answer: "count if",
+                category: "Excel"
+            },
+            {
+                question: "برای فیلتر کردن اطلاعات موجود در لیست از کدام گزینه استفاده می شود؟",
+                options: ["data \\ sort", "data \\ filter", "insert \\ sort", "home \\ find"],
+                answer: "data \\ filter",
+                category: "Excel"
+            },
+            {
+                question: "کدام یک از موارد زیر از توانایی های برنامه های صفحه گسترده نمی باشد؟",
+                options: ["تولید برنامه اجرایی مستقل کامپایلر", "حسابداری یک شرکت بازرگانی", "مدیریت اطلاعات و داده های تجاری", "بررسی میزان فروش یک شرکت"],
+                answer: "تولید برنامه اجرایی مستقل کامپایلر",
+                category: "Excel"
+            },
+            {
+                question: "به هر سطر از جدول داخل کاربرگ اکسل ........ می گویند",
+                options: ["Cell", "table", "row", "Column"],
+                answer: "row",
+                category: "Excel"
+            },
+            {
+                question: "کدام تابع زیر برای محاسبه میانگین بکار می رود؟",
+                options: ["SUM", "MAX", "AVERAGE", "IF"],
+                answer: "AVERAGE",
+                category: "Excel"
+            },
+            {
+                question: "برای بدست آوردن جمع محتويات دو سلول اکسل کدام فرمول صحیح است؟",
+                options: ["A'+B°", "A'+b° = X", "A'+b° = A'+b°", "A'+b° = x"],
+                answer: "A'+B°",
+                category: "Excel"
+            },
+            
+            // PowerPoint (17 سوال)
+            {
+                question: "کدام منو در نرم‌افزار Powerpoint برای ایجاد انیمیشن کاربرد دارد؟",
+                options: ["Animations", "Slide Show", "Design", "Review"],
+                answer: "Animations",
+                category: "PowerPoint"
+            },
+            {
+                question: "برای درج متن در پاورپوینت از چه روشی استفاده می‌شود؟",
+                options: ["Format", "Text Box", "بدنه‌ی اسلاید", "یک شی خارجی"],
+                answer: "Text Box",
+                category: "PowerPoint"
+            },
+            {
+                question: "در پاورپوینت، از نمای ...... برای جابجایی و مدیریت کردن اسلایدها استفاده می‌شود.",
+                options: ["Slide Sorter", "Normal", "Reading View", "Slide Show"],
+                answer: "Slide Sorter",
+                category: "PowerPoint"
+            },
+            {
+                question: "در پاورپوینت، برای خاتمه دادن به نمایش اسلایدها کدام کلید را باید فشرد؟",
+                options: ["E", "Esc", "Home", "End"],
+                answer: "Esc",
+                category: "PowerPoint"
+            },
+            {
+                question: "اگر بخواهیم متحرک‌سازی یک شی همراه با متحرک‌سازی قبلی اجرا شود، کدام گزینه را انتخاب می‌کنیم؟",
+                options: ["On click", "With Previous", "After Previous", "Direction"],
+                answer: "With Previous",
+                category: "PowerPoint"
+            },
+            {
+                question: "کدام یک از گزینه‌های کادر محاوره‌ای Print امکان چاپ صفحه جاری سند را فراهم می‌کند؟",
+                options: ["Collate", "Selection", "Current page", "All"],
+                answer: "Current page",
+                category: "PowerPoint"
+            },
+            {
+                question: "برای توقف و از سرگیری مجدد عمل چاپ یک سند چگونه عمل می‌کنیم؟",
+                options: [
+                    "از Document گزینه Pause را برای توقف و گزینه Resume را برای ادامه چاپ در نظر می‌گیریم",
+                    "از Properties گزینه Preference Printing انتخاب می‌کنیم",
+                    "از Document گزینه Pause را انتخاب می‌کنیم",
+                    "از منوی Document گزینه Pause را برای توقف و گزینه Pause را برای ادامه چاپ در نظر می‌گیریم"
+                ],
+                answer: "از Document گزینه Pause را برای توقف و گزینه Resume را برای ادامه چاپ در نظر می‌گیریم",
+                category: "PowerPoint"
+            },
+            {
+                question: "کدام یک از موارد زیر یک سیستم عامل محسوب می‌شوند؟",
+                options: ["Netscape", "Windows", "PowerPoint", "Photoshop"],
+                answer: "Windows",
+                category: "PowerPoint"
+            },
+            {
+                question: "اگر بخواهیم هنگام طراحی، شکل دایره رسم کنیم، کدام کلید را باید نگه داریم؟",
+                options: ["Ctrl", "Shift", "Alt", "Tab"],
+                answer: "Shift",
+                category: "PowerPoint"
+            },
+            {
+                question: "برای وارد کردن یک فایل تصویری در محیط سند، از کدام گزینه استفاده می‌کنید؟",
+                options: ["Insert \\ picture", "Home \\ picture", "View \\ picture", "Insert \\ chart"],
+                answer: "Insert \\ picture",
+                category: "PowerPoint"
+            },
+            {
+                question: "فایلهای Powerpoint با پسوند...... ذخیره می شود؟",
+                options: ["Doc-document", "Pptx-presentation", "pxt-slide", "xls-spreadsheet"],
+                answer: "Pptx-presentation",
+                category: "PowerPoint"
+            },
+            {
+                question: "سریعترین و راحتترین روش برای ایجاد فایل نمایشی کدام است؟",
+                options: ["انتخاب گزینه New از منوی Office", "فشردن کلیدهای Ctrl+N", "فشردن کلیدهای Ctrl+M", "انتخاب گزینه Recent Document Office در منوی Office"],
+                answer: "فشردن کلیدهای Ctrl+N",
+                category: "PowerPoint"
+            },
+            {
+                question: "قابلیت کوچک نمایی برای مشاهده کل اطلاعات به صورت یکجا را ...... می گویند.",
+                options: ["Zoom in", "Zoom out", "Font Size", "Fit"],
+                answer: "Zoom out",
+                category: "PowerPoint"
+            },
+            {
+                question: "برای انتخاب رنگ و طرح زمینه برای اسلایدها از سربرگ Design کدام گزینه استفاده می شود؟",
+                options: ["Themes", "Background Style", "Color", "Effects"],
+                answer: "Themes",
+                category: "PowerPoint"
+            },
+            {
+                question: "برای درج آرم های ذخیره شده از سر برگ Insert کدام گزینه را انتخاب کنیم؟",
+                options: ["Picture", "Clip Art", "Shapes", "Table"],
+                answer: "Picture",
+                category: "PowerPoint"
+            },
+            {
+                question: "کدام گزینه متن انتخاب شده را سایه دار می کند؟",
+                options: ["Outline", "Underline", "Engrave", "Shadow"],
+                answer: "Shadow",
+                category: "PowerPoint"
+            },
+            {
+                question: "در تنظیمات پارگراف، توفرقگی ابتدای آن را از کدام بخش انجام می دهیم؟",
+                options: ["Spacing", "Indentation", "Direction", "Alignment"],
+                answer: "Indentation",
+                category: "PowerPoint"
+            },
+            
+            // اینترنت (17 سوال)
+            {
+                question: "به شرکت‌های ارائه دهنده خدمات اینترنتی چه می‌گویند؟",
+                options: ["ISDN", "PSTN", "ISP", "ADSL"],
+                answer: "ISP",
+                category: "اینترنت"
+            },
+            {
+                question: "آدرس‌های عددی مورد استفاده در شبکه را اصطلاحاً چه می‌نامند؟",
+                options: ["IP", "TCP", "DNS", "PASSWORD"],
+                answer: "IP",
+                category: "اینترنت"
+            },
+            {
+                question: "به دریافت فایل از اینترنت .... و ارسال فایل به اینترنت را ...... می‌گویند.",
+                options: ["Receiving, Sending", "Download, Upload", "Upload, Download", "Sending, Receiving"],
+                answer: "Download, Upload",
+                category: "اینترنت"
+            },
+            {
+                question: "اینترنت جز کدام شبکه محسوب می‌شود؟",
+                options: ["محلی", "گسترده", "شهری", "خانگی"],
+                answer: "گسترده",
+                category: "اینترنت"
+            },
+            {
+                question: "دستگاهی که سیگنال‌های دیجیتال را به آنالوگ و برعکس تبدیل می‌کند؟",
+                options: ["تلفن", "مودم", "سیستم عامل", "اینترنت"],
+                answer: "مودم",
+                category: "اینترنت"
+            },
+            {
+                question: "کدام یک از دامنه‌های زیر مختص کشور ایران است؟",
+                options: ["TR", "IR", "UK", "US"],
+                answer: "IR",
+                category: "اینترنت"
+            },
+            {
+                question: "صفحه خانگی یک وب سایت را .... گویند.",
+                options: ["First page", "Home page", "Web page", "Current page"],
+                answer: "Home page",
+                category: "اینترنت"
+            },
+            {
+                question: "برای اینکه عبارت مورد جستجو به همان شکل در اینترنت جستجو شود (دقیقاً همان عبارت) از کدام کاراکتر استفاده می‌شود؟",
+                options: ["{ }", "[ ]", "( )", "\" \""],
+                answer: "\" \"",
+                category: "اینترنت"
+            },
+            {
+                question: "دریافت اطلاعات از اینترنت را .... می‌گویند.",
+                options: ["Load", "Upload", "Move", "Download"],
+                answer: "Download",
+                category: "اینترنت"
+            },
+            {
+                question: "کدام یک از نرم‌افزارهای زیر برای کار با اینترنت لازم است؟",
+                options: ["Internet Explorer", "Windows Explorer", "Documents", "Control Panel"],
+                answer: "Internet Explorer",
+                category: "اینترنت"
+            },
+            {
+                question: "کدام یک از نرم افزارهای زیر مرورگر صفحات وب است؟",
+                options: ["Internet Explorer", "Add To Favorites", "Creat In", "Put In"],
+                answer: "Internet Explorer",
+                category: "اینترنت"
+            },
+            {
+                question: "به فرآیندی که فایلی را از اینترنت بر روی کامپیوترخود قرار می دهیم چه می گویند؟",
+                options: ["Download", "Upload", "Upgrade", "Turboload"],
+                answer: "Download",
+                category: "اینترنت"
+            },
+            {
+                question: "جهت قطع ارتباط با اینترنت از کدام گزینه زیر استفاده می شود؟",
+                options: ["Disconnect", "Disable", "Enable", "Stop"],
+                answer: "Disconnect",
+                category: "اینترنت"
+            },
+            {
+                question: "شرکتی که در مقابل دریافت وجه امکان دست یابی به اینترنت را برای مشترکانش فراهم می کند...... نام دارد؟",
+                options: ["URL", "Server", "FIP", "ISP"],
+                answer: "ISP",
+                category: "اینترنت"
+            },
+            {
+                question: "دامنه ی مراکز آموزشی درسایت های اینترنتی کدام است؟",
+                options: ["Edu", "Com", "Gov", "Org"],
+                answer: "Edu",
+                category: "اینترنت"
+            },
+            {
+                question: "پسوندسایت های سازمان های غیرانتفاعی کدام گزینه ی زیرمی باشد؟",
+                options: ["ILE com", "Org", "GOV", "Net"],
+                answer: "Org",
+                category: "اینترنت"
+            },
+            {
+                question: "برای برگشتن به صفحه ی قبلی ملاحظه شده روی کدام دکمه در IE باید کلیک نمود؟",
+                options: ["Home", "Back", "Forward", "Refresh"],
+                answer: "Back",
+                category: "اینترنت"
+            },
+            
+            // Access (18 سوال)
+            {
+                question: "کوچکترین جزء اطلاعاتی در پایگاه داده چه گفته می‌شود؟",
+                options: ["جدول", "رکورد", "بانک اطلاعاتی", "فیلد"],
+                answer: "فیلد",
+                category: "Access"
+            },
+            {
+                question: "کدام نوع داده زیر برای متن‌های طولانی استفاده می‌شود؟",
+                options: ["Text", "Number", "Long Text", "Currency"],
+                answer: "Long Text",
+                category: "Access"
+            },
+            {
+                question: "به ارتباطات بین جداول در پایگاه داده چه می‌گویند؟",
+                options: ["Relationship", "Entity", "Integrity Rules", "Database"],
+                answer: "Relationship",
+                category: "Access"
+            },
+            {
+                question: "جهت جمع‌آوری و سازماندهی اطلاعات در مورد یک موضوع از کدام نرم‌افزار استفاده می‌شود؟",
+                options: ["بانک اطلاعاتی", "واژه‌پرداز", "برنامه نمایشی", "جدول"],
+                answer: "بانک اطلاعاتی",
+                category: "Access"
+            },
+            {
+                question: "کدام نوع داده در اکسس برای ذخیره‌سازی واحد پولی یا ارزی به کار می‌رود؟",
+                options: ["Currency", "Memo", "Text", "Ole Object"],
+                answer: "Currency",
+                category: "Access"
+            },
+            {
+                question: "کدام نوع داده در اکسس برای ایجاد فیلدی که به صورت خودکار شماره می‌خورد استفاده می‌شود؟",
+                options: ["Number", "Text", "AutoNumber", "Currency"],
+                answer: "AutoNumber",
+                category: "Access"
+            },
+            {
+                question: "در یک Query به کمک کدامیک از گزینه‌های زیر می‌توان شرط مورد نظر در ستون مربوط وارد کرد؟",
+                options: ["Sort", "Criteria", "Table", "Show"],
+                answer: "Criteria",
+                category: "Access"
+            },
+            {
+                question: "کدام گزینه جزء اجزای اصلی یک پایگاه داده (Database) نیست؟",
+                options: ["جدول (Table)", "پرس و جو (Query)", "فرم (Form)", "نمودار (Chart)"],
+                answer: "نمودار (Chart)",
+                category: "Access"
+            },
+            {
+                question: "برای تبدیل دستورات غیر قابل فهم به زبان قابل درک کامپیوتر کدام برنامه وظیفه این کار برعهده دارد؟",
+                options: ["سیستم عامل", "مترجم", "نرم‌افزارهای کاربردی", "نرم‌افزارهای کمکی"],
+                answer: "مترجم",
+                category: "Access"
+            },
+            {
+                question: "کدام یک از انواع نرم‌افزار برای ویرایش متن مناسب است؟",
+                options: ["سیستمی", "بانک اطلاعاتی", "پایگاه داده", "واژه‌پردازها"],
+                answer: "واژه‌پردازها",
+                category: "Access"
+            },
+            {
+                question: "فایل های Access با چه قالبی ذخیره می شوند؟",
+                options: ["DOCX", "BMP", "accdb", "PPTX"],
+                answer: "accdb",
+                category: "Access"
+            },
+            {
+                question: "به مجموعه ای از یک یا چند رکورد......می گویند.",
+                options: ["فیلد", "جدول", "فایل", "بانک اطلاعاتی"],
+                answer: "جدول",
+                category: "Access"
+            },
+            {
+                question: "کدام یک از خصوصیات زیر درمورد فیلدها تعیین کننده مقدار پیش فرض می باشد؟",
+                options: ["default value", "caption", "new value", "input mask"],
+                answer: "default value",
+                category: "Access"
+            },
+            {
+                question: "برای ایجاد ارتباط بین دو جدول از سربرگ ...... گزینه ...... استفاده می شود؟",
+                options: ["relation ships data base tools", "form create create", "relation ships home home", "create table"],
+                answer: "relation ships data base tools",
+                category: "Access"
+            },
+            {
+                question: "تنظیم کدام مشخصه می‌توان فیلد نام را طوری تنظیم کرد که بیشتر از 20 کاراکتر دریافت نکند؟",
+                options: ["Required", "Validation Text", "Filed Size", "Format"],
+                answer: "Filed Size",
+                category: "Access"
+            },
+            {
+                question: "اگر بخواهیم جدول را طوری تنظیم کنیم که با خالی رها کردن یک فیلد از طرف سیستم پیغام اخطار ظاهر شود از کدام مشخصه استفاده می کنیم؟",
+                options: ["format", "required", "caption", "name"],
+                answer: "required",
+                category: "Access"
+            },
+            {
+                question: "کدام خاصیت زیر قانون صحت ورود اطلاعات را مشخص می کند؟",
+                options: ["Field Size", "Caption", "Validation Rule", "Required"],
+                answer: "Validation Rule",
+                category: "Access"
+            },
+            {
+                question: "برای ایجاد فیلد کلیدی چه مسیری را انتخاب می کنیم？",
+                options: ["Design → tools → primary key", "Design→builder", "Design→show/hide→index", "Design→key"],
+                answer: "Design → tools → primary key",
+                category: "Access"
             }
-     
-                "question": "برای مرتب کردن اطلاعات موجود در لیست (بر اساس حروف الفبا) از کدام گزینه استفاده می‌شود؟",
-                "options": ["Data \\ Sort", "Data \\ Filter", "Insert \\ Sort", "Home \\ Find"],
-                "answer": "Data \\ Sort",
-                "category": "Excel"
-            },
-            {
-                "question": "علامت مساوی در شروع یک خانه نشانه چیست؟",
-                "options": ["شروع یک فرمول", "شروع یک جستجو", "Filtering", "شروع عملیات"],
-                "answer": "شروع یک فرمول",
-                "category": "Excel"
-            },
-            {
-                "question": "کدامیک از توابع زیر می تواند تعداد اعداد بزرگتر از 3 را در چند سلول محاسبه کند؟",
-                "options": ["Count", "Count if", "Sum if", "Average"],
-                "answer": "Count if",
-                "category": "Excel"
-            },
-            {
-                "question": "برای بدست آوردن جمع محتويات دو سلول اکسل کدام فرمول صحیح است؟",
-                "options": ["A1+B1", "=A1+B1", "A1+B1 = X", "=A1+B1 = X"],
-                "answer": "=A1+B1",
-                "category": "Excel"
-            },
-            {
-                "question": "هر یک از خانه ها در صفحه کاری چه نام دارد؟",
-                "options": ["Cell", "Work Book", "File", "Sheet"],
-                "answer": "Cell",
-                "category": "Excel"
-            },
-            {
-                "question": "بالاترین اولویت در خواندن فرمول ها کدام است؟",
-                "options": ["توان", "پرانتز", "ضرب", "تقسیم"],
-                "answer": "پرانتز",
-                "category": "Excel"
-            },
-            {
-                "question": "برای حذف یک سطر در اکسل از چه گزینه ای استفاده می شود؟",
-                "options": ["سربرگ Home گزینه Delete sheet Rows", "سربرگ Home گزینه Clear Rows", "سربرگ Data گزینه Delete columns", "سربرگ Home گروه Clear گزینه Clear Format"],
-                "answer": "سربرگ Home گزینه Delete sheet Rows",
-                "category": "Excel"
-            },
-            {
-                "question": "برای اجرای سریع فرمان Undo کلیدهای ...... مورد استفاده قرار می گیرند.",
-                "options": ["Ctrl + Y", "Ctrl + Z", "Ctrl + V", "Ctrl + X"],
-                "answer": "Ctrl + Z",
-                "category": "Excel"
-            },
-            {
-                "question": "برای ذخیره کردن یک الگو در اکسل کافی است در لیست Save as type گزینه... را انتخاب کنید.",
-                "options": ["Save in", "Excel Template", "XML Data", "File name"],
-                "answer": "Excel Template",
-                "category": "Excel"
-            },
-            {
-                "question": "برای فیلتر کردن اطلاعات موجود در لیست از کدام گزینه استفاده می شود؟",
-                "options": ["Data \\ Sort", "Data \\ Filter", "Insert \\ Sort", "Home \\ Find"],
-                "answer": "Data \\ Filter",
-                "category": "Excel"
-            },
-            {
-                "question": "کدام علامت در ابتدای یک خانه نشانه فرمول است؟",
-                "options": ["=", "$", "?", ":"],
-                "answer": "=",
-                "category": "Excel"
-            },
-            {
-                "question": "کدامیک از موارد زیر از توانایی های برنامه های صفحه گسترده نمی باشد؟",
-                "options": ["تولید برنامه اجرایی مستقل کامپایلری", "حسابداری یک شرکت بازرگانی", "مدیریت اطلاعات و داده های تجاری", "بررسی میزان فروش یک شرکت"],
-                "answer": "تولید برنامه اجرایی مستقل کامپایلری",
-                "category": "Excel"
-            },
-            {
-                "question": "به هر سطر از جدول داخل کاربرگ اکسل ........ می گویند",
-                "options": ["Cell", "Table", "Row", "Column"],
-                "answer": "Row",
-                "category": "Excel"
-            },
-            {
-                "question": "برای بدست آوردن ضرب محتویات دو سلول اکسل چه فرمولی باید نوشت؟",
-                "options": ["A1*B1", "=A1*B1", "A1*B1 = X", "=A1*B1 = X"],
-                "answer": "=A1*B1",
-                "category": "Excel"
-            },
-            {
-                "question": "برای حذف نمودار روی ......کلیک کرده، کلید Delete را می فشاریم.",
-                "options": ["عنوان نمودار", "محور نمودار", "کل نمودار", "راهنمای نمودار"],
-                "answer": "کل نمودار",
-                "category": "Excel"
-            },
-            {
-                "question": "به طور پیش فرض در اکسل ۲۰۱۲ یک کارپوشه جدید چند کاربرگ وجود دارد؟",
-                "options": ["3", "4", "1", "5"],
-                "answer": "3",
-                "category": "Excel"
-            },
-            {
-                "question": "فرمان ...... کاربرگ فعال را حذف می کند؟",
-                "options": ["Rename", "Delete", "TabColor", "Insert"],
-                "answer": "Delete",
-                "category": "Excel"
-            },
-            {
-                "question": "نام پیش فرض فایل های اکسل چیست؟",
-                "options": ["Document", "Book", "Workbook", "Database"],
-                "answer": "Workbook",
-                "category": "Excel"
-            },
-            {
-                "question": "گزینه Decimal places در کادر محاوره ای Number چه کاربردی دارد؟",
-                "options": ["نمایش اعداد منفی", "جدا کردن ارقام اعداد به صورت سه تایی", "تعداد ارقام اعشار", "تعیین نوع عدد"],
-                "answer": "تعداد ارقام اعشار",
-                "category": "Excel"
-            },
-            {
-                "question": "Gridlines در نمودارها چه کاربردی دارد؟",
-                "options": ["تعیین عنوان نمودار", "تعیین راهنمای نمودار", "نمایش خطوط راهنما", "تغییر نوع نمودار"],
-                "answer": "نمایش خطوط راهنما",
-                "category": "Excel"
-            }
-      
-                "question": "گزینه های مربوط به حاشیه بندی صفحه در کدام زبانه قرار دارند؟",
-                "options": ["Insert", "Page Layout", "View", "Home"],
-                "answer": "Page Layout",
-                "category": "Word"
-            },
-            {
-                "question": "کدام گزینه برای تنظیم شروع شماره صفحات از عدد خاصی است؟",
-                "options": ["Alignment", "Position", "Start at", "Continue"],
-                "answer": "Start at",
-                "category": "Word"
-            },
-            {
-                "question": "برای تایپ نیم فاصله از کدام کلید ترکیبی در صفحه کلید استاندارد استفاده می شود؟",
-                "options": ["Spacebar + Shift", "Enter + Ctrl", "Spacebar + Alt", "Shift + Enter"],
-                "answer": "Ctrl + -",
-                "category": "Word"
-            },
-            {
-                "question": "برای تبدیل یک جدول به متن در Word از کدام استفاده می شود؟",
-                "options": ["Table to Text←Table", "Convert to Text ←Table", "Text to Table←Table", "Table to Text←Convert"],
-                "answer": "Convert to Text ←Table",
-                "category": "Word"
-            },
-            {
-                "question": "تصاویر در کدام گروه از زبانه Insert قرار دارند؟",
-                "options": ["Pages", "Text", "Header & Footer", "Illustrations"],
-                "answer": "Illustrations",
-                "category": "Word"
-            },
-            {
-                "question": "در هنگام ذخیره سند کدام فرمت به عنوان پسوند پیش‌فرض قابل انتخاب می گردد؟",
-                "options": ["dot", "html", "docx", "txt"],
-                "answer": "docx",
-                "category": "Word"
-            },
-            {
-                "question": "با فشردن کدام کلید تابعی مکان نما از حالت متن خارج و سربرگها فعال و در کنار سربرگ ها یک عدد با یک حرف قرار می گیرد؟",
-                "options": ["F10", "F4", "F1", "F2"],
-                "answer": "F10",
-                "category": "Word"
-            },
-            {
-                "question": "برای تغییر زبان انگلیسی به فارسی و برعکس از ترکیب چه کلیدهایی استفاده می شود؟",
-                "options": ["Ctrl+Alt", "Alt+Shift", "Ctrl+Enter", "Home"],
-                "answer": "Alt+Shift",
-                "category": "ویندوز"
-            },
-            {
-                "question": "در کدام نمای سند حاشیه و اشکال گرافیکی دیده نمی شود؟",
-                "options": ["Draft", "Web Layout", "Print Layout", "Full Screen"],
-                "answer": "Draft",
-                "category": "Word"
-            },
-            {
-                "question": "اگر بخواهیم برای کاراکتر انتخاب شده در پنجره Symbol یک کلید میانبر ایجاد کنیم از کدام گزینه استفاده می کنیم؟",
-                "options": ["Shortcut key", "AutoCorrect", "Insert", "Symbol"],
-                "answer": "Shortcut key",
-                "category": "Word"
-            },
-            {
-                "question": "کدام گزینه برای تغییر حروف نوشته شده به لاتین بزرگ است؟",
-                "options": ["Lowercase", "Toggle Case", "Uppercase", "Sentence Case"],
-                "answer": "Uppercase",
-                "category": "Word"
-            },
-            {
-                "question": "جهت ایجاد لیست علامت گذاری کدام ابزار مناسب است؟",
-                "options": ["Bullets", "Numbering", "Table", "Symbol"],
-                "answer": "Bullets",
-                "category": "Word"
-            },
-            {
-                "question": "برای شکستن خطوط یک پارگراف با حفظ تراز و عدم بهم خوردگی متن از کدام کلید استفاده می شود؟",
-                "options": ["Enter", "Shift+Enter", "Ctrl+Enter", "Space"],
-                "answer": "Shift+Enter",
-                "category": "Word"
-            },
-            {
-                "question": "برای تغییر رنگ قلم متن نوشته شده از ...... استفاده می شود؟",
-                "options": ["Font Color", "Fill Color", "Font", "Highlight"],
-                "answer": "Font Color",
-                "category": "Word"
-            },
-            {
-                "question": "برای حذف محتوای یک سلول از چه گزینه ای استفاده می شود؟",
-                "options": ["Delete", "Clear Contents گزینه Home", "Clear", "Clean Format گزینه Home"],
-                "answer": "Clear Contents گزینه Home",
-                "category": "Excel"
-            },
-            {
-                "question": "برای اضافه کردن توضیحات به یک سلول از چه گزینه ای استفاده می کنیم؟",
-                "options": ["Home", "Review گزینه New Comment", "View گزینه Insert Comment", "Insert گزینه Comment"],
-                "answer": "Review گزینه New Comment",
-                "category": "Excel"
-            },
-            {
-                "question": "برای درج یک کاراکتر ویژه از چه گزینه ای استفاده می شود؟",
-                "options": ["Style", "Chart گزینه Insert", "Symbol", "Object"],
-                "answer": "Symbol",
-                "category": "Word"
-            },
-            {
-                "question": "برای ضبط یک ماکرو از چه گزینه ای استفاده می کنیم؟",
-                "options": ["Macro", "View Macro", "Record Macro", "Macro گروه Insert"],
-                "answer": "Record Macro",
-                "category": "Excel"
-            },
-            {
-                "question": "برای اجرای سریع فرمان Redo کلیدهای ...... مورد استفاده قرار می گیرند.",
-                "options": ["Ctrl + Z", "Ctrl + Y", "Ctrl + V", "Ctrl + X"],
-                "answer": "Ctrl + Y",
-                "category": "Excel"
-            },
-            {
-                "question": "برای ذخیره کردن یک الگو به عنوان یک template کافی است در لیست ...... گزینه Excel Template را انتخاب کنید.",
-                "options": ["Save in", "Save as type", "Save as name", "File name"],
-                "answer": "Save as type",
-                "category": "Excel"
-            }
-    
-                "question": "برای ارسال پاسخ به تمام فرستندگان یک نامه از کدام گزینه زیر استفاده می شود؟",
-                "options": ["Reply", "Forward", "Reply all", "Creat mail"],
-                "answer": "Reply all",
-                "category": "ایمیل"
-            },
-            {
-                "question": "برای حذف نامه باید کدام گزینه را انتخاب کرد؟",
-                "options": ["Clear", "Delete", "Delete Letter", "Clear Letter"],
-                "answer": "Delete",
-                "category": "ایمیل"
-            },
-            {
-                "question": "نامه های حذف شده در کدام پوشه قرار دارند؟",
-                "options": ["Drafts", "Sent Items", "Deleted Items", "Inbox"],
-                "answer": "Deleted Items",
-                "category": "ایمیل"
-            },
-            {
-                "question": "کدام گزینه مربوط به کتابچه آدرس است؟",
-                "options": ["Address book", "Address", "Find", "Book"],
-                "answer": "Address book",
-                "category": "ایمیل"
-            },
-            {
-                "question": "برای ارسال یک نامه دریافت شده به اشخاص دیگر از کدام گزینه استفاده می شود؟",
-                "options": ["send", "forward", "Reply all", "reply"],
-                "answer": "forward",
-                "category": "ایمیل"
-            },
-            {
-                "question": "دکمه Forward چه کاربردی دارد؟",
-                "options": ["فعال سازی لیست سایت های مورد علاقه", "حرکت به جلو در سایت", "پاسخ نامه ها", "مشاهده سایت"],
-                "answer": "ارسال نامه به اشخاص دیگر",
-                "category": "ایمیل"
-            },
-            {
-                "question": "کلید میانبر وسط چین نمودن متن کدام است؟",
-                "options": ["Ctrl + R", "Ctrl + E", "Ctrl + L", "Ctrl + J"],
-                "answer": "Ctrl + E",
-                "category": "Word"
-            },
-            {
-                "question": "برای تغییر جهت کاغذ به صورت افقی از چه گزینه استفاده می کنیم؟",
-                "options": ["Portrait Orientation گروه Page layout", "Landscape Orientation گزینه Insert", "Portrait گزینه Margins گروه Insert", "Landscape Orientation گروه Page layout"],
-                "answer": "Landscape Orientation گروه Page layout",
-                "category": "Word"
-            },
-            {
-                "question": "برای تغییر اندازه کاغذ از چه گزینه ای استفاده می شود؟",
-                "options": ["Size گزینه Insert", "Page Scape گروه Page layout", "Size گزینه View", "Size گزینه Page Setup گروه Page Layout"],
-                "answer": "Size گزینه Page Setup گروه Page Layout",
-                "category": "Word"
-            },
-            {
-                "question": "برای ذخیره یک سند تحت نامی دیگر از کدام فرمان استفاده می شود؟",
-                "options": ["save in", "save as", "save", "look in"],
-                "answer": "save as",
-                "category": "Word"
-            },
-            {
-                "question": "برای انتخاب یک جمله باید از کلید ترکیبی --- استفاده کرد.",
-                "options": ["ctrl + click", "ctrl + Alt", "ctrl + home", "view"],
-                "answer": "ctrl + click",
-                "category": "Word"
-            },
-            {
-                "question": "برای وارد کردن یک فایل تصویری در محیط سند، از کدام گزینه استفاده می کنید؟",
-                "options": ["insert \\ picture", "home \\ picture", "view \\ picture", "insert \\ chart"],
-                "answer": "insert \\ picture",
-                "category": "Word"
-            },
-            {
-                "question": "برای تقسیم یک خانه جدول به چند خانه از کدام گزینه استفاده می کنیم؟",
-                "options": ["Merge Cells", "Split Table", "Split Cells", "Align top left"],
-                "answer": "Split Cells",
-                "category": "Word"
-            },
-            {
-                "question": "برای ایجاد تفاوت در سرصفحه و پاصفحه صفحات زوج و فرد از کدام گزینه استفاده می کنیم؟",
-                "options": ["Different First Page", "Different Odd & Even Pages", "Even page", "Insert header and footer"],
-                "answer": "Different Odd & Even Pages",
-                "category": "Word"
-            },
-            {
-                "question": "برای درج شماره صفحه به چه صورت باید عمل نمود؟",
-                "options": ["Insert>Header & Footer >Page Number", "Home>Page Number", "View>Page Number", "Page Layout>Macros>Page Number"],
-                "answer": "Insert>Header & Footer >Page Number",
-                "category": "Word"
-            },
-            {
-                "question": "برای تنظیم میزان فرورفتگی از کدام گزینه استفاده می شود؟",
-                "options": ["Indent", "spacing", "alignment", "hyphenate"],
-                "answer": "Indent",
-                "category": "Word"
-            },
-            {
-                "question": "برای چگونگی عبارتی در اسناد از ...... استفاده می شود؟",
-                "options": ["Replace", "Find", "select", "search"],
-                "answer": "Find",
-                "category": "Word"
-            },
-            {
-                "question": "کدام مورد برای لغو آخرین عمل انجام شده بکار می رود؟",
-                "options": ["ctrl + y", "ctrl + x", "ctrl + z", "ctrl + v"],
-                "answer": "ctrl + z",
-                "category": "Word"
-            },
-            {
-                "question": "حالت بزرگ نمایی چه تاثیری بر سند می گذارد؟",
-                "options": ["سند را با بزرگ نمایی ذخیره می کند", "سند را با بزرگ نمایی چاپ می کند", "هیچ گونه تاثیری بر چگونگی چاپ ندارد", "سایز قلم متن را دست کاری می کند"],
-                "answer": "هیچ گونه تاثیری بر چگونگی چاپ ندارد",
-                "category": "Word"
-            },
-            {
-                "question": "برای وارد کردن یک فایل تصویری در محیط سند، از کدام گزینه ها استفاده می کنید؟",
-                "options": ["Insert \\ chart", "View \\ picture", "Picture \\ home", "Insert \\ picture"],
-                "answer": "Insert \\ picture",
-                "category": "Word"
-            }
-                "question": "برای تعیین چاپگر به عنوان چاپگر پیش فرض گزینه .... را انتخاب می کنیم.",
-                "options": ["Add Printer", "Set as Local Printer", "Set as default printer", "Set as device"],
-                "answer": "Set as default printer",
-                "category": "ویندوز"
-            },
-            {
-                "question": "برای توقف و از سر گیری مجدد عمل چاپ یک سند چگونه عمل می کنیم؟",
-                "options": ["از Properties گزینه Preference Printing انتخاب می کنیم", "از Document گزینه Pause را انتخاب می کنیم", "از منوی Document گزینه Pause را برای توقف و گزینه Pause را برای ادامه چاپ در نظر میگیریم", "از Document گزینه Pause را برای توقف و گزینه Resume را برای ادامه چاپ در نظر میگیریم"],
-                "answer": "از Document گزینه Pause را برای توقف و گزینه Resume را برای ادامه چاپ در نظر میگیریم",
-                "category": "ویندوز"
-            },
-            {
-                "question": "آدرس منحصربه فرد در هر صفحه وب چه نامیده می شود؟",
-                "options": ["URL", "Https", "Ftp", "Telnet"],
-                "answer": "URL",
-                "category": "اینترنت"
-            },
-            {
-                "question": "برای دسترسی به سایت های با قالب COM بعد از تایپ نام سایت کلیدهای ... را بفشاریم.",
-                "options": ["Ctrl", "Ctrl+Shift", "Ctrl+Esc", "Ctrl+Enter"],
-                "answer": "Ctrl+Enter",
-                "category": "اینترنت"
-            },
-            {
-                "question": "کدام یک از دامنه های زیر مختص کشور ایران است؟",
-                "options": ["TR", "IR", "UK", "US"],
-                "answer": "IR",
-                "category": "اینترنت"
-            },
-            {
-                "question": "ISP چیست؟",
-                "options": ["شرکت های ارائه خدمات اینترنت", "مرورگر وب را گویند", "فرم های اشتراک در اینترنت ISP را نگه‌داری می‌کند", "به اتصال اینترنت ازطریق خط تلفن گویند"],
-                "answer": "شرکت های ارائه خدمات اینترنت",
-                "category": "اینترنت"
-            },
-            {
-                "question": "صفحه خانگی یک وب سایت را .... گویند",
-                "options": ["First page", "Home page", "Web page", "Current page"],
-                "answer": "Home page",
-                "category": "اینترنت"
-            },
-            {
-                "question": "برای اینکه عبارت مورد جستجو به همان شکل در اینترنت جستجو شود(دقیقا همان عبارت) از کدام کاراکتر استفاده می‌شود؟",
-                "options": ["{ }", "[ ]", "( )", "\" \""],
-                "answer": "\" \"",
-                "category": "اینترنت"
-            },
-            {
-                "question": "پس از انتخاب قسمتی ازمتن یک صفحه وب و فشردن کلید ctrl+c متن انتخاب شده به .... انتقال می‌یابد.",
-                "options": ["واژه پرداز Word", "صفحه وب دیگر", "حافظه موقت ویندوز (clipboard)", "RAM"],
-                "answer": "حافظه موقت ویندوز (clipboard)",
-                "category": "اینترنت"
-            },
-            {
-                "question": "دریافت اطلاعات از اینترنت را .... می‌گویند.",
-                "options": ["Load", "Upload", "Move", "Download"],
-                "answer": "Download",
-                "category": "اینترنت"
-            },
-            {
-                "question": "کدام یک از گزینه های یک آدرس صندوق پستی صحیح می‌باشد؟",
-                "options": ["bayat@irantvto.ir", "Yahoo.com@info", "www.yahoo.com", "yahoo@com.alireza"],
-                "answer": "bayat@irantvto.ir",
-                "category": "ایمیل"
-            },
-            {
-                "question": "کدام جمله درست است؟",
-                "options": ["پسورد برای آدرس ایمیل منحصر به فرد می باشد", "یک آدرس ایمیل E-mail منحصر به فرد است", "پوشه Inbox محل نگهداری نامه های نیمه کاره می باشد", "پوشه Spam محل نگهداری نامه های ورودی می باشد"],
-                "answer": "یک آدرس ایمیل E-mail منحصر به فرد است",
-                "category": "ایمیل"
-            },
-            {
-                "question": "ایمیل های ناخواسته در صندوق پستی به چه نامی مشهورند؟",
-                "options": ["Noise", "Spam", "Virus", "ایمیل"],
-                "answer": "Spam",
-                "category": "ایمیل"
-            },
-            {
-                "question": "پوشه sent شامل......است.",
-                "options": ["لیست نامه های دریافت شده است", "لیست نامه هایی است که هنوز فرایند ارسال آنها تکمیل نشده است", "لیست نامه های حذف شده است", "لیست نامه های ارسال شده است"],
-                "answer": "لیست نامه های ارسال شده است",
-                "category": "ایمیل"
-            },
-            {
-                "question": "کدام پوشه در برگیرنده پیام های دریافت شده می باشد؟",
-                "options": ["Inbox", "Draft", "Outbox", "Sent item"],
-                "answer": "Inbox",
-                "category": "ایمیل"
-            },
-            {
-                "question": "نامه های پیش نویس درکدام پوشه قرارمی گیرند؟",
-                "options": ["Inbox", "Outbox", "Sent Item", "Draft"],
-                "answer": "Draft",
-                "category": "ایمیل"
-            },
-            {
-                "question": "برای آنکه رونوشت یک نامه از سایر گیرندگان پوشیده بماند......",
-                "options": ["آدرس آن را در قسمت cc وارد می کنیم", "آدرس آن را در قسمت Bcc وارد می کنیم", "آدرس آن را در قسمت To وارد می کنیم", "آدرس آن را در قسمت From وارد می کنیم"],
-                "answer": "آدرس آن را در قسمت Bcc وارد می کنیم",
-                "category": "ایمیل"
-            },
-            {
-                "question": "در قسمت Subject نامه چه چیز را می نویسیم؟",
-                "options": ["آدرس گیرنده", "آدرس گیرنده مخفی", "موضوع نامه", "متن نامه"],
-                "answer": "موضوع نامه",
-                "category": "ایمیل"
-            },
-            {
-                "question": "برای ارسال نامه نوشته شده از کدام دکمه استفاده می شود؟",
-                "options": ["Send", "Draft", "Mail", "Reply"],
-                "answer": "Send",
-                "category": "ایمیل"
-            },
-            {
-                "question": "برای ضمیمه (پیوست) کردن یک فایل به نامه الکترونیکی از کدام گزینه استفاده می شود؟",
-                "options": ["Reply", "Attach File", "Forward", "Priority"],
-                "answer": "Attach File",
-                "category": "ایمیل"
-            }
-            {
-                "question": "برای جستجوی فایل‌های با پسوند gif باید از چه معیاری استفاده کرد؟",
-                "options": ["gif.*", "*.gif", "gif*", "*gif"],
-                "answer": "*.gif",
-                "category": "ویندوز"
-            },
-            {
-                "question": "با انتخاب کدام یک از گزینه‌های زیر امکان جابجایی نوار وظیفه وجود ندارد؟",
-                "options": ["Lock the taskbar", "Keep the taskbar on top of other windows", "Auto-hide the taskbar", "Show Quick Launch"],
-                "answer": "Lock the taskbar",
-                "category": "ویندوز"
-            },
-            {
-                "question": "به ناحیه سمت راست نوار وظیفه چه می‌گویند؟",
-                "options": ["Toolbar", "Quick Launch bar", "Notification area", "Control box"],
-                "answer": "Notification area",
-                "category": "ویندوز"
-            },
-            {
-                "question": "پسوند فایل‌های پشتیبان چیست؟",
-                "options": [".bkf", ".bak", ".zip", ".rar"],
-                "answer": ".bak",
-                "category": "ویندوز"
-            },
-            {
-                "question": "برای نمایش محتوای پنجره‌ها به صورت پشت سرهم کدام گزینه صحیح است؟",
-                "options": ["Details", "List", "Content", "Tiles"],
-                "answer": "Tiles",
-                "category": "ویندوز"
-            },
-            {
-                "question": "جهت نمایش محتوای فایل‌های شناسایی نشده توسط ویندوز کدام گزینه صحیح است؟",
-                "options": ["بر روی آنها دابل کلید نمایید", "بر روی فایل راست کلید کرده و گزینه open را انتخاب نمایید", "بر روی فایل کلید کرده و گزینه open را انتخاب نمایید", "بر روی فایل راست کلید کرده و گزینه open را انتخاب نمایید"],
-                "answer": "بر روی فایل راست کلید کرده و گزینه open را انتخاب نمایید",
-                "category": "ویندوز"
-            },
-            {
-                "question": "در کدام حالت از نحوه نمایش پنجره، امکان فیلتر کردن محتوا وجود دارد؟",
-                "options": ["Tiles", "Content", "List", "Details"],
-                "answer": "Details",
-                "category": "ویندوز"
-            },
-            {
-                "question": "برای مرتب کردن آیکن‌های میز کار بر اساس نوع، از کدام گزینه زیر استفاده می‌شود؟",
-                "options": ["Size", "Name", "Date Modified", "Item Type"],
-                "answer": "Item Type",
-                "category": "ویندوز"
-            },
-            {
-                "question": "برای حذف دائم یک فایل به طوری که در سطل بازیافت قرار نگیرد از کدام کلید همراه دکمه Delete استفاده می‌شود؟",
-                "options": ["Shift", "Alt", "Ctrl", "Tab"],
-                "answer": "Shift",
-                "category": "ویندوز"
-            },
-            {
-                "question": "برای مشاهده خصوصیات فایل‌ها و پوشه‌ها پس از کلیک راست روی آن‌ها چه گزینه‌ای را انتخاب می‌کنیم؟",
-                "options": ["Shortcut", "Properties", "Refresh", "Attributes"],
-                "answer": "Properties",
-                "category": "ویندوز"
-            },
-            {
-                "question": "کدام یک از اسامی زیر برای نام پوشه غیر مجاز است؟",
-                "options": ["Con", "Directory", "Listname", "Asp"],
-                "answer": "Con",
-                "category": "ویندوز"
-            },
-            {
-                "question": "روش شناسایی فایل ...... است؟",
-                "options": ["شکل آیکن و نوع ذخیره", "پسوند فایل و شکل آیکن", "نام فایل و شکل آیکن", "محل ذخیره فایل و نام فایل"],
-                "answer": "پسوند فایل و شکل آیکن",
-                "category": "ویندوز"
-            },
-            {
-                "question": "برای انتقال فایل و پوشه‌ها به کدام گزینه مراجعه می‌کنیم؟",
-                "options": ["Open", "Organize", "Print", "Burn"],
-                "answer": "Organize",
-                "category": "ویندوز"
-            },
-            {
-                "question": "با دستور ...... می‌توان تغییرات یک فایل را با همان نام قبلی ذخیره و با دستور ..... می‌توان اطلاعات فایل فعلی را با نام دیگری ذخیره کرد؟",
-                "options": ["Save as-Save", "Save-Save as", "Save-Save as", "Save as-Save as"],
-                "answer": "Save-Save as",
-                "category": "ویندوز"
-            },
-            {
-                "question": "برای جستجوی کلیه فایل‌ها با پسوند txt از کدام گزینه زیر استفاده می‌کنیم؟",
-                "options": ["?.txt", "?txt", "*.txt", "txt.*"],
-                "answer": "*.txt",
-                "category": "ویندوز"
-            },
-            {
-                "question": "برای بازکردن فایل فشرده کدام گزینه صحیح است؟",
-                "options": ["امکان باز کردن فایل فشرده وجود ندارد", "بر روی آن کلیک راست نموده و گزینه Send انتخاب نمایید", "بر روی آن کلیک راست نموده و گزینه Extract All انتخاب نمایید", "بر روی آن کلیک راست نموده و گزینه Properties را انتخاب نمایید"],
-                "answer": "بر روی آن کلیک راست نموده و گزینه Extract All انتخاب نمایید",
-                "category": "ویندوز"
-            },
-            {
-                "question": "توسط نرم افزار فشرده سازی، می‌توان حجم فایل را تا .... کاهش داد.",
-                "options": ["%40", "%50", "%10", "%60"],
-                "answer": "%50",
-                "category": "ویندوز"
-            },
-            {
-                "question": "چنانچه آیکن ضد ویروس با رنگ قرمز نمایان شود نشانه چیست؟",
-                "options": ["خراب شدن ضدویروس", "ویروسی شدن سیستم", "به روز نبودن ضد ویروس", "عدم وجود ویروس در سیستم"],
-                "answer": "ویروسی شدن سیستم",
-                "category": "امنیت"
-            },
-            {
-                "question": "در نرم افزار Notepad برای تنظیمات کاغذ از کدام گزینه استفاده می‌شود؟",
-                "options": ["Print preview", "Send", "Print", "Page setup"],
-                "answer": "Page setup",
-                "category": "نرم افزار"
-            },
-            {
-                "question": "کدام یک از گزینه‌های کادر محاوره‌ای Print امکان چاپ صفحه جاری سند را فراهم می‌کند؟",
-                "options": ["Collate", "Selection", "Current page", "All"],
-                "answer": "Current page",
-                "category": "ویندوز"
-            }
-    
-                "question": "مجموعه‌ای از عناصر قابل لمس و فیزیکی و مدارهای الکترونیکی ...... گویند.",
-                "options": ["تراشه IC", "ترانزیستور", "سخت افزار", "نرم افزار"],
-                "answer": "سخت افزار",
-                "category": "مبانی کامپیوتر"
-            },
-            {
-                "question": "IT به چه معناست؟",
-                "options": ["فناوری اطلاعات و ارتباطات", "فناوری اطلاعات", "فناوری کامپیوتر", "ارتباطات مخابراتی"],
-                "answer": "فناوری اطلاعات",
-                "category": "مبانی کامپیوتر"
-            },
-            {
-                "question": "به واحد ...... اطلاق می‌شود.",
-                "options": ["پردازشگر مرکزی", "کنترل", "محاسبه و منطق", "حافظه"],
-                "answer": "پردازشگر مرکزی",
-                "category": "مبانی کامپیوتر"
-            },
-            {
-                "question": "کدام یک از بخش‌های CPU واحد مناسب عملیات ریاضی و منطقی نامیده می‌شود؟",
-                "options": ["CU", "ALU", "Register", "Cache"],
-                "answer": "ALU",
-                "category": "مبانی کامپیوتر"
-            },
-            {
-                "question": "محتوای کدام یک از حافظه‌های زیر با قطع جریان برق از بین می‌رود؟",
-                "options": ["ROM", "RAM", "EPROM", "PROM"],
-                "answer": "RAM",
-                "category": "مبانی کامپیوتر"
-            },
-            {
-                "question": "یک کیلوبایت شامل ...... بایت می‌شود.",
-                "options": ["1024", "1000", "512", "256"],
-                "answer": "1024",
-                "category": "مبانی کامپیوتر"
-            },
-            {
-                "question": "کدام یک از دستگاه‌های زیر به عنوان خروجی عمل می‌کند؟",
-                "options": ["چاپگر - صفحه نمایش - صفحه کلید", "چاپگر - صفحه نمایش - پلاتر", "صفحه نمایش - صفحه کلید - پلاتر", "صفحه کلید - پلاتر - اسکنر"],
-                "answer": "چاپگر - صفحه نمایش - پلاتر",
-                "category": "سخت افزار"
-            },
-            {
-                "question": "کدام مدل مانیتور با پرتاب اشعه به صفحه کار می‌کند؟",
-                "options": ["LCD", "CRT", "LED", "پلاسما"],
-                "answer": "CRT",
-                "category": "سخت افزار"
-            },
-            {
-                "question": "کیفیت چاپ کدام یک از چاپگرهای زیر بهتر است؟",
-                "options": ["چاپگرهای سوزنی", "چاپگرهای جوهر افشان", "چاپگرهای لیزری", "چاپگرهای حرارتی"],
-                "answer": "چاپگرهای لیزری",
-                "category": "سخت افزار"
-            },
-            {
-                "question": "کدام یک از دستگاه‌های زیر جهت انتقال تصاویر به کامپیوتر به کار می‌رود؟",
-                "options": ["اسکنر", "پلاتر", "صفحه کلید", "ماوس"],
-                "answer": "اسکنر",
-                "category": "سخت افزار"
-            },
-            {
-                "question": "تعریف نرم افزار کدام گزینه زیر می‌باشد؟",
-                "options": ["اجزای قابل لمس", "قطعات غیر فلزی", "داده‌ها و دستورالعمل‌ها", "حافظه‌ها"],
-                "answer": "داده‌ها و دستورالعمل‌ها",
-                "category": "نرم افزار"
-            },
-            {
-                "question": "برای تبدیل دستورات غیر قابل فهم به زبان قابل درک کامپیوتر کدام برنامه وظیفه این کار را برعهده دارد؟",
-                "options": ["سیستم عامل", "مترجم", "نرم افزارهای کاربردی", "نرم افزارهای کمکی"],
-                "answer": "مترجم",
-                "category": "نرم افزار"
-            },
-            {
-                "question": "کدام نرم افزار به عنوان صفحه گسترده شناخته می‌شود؟",
-                "options": ["MS Word", "MS Excel", "MS Access", "Outlook Express"],
-                "answer": "MS Excel",
-                "category": "نرم افزار"
-            },
-            {
-                "question": "مهم‌ترین نرم افزار سیستمی کامپیوتر چه نام دارد؟",
-                "options": ["Presentation", "Utility", "Operating System", "Compiler"],
-                "answer": "Operating System",
-                "category": "سیستم عامل"
-            },
-            {
-                "question": "کدامیک از سیستم عامل های زیر تک کاربره می‌باشد؟",
-                "options": ["DOS", "Windows", "Linux", "Unix"],
-                "answer": "DOS",
-                "category": "سیستم عامل"
-            },
-            {
-                "question": "اینترنت جز کدام شبکه محسوب می‌شود؟",
-                "options": ["محلی", "گسترده", "شهری", "خانگی"],
-                "answer": "گسترده",
-                "category": "شبکه"
-            },
-            {
-                "question": "دستگاهی که سیگنال‌های دیجیتال را به آنالوگ و برعکس تبدیل می‌کند؟",
-                "options": ["تلفن", "مودم", "سیستم عامل", "اینترنت"],
-                "answer": "مودم",
-                "category": "شبکه"
-            },
-            {
-                "question": "به شرکت‌های ارائه دهنده خدمات اینترنتی چه می‌گویند؟",
-                "options": ["ISDN", "PSTN", "ISP", "ADSL"],
-                "answer": "ISP",
-                "category": "شبکه"
-            },
-            {
-                "question": "آدرس‌های عددی مورد استفاده در شبکه را اصطلاحاً چه می‌نامند؟",
-                "options": ["IP", "TCP", "DNS", "PASSWORD"],
-                "answer": "IP",
-                "category": "شبکه"
-            },
-            {
-                "question": "به دریافت فایل از اینترنت .... و ارسال فایل به اینترنت را ...... می‌گویند.",
-                "options": ["Receiving, Sending", "Download, Upload", "Upload, Download", "Sending, Receiving"],
-                "answer": "Download, Upload",
-                "category": "شبکه"
-            }
-            {
-    
-                "question": "توپولوژی چیست؟",
-                "options": ["قانون تبادلات اطلاعات در شبکه", "آرایش فیزیکی رایانه ها در شبکه", "آدرس هر رایانه در شبکه", "اجزای شبکه"],
-                "answer": "آرایش فیزیکی رایانه ها در شبکه",
-                "category": "شبکه"
-            },
-            {
-                "question": "تجارت الکترونیک به چه مفهومی است؟",
-                "options": ["توصیف اینترنت و شبکه جهانی", "انجام کارهای تجاری از طریق اینترنت", "راه اندازی و به کارگیری سیستم", "انجام کارهای بانکی از طریق اینترنت"],
-                "answer": "انجام کارهای تجاری از طریق اینترنت",
-                "category": "فناوری اطلاعات"
-            },
-            {
-                "question": "کدام گزینه در مورد ارگونومی بکار می‌رود؟",
-                "options": ["روشنایی محیط کار", "روش استفاده از وسایل", "استفاده از صندلی مناسب", "حفظ سلامت انسان در محیط کار"],
-                "answer": "حفظ سلامت انسان در محیط کار",
-                "category": "مبانی کامپیوتر"
-            },
-            {
-                "question": "مفهوم E-Mail چیست؟",
-                "options": ["پست الکترونیکی", "تجارت الکترونیکی", "کتابخانه الکترونیکی", "بانک الکترونیکی"],
-                "answer": "پست الکترونیکی",
-                "category": "اینترنت"
-            },
-            {
-                "question": "کدام گزینه در مورد دولت الکترونیکی بکار می‌رود؟",
-                "options": ["E-Learning", "E-Government", "E-commerce", "E-Mail"],
-                "answer": "E-Government",
-                "category": "فناوری اطلاعات"
-            },
-            {
-                "question": "به کامپیوتری که در یک شبکه به کامپیوترهای دیگر سرویس دهد چه می‌گویند؟",
-                "options": ["Node", "Client", "Server", "Work station"],
-                "answer": "Server",
-                "category": "شبکه"
-            },
-            {
-                "question": "آدرس منحصر بفرد هر منبع در اینترنت چه نامیده می‌شود؟",
-                "options": ["URL", "HTTPS", "FTP", "Telnet"],
-                "answer": "URL",
-                "category": "اینترنت"
-            },
-            {
-                "question": "بهترین راه برای جلوگیری از سرایت ویروس به سیستم کامپیوتری چیست؟",
-                "options": ["بررسی نامه های الکترونیکی دارای فایل الصاقی", "داشتن یک ویروس یاب که توانایی به روز شدن را داشته باشد", "اتصال به اینترنت", "استفاده از حافظه های جانبی"],
-                "answer": "داشتن یک ویروس یاب که توانایی به روز شدن را داشته باشد",
-                "category": "امنیت"
-            },
-            {
-                "question": "شبکه ها از نظر توزیع جغرافیایی به چند دسته تقسیم می‌شود؟",
-                "options": ["WAN و LAN", "LAN و WAN و Star", "Bus و Star و Ring", "Ring و LAN و Star"],
-                "answer": "WAN و LAN",
-                "category": "شبکه"
-            },
-            {
-                "question": "کدام یک از انواع نرم افزار برای ویرایش متن مناسب است؟",
-                "options": ["سیستمی", "بانک اطلاعاتی", "پایگاه داده", "واژه پردازها"],
-                "answer": "واژه پردازها",
-                "category": "نرم افزار"
-            },
-            {
-                "question": "به نرم افزاری که مصرف کننده برای مدت مشخصی به طور آزمایشی و رایگان از آن استفاده می‌کند ولی بعد از مدتی غیرقابل استفاده می‌شود؟",
-                "options": ["Free Ware", "Demo", "Share ware", "Open Source"],
-                "answer": "Share ware",
-                "category": "نرم افزار"
-            },
-            {
-                "question": "کدام گروه از نرم افزارهای رایگان نیست؟",
-                "options": ["نرم افزارهای دارای حق کپی", "نرم افزارهای نمایشی", "نرم افزارهای متن باز", "نرم افزارها"],
-                "answer": "نرم افزارهای دارای حق کپی",
-                "category": "نرم افزار"
-            },
-            {
-                "question": "نوار باریکی که در پائین صفحه دسک تاپ نمایان می‌شود، چه نام دارد؟",
-                "options": ["نوار وظیفه", "نوار ابزار", "نوار آدرس", "نوار عنوان"],
-                "answer": "نوار وظیفه",
-                "category": "ویندوز"
-            },
-            {
-                "question": "منویی که با کلیک راست روی آیکن نمایش می‌یابد، چه نام دارد؟",
-                "options": ["منوی میانبر", "نوار منو", "منوی فعال", "منوی فایل"],
-                "answer": "منوی میانبر",
-                "category": "ویندوز"
-            },
-            {
-                "question": "برای مشاهده مشخصات پوشه‌ها باید از چه روشی استفاده کرد؟",
-                "options": ["کلیک راست روی آیکن پوشه و انتخاب گزینه Open", "کلیک راست روی آیکن پوشه و انتخاب گزینه Properties", "دابل کلیک روی آیکن پوشه مورد نظر", "درگ کردن آیکن پوشه مورد نظر"],
-                "answer": "کلیک راست روی آیکن پوشه و انتخاب گزینه Properties",
-                "category": "ویندوز"
-            },
-            {
-                "question": "ظاهر شدن علامت فلش در کنار یک آیکن نشانه چیست؟",
-                "options": ["میانبر بودن آن", "انتخاب آن", "پنجره بودن آن", "کوچک شدن پنجره آن"],
-                "answer": "میانبر بودن آن",
-                "category": "ویندوز"
-            },
-            {
-                "question": "اگر در کنار نام آیکن پوشه در ساختار درختی علامت (+) نمایش یابد، نشانه چیست؟",
-                "options": ["داشتن فایل", "داشتن زیر پوشه", "خالی بودن پوشه", "میانبر بودن پوشه"],
-                "answer": "داشتن زیر پوشه",
-                "category": "ویندوز"
-            },
-            {
-                "question": "در کدام یک از موارد زیر امکان به حد اکثر رساندن پنجره وجود دارد؟",
-                "options": ["کادر پیغام", "کادر هشدار", "کادر محاوره", "پنجره معمولی"],
-                "answer": "پنجره معمولی",
-                "category": "ویندوز"
-            },
-            {
-                "question": "برای بازیابی پوشه و یا فایل حذف شده باید از کدام فرمان استفاده کرد؟",
-                "options": ["Select All", "Paste", "Refresh", "Restore"],
-                "answer": "Restore",
-                "category": "ویندوز"
-            },
-            {
-                "question": "برای انتخاب گروهی آیکن‌های پراکنده باید از کدام یک از کلیدهای زیر به همراه کلیک کردن استفاده کرد؟",
-                "options": ["Shift", "Alt", "Ctrl", "Alt + Shift"],
-                "answer": "Ctrl",
-                "category": "ویندوز"
-            }   
         ];
 
         // متغیرهای جهانی
