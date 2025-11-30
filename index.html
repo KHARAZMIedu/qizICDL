@@ -596,7 +596,7 @@
     </footer>
 
     <script>
-        // داده‌های سوالات کاربر رایانه (60 سوال)
+        // داده‌های سوالات کاربر رایانه (60 سوال کامل)
         const userQuestions = [
             {
                 "question": "ابر سایت هایی که برای جستجوی اطلاعات استفاده می شوند چه نام دارند؟",
@@ -658,8 +658,6 @@
                 "answer": "Backup & Restore",
                 "category": "ویندوز"
             },
-            // 50 سوال دیگر برای کاربر رایانه...
-            // برای نمونه، 10 سوال دیگر اضافه می‌کنیم
             {
                 "question": "با استفاده از کدام دستگاه می توان تصاویر و متن ها را به کامپیوتر انتقال داد؟",
                 "options": ["Printer", "Scanner", "Monitor", "Keyboard"],
@@ -719,11 +717,262 @@
                 "options": ["Auto arrange icons", "Align icons to grid", "Show desktop icons", "Refresh"],
                 "answer": "Auto arrange icons",
                 "category": "ویندوز"
+            },
+            {
+                "question": "با انتخاب کدام گزینه عمل جابجایی بین کاربران با بسته شدن برنامه های در حال اجرا اتفاق می افتد؟",
+                "options": ["Switch User", "Log off", "Lock", "Sleep"],
+                "answer": "Log off",
+                "category": "ویندوز"
+            },
+            {
+                "question": "با انتخاب کدام گزینه عمل جابه جایی بین کاربران بدون بستن برنامه های در حال اجرا اتفاق می افتد؟",
+                "options": ["Switch User", "Log off", "Lock", "Sleep"],
+                "answer": "Switch User",
+                "category": "ویندوز"
+            },
+            {
+                "question": "با انتخاب کدام گزینه می توان نوار وظیفه را قفل کرد؟",
+                "options": ["Auto-hide the taskbar", "Use small taskbar buttons", "Lock the taskbar", "Show taskbar on all displays"],
+                "answer": "Lock the taskbar",
+                "category": "ویندوز"
+            },
+            {
+                "question": "با انتخاب کدام گزینه می توانید چاپگر را در شبکه ای که به آن متصل هستید به اشتراک بگذارید؟",
+                "options": ["Print Test Page", "Set as Default Printer", "Share this printer", "Printer Properties"],
+                "answer": "Share this printer",
+                "category": "ویندوز"
+            },
+            {
+                "question": "با کلیک راست بر روی چاپگر موردنظر، با انتخاب کدام گزینه چاپگر به عنوان پیشفرض در نظر گرفته میشود؟",
+                "options": ["Printing Preferences", "Set as Default Printer", "Pause Printing", "See What's Printing"],
+                "answer": "Set as Default Printer",
+                "category": "ویندوز"
+            },
+            {
+                "question": "با کلیک راست و انتخاب گزینه New کدام گزینه جهت ساخت پوشه می باشد؟",
+                "options": ["Shortcut", "Text Document", "Folder", "Bitmap Image"],
+                "answer": "Folder",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برای اجرای برنامه ها از کدام دستور استفاده می کنیم؟",
+                "options": ["Start", "Search", "Run", "Execute"],
+                "answer": "Run",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برای اضافه کردن نام سایت به لیست علاقه مندی خود از کدام گزینه استفاده می کنیم؟",
+                "options": ["Add to Favorites", "Subscribe", "Bookmark", "Save Page"],
+                "answer": "Add to Favorites",
+                "category": "اینترنت"
+            },
+            {
+                "question": "برای اندازه گیری حافظه هایی مانند CD از کدام واحد حافظه استفاده می شود؟",
+                "options": ["KB", "MB", "GB", "TB"],
+                "answer": "MB",
+                "category": "مبانی کامپیوتر"
+            },
+            {
+                "question": "برای اندازه گیری حافظه هایی مانند انواع کلیپ های صوتی و تصویری از کدام واحد می توان استفاده کرد؟",
+                "options": ["KB", "MB", "GB", "TB"],
+                "answer": "MB",
+                "category": "مبانی کامپیوتر"
+            },
+            {
+                "question": "برای ایجاد امضا از کدام گزینه می توان استفاده نمود؟",
+                "options": ["Theme", "Signature", "Stationery", "Font"],
+                "answer": "Signature",
+                "category": "ایمیل"
+            },
+            {
+                "question": "برای ایجاد یک صفحه ی جدید در برنامه Pad Word از کدام کلید میان بر می توان استفاده نمود？",
+                "options": ["Ctrl+O", "Ctrl+N", "Ctrl+S", "Ctrl+P"],
+                "answer": "Ctrl+N",
+                "category": "برنامه‌های کاربردی"
+            },
+            {
+                "question": "برای بازکردن سایت هایی که دامنه ی آن ها .com می باشد، بعد از وارد کردن نام سایت از کدام کلید باید استفاده شود？",
+                "options": ["Ctrl+Enter", "Alt+Enter", "Shift+Enter", "F5"],
+                "answer": "Ctrl+Enter",
+                "category": "اینترنت"
+            },
+            {
+                "question": "برای پاسخ دادن به نامه ی رسیده کدام گزینه به کار می رود？",
+                "options": ["Reply", "Forward", "Send", "New"],
+                "answer": "Reply",
+                "category": "ایمیل"
+            },
+            {
+                "question": "برای پرش و جابه جایی بین گزینههای موجود در پنجرهها و کادرهای محاورهای و یا فاصلهگذاریهای معین در محیط تایپ، از کدام کلید استفاده میشود？",
+                "options": ["Enter", "Tab", "Space", "Shift"],
+                "answer": "Tab",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برای پیوست کردن یک فایل به یک نامه کدام دکمه به کار میرود？",
+                "options": ["Attach", "Insert", "Link", "Embed"],
+                "answer": "Attach",
+                "category": "ایمیل"
+            },
+            {
+                "question": "برای ترسیم اشکال مختلف در برنامه نقاشی از کدام ابزار میتوان استفاده نمود？",
+                "options": ["Brush", "Pencil", "Shapes", "Eraser"],
+                "answer": "Shapes",
+                "category": "برنامه‌های کاربردی"
+            },
+            {
+                "question": "برای تصادفی پخش شدن آهنگ ها کدام گزینه در WINDOWS MEDIA باید فعال باشد？",
+                "options": ["Repeat", "Shuffle", "Play", "Stop"],
+                "answer": "Shuffle",
+                "category": "برنامه‌های کاربردی"
+            },
+            {
+                "question": "برای تصادفی پخش شدن آهنگها از کدام گزینه استفاده میشود？",
+                "options": ["Repeat", "Shuffle", "Playlist", "Library"],
+                "answer": "Shuffle",
+                "category": "برنامه‌های کاربردی"
+            },
+            {
+                "question": "برای تعیین فاصله ی افقی آیکن ها، کدام گزینه کاربرد دارد？",
+                "options": ["Icon Spacing Horizontally", "Icon Spacing Vertically", "Auto Arrange", "Align to Grid"],
+                "answer": "Icon Spacing Horizontally",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برای تغییر تصویر کاربر از کدام گزینه استفاده می شود？",
+                "options": ["Change Password", "Change Picture", "Change Account Type", "Remove Account"],
+                "answer": "Change Picture",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برای تغییر رمز عبور از کدام گزینه در پنجره Accounts User استفاده میشود？",
+                "options": ["Change the password", "Remove the password", "Change the account type", "Change the account name"],
+                "answer": "Change the password",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برای تغییر نوع کاربری از کدام گزینه استفاده می شود？",
+                "options": ["Change the password", "Remove the password", "Change the account type", "Change the account name"],
+                "answer": "Change the account type",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برای توقف چاپ به صورت موقت از کدام گزینه میتوان استفاده نمود？",
+                "options": ["Cancel", "Pause", "Resume", "Restart"],
+                "answer": "Pause",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برای ثبت و یا تأیید اطالعات، اجرای فرمانها و رفتن به خط بعدی در محیط های تایپی از کدام کلید میتوان استفاده کرد？",
+                "options": ["Enter", "Tab", "Space", "Shift"],
+                "answer": "Enter",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برای حذف رمز کاربر، از کدام گزینه استفاده می شود？",
+                "options": ["Change the password", "Remove my Password", "Change the account type", "Change the account name"],
+                "answer": "Remove my Password",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برای حذف کردن یک آیکن و یا پاک کردن کاراکترهای جلوی مکان نما از کدام کلید استفاده میشود？",
+                "options": ["Backspace", "Delete", "Insert", "Home"],
+                "answer": "Delete",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برای حذف گزینه های منوی Start از کدام گزینه می توان استفاده نمود？",
+                "options": ["Pin to Start Menu", "Remove from this list", "Add to Quick Launch", "Properties"],
+                "answer": "Remove from this list",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برای حذف یک برنامه از صف چاپ کدام گزینه استفاده می شود？",
+                "options": ["Pause", "Resume", "Cancel", "Restart"],
+                "answer": "Cancel",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برای خروج از محیط Dos کدام گزینه کاربرد دارد？",
+                "options": ["Quit", "Exit", "Close", "End"],
+                "answer": "Exit",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برای دسترسی سریع به یک برنامه از کدام آیکن میتوان استفاده کرد？",
+                "options": ["Folder", "Shortcut", "File", "Program"],
+                "answer": "Shortcut",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برای ذخیره یک عکس اینترنتی کدام گزینه از منوی میان بر انتخاب می شود？",
+                "options": ["Save Picture As", "Copy", "Set as Background", "Print Picture"],
+                "answer": "Save Picture As",
+                "category": "اینترنت"
+            },
+            {
+                "question": "برای فعال شدن کلیدهای بخش ماشین حسابی، کدام کلید باید فعال باشد？",
+                "options": ["Caps Lock", "Num Lock", "Scroll Lock", "Insert"],
+                "answer": "Num Lock",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برای کمینه کردن پنجره و قرار دادن آن بر روی نوار وظیفه از کدام گزینه استفاده میشود？",
+                "options": ["Maximize", "Minimize", "Restore", "Close"],
+                "answer": "Minimize",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برای نصب برنامه ها از کدام نوع حساب کاربری میتوان استفاده کرد？",
+                "options": ["Standard", "Guest", "Administrator", "User"],
+                "answer": "Administrator",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برای نمایش محتویات یک فهرست به صورت ساختار درختی، کدام دستور استفاده میشود？",
+                "options": ["Dir", "Cd", "Tree", "List"],
+                "answer": "Tree",
+                "category": "ویندوز"
+            },
+            {
+                "question": "برنامه ای که بر روی سیستم اجرا شده و به رایانه صدمه واردکند، چه نام دارد？",
+                "options": ["نرم افزار کاربردی", "برنامه کمکی", "برنامه مخرب", "سیستم عامل"],
+                "answer": "برنامه مخرب",
+                "category": "امنیت"
+            },
+            {
+                "question": "برنامه مدیریت وظیفه در ویندوز چه نام دارد？",
+                "options": ["File Manager", "Task Manager", "System Manager", "Process Manager"],
+                "answer": "Task Manager",
+                "category": "ویندوز"
+            },
+            {
+                "question": "بزرگترین دکمه روی صفحه کلید که با هر بار فشردن یک فاصله ی خالی ایجاد میشود، چه نام دارد？",
+                "options": ["Enter", "Space", "Tab", "Shift"],
+                "answer": "Space",
+                "category": "سخت افزار"
+            },
+            {
+                "question": "بزرگترین کلید روی کیبورد که با فشردن آن یک فاصله خالی ایجاد میشود، چیست؟",
+                "options": ["Enter", "Space", "Tab", "Shift"],
+                "answer": "Space",
+                "category": "سخت افزار"
+            },
+            {
+                "question": "به بارگزاری فایل برروی اینترنت چه گویند؟",
+                "options": ["Download", "Upload", "Copy", "Paste"],
+                "answer": "Upload",
+                "category": "اینترنت"
+            },
+            {
+                "question": "به دریافت فایل از اینترنت چه می گویند؟",
+                "options": ["Download", "Upload", "Copy", "Paste"],
+                "answer": "Download",
+                "category": "اینترنت"
             }
-            // 40 سوال دیگر برای کامل کردن 60 سوال...
         ];
 
-        // داده‌های سوالات تایپ رایانه (60 سوال)
+        // داده‌های سوالات تایپ رایانه (60 سوال کامل)
         const typingQuestions = [
             {
                 "question": "از کدام حالت نمایش برای طراحی صفحه وب در محیط Word استفاده میشود؟",
@@ -785,8 +1034,6 @@
                 "answer": "Shift",
                 "category": "Word"
             },
-            // 50 سوال دیگر برای تایپ رایانه...
-            // برای نمونه، 10 سوال دیگر اضافه می‌کنیم
             {
                 "question": "اگر در هنگام حذف یک سلول در جدول بخواهیم سطر شامل‌کننده آن خانه را حذف کنیم، چه گزینه‌ای باید انتخاب شود؟",
                 "options": ["Delete entire row", "Delete entire column", "Delete cells", "Delete table"],
@@ -846,8 +1093,253 @@
                 "options": ["گزینه 1 و 2", "پاک کردن جدول", "انتخاب جدول", "هیچکدام"],
                 "answer": "گزینه 1 و 2",
                 "category": "Word"
+            },
+            {
+                "question": "با استفاده از کدام ابزار می توان قالب‌بندی یک متن را روی متن دیگر کپی کرد؟",
+                "options": ["Format Painter", "Copy", "Paste", "Style"],
+                "answer": "Format Painter",
+                "category": "Word"
+            },
+            {
+                "question": "با استفاده از کدام جلوه می‌توان به متن انعکاس داد؟",
+                "options": ["Reflection", "Shadow", "Glow", "3D Rotation"],
+                "answer": "Reflection",
+                "category": "Word"
+            },
+            {
+                "question": "با استفاده از کدام قابلیت می‌توان عبارتها را به صورت خلاصه تایپ کرد و تکمیل آن را به برنامه Word سپرد؟",
+                "options": ["AutoCorrect", "AutoText", "AutoComplete", "Spell Check"],
+                "answer": "AutoCorrect",
+                "category": "Word"
+            },
+            {
+                "question": "با استفاده از کدام کلید میتوان حروف بعد از مکان نما را حذف نمود؟",
+                "options": ["Delete", "Backspace", "Insert", "Home"],
+                "answer": "Delete",
+                "category": "Word"
+            },
+            {
+                "question": "با استفاده از کدام کلیدها میتوان در خانه های جدول به سمت عقب برگشت؟",
+                "options": ["Shift + Tab", "Ctrl + Tab", "Alt + Tab", "Tab"],
+                "answer": "Shift + Tab",
+                "category": "Word"
+            },
+            {
+                "question": "با استفاده از کدام گزینه می توان اشکال را به صورت افقی قرینه کرد؟",
+                "options": ["Flip Horizontal", "Flip Vertical", "Rotate", "Align"],
+                "answer": "Flip Horizontal",
+                "category": "Word"
+            },
+            {
+                "question": "با استفاده از کدام گزینه می توان سطری را که مکان نما در آن قرار دارد انتخاب نمود؟",
+                "options": ["Select Row", "Select Column", "Select Table", "Select All"],
+                "answer": "Select Row",
+                "category": "Word"
+            },
+            {
+                "question": "با استفاده از کدام گزینه می توان یک صفحه ی جدید با طرح خاص ایجاد کرد؟",
+                "options": ["Cover Page", "Blank Page", "Page Break", "Section Break"],
+                "answer": "Cover Page",
+                "category": "Word"
+            },
+            {
+                "question": "با استفاده از کدام گزینه میتوان اشکال را گروه بندی کرد؟",
+                "options": ["Group", "Combine", "Merge", "Attach"],
+                "answer": "Group",
+                "category": "Word"
+            },
+            {
+                "question": "با استفاده از کدام گزینه میتوان برای یک Symbol کلید میانبر ایجاد کرد؟",
+                "options": ["Shortcut Key", "Hotkey", "Quick Access", "Keyboard Shortcut"],
+                "answer": "Shortcut Key",
+                "category": "Word"
+            },
+            {
+                "question": "با استفاده از کدام گزینه میتوان عمل جایگزینی را به صورت یکجا بر روی کلیه ی كلمات متن انجام داد؟",
+                "options": ["Replace All", "Replace", "Find All", "Change All"],
+                "answer": "Replace All",
+                "category": "Word"
+            },
+            {
+                "question": "با انتخاب کدام گزینه از Wrap Text تصویر زیر نوشته ها قرار میگیرد؟",
+                "options": ["Behind Text", "In Front of Text", "Square", "Tight"],
+                "answer": "Behind Text",
+                "category": "Word"
+            },
+            {
+                "question": "با انتخاب کدام گزینه از قسمت Section Breaks، بخش جدید در صفحه های فرد تولید میشود؟",
+                "options": ["Odd Page", "Even Page", "Next Page", "Continuous"],
+                "answer": "Odd Page",
+                "category": "Word"
+            },
+            {
+                "question": "با انتخاب کدام گزینه تمام حروف لاتین به صورت کوچک نمایش داده میشود؟",
+                "options": ["Lowercase", "Uppercase", "Sentence case", "Capitalize Each Word"],
+                "answer": "Lowercase",
+                "category": "Word"
+            },
+            {
+                "question": "با انتخاب کدام گزینه فقط صفحه ای که در آن هستید چاپ می شود؟",
+                "options": ["Print Current Page", "Print All", "Print Selection", "Print Range"],
+                "answer": "Print Current Page",
+                "category": "Word"
+            },
+            {
+                "question": "با انتخاب کدام گزینه متن در وسط و چپ خانه جدول قرار می گیرد؟",
+                "options": ["Align Center Left", "Align Center", "Align Left", "Align Top Left"],
+                "answer": "Align Center Left",
+                "category": "Word"
+            },
+            {
+                "question": "با انتخاب کدام گزینه می توان برای صفحه ی اول سرصفحه یا پاصفحه متفاوت ایجاد کرد؟",
+                "options": ["Different First Page", "Different Odd & Even Pages", "Show Document Text", "Header from Top"],
+                "answer": "Different First Page",
+                "category": "Word"
+            },
+            {
+                "question": "با انتخاب کدام گزینه میتوان جهت کاغذ را به صورت خوابیده نمایش داد؟",
+                "options": ["Landscape", "Portrait", "Margins", "Size"],
+                "answer": "Landscape",
+                "category": "Word"
+            },
+            {
+                "question": "با انتخاب کدام گزینه میتوان متن را به صورت اندیس پایین نمایش داد؟",
+                "options": ["Subscript", "Superscript", "Strikethrough", "Double strikethrough"],
+                "answer": "Subscript",
+                "category": "Word"
+            },
+            {
+                "question": "با انتخاب کدام گزینه میتوان یک طیف رنگی را روی پس زمینه صفحه قرار داد؟",
+                "options": ["Gradient", "Texture", "Pattern", "Picture"],
+                "answer": "Gradient",
+                "category": "Word"
+            },
+            {
+                "question": "با انتخاب کدام گزینه نوار Ribbon حداقل یا مینیمم می شود؟",
+                "options": ["Minimize Ribbon", "Auto-hide Ribbon", "Close Ribbon", "Hide Ribbon"],
+                "answer": "Minimize Ribbon",
+                "category": "Word"
+            },
+            {
+                "question": "با فشردن کدام دکمه مکان نما به انتهای سطر منتقل میشود؟",
+                "options": ["End", "Home", "Page Down", "Page Up"],
+                "answer": "End",
+                "category": "Word"
+            },
+            {
+                "question": "با فشردن کدام دکمه میتوان به ابتدای سطر جاری منتقل شد؟",
+                "options": ["Home", "End", "Page Up", "Page Down"],
+                "answer": "Home",
+                "category": "Word"
+            },
+            {
+                "question": "با فشردن کدام کلید محتویات جدول پاک میشود؟",
+                "options": ["Delete", "Backspace", "Space", "Enter"],
+                "answer": "Delete",
+                "category": "Word"
+            },
+            {
+                "question": "با فشردن کدام کلیدها می توان به اولین صفحه فایل یا سند رفت؟",
+                "options": ["Ctrl + Home", "Ctrl + End", "Home", "End"],
+                "answer": "Ctrl + Home",
+                "category": "Word"
+            },
+            {
+                "question": "با کدام گزینه میتوان متن های روزنامه ای ایجاد کرد؟",
+                "options": ["Column", "Table", "Text Box", "WordArt"],
+                "answer": "Column",
+                "category": "Word"
+            },
+            {
+                "question": "با کدام گزینه میتوان مشخصات و ویژگیهای یک جدول را مشاهده کرد؟",
+                "options": ["Properties", "Table Properties", "Format Table", "Table Options"],
+                "answer": "Properties",
+                "category": "Word"
+            },
+            {
+                "question": "با کدام گزینه یا ابزار می توان فاصله ی بین خطوط را تنظیم کرد؟",
+                "options": ["Line Spacing", "Paragraph Spacing", "Indentation", "Alignment"],
+                "answer": "Line Spacing",
+                "category": "Word"
+            },
+            {
+                "question": "با کلیک بر روی کدام ابزار متن به صورت اندیس بالا نوشته میشود؟",
+                "options": ["Superscript", "Subscript", "Strikethrough", "Underline"],
+                "answer": "Superscript",
+                "category": "Word"
+            },
+            {
+                "question": "با کلیک بر روی کدام گزینه متن در بالا و سمت راست خانه در جدول قرار میگیرد؟",
+                "options": ["Align Top Right", "Align Top Left", "Align Bottom Right", "Align Center Right"],
+                "answer": "Align Top Right",
+                "category": "Word"
+            },
+            {
+                "question": "با نگه داشتن کدام کلید و دابل کلیک کردن در خانه خالی کل جدول انتخاب می شود؟",
+                "options": ["Alt", "Ctrl", "Shift", "Tab"],
+                "answer": "Alt",
+                "category": "Word"
+            },
+            {
+                "question": "برای از بین بردن رنگ زمینه کدام گزینه مناسب است؟",
+                "options": ["No Color", "Transparent", "White", "Automatic"],
+                "answer": "No Color",
+                "category": "Word"
+            },
+            {
+                "question": "برای اصلاح گرامر و املاء از کدام گزینه استفاده میشود؟",
+                "options": ["Spelling & Grammar", "Thesaurus", "Word Count", "Language"],
+                "answer": "Spelling & Grammar",
+                "category": "Word"
+            },
+            {
+                "question": "برای اعمال تورفتگی به سطرهای دوم به بعد یک پاراگراف کدام گزینه مناسب است؟",
+                "options": ["Hanging Indent", "First Line Indent", "Left Indent", "Right Indent"],
+                "answer": "Hanging Indent",
+                "category": "Word"
+            },
+            {
+                "question": "برای ایجاد پیوند بین فایلها و آدرسهای اینترنتی از کدام گزینه می توان استفاده نمود؟",
+                "options": ["Hyperlink", "Bookmark", "Cross-reference", "Caption"],
+                "answer": "Hyperlink",
+                "category": "Word"
+            },
+            {
+                "question": "برای ایجاد سبک از کدام گزینه باید استفاده کرد؟",
+                "options": ["Style", "Format", "Template", "Theme"],
+                "answer": "Style",
+                "category": "Word"
+            },
+            {
+                "question": "برای ایجاد سبکهای عادی از کدام گزینه باید استفاده کرد؟",
+                "options": ["Normal", "Heading 1", "Title", "Subtitle"],
+                "answer": "Normal",
+                "category": "Word"
+            },
+            {
+                "question": "برای ایجاد سرصفحه و پاصفحه ی مشترک برای تمام صفحه های سند کدام گزینه مناسب است؟",
+                "options": ["Header & Footer", "Page Number", "Footer", "Header"],
+                "answer": "Header & Footer",
+                "category": "Word"
+            },
+            {
+                "question": "برای ایجاد شماره صفحه در محل مکان نما، از کدام گزینه استفاده می شود؟",
+                "options": ["Current Position", "Page Margins", "Top of Page", "Bottom of Page"],
+                "answer": "Current Position",
+                "category": "Word"
+            },
+            {
+                "question": "برای ایجاد شیرازه جهت سیمی یا صحافی کردن صفحات باید ........ را تنظیم کنیم",
+                "options": ["Gutter", "Margins", "Orientation", "Size"],
+                "answer": "Gutter",
+                "category": "Word"
+            },
+            {
+                "question": "برای ایجاد فاصله خالی به اندازه یک کاراکتر در متن کدام کلید مناسب است؟",
+                "options": ["Space", "Tab", "Enter", "Shift"],
+                "answer": "Space",
+                "category": "Word"
             }
-            // 40 سوال دیگر برای کامل کردن 60 سوال...
         ];
 
         // متغیرهای جهانی
