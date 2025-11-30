@@ -397,7 +397,7 @@
                 <button onclick="checkPassword()"><i class="fas fa-sign-in-alt"></i> ورود</button>
                 <p id="login-message" class="login-message"></p>
                 <p id="loading-message" class="loading" style="display: none;">
-                    <i class="fas fa-spinner fa-spin"></i> در حال بارگذاری رمز از سرور...
+                    <i class="fas fa-spinner fa-spin"></i> در حال بارگذاری رمز از فایل...
                 </p>
             </div>
         </div>
@@ -406,15 +406,15 @@
         <div id="main-menu" class="main-menu" style="display: none;">
             <div class="exam-info">
                 <h2><i class="fas fa-info-circle"></i> اطلاعات آزمون کاربر رایانه</h2>
-                <p>این آزمون شامل 60 سوال تصادفی از مباحث کاربر رایانه می‌باشد.</p>
+                <p>این آزمون شامل 20 سوال تصادفی از مباحث کاربر رایانه می‌باشد.</p>
                 
                 <div class="exam-stats">
                     <div class="stat-item">
-                        <div class="stat-value">60</div>
+                        <div class="stat-value">20</div>
                         <div class="stat-label">تعداد سوالات</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-value">60</div>
+                        <div class="stat-value">30</div>
                         <div class="stat-label">دقیقه زمان</div>
                     </div>
                     <div class="stat-item">
@@ -425,7 +425,7 @@
                 
                 <p>مباحث آزمون: ویندوز، اینترنت، ایمیل، برنامه‌های کاربردی</p>
                 <p style="color: var(--accent-color); font-weight: bold; margin-top: 10px;">
-                    <i class="fas fa-random"></i> در هر بار اجرا، 60 سوال تصادفی انتخاب می‌شوند
+                    <i class="fas fa-random"></i> در هر بار اجرا، 20 سوال تصادفی انتخاب می‌شوند
                 </p>
             </div>
             
@@ -439,7 +439,7 @@
         <!-- صفحه آزمون -->
         <div id="quiz-container" class="quiz-container">
             <div class="lesson-title" id="lesson-title">آزمون کاربر رایانه</div>
-            <div class="timer" id="timer">زمان: 60:00</div>
+            <div class="timer" id="timer">زمان: 30:00</div>
             <div class="question" id="question"></div>
             <div class="options" id="options">
                 <button class="option-btn" onclick="selectOption(0)"></button>
@@ -485,15 +485,15 @@
         <div id="help-container" class="help-container">
             <h2><i class="fas fa-info-circle"></i> راهنمای استفاده از آزمون کاربر رایانه</h2>
             <p>
-                <i class="fas fa-check"></i> این آزمون شامل 60 سوال تصادفی از مباحث کاربر رایانه می‌باشد.<br>
-                <i class="fas fa-check"></i> زمان آزمون 60 دقیقه می‌باشد.<br>
+                <i class="fas fa-check"></i> این آزمون شامل 20 سوال تصادفی از مباحث کاربر رایانه می‌باشد.<br>
+                <i class="fas fa-check"></i> زمان آزمون 30 دقیقه می‌باشد.<br>
                 <i class="fas fa-check"></i> شماره سوال‌ها پایین صفحه برای رفتن به سوال دلخواه است.<br>
                 <i class="fas fa-check"></i> با کلیدهای جهت‌نما می‌توانید بین سوالات حرکت کنید.<br>
                 <i class="fas fa-check"></i> پس از پاسخ دادن به همه سوالات، روی پایان آزمون کلیک کنید.<br>
                 <i class="fas fa-check"></i> در صفحه نتایج می‌توانید پاسخ صحیح و غلط خود را ببینید.<br>
                 <i class="fas fa-check"></i> برای قبولی در آزمون، حداقل 70% نمره لازم است.<br>
                 <i class="fas fa-check"></i> آزمون شامل مباحث: ویندوز، اینترنت، ایمیل، برنامه‌های کاربردی می‌باشد.<br>
-                <i class="fas fa-check"></i> در هر بار اجرا، 60 سوال تصادفی انتخاب می‌شوند.<br><br>
+                <i class="fas fa-check"></i> در هر بار اجرا، 20 سوال تصادفی انتخاب می‌شوند.<br><br>
                 موفق باشید!
             </p>
             <button onclick="backToMainMenu()"><i class="fas fa-arrow-right"></i> بازگشت به منو</button>
@@ -695,187 +695,187 @@
                 "category": "ایمیل"
             },
             {
-                "question": "برای ایجاد یک صفحه ی جدید در برنامه Pad Word از کدام کلید میان بر می توان استفاده نمود؟",
+                "question": "برای ایجاد یک صفحه ی جدید در برنامه Pad Word از کدام کلید میان بر می توان استفاده نمود？",
                 "options": ["Ctrl+O", "Ctrl+N", "Ctrl+S", "Ctrl+P"],
                 "answer": "Ctrl+N",
                 "category": "برنامه‌های کاربردی"
             },
             {
-                "question": "برای بازکردن سایت هایی که دامنه ی آن ها .com می باشد، بعد از وارد کردن نام سایت از کدام کلید باید استفاده شود؟",
+                "question": "برای بازکردن سایت هایی که دامنه ی آن ها .com می باشد، بعد از وارد کردن نام سایت از کدام کلید باید استفاده شود？",
                 "options": ["Ctrl+Enter", "Alt+Enter", "Shift+Enter", "F5"],
                 "answer": "Ctrl+Enter",
                 "category": "اینترنت"
             },
             {
-                "question": "برای پاسخ دادن به نامه ی رسیده کدام گزینه به کار می رود؟",
+                "question": "برای پاسخ دادن به نامه ی رسیده کدام گزینه به کار می رود？",
                 "options": ["Reply", "Forward", "Send", "New"],
                 "answer": "Reply",
                 "category": "ایمیل"
             },
             {
-                "question": "برای پرش و جابه جایی بین گزینههای موجود در پنجرهها و کادرهای محاورهای و یا فاصلهگذاریهای معین در محیط تایپ، از کدام کلید استفاده میشود؟",
+                "question": "برای پرش و جابه جایی بین گزینههای موجود در پنجرهها و کادرهای محاورهای و یا فاصلهگذاریهای معین در محیط تایپ، از کدام کلید استفاده میشود？",
                 "options": ["Enter", "Tab", "Space", "Shift"],
                 "answer": "Tab",
                 "category": "ویندوز"
             },
             {
-                "question": "برای پیوست کردن یک فایل به یک نامه کدام دکمه به کار میرود؟",
+                "question": "برای پیوست کردن یک فایل به یک نامه کدام دکمه به کار میرود？",
                 "options": ["Attach", "Insert", "Link", "Embed"],
                 "answer": "Attach",
                 "category": "ایمیل"
             },
             {
-                "question": "برای ترسیم اشکال مختلف در برنامه نقاشی از کدام ابزار میتوان استفاده نمود؟",
+                "question": "برای ترسیم اشکال مختلف در برنامه نقاشی از کدام ابزار میتوان استفاده نمود？",
                 "options": ["Brush", "Pencil", "Shapes", "Eraser"],
                 "answer": "Shapes",
                 "category": "برنامه‌های کاربردی"
             },
             {
-                "question": "برای تصادفی پخش شدن آهنگ ها کدام گزینه در WINDOWS MEDIA باید فعال باشد؟",
+                "question": "برای تصادفی پخش شدن آهنگ ها کدام گزینه در WINDOWS MEDIA باید فعال باشد？",
                 "options": ["Repeat", "Shuffle", "Play", "Stop"],
                 "answer": "Shuffle",
                 "category": "برنامه‌های کاربردی"
             },
             {
-                "question": "برای تصادفی پخش شدن آهنگها از کدام گزینه استفاده میشود؟",
+                "question": "برای تصادفی پخش شدن آهنگها از کدام گزینه استفاده میشود？",
                 "options": ["Repeat", "Shuffle", "Playlist", "Library"],
                 "answer": "Shuffle",
                 "category": "برنامه‌های کاربردی"
             },
             {
-                "question": "برای تعیین فاصله ی افقی آیکن ها، کدام گزینه کاربرد دارد؟",
+                "question": "برای تعیین فاصله ی افقی آیکن ها، کدام گزینه کاربرد دارد？",
                 "options": ["Icon Spacing Horizontally", "Icon Spacing Vertically", "Auto Arrange", "Align to Grid"],
                 "answer": "Icon Spacing Horizontally",
                 "category": "ویندوز"
             },
             {
-                "question": "برای تغییر تصویر کاربر از کدام گزینه استفاده می شود؟",
+                "question": "برای تغییر تصویر کاربر از کدام گزینه استفاده می شود？",
                 "options": ["Change Password", "Change Picture", "Change Account Type", "Remove Account"],
                 "answer": "Change Picture",
                 "category": "ویندوز"
             },
             {
-                "question": "برای تغییر رمز عبور از کدام گزینه در پنجره Accounts User استفاده میشود؟",
+                "question": "برای تغییر رمز عبور از کدام گزینه در پنجره Accounts User استفاده میشود？",
                 "options": ["Change the password", "Remove the password", "Change the account type", "Change the account name"],
                 "answer": "Change the password",
                 "category": "ویندوز"
             },
             {
-                "question": "برای تغییر نوع کاربری از کدام گزینه استفاده می شود؟",
+                "question": "برای تغییر نوع کاربری از کدام گزینه استفاده می شود？",
                 "options": ["Change the password", "Remove the password", "Change the account type", "Change the account name"],
                 "answer": "Change the account type",
                 "category": "ویندوز"
             },
             {
-                "question": "برای توقف چاپ به صورت موقت از کدام گزینه میتوان استفاده نمود؟",
+                "question": "برای توقف چاپ به صورت موقت از کدام گزینه میتوان استفاده نمود？",
                 "options": ["Cancel", "Pause", "Resume", "Restart"],
                 "answer": "Pause",
                 "category": "ویندوز"
             },
             {
-                "question": "برای ثبت و یا تأیید اطالعات، اجرای فرمانها و رفتن به خط بعدی در محیط های تایپی از کدام کلید میتوان استفاده کرد؟",
+                "question": "برای ثبت و یا تأیید اطالعات، اجرای فرمانها و رفتن به خط بعدی در محیط های تایپی از کدام کلید میتوان استفاده کرد？",
                 "options": ["Enter", "Tab", "Space", "Shift"],
                 "answer": "Enter",
                 "category": "ویندوز"
             },
             {
-                "question": "برای حذف رمز کاربر، از کدام گزینه استفاده می شود؟",
+                "question": "برای حذف رمز کاربر، از کدام گزینه استفاده می شود？",
                 "options": ["Change the password", "Remove my Password", "Change the account type", "Change the account name"],
                 "answer": "Remove my Password",
                 "category": "ویندوز"
             },
             {
-                "question": "برای حذف کردن یک آیکن و یا پاک کردن کاراکترهای جلوی مکان نما از کدام کلید استفاده میشود؟",
+                "question": "برای حذف کردن یک آیکن و یا پاک کردن کاراکترهای جلوی مکان نما از کدام کلید استفاده میشود？",
                 "options": ["Backspace", "Delete", "Insert", "Home"],
                 "answer": "Delete",
                 "category": "ویندوز"
             },
             {
-                "question": "برای حذف گزینه های منوی Start از کدام گزینه می توان استفاده نمود؟",
+                "question": "برای حذف گزینه های منوی Start از کدام گزینه می توان استفاده نمود？",
                 "options": ["Pin to Start Menu", "Remove from this list", "Add to Quick Launch", "Properties"],
                 "answer": "Remove from this list",
                 "category": "ویندوز"
             },
             {
-                "question": "برای حذف یک برنامه از صف چاپ کدام گزینه استفاده می شود؟",
+                "question": "برای حذف یک برنامه از صف چاپ کدام گزینه استفاده می شود？",
                 "options": ["Pause", "Resume", "Cancel", "Restart"],
                 "answer": "Cancel",
                 "category": "ویندوز"
             },
             {
-                "question": "برای خروج از محیط Dos کدام گزینه کاربرد دارد؟",
+                "question": "برای خروج از محیط Dos کدام گزینه کاربرد دارد？",
                 "options": ["Quit", "Exit", "Close", "End"],
                 "answer": "Exit",
                 "category": "ویندوز"
             },
             {
-                "question": "برای دسترسی سریع به یک برنامه از کدام آیکن میتوان استفاده کرد؟",
+                "question": "برای دسترسی سریع به یک برنامه از کدام آیکن میتوان استفاده کرد？",
                 "options": ["Folder", "Shortcut", "File", "Program"],
                 "answer": "Shortcut",
                 "category": "ویندوز"
             },
             {
-                "question": "برای ذخیره یک عکس اینترنتی کدام گزینه از منوی میان بر انتخاب می شود؟",
+                "question": "برای ذخیره یک عکس اینترنتی کدام گزینه از منوی میان بر انتخاب می شود？",
                 "options": ["Save Picture As", "Copy", "Set as Background", "Print Picture"],
                 "answer": "Save Picture As",
                 "category": "اینترنت"
             },
             {
-                "question": "برای فعال شدن کلیدهای بخش ماشین حسابی، کدام کلید باید فعال باشد؟",
+                "question": "برای فعال شدن کلیدهای بخش ماشین حسابی، کدام کلید باید فعال باشد？",
                 "options": ["Caps Lock", "Num Lock", "Scroll Lock", "Insert"],
                 "answer": "Num Lock",
                 "category": "ویندوز"
             },
             {
-                "question": "برای کمینه کردن پنجره و قرار دادن آن بر روی نوار وظیفه از کدام گزینه استفاده میشود؟",
+                "question": "برای کمینه کردن پنجره و قرار دادن آن بر روی نوار وظیفه از کدام گزینه استفاده میشود？",
                 "options": ["Maximize", "Minimize", "Restore", "Close"],
                 "answer": "Minimize",
                 "category": "ویندوز"
             },
             {
-                "question": "برای نصب برنامه ها از کدام نوع حساب کاربری میتوان استفاده کرد؟",
+                "question": "برای نصب برنامه ها از کدام نوع حساب کاربری میتوان استفاده کرد？",
                 "options": ["Standard", "Guest", "Administrator", "User"],
                 "answer": "Administrator",
                 "category": "ویندوز"
             },
             {
-                "question": "برای نمایش محتویات یک فهرست به صورت ساختار درختی، کدام دستور استفاده میشود؟",
+                "question": "برای نمایش محتویات یک فهرست به صورت ساختار درختی، کدام دستور استفاده میشود？",
                 "options": ["Dir", "Cd", "Tree", "List"],
                 "answer": "Tree",
                 "category": "ویندوز"
             },
             {
-                "question": "برنامه ای که بر روی سیستم اجرا شده و به رایانه صدمه واردکند، چه نام دارد؟",
+                "question": "برنامه ای که بر روی سیستم اجرا شده و به رایانه صدمه واردکند، چه نام دارد？",
                 "options": ["نرم افزار کاربردی", "برنامه کمکی", "برنامه مخرب", "سیستم عامل"],
                 "answer": "برنامه مخرب",
                 "category": "امنیت"
             },
             {
-                "question": "برنامه مدیریت وظیفه در ویندوز چه نام دارد؟",
+                "question": "برنامه مدیریت وظیفه در ویندوز چه نام دارد？",
                 "options": ["File Manager", "Task Manager", "System Manager", "Process Manager"],
                 "answer": "Task Manager",
                 "category": "ویندوز"
             },
             {
-                "question": "بزرگترین دکمه روی صفحه کلید که با هر بار فشردن یک فاصله ی خالی ایجاد میشود، چه نام دارد؟",
+                "question": "بزرگترین دکمه روی صفحه کلید که با هر بار فشردن یک فاصله ی خالی ایجاد میشود، چه نام دارد？",
                 "options": ["Enter", "Space", "Tab", "Shift"],
                 "answer": "Space",
                 "category": "سخت افزار"
             },
             {
-                "question": "بزرگترین کلید روی کیبورد که با فشردن آن یک فاصله خالی ایجاد میشود، چیست؟",
+                "question": "بزرگترین کلید روی کیبورد که با فشردن آن یک فاصله خالی ایجاد میشود، چیست？",
                 "options": ["Enter", "Space", "Tab", "Shift"],
                 "answer": "Space",
                 "category": "سخت افزار"
             },
             {
-                "question": "به بارگزاری فایل برروی اینترنت چه گویند؟",
+                "question": "به بارگزاری فایل برروی اینترنت چه گویند？",
                 "options": ["Download", "Upload", "Copy", "Paste"],
                 "answer": "Upload",
                 "category": "اینترنت"
             },
             {
-                "question": "به دریافت فایل از اینترنت چه می گویند؟",
+                "question": "به دریافت فایل از اینترنت چه می گویند？",
                 "options": ["Download", "Upload", "Copy", "Paste"],
                 "answer": "Download",
                 "category": "اینترنت"
@@ -885,15 +885,55 @@
         // متغیرهای جهانی
         let questions = [];
         let currentQuestionIndex = 0;
-        let timerSeconds = 60 * 60; // 60 دقیقه
+        let timerSeconds = 30 * 60; // 30 دقیقه
         let timerInterval;
         let currentLesson = "";
-        let correctPassword = "user123";
+        let correctPassword = "";
+
+        // بارگذاری رمز از فایل password.txt
+        async function loadPasswordFromFile() {
+            const loadingMessage = document.getElementById('loading-message');
+            const loginMessage = document.getElementById('login-message');
+            
+            try {
+                loadingMessage.style.display = 'block';
+                loginMessage.textContent = '';
+                
+                const response = await fetch('password.txt');
+                
+                if (!response.ok) {
+                    throw new Error(`خطا در بارگذاری رمز: ${response.status}`);
+                }
+                
+                const passwordText = await response.text();
+                correctPassword = passwordText.trim();
+                
+                loadingMessage.style.display = 'none';
+                loginMessage.textContent = 'رمز با موفقیت بارگذاری شد';
+                loginMessage.style.color = 'var(--success-color)';
+                
+                console.log('رمز بارگذاری شد:', correctPassword);
+                
+            } catch (error) {
+                loadingMessage.style.display = 'none';
+                loginMessage.textContent = 'خطا در بارگذاری رمز از فایل';
+                console.error('خطا در بارگذاری رمز:', error);
+                
+                // در صورت خطا، از رمز پیش‌فرض استفاده می‌کنیم
+                correctPassword = "user123";
+                loginMessage.textContent += ' - از رمز پیش‌فرض استفاده می‌شود';
+            }
+        }
 
         // بررسی رمز ورودی
         function checkPassword() {
             const inputPassword = document.getElementById('password-input').value;
             const messageElement = document.getElementById('login-message');
+            
+            if (!correctPassword) {
+                messageElement.textContent = 'لطفاً صبر کنید تا رمز بارگذاری شود';
+                return;
+            }
             
             if (inputPassword === correctPassword) {
                 // نمایش منوی اصلی
@@ -926,11 +966,11 @@
             document.getElementById('results-container').style.display = 'none';
             document.getElementById('help-container').style.display = 'none';
             
-            currentLesson = "آزمون کاربر رایانه (60 سوال تصادفی)";
+            currentLesson = "آزمون کاربر رایانه (20 سوال تصادفی)";
             document.getElementById('lesson-title').textContent = currentLesson;
             
-            // انتخاب 60 سوال تصادفی از بین سوالات موجود
-            questions = getRandomQuestions(60);
+            // انتخاب 20 سوال تصادفی از بین سوالات موجود
+            questions = getRandomQuestions(20);
             
             // به هم ریختن گزینه‌های هر سوال
             questions.forEach(q => {
@@ -1048,7 +1088,7 @@
         // شروع تایمر
         function startTimer() {
             clearInterval(timerInterval);
-            timerSeconds = 60 * 60;
+            timerSeconds = 30 * 60;
             
             timerInterval = setInterval(() => {
                 if (timerSeconds >= 0) {
@@ -1280,6 +1320,11 @@
             if (event.key === 'Enter' && document.getElementById('login-container').style.display !== 'none') {
                 checkPassword();
             }
+        });
+
+        // بارگذاری رمز از فایل هنگام بارگذاری صفحه
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPasswordFromFile();
         });
     </script>
 </body>
