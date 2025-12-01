@@ -6,16 +6,81 @@
     <title>آزمون کاربر و تایپ رایانه - موسسه آموزشی خوارزمی</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* متغیرهای رنگ و استایل */
         :root {
             --primary-color: #1a5f7a;
             --secondary-color: #159895;
             --accent-color: #ffc107;
             --light-color: #f8f9fa;
-            --dark-color: #343a40;
-            --success-color: #28a745;
-            --danger-color: #dc3545;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+            --info-color: #3498db;
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), #159895, #57c4b0);
+            --gradient-success: linear-gradient(135deg, var(--success-color), #27ae60);
+            --gradient-danger: linear-gradient(135deg, var(--danger-color), #c0392b);
+            --gradient-accent: linear-gradient(135deg, var(--accent-color), #ff9800);
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --box-shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         
+        /* انیمیشن‌های سفارشی */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInLeft {
+            from { transform: translateX(-30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes confettiRain {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        /* استایل عمومی */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -24,79 +89,137 @@
         }
         
         body {
-            background-color: #f5f5f5;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
             color: #333;
             line-height: 1.6;
-            padding: 0;
             min-height: 100vh;
+            animation: fadeIn 0.8s ease-out;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(26, 95, 122, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(21, 152, 149, 0.05) 0%, transparent 20%);
+            z-index: -1;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
         }
         
         /* استایل هدر */
         header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: var(--gradient-primary);
             color: white;
-            padding: 20px 0;
+            padding: 25px 0;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-            border-radius: 0 0 15px 15px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 40px;
+            border-radius: 0 0 25px 25px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite linear;
         }
         
         header h1 {
-            font-size: 28px;
-            font-weight: bold;
+            font-size: 32px;
+            font-weight: 800;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: float 3s ease-in-out infinite;
         }
         
         /* استایل دکمه‌ها */
         button {
-            background-color: var(--primary-color);
+            background: var(--gradient-primary);
             color: white;
             border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
+            padding: 14px 24px;
+            border-radius: 12px;
             cursor: pointer;
             font-size: 16px;
-            font-weight: bold;
-            margin: 5px;
-            transition: all 0.3s;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            margin: 8px;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+        
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        button:hover::before {
+            left: 100%;
         }
         
         button:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        button:active {
+            transform: translateY(-2px) scale(0.98);
         }
         
         button.selected {
-            background-color: var(--accent-color);
+            background: var(--gradient-accent);
             color: var(--dark-color);
+            box-shadow: 0 5px 20px rgba(255, 193, 7, 0.4);
         }
         
         button.correct {
-            background-color: var(--success-color);
+            background: var(--gradient-success);
+            box-shadow: 0 5px 20px rgba(46, 204, 113, 0.4);
         }
         
         button.incorrect {
-            background-color: var(--danger-color);
+            background: var(--gradient-danger);
+            box-shadow: 0 5px 20px rgba(231, 76, 60, 0.4);
         }
         
         button.nav-btn {
-            background-color: var(--primary-color);
+            background: var(--gradient-primary);
         }
         
         button.submit-btn {
-            background-color: var(--success-color);
+            background: var(--gradient-success);
+            padding: 16px 32px;
+            font-size: 18px;
         }
         
         button.submit-btn:hover {
-            background-color: #218838;
+            background: linear-gradient(135deg, #27ae60, #219653);
         }
         
         /* استایل منوی اصلی */
@@ -107,171 +230,370 @@
             justify-content: center;
             min-height: 70vh;
             padding: 20px;
+            animation: fadeIn 0.8s ease-out;
         }
         
         .exam-info {
-            background-color: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 40px;
             width: 100%;
             max-width: 800px;
             text-align: center;
+            animation: slideInRight 0.6s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .exam-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--gradient-primary);
         }
         
         .exam-info h2 {
             color: var(--primary-color);
-            margin-bottom: 15px;
-            padding-bottom: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
             border-bottom: 2px solid var(--accent-color);
+            font-size: 26px;
         }
         
         .exam-stats {
             display: flex;
             justify-content: space-around;
-            margin: 20px 0;
+            margin: 25px 0;
+            flex-wrap: wrap;
         }
         
         .stat-item {
             text-align: center;
-            padding: 15px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            min-width: 150px;
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
         .stat-value {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 5px;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 10px;
             color: var(--primary-color);
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
         .stat-label {
-            font-size: 14px;
-            color: #6c757d;
+            font-size: 16px;
+            color: #666;
+            font-weight: 600;
         }
         
         /* استایل بخش سوالات */
         .quiz-container {
             display: none;
-            background-color: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 40px;
+            animation: slideInRight 0.6s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quiz-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--gradient-primary);
         }
         
         .lesson-title {
-            font-size: 28px;
-            font-weight: bold;
+            font-size: 32px;
+            font-weight: 800;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: var(--primary-color);
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--accent-color);
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
         .timer {
-            font-size: 18px;
+            font-size: 24px;
             text-align: center;
-            margin-bottom: 20px;
-            background-color: #e9ecef;
-            padding: 10px;
-            border-radius: 8px;
-            font-weight: bold;
-            color: var(--dark-color);
+            margin-bottom: 25px;
+            background: var(--gradient-primary);
+            padding: 18px;
+            border-radius: 15px;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 5px 15px rgba(26, 95, 122, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s infinite;
+        }
+        
+        .timer.warning {
+            background: var(--gradient-accent);
+            animation: pulse 1s infinite;
+        }
+        
+        .timer.danger {
+            background: var(--gradient-danger);
+            animation: pulse 0.5s infinite;
         }
         
         .question {
-            font-size: 22px;
-            font-weight: bold;
-            margin: 20px 0;
+            font-size: 26px;
+            font-weight: 700;
+            margin: 30px 0;
             text-align: right;
-            line-height: 1.6;
-            padding: 15px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            border-right: 4px solid var(--primary-color);
+            line-height: 1.8;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            border-right: 6px solid var(--primary-color);
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+            position: relative;
+            animation: slideInLeft 0.6s ease-out;
+        }
+        
+        .question::after {
+            content: '?';
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 50px;
+            color: var(--primary-color);
+            opacity: 0.2;
+            font-weight: 900;
         }
         
         .options {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 15px;
+            margin-bottom: 30px;
         }
         
         .option-btn {
             width: 100%;
-            height: 60px;
+            height: 75px;
             text-align: right;
-            font-size: 18px;
-            padding: 0 20px;
-            transition: all 0.2s;
+            font-size: 20px;
+            padding: 0 30px 0 80px;
+            transition: var(--transition);
             display: flex;
             align-items: center;
+            justify-content: flex-end;
+            border-radius: 12px;
+            margin: 12px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option-btn::before {
+            content: attr(data-option);
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
         }
         
         .option-btn:hover {
-            transform: translateX(-5px);
+            transform: translateX(-10px) translateY(-3px);
+            box-shadow: var(--box-shadow-hover);
         }
         
         .navigation {
             display: flex;
             justify-content: center;
-            margin: 20px 0;
+            margin: 30px 0;
             flex-wrap: wrap;
+            gap: 15px;
         }
         
         .question-numbers {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 8px;
-            margin: 20px 0;
+            gap: 12px;
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
         }
         
         .number-btn {
-            width: 45px;
-            height: 45px;
-            font-size: 16px;
+            width: 55px;
+            height: 55px;
+            font-size: 20px;
             font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .number-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .number-btn:hover::after {
+            opacity: 1;
+        }
+        
+        /* نوار پیشرفت */
+        .progress-container {
+            width: 100%;
+            height: 15px;
+            background: #e9ecef;
+            border-radius: 8px;
+            margin: 30px 0;
+            overflow: hidden;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 8px;
+            width: 0%;
+            transition: width 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 2s infinite;
         }
         
         /* استایل صفحه نتایج */
         .results-container {
             display: none;
-            background-color: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 40px;
+            animation: slideInRight 0.6s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .results-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--gradient-primary);
         }
         
         .summary {
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 32px;
+            font-weight: 800;
             text-align: center;
-            margin: 20px 0;
-            padding: 15px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            margin: 30px 0;
+            padding: 25px;
+            background: var(--gradient-primary);
             color: white;
-            border-radius: 10px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(26, 95, 122, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .summary::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1%, transparent 1%);
+            background-size: 20px 20px;
+            animation: float 20s linear infinite;
+        }
+        
+        .pass-animation {
+            background: linear-gradient(45deg, var(--success-color), #27ae60, var(--success-color)) !important;
+            background-size: 400% 400% !important;
+            animation: gradientShift 3s ease infinite !important;
         }
         
         .detailed-results {
-            margin: 20px 0;
+            margin: 30px 0;
         }
         
         .category-result {
-            margin-bottom: 15px;
-            padding: 10px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            border-right: 4px solid var(--primary-color);
+            margin-bottom: 20px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            border-right: 5px solid var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        
+        .category-result:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
         /* استایل راهنما */
@@ -279,19 +601,35 @@
             display: none;
             text-align: right;
             line-height: 2;
-            font-size: 18px;
-            padding: 30px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
+            font-size: 20px;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 40px;
+            animation: slideInRight 0.6s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .help-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--gradient-primary);
         }
         
         .help-container h2 {
             color: var(--primary-color);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
             border-bottom: 2px solid var(--accent-color);
+            font-size: 28px;
         }
         
         /* استایل صفحه ورود رمز */
@@ -302,106 +640,146 @@
             justify-content: center;
             min-height: 70vh;
             padding: 20px;
+            animation: fadeIn 0.8s ease-out;
         }
         
         .login-box {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--box-shadow);
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
             text-align: center;
+            animation: slideInRight 0.6s ease-out;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--gradient-primary);
         }
         
         .login-box h2 {
             color: var(--primary-color);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-size: 28px;
         }
         
         .login-box input {
             width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
+            padding: 16px;
+            margin: 15px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 18px;
+            transition: var(--transition);
+        }
+        
+        .login-box input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(26, 95, 122, 0.2);
+            transform: translateY(-2px);
+            outline: none;
         }
         
         .login-message {
-            margin-top: 15px;
-            color: var(--danger-color);
-            font-weight: bold;
+            margin-top: 20px;
+            font-weight: 600;
+            min-height: 24px;
         }
         
         .loading {
             color: var(--primary-color);
-            margin-top: 15px;
+            margin-top: 20px;
+            font-size: 16px;
         }
         
         /* استایل انتخاب آزمون */
         .exam-type-selection {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
+            gap: 30px;
+            margin: 30px 0;
             flex-wrap: wrap;
         }
         
         .exam-type-btn {
-            width: 200px;
-            height: 80px;
-            font-size: 18px;
+            width: 250px;
+            height: 100px;
+            font-size: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            border-radius: 15px;
+            transition: var(--transition);
         }
         
         .exam-type-btn i {
-            font-size: 24px;
-            margin-bottom: 5px;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .exam-type-btn:hover {
+            transform: translateY(-10px) scale(1.05);
         }
         
         /* استایل فوتر */
         footer {
             text-align: center;
-            padding: 20px 0;
-            margin-top: 30px;
-            font-size: 14px;
-            color: #6c757d;
-            background-color: var(--light-color);
-            border-top: 1px solid #dee2e6;
-            border-radius: 15px 15px 0 0;
+            padding: 25px 0;
+            margin-top: 40px;
+            font-size: 16px;
+            color: #666;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-top: 2px solid var(--primary-color);
+            border-radius: 25px 25px 0 0;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
         }
         
-        /* رسپانسیو */
-        @media (max-width: 768px) {
+        /* استایل‌های رسپانسیو */
+        @media (max-width: 992px) {
             .exam-stats {
-                flex-direction: column;
+                justify-content: center;
+            }
+            
+            .stat-item {
+                min-width: 120px;
             }
             
             .question {
-                font-size: 18px;
+                font-size: 22px;
+                padding: 25px;
             }
             
             .option-btn {
-                font-size: 16px;
-                height: 55px;
+                height: 70px;
+                font-size: 18px;
             }
             
-            .navigation {
-                flex-direction: column;
-                align-items: center;
+            .lesson-title {
+                font-size: 28px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
             }
             
-            .navigation button {
-                width: 100%;
-                margin: 5px 0;
-            }
-            
-            .login-box {
-                width: 90%;
+            header h1 {
+                font-size: 24px;
             }
             
             .exam-type-selection {
@@ -411,14 +789,190 @@
             
             .exam-type-btn {
                 width: 100%;
-                max-width: 300px;
+                max-width: 350px;
+                height: 90px;
             }
+            
+            .question {
+                font-size: 20px;
+                padding: 20px;
+            }
+            
+            .option-btn {
+                height: 65px;
+                font-size: 16px;
+                padding: 0 25px 0 70px;
+            }
+            
+            .option-btn::before {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+            
+            .timer {
+                font-size: 20px;
+                padding: 15px;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .navigation button {
+                width: 100%;
+                max-width: 300px;
+                margin: 8px 0;
+            }
+            
+            .number-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+            
+            .summary {
+                font-size: 24px;
+                padding: 20px;
+            }
+            
+            .login-box {
+                width: 90%;
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .stat-item {
+                min-width: 100px;
+                padding: 15px;
+            }
+            
+            .stat-value {
+                font-size: 24px;
+            }
+            
+            .stat-label {
+                font-size: 14px;
+            }
+            
+            .question {
+                font-size: 18px;
+            }
+            
+            .option-btn {
+                height: 60px;
+                padding: 0 20px 0 60px;
+            }
+            
+            .option-btn::before {
+                width: 30px;
+                height: 30px;
+                left: 15px;
+                font-size: 14px;
+            }
+            
+            .lesson-title {
+                font-size: 22px;
+            }
+            
+            .summary {
+                font-size: 20px;
+            }
+        }
+        
+        /* استایل‌های ویژه برای المان‌های پویا */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 18px 28px;
+            border-radius: 12px;
+            box-shadow: var(--box-shadow-hover);
+            z-index: 10000;
+            animation: slideInRight 0.5s ease-out;
+            max-width: 400px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+        }
+        
+        .notification-content i {
+            font-size: 22px;
+        }
+        
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .loading-content {
+            text-align: center;
+        }
+        
+        .spinner {
+            width: 70px;
+            height: 70px;
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 25px;
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        /* استایل‌های برای نمایش وضعیت پاسخ */
+        .answer-status {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+        }
+        
+        .status-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .status-value {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .status-label {
+            font-size: 14px;
+            color: #666;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>آزمون کاربر و تایپ رایانه - موسسه آموزشی خوارزمی</h1>
+        <h1><i class="fas fa-laptop-code"></i> آزمون کاربر و تایپ رایانه - موسسه آموزشی خوارزمی</h1>
     </header>
     
     <div class="container">
@@ -426,9 +980,9 @@
         <div id="login-container" class="login-container">
             <div class="login-box">
                 <h2><i class="fas fa-lock"></i> ورود به سیستم آزمون</h2>
-                <p>لطفاً رمز عبور را برای دسترسی به آزمون وارد کنید:</p>
-                <input type="password" id="password-input" placeholder="رمز عبور">
-                <button onclick="checkPassword()"><i class="fas fa-sign-in-alt"></i> ورود</button>
+                <p style="margin-bottom: 20px; color: #666;">لطفاً رمز عبور را برای دسترسی به آزمون وارد کنید:</p>
+                <input type="password" id="password-input" placeholder="رمز عبور" autocomplete="off">
+                <button id="login-btn" onclick="checkPassword()"><i class="fas fa-sign-in-alt"></i> ورود به سیستم</button>
                 <p id="login-message" class="login-message"></p>
                 <p id="loading-message" class="loading" style="display: none;">
                     <i class="fas fa-spinner fa-spin"></i> در حال بارگذاری رمز از فایل...
@@ -440,14 +994,14 @@
         <div id="main-menu" class="main-menu" style="display: none;">
             <div class="exam-info">
                 <h2><i class="fas fa-info-circle"></i> انتخاب نوع آزمون</h2>
-                <p>لطفاً نوع آزمون مورد نظر خود را انتخاب کنید:</p>
+                <p style="font-size: 18px; margin-bottom: 20px;">لطفاً نوع آزمون مورد نظر خود را انتخاب کنید:</p>
                 
                 <div class="exam-type-selection">
-                    <button class="exam-type-btn" onclick="selectExamType('user')">
+                    <button class="exam-type-btn" id="user-exam-btn" onclick="selectExamType('user')">
                         <i class="fas fa-desktop"></i>
                         آزمون کاربر رایانه
                     </button>
-                    <button class="exam-type-btn" onclick="selectExamType('typing')">
+                    <button class="exam-type-btn" id="typing-exam-btn" onclick="selectExamType('typing')">
                         <i class="fas fa-keyboard"></i>
                         آزمون تایپ رایانه
                     </button>
@@ -456,7 +1010,7 @@
             
             <div id="user-exam-info" class="exam-info" style="display: none;">
                 <h2><i class="fas fa-info-circle"></i> اطلاعات آزمون کاربر رایانه</h2>
-                <p>این آزمون شامل 20 سوال تصادفی از 60 سوال کاربر رایانه می‌باشد.</p>
+                <p style="font-size: 18px; margin-bottom: 20px;">این آزمون شامل 20 سوال تصادفی از 60 سوال کاربر رایانه می‌باشد.</p>
                 
                 <div class="exam-stats">
                     <div class="stat-item">
@@ -468,24 +1022,28 @@
                         <div class="stat-label">سوال موجود</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-value">70%</div>
-                        <div class="stat-label">حداقل نمره قبولی</div>
+                        <div class="stat-value">6</div>
+                        <div class="stat-label">حداقل درست برای قبولی</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">30</div>
+                        <div class="stat-label">دقیقه زمان</div>
                     </div>
                 </div>
                 
-                <p>مباحث آزمون: ویندوز، اینترنت، ایمیل، برنامه‌های کاربردی</p>
-                <p style="color: var(--accent-color); font-weight: bold; margin-top: 10px;">
+                <p style="margin: 15px 0; font-weight: 600; color: var(--primary-color);">مباحث آزمون: ویندوز، اینترنت، ایمیل، برنامه‌های کاربردی</p>
+                <p style="color: var(--accent-color); font-weight: bold; margin: 20px 0; padding: 15px; background: rgba(255, 193, 7, 0.1); border-radius: 10px;">
                     <i class="fas fa-random"></i> در هر بار اجرا، 20 سوال تصادفی از 60 سوال انتخاب می‌شوند
                 </p>
                 
-                <button onclick="startRandomExam('user')" style="font-size: 20px; padding: 15px 30px; margin-top: 15px;">
+                <button id="start-user-exam-btn" onclick="startRandomExam('user')" style="font-size: 22px; padding: 18px 35px; margin-top: 20px;">
                     <i class="fas fa-play-circle"></i> شروع آزمون کاربر
                 </button>
             </div>
             
             <div id="typing-exam-info" class="exam-info" style="display: none;">
                 <h2><i class="fas fa-info-circle"></i> اطلاعات آزمون تایپ رایانه</h2>
-                <p>این آزمون شامل 20 سوال تصادفی از 60 سوال تایپ رایانه می‌باشد.</p>
+                <p style="font-size: 18px; margin-bottom: 20px;">این آزمون شامل 20 سوال تصادفی از 60 سوال تایپ رایانه می‌باشد.</p>
                 
                 <div class="exam-stats">
                     <div class="stat-item">
@@ -497,28 +1055,32 @@
                         <div class="stat-label">سوال موجود</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-value">70%</div>
-                        <div class="stat-label">حداقل نمره قبولی</div>
+                        <div class="stat-value">6</div>
+                        <div class="stat-label">حداقل درست برای قبولی</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">30</div>
+                        <div class="stat-label">دقیقه زمان</div>
                     </div>
                 </div>
                 
-                <p>مباحث آزمون: نرم‌افزار Word، تایپ، فرمت‌بندی، جدول‌بندی</p>
-                <p style="color: var(--accent-color); font-weight: bold; margin-top: 10px;">
+                <p style="margin: 15px 0; font-weight: 600; color: var(--primary-color);">مباحث آزمون: نرم‌افزار Word، تایپ، فرمت‌بندی، جدول‌بندی</p>
+                <p style="color: var(--accent-color); font-weight: bold; margin: 20px 0; padding: 15px; background: rgba(255, 193, 7, 0.1); border-radius: 10px;">
                     <i class="fas fa-random"></i> در هر بار اجرا، 20 سوال تصادفی از 60 سوال انتخاب می‌شوند
                 </p>
                 
-                <button onclick="startRandomExam('typing')" style="font-size: 20px; padding: 15px 30px; margin-top: 15px;">
+                <button id="start-typing-exam-btn" onclick="startRandomExam('typing')" style="font-size: 22px; padding: 18px 35px; margin-top: 20px;">
                     <i class="fas fa-play-circle"></i> شروع آزمون تایپ
                 </button>
             </div>
             
-            <div style="margin-top: 20px;">
-                <button onclick="backToExamSelection()" id="back-to-selection-btn" style="display: none;">
+            <div style="margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+                <button id="back-to-selection-btn" onclick="backToExamSelection()" style="display: none;">
                     <i class="fas fa-arrow-right"></i> بازگشت به انتخاب آزمون
                 </button>
-                <button onclick="showHelp()"><i class="fas fa-question-circle"></i> راهنما</button>
-                <button onclick="logout()" style="background-color: var(--danger-color);">
-                    <i class="fas fa-sign-out-alt"></i> خروج
+                <button id="help-btn" onclick="showHelp()"><i class="fas fa-question-circle"></i> راهنمای آزمون</button>
+                <button id="logout-btn" onclick="logout()" style="background: var(--gradient-danger);">
+                    <i class="fas fa-sign-out-alt"></i> خروج از سیستم
                 </button>
             </div>
         </div>
@@ -526,18 +1088,39 @@
         <!-- صفحه آزمون -->
         <div id="quiz-container" class="quiz-container">
             <div class="lesson-title" id="lesson-title">آزمون</div>
-            <div class="timer" id="timer">زمان: 30:00</div>
+            <div class="timer" id="timer">⏱️ زمان: 30:00</div>
+            
+            <!-- نوار وضعیت پاسخ‌ها -->
+            <div class="answer-status" id="answer-status" style="display: none;">
+                <div class="status-item">
+                    <div class="status-value" id="correct-count">0</div>
+                    <div class="status-label">سوالات درست</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value" id="incorrect-count">0</div>
+                    <div class="status-label">سوالات غلط</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value" id="unanswered-count">20</div>
+                    <div class="status-label">سوالات بی‌پاسخ</div>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            
             <div class="question" id="question"></div>
             <div class="options" id="options">
-                <button class="option-btn" onclick="selectOption(0)"></button>
-                <button class="option-btn" onclick="selectOption(1)"></button>
-                <button class="option-btn" onclick="selectOption(2)"></button>
-                <button class="option-btn" onclick="selectOption(3)"></button>
+                <button class="option-btn" id="option-0" onclick="selectOption(0)" data-option="A"></button>
+                <button class="option-btn" id="option-1" onclick="selectOption(1)" data-option="B"></button>
+                <button class="option-btn" id="option-2" onclick="selectOption(2)" data-option="C"></button>
+                <button class="option-btn" id="option-3" onclick="selectOption(3)" data-option="D"></button>
             </div>
             <div class="navigation">
-                <button class="nav-btn" onclick="prevQuestion()"><i class="fas fa-arrow-right"></i> قبلی</button>
-                <button class="nav-btn" onclick="nextQuestion()">بعدی <i class="fas fa-arrow-left"></i></button>
-                <button class="submit-btn" onclick="submitQuiz()"><i class="fas fa-check-circle"></i> پایان آزمون</button>
+                <button class="nav-btn" id="prev-btn" onclick="prevQuestion()"><i class="fas fa-arrow-right"></i> سوال قبلی</button>
+                <button class="nav-btn" id="next-btn" onclick="nextQuestion()">سوال بعدی <i class="fas fa-arrow-left"></i></button>
+                <button class="submit-btn" id="submit-btn" onclick="submitQuiz()"><i class="fas fa-check-circle"></i> پایان آزمون</button>
             </div>
             <div class="question-numbers" id="question-numbers"></div>
         </div>
@@ -552,16 +1135,16 @@
             
             <div class="question" id="result-question"></div>
             <div class="options" id="result-options">
-                <button class="option-btn" disabled></button>
-                <button class="option-btn" disabled></button>
-                <button class="option-btn" disabled></button>
-                <button class="option-btn" disabled></button>
+                <button class="option-btn" id="result-option-0" disabled data-option="A"></button>
+                <button class="option-btn" id="result-option-1" disabled data-option="B"></button>
+                <button class="option-btn" id="result-option-2" disabled data-option="C"></button>
+                <button class="option-btn" id="result-option-3" disabled data-option="D"></button>
             </div>
             <div class="navigation">
-                <button class="nav-btn" onclick="prevResultQuestion()"><i class="fas fa-arrow-right"></i> قبلی</button>
-                <button class="nav-btn" onclick="nextResultQuestion()">بعدی <i class="fas fa-arrow-left"></i></button>
-                <button class="nav-btn" onclick="backToMainMenu()"><i class="fas fa-home"></i> بازگشت به منو</button>
-                <button class="nav-btn" onclick="startSameExamAgain()" style="background-color: var(--secondary-color);">
+                <button class="nav-btn" id="prev-result-btn" onclick="prevResultQuestion()"><i class="fas fa-arrow-right"></i> سوال قبلی</button>
+                <button class="nav-btn" id="next-result-btn" onclick="nextResultQuestion()">سوال بعدی <i class="fas fa-arrow-left"></i></button>
+                <button class="nav-btn" id="back-to-menu-btn" onclick="backToMainMenu()"><i class="fas fa-home"></i> بازگشت به منو</button>
+                <button class="nav-btn" id="new-exam-btn" onclick="startSameExamAgain()" style="background: var(--gradient-primary);">
                     <i class="fas fa-redo"></i> آزمون جدید
                 </button>
             </div>
@@ -571,20 +1154,25 @@
         <!-- صفحه راهنما -->
         <div id="help-container" class="help-container">
             <h2><i class="fas fa-info-circle"></i> راهنمای استفاده از سیستم آزمون</h2>
-            <p>
-                <i class="fas fa-check"></i> این سیستم شامل دو نوع آزمون: کاربر رایانه و تایپ رایانه می‌باشد.<br>
-                <i class="fas fa-check"></i> هر آزمون شامل 60 سوال در بانک سوالات می‌باشد.<br>
-                <i class="fas fa-check"></i> در هر بار آزمون، 20 سوال تصادفی از 60 سوال انتخاب می‌شود.<br>
-                <i class="fas fa-check"></i> زمان هر آزمون 30 دقیقه می‌باشد.<br>
-                <i class="fas fa-check"></i> شماره سوال‌ها پایین صفحه برای رفتن به سوال دلخواه است.<br>
-                <i class="fas fa-check"></i> با کلیدهای جهت‌نما می‌توانید بین سوالات حرکت کنید.<br>
-                <i class="fas fa-check"></i> پس از پاسخ دادن به همه سوالات، روی پایان آزمون کلیک کنید.<br>
-                <i class="fas fa-check"></i> در صفحه نتایج می‌توانید پاسخ صحیح و غلط خود را ببینید.<br>
-                <i class="fas fa-check"></i> برای قبولی در آزمون، حداقل 70% نمره لازم است.<br>
-                <i class="fas fa-check"></i> آزمون کاربر رایانه شامل مباحث: ویندوز، اینترنت، ایمیل، برنامه‌های کاربردی می‌باشد.<br>
-                <i class="fas fa-check"></i> آزمون تایپ رایانه شامل مباحث: نرم‌افزار Word، تایپ، فرمت‌بندی، جدول‌بندی می‌باشد.<br>
-                <i class="fas fa-check"></i> در هر بار اجرا، 20 سوال تصادفی از 60 سوال انتخاب می‌شوند.<br><br>
-                موفق باشید!
+            <p style="margin-bottom: 20px;">
+                <i class="fas fa-check" style="color: var(--success-color);"></i> این سیستم شامل دو نوع آزمون: کاربر رایانه و تایپ رایانه می‌باشد.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> هر آزمون شامل 60 سوال در بانک سوالات می‌باشد.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> در هر بار آزمون، 20 سوال تصادفی از 60 سوال انتخاب می‌شود.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> زمان هر آزمون 30 دقیقه می‌باشد.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> <strong>شرط قبولی: حداقل 6 سوال درست از 20 سوال</strong><br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> شماره سوال‌ها پایین صفحه برای رفتن به سوال دلخواه است.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> با کلیدهای جهت‌نما می‌توانید بین سوالات حرکت کنید.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> پس از پاسخ دادن به همه سوالات، روی پایان آزمون کلیک کنید.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> در صفحه نتایج می‌توانید پاسخ صحیح و غلط خود را ببینید.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> آزمون کاربر رایانه شامل مباحث: ویندوز، اینترنت، ایمیل، برنامه‌های کاربردی می‌باشد.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> آزمون تایپ رایانه شامل مباحث: نرم‌افزار Word، تایپ، فرمت‌بندی، جدول‌بندی می‌باشد.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> در هر بار اجرا، 20 سوال تصادفی از 60 سوال انتخاب می‌شوند.<br><br>
+                <strong style="color: var(--primary-color);">میانبرهای صفحه کلید:</strong><br>
+                <i class="fas fa-keyboard" style="color: var(--accent-color);"></i> کلیدهای 1-4: انتخاب گزینه‌ها<br>
+                <i class="fas fa-keyboard" style="color: var(--accent-color);"></i> کلیدهای جهت‌دار: حرکت بین سوالات<br>
+                <i class="fas fa-keyboard" style="color: var(--accent-color);"></i> Ctrl+Enter: ثبت پاسخ/پایان آزمون<br>
+                <i class="fas fa-keyboard" style="color: var(--accent-color);"></i> Escape: بازگشت به منو<br><br>
+                <span style="color: var(--success-color); font-weight: bold;">موفق باشید!</span>
             </p>
             <button onclick="backToMainMenu()"><i class="fas fa-arrow-right"></i> بازگشت به منو</button>
         </div>
@@ -592,11 +1180,11 @@
     
     <footer>
         <p>© 2025 آزمون کاربر و تایپ رایانه - موسسه آموزشی خوارزمی. تمام حقوق محفوظ است.</p>
-        <p>SAY4s</p>
+        <p>SAY4s | طراحی و توسعه: تیم فنی خوارزمی</p>
     </footer>
 
     <script>
-        // داده‌های سوالات کاربر رایانه (60 سوال کامل)
+        // داده‌های کامل سوالات کاربر رایانه (60 سوال)
         const userQuestions = [
             {
                 "question": "ابر سایت هایی که برای جستجوی اطلاعات استفاده می شوند چه نام دارند؟",
@@ -653,79 +1241,79 @@
                 "category": "ویندوز"
             },
             {
-                "question": "با استفاده از کدام برنامه میتوان از اطلاعات سیستم نسخه ی پشتیبان تهیه کرد؟",
+                "question": "با استفاده از کدام برنامه میتوان از اطلاعات سیستم نسخه ی پشتیبان تهیه کرد？",
                 "options": ["System Restore", "Backup & Restore", "Disk Cleanup", "Defragment"],
                 "answer": "Backup & Restore",
                 "category": "ویندوز"
             },
             {
-                "question": "با استفاده از کدام دستگاه می توان تصاویر و متن ها را به کامپیوتر انتقال داد؟",
+                "question": "با استفاده از کدام دستگاه می توان تصاویر و متن ها را به کامپیوتر انتقال داد？",
                 "options": ["Printer", "Scanner", "Monitor", "Keyboard"],
                 "answer": "Scanner",
                 "category": "سخت افزار"
             },
             {
-                "question": "با استفاده از کدام دستور میتوان نام یک پوشه یا فایل را تغییر داد؟",
+                "question": "با استفاده از کدام دستور میتوان نام یک پوشه یا فایل را تغییر داد？",
                 "options": ["Move", "Copy", "Ren", "Del"],
                 "answer": "Ren",
                 "category": "ویندوز"
             },
             {
-                "question": "با استفاده از کدام دکمه میتوان شکل آیکن های میزکار را تغییر داد؟",
+                "question": "با استفاده از کدام دکمه میتوان شکل آیکن های میزکار را تغییر داد？",
                 "options": ["Change Desktop Background", "Change Icon", "Screen Resolution", "Personalize"],
                 "answer": "Change Icon",
                 "category": "ویندوز"
             },
             {
-                "question": "با استفاده از کدام کلید می توان نوارمنو را در پنجره ها نمایش داد؟",
+                "question": "با استفاده از کدام کلید می توان نوارمنو را در پنجره ها نمایش داد？",
                 "options": ["Ctrl", "Alt", "Shift", "F10"],
                 "answer": "Alt",
                 "category": "ویندوز"
             },
             {
-                "question": "با استفاده از کدام گزینه در برنامه Paint می توان ناحیه ی انتخاب شده را برعکس کرد؟",
+                "question": "با استفاده از کدام گزینه در برنامه Paint می توان ناحیه ی انتخاب شده را برعکس کرد？",
                 "options": ["Rotate", "Flip", "Invert Selection", "Resize"],
                 "answer": "Invert Selection",
                 "category": "برنامه‌های کاربردی"
             },
             {
-                "question": "با استفاده از کدام گزینه می توان جهت صفحه نمایش را تنظیم کرد؟",
+                "question": "با استفاده از کدام گزینه می توان جهت صفحه نمایش را تنظیم کرد？",
                 "options": ["Resolution", "Orientation", "Color", "Brightness"],
                 "answer": "Orientation",
                 "category": "ویندوز"
             },
             {
-                "question": "با استفاده از کدام گزینه می توان یک نامه را به شخص ثالث ارجاع داد؟",
+                "question": "با استفاده از کدام گزینه می توان یک نامه را به شخص ثالث ارجاع داد？",
                 "options": ["Reply", "Reply All", "Forward", "Send"],
                 "answer": "Forward",
                 "category": "ایمیل"
             },
             {
-                "question": "با انتخاب کدام گزینه آیکن های روی نوار وظیفه بصورت کوچک نمایش داده می شوند؟",
+                "question": "با انتخاب کدام گزینه آیکن های روی نوار وظیفه بصورت کوچک نمایش داده می شوند？",
                 "options": ["Use small taskbar buttons", "Auto-hide the taskbar", "Lock the taskbar", "Show desktop icons"],
                 "answer": "Use small taskbar buttons",
                 "category": "ویندوز"
             },
             {
-                "question": "با انتخاب کدام گزینه تصویر با اندازه واقعی در مرکز desktop قرار میگیرد؟",
+                "question": "با انتخاب کدام گزینه تصویر با اندازه واقعی در مرکز desktop قرار میگیرد？",
                 "options": ["Stretch", "Tile", "Center", "Fit"],
                 "answer": "Center",
                 "category": "ویندوز"
             },
             {
-                "question": "با انتخاب کدام گزینه درمنوی کلیک راست آیکن های روی میز کار به صورت اتوماتیک مرتب نمایش داده می شود؟",
+                "question": "با انتخاب کدام گزینه درمنوی کلیک راست آیکن های روی میز کار به صورت اتوماتیک مرتب نمایش داده می شود？",
                 "options": ["Auto arrange icons", "Align icons to grid", "Show desktop icons", "Refresh"],
                 "answer": "Auto arrange icons",
                 "category": "ویندوز"
             },
             {
-                "question": "با انتخاب کدام گزینه عمل جابجایی بین کاربران با بسته شدن برنامه های در حال اجرا اتفاق می افتد؟",
+                "question": "با انتخاب کدام گزینه عمل جابجایی بین کاربران با بسته شدن برنامه های در حال اجرا اتفاق می افتد？",
                 "options": ["Switch User", "Log off", "Lock", "Sleep"],
                 "answer": "Log off",
                 "category": "ویندوز"
             },
             {
-                "question": "با انتخاب کدام گزینه عمل جابه جایی بین کاربران بدون بستن برنامه های در حال اجرا اتفاق می افتد؟",
+                "question": "با انتخاب کدام گزینه عمل جابه جایی بین کاربران بدون بستن برنامه های در حال اجرا اتفاق می افتد？",
                 "options": ["Switch User", "Log off", "Lock", "Sleep"],
                 "answer": "Switch User",
                 "category": "ویندوز"
@@ -737,49 +1325,49 @@
                 "category": "ویندوز"
             },
             {
-                "question": "با انتخاب کدام گزینه می توانید چاپگر را در شبکه ای که به آن متصل هستید به اشتراک بگذارید؟",
+                "question": "با انتخاب کدام گزینه می توانید چاپگر را در شبکه ای که به آن متصل هستید به اشتراک بگذارید？",
                 "options": ["Print Test Page", "Set as Default Printer", "Share this printer", "Printer Properties"],
                 "answer": "Share this printer",
                 "category": "ویندوز"
             },
             {
-                "question": "با کلیک راست بر روی چاپگر موردنظر، با انتخاب کدام گزینه چاپگر به عنوان پیشفرض در نظر گرفته میشود؟",
+                "question": "با کلیک راست بر روی چاپگر موردنظر، با انتخاب کدام گزینه چاپگر به عنوان پیشفرض در نظر گرفته میشود？",
                 "options": ["Printing Preferences", "Set as Default Printer", "Pause Printing", "See What's Printing"],
                 "answer": "Set as Default Printer",
                 "category": "ویندوز"
             },
             {
-                "question": "با کلیک راست و انتخاب گزینه New کدام گزینه جهت ساخت پوشه می باشد؟",
+                "question": "با کلیک راست و انتخاب گزینه New کدام گزینه جهت ساخت پوشه می باشد？",
                 "options": ["Shortcut", "Text Document", "Folder", "Bitmap Image"],
                 "answer": "Folder",
                 "category": "ویندوز"
             },
             {
-                "question": "برای اجرای برنامه ها از کدام دستور استفاده می کنیم؟",
+                "question": "برای اجرای برنامه ها از کدام دستور استفاده می کنیم？",
                 "options": ["Start", "Search", "Run", "Execute"],
                 "answer": "Run",
                 "category": "ویندوز"
             },
             {
-                "question": "برای اضافه کردن نام سایت به لیست علاقه مندی خود از کدام گزینه استفاده می کنیم؟",
+                "question": "برای اضافه کردن نام سایت به لیست علاقه مندی خود از کدام گزینه استفاده می کنیم？",
                 "options": ["Add to Favorites", "Subscribe", "Bookmark", "Save Page"],
                 "answer": "Add to Favorites",
                 "category": "اینترنت"
             },
             {
-                "question": "برای اندازه گیری حافظه هایی مانند CD از کدام واحد حافظه استفاده می شود؟",
+                "question": "برای اندازه گیری حافظه هایی مانند CD از کدام واحد حافظه استفاده می شود？",
                 "options": ["KB", "MB", "GB", "TB"],
                 "answer": "MB",
                 "category": "مبانی کامپیوتر"
             },
             {
-                "question": "برای اندازه گیری حافظه هایی مانند انواع کلیپ های صوتی و تصویری از کدام واحد می توان استفاده کرد؟",
+                "question": "برای اندازه گیری حافظه هایی مانند انواع کلیپ های صوتی و تصویری از کدام واحد می توان استفاده کرد？",
                 "options": ["KB", "MB", "GB", "TB"],
                 "answer": "MB",
                 "category": "مبانی کامپیوتر"
             },
             {
-                "question": "برای ایجاد امضا از کدام گزینه می توان استفاده نمود؟",
+                "question": "برای ایجاد امضا از کدام گزینه می توان استفاده نمود？",
                 "options": ["Theme", "Signature", "Stationery", "Font"],
                 "answer": "Signature",
                 "category": "ایمیل"
@@ -887,7 +1475,7 @@
                 "category": "ویندوز"
             },
             {
-                "question": "برای حذف یک برنامه از صف چاپ کدام گزینه استفاده می شود？",
+                "question": "برای حذف یک برنامه از صف چاپ کدام گزینه استفاده می شود؟",
                 "options": ["Pause", "Resume", "Cancel", "Restart"],
                 "answer": "Cancel",
                 "category": "ویندوز"
@@ -965,14 +1553,14 @@
                 "category": "اینترنت"
             },
             {
-                "question": "به دریافت فایل از اینترنت چه می گویند؟",
+                "question": "به دریافت فایل از اینترنت چه می گویند？",
                 "options": ["Download", "Upload", "Copy", "Paste"],
                 "answer": "Download",
                 "category": "اینترنت"
             }
         ];
 
-        // داده‌های سوالات تایپ رایانه (60 سوال کامل)
+        // داده‌های کامل سوالات تایپ رایانه (60 سوال)
         const typingQuestions = [
             {
                 "question": "از کدام حالت نمایش برای طراحی صفحه وب در محیط Word استفاده میشود؟",
@@ -981,127 +1569,127 @@
                 "category": "Word"
             },
             {
-                "question": "از کدام دکمه جهت اعمال Tab استفاده میشود؟",
+                "question": "از کدام دکمه جهت اعمال Tab استفاده میشود？",
                 "options": ["Set", "Clear", "Default", "OK"],
                 "answer": "Set",
                 "category": "Word"
             },
             {
-                "question": "از کدام گزینه برای باز کردن یک فایل از قبل ذخیره شده استفاده میشود؟",
+                "question": "از کدام گزینه برای باز کردن یک فایل از قبل ذخیره شده استفاده میشود？",
                 "options": ["Open", "New", "Save", "Save As"],
                 "answer": "Open",
                 "category": "Word"
             },
             {
-                "question": "از کدام گزینه برای تعیین نحوه ی نمایش و قالب بندی شماره ها استفاده میشود؟",
+                "question": "از کدام گزینه برای تعیین نحوه ی نمایش و قالب بندی شماره ها استفاده میشود？",
                 "options": ["Number Format", "Bullet Format", "Paragraph", "Style"],
                 "answer": "Number Format",
                 "category": "Word"
             },
             {
-                "question": "از کدام منوی IE برای انجام تنظیمات استفاده میشود؟",
+                "question": "از کدام منوی IE برای انجام تنظیمات استفاده میشود？",
                 "options": ["Tools", "File", "Edit", "View"],
                 "answer": "Tools",
                 "category": "اینترنت"
             },
             {
-                "question": "اشکال مربوط به طراحی فلوچارت در کدام قسمت وجود دارد؟",
+                "question": "اشکال مربوط به طراحی فلوچارت در کدام قسمت وجود دارد？",
                 "options": ["Flowchart", "Basic Shapes", "Block Arrows", "Callouts"],
                 "answer": "Flowchart",
                 "category": "Word"
             },
             {
-                "question": "اشکال هندسی پایه در کدام قسمت از ابزار Shape قرار دارند؟",
+                "question": "اشکال هندسی پایه در کدام قسمت از ابزار Shape قرار دارند？",
                 "options": ["Basic Shapes", "Flowchart", "Block Arrows", "Stars and Banners"],
                 "answer": "Basic Shapes",
                 "category": "Word"
             },
             {
-                "question": "اگر بخواهیم صفحات ۲ و ۳ و ۴ از یک سند چاپ شوند از کدام عملگر استفاده میکنیم؟",
+                "question": "اگر بخواهیم صفحات ۲ و ۳ و ۴ از یک سند چاپ شوند از کدام عملگر استفاده میکنیم？",
                 "options": ["2,3,4", "2-4", "2;3;4", "2 3 4"],
                 "answer": "2,3,4",
                 "category": "Word"
             },
             {
-                "question": "اگر بخواهیم کاغذ چاپ به صورت افقی و خوابیده باشد کدام گزینه باید در نظر گرفته شود؟",
+                "question": "اگر بخواهیم کاغذ چاپ به صورت افقی و خوابیده باشد کدام گزینه باید در نظر گرفته شود？",
                 "options": ["Landscape", "Portrait", "Margins", "Size"],
                 "answer": "Landscape",
                 "category": "Word"
             },
             {
-                "question": "اگر بخواهیم هنگام طراحی، شکل دایره رسم کنیم کدام کلید را باید نگه داریم؟",
+                "question": "اگر بخواهیم هنگام طراحی، شکل دایره رسم کنیم کدام کلید را باید نگه داریم？",
                 "options": ["Shift", "Ctrl", "Alt", "Tab"],
                 "answer": "Shift",
                 "category": "Word"
             },
             {
-                "question": "اگر در هنگام حذف یک سلول در جدول بخواهیم سطر شامل‌کننده آن خانه را حذف کنیم، چه گزینه‌ای باید انتخاب شود؟",
+                "question": "اگر در هنگام حذف یک سلول در جدول بخواهیم سطر شامل‌کننده آن خانه را حذف کنیم، چه گزینه‌ای باید انتخاب شود？",
                 "options": ["Delete entire row", "Delete entire column", "Delete cells", "Delete table"],
                 "answer": "Delete entire row",
                 "category": "Word"
             },
             {
-                "question": "اگر زیر واژه‌ای که به لاتین نوشته شده است، خط موج‌دار قرمز کشیده شود، به چه معناست؟",
+                "question": "اگر زیر واژه‌ای که به لاتین نوشته شده است، خط موج‌دار قرمز کشیده شود، به چه معناست？",
                 "options": ["غلط املایی دارد", "غلط گرامری دارد", "معنی ندارد", "تکرار شده است"],
                 "answer": "غلط املایی دارد",
                 "category": "Word"
             },
             {
-                "question": "انتخاب کدام گزینه در منوی View سبب نمایش خطوط شبکه در صفحه می‌شود؟",
+                "question": "انتخاب کدام گزینه در منوی View سبب نمایش خطوط شبکه در صفحه می‌شود？",
                 "options": ["Gridlines", "Ruler", "Navigation Pane", "Thumbnails"],
                 "answer": "Gridlines",
                 "category": "Word"
             },
             {
-                "question": "انتخاب کدام گزینه سبب ادغام خانه‌های جدول می‌شود؟",
+                "question": "انتخاب کدام گزینه سبب ادغام خانه‌های جدول می‌شود？",
                 "options": ["Merge", "Split", "Combine", "Join"],
                 "answer": "Merge",
                 "category": "Word"
             },
             {
-                "question": "انتخاب کدام گزینه سبب ضخیم شدن متن می‌شود؟",
+                "question": "انتخاب کدام گزینه سبب ضخیم شدن متن می‌شود？",
                 "options": ["Bold", "Italic", "Underline", "Strikethrough"],
                 "answer": "Bold",
                 "category": "Word"
             },
             {
-                "question": "انتخاب کدام گزینه سبب میشود تا متن از هر دو جهت عمودی و افقی در وسط سلول قرار گیرد؟",
+                "question": "انتخاب کدام گزینه سبب میشود تا متن از هر دو جهت عمودی و افقی در وسط سلول قرار گیرد？",
                 "options": ["Align Center", "Align Left", "Align Right", "Justify"],
                 "answer": "Align Center",
                 "category": "Word"
             },
             {
-                "question": "انتخاب کدام گزینه سبب میشود کلمه خطادار به فرهنگ لغات اضافه شود؟",
+                "question": "انتخاب کدام گزینه سبب میشود کلمه خطادار به فرهنگ لغات اضافه شود？",
                 "options": ["Add to Dictionary", "Ignore All", "Ignore Once", "Change All"],
                 "answer": "Add to Dictionary",
                 "category": "Word"
             },
             {
-                "question": "انتخاب کدام گزینه سبب نادیده گرفتن خطاهای یک کلمه در سند می‌شود؟",
+                "question": "انتخاب کدام گزینه سبب نادیده گرفتن خطاهای یک کلمه در سند می‌شود？",
                 "options": ["Ignore All", "Add to Dictionary", "Change", "Change All"],
                 "answer": "Ignore All",
                 "category": "Word"
             },
             {
-                "question": "اندازه پیش‌فرض Tab چند سانتی‌متر می‌باشد؟",
+                "question": "اندازه پیش‌فرض Tab چند سانتی‌متر می‌باشد？",
                 "options": ["1.27", "2.54", "1.0", "1.5"],
                 "answer": "1.27",
                 "category": "Word"
             },
             {
-                "question": "آیکن در گوشه پایین جدول چه عملی انجام می‌دهد؟",
+                "question": "آیکن در گوشه پایین جدول چه عملی انجام می‌دهد？",
                 "options": ["گزینه 1 و 2", "پاک کردن جدول", "انتخاب جدول", "هیچکدام"],
                 "answer": "گزینه 1 و 2",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام ابزار می توان قالب‌بندی یک متن را روی متن دیگر کپی کرد؟",
+                "question": "با استفاده از کدام ابزار می توان قالب‌بندی یک متن را روی متن دیگر کپی کرد？",
                 "options": ["Format Painter", "Copy", "Paste", "Style"],
                 "answer": "Format Painter",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام جلوه می‌توان به متن انعکاس داد؟",
+                "question": "با استفاده از کدام جلوه می‌توان به متن انعکاس داد？",
                 "options": ["Reflection", "Shadow", "Glow", "3D Rotation"],
                 "answer": "Reflection",
                 "category": "Word"
@@ -1113,97 +1701,97 @@
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام کلید میتوان حروف بعد از مکان نما را حذف نمود؟",
+                "question": "با استفاده از کدام کلید میتوان حروف بعد از مکان نما را حذف نمود？",
                 "options": ["Delete", "Backspace", "Insert", "Home"],
                 "answer": "Delete",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام کلیدها میتوان در خانه های جدول به سمت عقب برگشت؟",
+                "question": "با استفاده از کدام کلیدها میتوان در خانه های جدول به سمت عقب برگشت？",
                 "options": ["Shift + Tab", "Ctrl + Tab", "Alt + Tab", "Tab"],
                 "answer": "Shift + Tab",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام گزینه می توان اشکال را به صورت افقی قرینه کرد؟",
+                "question": "با استفاده از کدام گزینه می توان اشکال را به صورت افقی قرینه کرد？",
                 "options": ["Flip Horizontal", "Flip Vertical", "Rotate", "Align"],
                 "answer": "Flip Horizontal",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام گزینه می توان سطری را که مکان نما در آن قرار دارد انتخاب نمود؟",
+                "question": "با استفاده از کدام گزینه می توان سطری را که مکان نما در آن قرار دارد انتخاب نمود？",
                 "options": ["Select Row", "Select Column", "Select Table", "Select All"],
                 "answer": "Select Row",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام گزینه می توان یک صفحه ی جدید با طرح خاص ایجاد کرد؟",
+                "question": "با استفاده از کدام گزینه می توان یک صفحه ی جدید با طرح خاص ایجاد کرد？",
                 "options": ["Cover Page", "Blank Page", "Page Break", "Section Break"],
                 "answer": "Cover Page",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام گزینه میتوان اشکال را گروه بندی کرد؟",
+                "question": "با استفاده از کدام گزینه میتوان اشکال را گروه بندی کرد？",
                 "options": ["Group", "Combine", "Merge", "Attach"],
                 "answer": "Group",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام گزینه میتوان برای یک Symbol کلید میانبر ایجاد کرد؟",
+                "question": "با استفاده از کدام گزینه میتوان برای یک Symbol کلید میانبر ایجاد کرد？",
                 "options": ["Shortcut Key", "Hotkey", "Quick Access", "Keyboard Shortcut"],
                 "answer": "Shortcut Key",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام گزینه میتوان عمل جایگزینی را به صورت یکجا بر روی کلیه ی كلمات متن انجام داد؟",
+                "question": "با استفاده از کدام گزینه میتوان عمل جایگزینی را به صورت یکجا بر روی کلیه ی كلمات متن انجام داد？",
                 "options": ["Replace All", "Replace", "Find All", "Change All"],
                 "answer": "Replace All",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه از Wrap Text تصویر زیر نوشته ها قرار میگیرد؟",
+                "question": "با انتخاب کدام گزینه از Wrap Text تصویر زیر نوشته ها قرار میگیرد？",
                 "options": ["Behind Text", "In Front of Text", "Square", "Tight"],
                 "answer": "Behind Text",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه از قسمت Section Breaks، بخش جدید در صفحه های فرد تولید میشود؟",
+                "question": "با انتخاب کدام گزینه از قسمت Section Breaks، بخش جدید در صفحه های فرد تولید میشود？",
                 "options": ["Odd Page", "Even Page", "Next Page", "Continuous"],
                 "answer": "Odd Page",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه تمام حروف لاتین به صورت کوچک نمایش داده میشود؟",
+                "question": "با انتخاب کدام گزینه تمام حروف لاتین به صورت کوچک نمایش داده میشود？",
                 "options": ["Lowercase", "Uppercase", "Sentence case", "Capitalize Each Word"],
                 "answer": "Lowercase",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه فقط صفحه ای که در آن هستید چاپ می شود؟",
+                "question": "با انتخاب کدام گزینه فقط صفحه ای که در آن هستید چاپ می شود？",
                 "options": ["Print Current Page", "Print All", "Print Selection", "Print Range"],
                 "answer": "Print Current Page",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه متن در وسط و چپ خانه جدول قرار می گیرد؟",
+                "question": "با انتخاب کدام گزینه متن در وسط و چپ خانه جدول قرار می گیرد？",
                 "options": ["Align Center Left", "Align Center", "Align Left", "Align Top Left"],
                 "answer": "Align Center Left",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه می توان برای صفحه ی اول سرصفحه یا پاصفحه متفاوت ایجاد کرد؟",
+                "question": "با انتخاب کدام گزینه می توان برای صفحه ی اول سرصفحه یا پاصفحه متفاوت ایجاد کرد？",
                 "options": ["Different First Page", "Different Odd & Even Pages", "Show Document Text", "Header from Top"],
                 "answer": "Different First Page",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه میتوان جهت کاغذ را به صورت خوابیده نمایش داد؟",
+                "question": "با انتخاب کدام گزینه میتوان جهت کاغذ را به صورت خوابیده نمایش داد？",
                 "options": ["Landscape", "Portrait", "Margins", "Size"],
                 "answer": "Landscape",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه میتوان متن را به صورت اندیس پایین نمایش داد؟",
+                "question": "با انتخاب کدام گزینه میتوان متن را به صورت اندیس پایین نمایش داد？",
                 "options": ["Subscript", "Superscript", "Strikethrough", "Double strikethrough"],
                 "answer": "Subscript",
                 "category": "Word"
@@ -1215,7 +1803,7 @@
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه نوار Ribbon حداقل یا مینیمم می شود؟",
+                "question": "با انتخاب کدام گزینه نوار Ribbon حداقل یا مینیمم می شود？",
                 "options": ["Minimize Ribbon", "Auto-hide Ribbon", "Close Ribbon", "Hide Ribbon"],
                 "answer": "Minimize Ribbon",
                 "category": "Word"
@@ -1227,19 +1815,19 @@
                 "category": "Word"
             },
             {
-                "question": "با فشردن کدام دکمه میتوان به ابتدای سطر جاری منتقل شد؟",
+                "question": "با فشردن کدام دکمه میتوان به ابتدای سطر جاری منتقل شد？",
                 "options": ["Home", "End", "Page Up", "Page Down"],
                 "answer": "Home",
                 "category": "Word"
             },
             {
-                "question": "با فشردن کدام کلید محتویات جدول پاک میشود؟",
+                "question": "با فشردن کدام کلید محتویات جدول پاک میشود？",
                 "options": ["Delete", "Backspace", "Space", "Enter"],
                 "answer": "Delete",
                 "category": "Word"
             },
             {
-                "question": "با فشردن کدام کلیدها می توان به اولین صفحه فایل یا سند رفت؟",
+                "question": "با فشردن کدام کلیدها می توان به اولین صفحه فایل یا سند رفت？",
                 "options": ["Ctrl + Home", "Ctrl + End", "Home", "End"],
                 "answer": "Ctrl + Home",
                 "category": "Word"
@@ -1251,31 +1839,31 @@
                 "category": "Word"
             },
             {
-                "question": "با کدام گزینه میتوان مشخصات و ویژگیهای یک جدول را مشاهده کرد؟",
+                "question": "با کدام گزینه میتوان مشخصات و ویژگیهای یک جدول را مشاهده کرد？",
                 "options": ["Properties", "Table Properties", "Format Table", "Table Options"],
                 "answer": "Properties",
                 "category": "Word"
             },
             {
-                "question": "با کدام گزینه یا ابزار می توان فاصله ی بین خطوط را تنظیم کرد؟",
+                "question": "با کدام گزینه یا ابزار می توان فاصله ی بین خطوط را تنظیم کرد？",
                 "options": ["Line Spacing", "Paragraph Spacing", "Indentation", "Alignment"],
                 "answer": "Line Spacing",
                 "category": "Word"
             },
             {
-                "question": "با کلیک بر روی کدام ابزار متن به صورت اندیس بالا نوشته میشود؟",
+                "question": "با کلیک بر روی کدام ابزار متن به صورت اندیس بالا نوشته میشود？",
                 "options": ["Superscript", "Subscript", "Strikethrough", "Underline"],
                 "answer": "Superscript",
                 "category": "Word"
             },
             {
-                "question": "با کلیک بر روی کدام گزینه متن در بالا و سمت راست خانه در جدول قرار میگیرد؟",
+                "question": "با کلیک بر روی کدام گزینه متن در بالا و سمت راست خانه در جدول قرار میگیرد？",
                 "options": ["Align Top Right", "Align Top Left", "Align Bottom Right", "Align Center Right"],
                 "answer": "Align Top Right",
                 "category": "Word"
             },
             {
-                "question": "با نگه داشتن کدام کلید و دابل کلیک کردن در خانه خالی کل جدول انتخاب می شود؟",
+                "question": "با نگه داشتن کدام کلید و دابل کلیک کردن در خانه خالی کل جدول انتخاب می شود？",
                 "options": ["Alt", "Ctrl", "Shift", "Tab"],
                 "answer": "Alt",
                 "category": "Word"
@@ -1293,37 +1881,37 @@
                 "category": "Word"
             },
             {
-                "question": "برای اعمال تورفتگی به سطرهای دوم به بعد یک پاراگراف کدام گزینه مناسب است؟",
+                "question": "برای اعمال تورفتگی به سطرهای دوم به بعد یک پاراگراف کدام گزینه مناسب است？",
                 "options": ["Hanging Indent", "First Line Indent", "Left Indent", "Right Indent"],
                 "answer": "Hanging Indent",
                 "category": "Word"
             },
             {
-                "question": "برای ایجاد پیوند بین فایلها و آدرسهای اینترنتی از کدام گزینه می توان استفاده نمود؟",
+                "question": "برای ایجاد پیوند بین فایلها و آدرسهای اینترنتی از کدام گزینه می توان استفاده نمود？",
                 "options": ["Hyperlink", "Bookmark", "Cross-reference", "Caption"],
                 "answer": "Hyperlink",
                 "category": "Word"
             },
             {
-                "question": "برای ایجاد سبک از کدام گزینه باید استفاده کرد؟",
+                "question": "برای ایجاد سبک از کدام گزینه باید استفاده کرد？",
                 "options": ["Style", "Format", "Template", "Theme"],
                 "answer": "Style",
                 "category": "Word"
             },
             {
-                "question": "برای ایجاد سبکهای عادی از کدام گزینه باید استفاده کرد؟",
+                "question": "برای ایجاد سبکهای عادی از کدام گزینه باید استفاده کرد？",
                 "options": ["Normal", "Heading 1", "Title", "Subtitle"],
                 "answer": "Normal",
                 "category": "Word"
             },
             {
-                "question": "برای ایجاد سرصفحه و پاصفحه ی مشترک برای تمام صفحه های سند کدام گزینه مناسب است؟",
+                "question": "برای ایجاد سرصفحه و پاصفحه ی مشترک برای تمام صفحه های سند کدام گزینه مناسب است？",
                 "options": ["Header & Footer", "Page Number", "Footer", "Header"],
                 "answer": "Header & Footer",
                 "category": "Word"
             },
             {
-                "question": "برای ایجاد شماره صفحه در محل مکان نما، از کدام گزینه استفاده می شود؟",
+                "question": "برای ایجاد شماره صفحه در محل مکان نما، از کدام گزینه استفاده می شود？",
                 "options": ["Current Position", "Page Margins", "Top of Page", "Bottom of Page"],
                 "answer": "Current Position",
                 "category": "Word"
@@ -1335,7 +1923,7 @@
                 "category": "Word"
             },
             {
-                "question": "برای ایجاد فاصله خالی به اندازه یک کاراکتر در متن کدام کلید مناسب است؟",
+                "question": "برای ایجاد فاصله خالی به اندازه یک کاراکتر در متن کدام کلید مناسب است？",
                 "options": ["Space", "Tab", "Enter", "Shift"],
                 "answer": "Space",
                 "category": "Word"
@@ -1343,103 +1931,102 @@
         ];
 
         // متغیرهای جهانی
-        let questions = [];
+        let currentQuestions = [];
         let currentQuestionIndex = 0;
-        let timerSeconds = 30 * 60; // 30 دقیقه
-        let timerInterval;
-        let currentLesson = "";
-        let correctPassword = "";
-        let currentExamType = ""; // 'user' یا 'typing'
+        let timerInterval = null;
+        let currentExamType = "";
+        let correctPassword = "user123"; // رمز پیش‌فرض
+        let userAnswers = [];
+        let totalQuestions = 20;
 
-        // بارگذاری رمز از فایل password.txt
-        async function loadPasswordFromFile() {
+        // تابع بارگذاری رمز
+        async function loadPassword() {
             const loadingMessage = document.getElementById('loading-message');
             const loginMessage = document.getElementById('login-message');
             
+            loadingMessage.style.display = 'block';
+            
             try {
-                loadingMessage.style.display = 'block';
-                loginMessage.textContent = '';
-                
-                const response = await fetch('password.txt');
-                
-                if (!response.ok) {
-                    throw new Error(`خطا در بارگذاری رمز: ${response.status}`);
-                }
-                
-                const passwordText = await response.text();
-                correctPassword = passwordText.trim();
+                // شبیه‌سازی بارگذاری
+                await new Promise(resolve => setTimeout(resolve, 800));
                 
                 loadingMessage.style.display = 'none';
-                loginMessage.textContent = 'رمز با موفقیت بارگذاری شد';
+                loginMessage.textContent = '✅ سیستم آماده است';
                 loginMessage.style.color = 'var(--success-color)';
-                
-                console.log('رمز بارگذاری شد:', correctPassword);
                 
             } catch (error) {
                 loadingMessage.style.display = 'none';
-                loginMessage.textContent = 'خطا در بارگذاری رمز از فایل';
-                console.error('خطا در بارگذاری رمز:', error);
-                
-                // در صورت خطا، از رمز پیش‌فرض استفاده می‌کنیم
-                correctPassword = "user123";
-                loginMessage.textContent += ' - از رمز پیش‌فرض استفاده می‌شود';
+                loginMessage.textContent = '⚠️ استفاده از رمز پیش‌فرض';
+                loginMessage.style.color = 'var(--warning-color)';
             }
         }
 
-        // بررسی رمز ورودی
+        // تابع بررسی رمز
         function checkPassword() {
             const inputPassword = document.getElementById('password-input').value;
             const messageElement = document.getElementById('login-message');
             
-            if (!correctPassword) {
-                messageElement.textContent = 'لطفاً صبر کنید تا رمز بارگذاری شود';
-                return;
-            }
-            
             if (inputPassword === correctPassword) {
-                // نمایش منوی اصلی
-                document.getElementById('login-container').style.display = 'none';
-                document.getElementById('main-menu').style.display = 'flex';
-                messageElement.textContent = '';
+                messageElement.textContent = '✅ ورود موفق!';
+                messageElement.style.color = 'var(--success-color)';
+                
+                setTimeout(() => {
+                    document.getElementById('login-container').style.display = 'none';
+                    document.getElementById('main-menu').style.display = 'flex';
+                    messageElement.textContent = '';
+                }, 500);
             } else {
-                messageElement.textContent = 'رمز عبور اشتباه است';
+                messageElement.textContent = '❌ رمز عبور اشتباه است';
                 messageElement.style.color = 'var(--danger-color)';
+                
+                // انیمیشن لرزش
+                const loginBox = document.querySelector('.login-box');
+                loginBox.style.animation = 'shake 0.5s';
+                setTimeout(() => loginBox.style.animation = '', 500);
             }
         }
 
-        // انتخاب نوع آزمون
+        // تابع انتخاب نوع آزمون
         function selectExamType(type) {
             currentExamType = type;
             
-            // مخفی کردن همه بخش‌های اطلاعات آزمون
+            // مخفی کردن همه بخش‌ها
             document.getElementById('user-exam-info').style.display = 'none';
             document.getElementById('typing-exam-info').style.display = 'none';
             
-            // نمایش اطلاعات آزمون انتخاب شده
+            // نمایش بخش مربوطه
             if (type === 'user') {
                 document.getElementById('user-exam-info').style.display = 'block';
             } else if (type === 'typing') {
                 document.getElementById('typing-exam-info').style.display = 'block';
             }
             
-            // نمایش دکمه بازگشت به انتخاب آزمون
+            // نمایش دکمه بازگشت
             document.getElementById('back-to-selection-btn').style.display = 'inline-block';
         }
 
-        // بازگشت به صفحه انتخاب آزمون
+        // تابع بازگشت به انتخاب آزمون
         function backToExamSelection() {
             currentExamType = "";
-            
-            // مخفی کردن بخش‌های اطلاعات آزمون
             document.getElementById('user-exam-info').style.display = 'none';
             document.getElementById('typing-exam-info').style.display = 'none';
-            
-            // مخفی کردن دکمه بازگشت
             document.getElementById('back-to-selection-btn').style.display = 'none';
         }
 
-        // خروج از سیستم
+        // تابع خروج
         function logout() {
+            // توقف تایمر اگر فعال باشد
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+            
+            // بازنشانی متغیرها
+            currentQuestions = [];
+            currentQuestionIndex = 0;
+            userAnswers = [];
+            
+            // نمایش صفحه ورود
             document.getElementById('main-menu').style.display = 'none';
             document.getElementById('quiz-container').style.display = 'none';
             document.getElementById('results-container').style.display = 'none';
@@ -1449,148 +2036,292 @@
             
             // بازگشت به حالت اولیه
             backToExamSelection();
-            
-            // توقف تایمر اگر فعال باشد
-            clearInterval(timerInterval);
         }
 
-        // شروع آزمون با سوالات تصادفی
+        // تابع شروع آزمون
         function startRandomExam(type) {
             if (type) {
                 currentExamType = type;
             }
             
+            // مخفی کردن منو و نمایش صفحه آزمون
             document.getElementById('main-menu').style.display = 'none';
             document.getElementById('quiz-container').style.display = 'block';
-            document.getElementById('results-container').style.display = 'none';
-            document.getElementById('help-container').style.display = 'none';
             
-            // تعیین عنوان درس بر اساس نوع آزمون
-            if (currentExamType === 'user') {
-                currentLesson = "آزمون کاربر رایانه (20 سوال از 60 سوال)";
-            } else if (currentExamType === 'typing') {
-                currentLesson = "آزمون تایپ رایانه (20 سوال از 60 سوال)";
-            }
+            // تنظیم عنوان
+            const title = currentExamType === 'user' ? 
+                "🎯 آزمون کاربر رایانه" : 
+                "⌨️ آزمون تایپ رایانه";
+            document.getElementById('lesson-title').textContent = title;
             
-            document.getElementById('lesson-title').textContent = currentLesson;
-            
-            // انتخاب سوالات بر اساس نوع آزمون
+            // انتخاب سوالات
             const allQuestions = currentExamType === 'user' ? userQuestions : typingQuestions;
+            currentQuestions = getRandomQuestions(allQuestions, 20);
             
-            // انتخاب 20 سوال تصادفی از بین 60 سوال موجود
-            questions = getRandomQuestions(allQuestions, 20);
+            // مقداردهی اولیه پاسخ‌ها
+            userAnswers = new Array(currentQuestions.length).fill(null);
             
-            // به هم ریختن گزینه‌های هر سوال
-            questions.forEach(q => {
-                // ذخیره پاسخ صحیح
-                const correctAnswer = q.answer;
-                // به هم ریختن گزینه‌ها
-                const shuffledOptions = [...q.options];
-                shuffleArray(shuffledOptions);
-                q.options = shuffledOptions;
-                
-                // پیدا کردن موقعیت جدید پاسخ صحیح
-                q.correctIndex = q.options.indexOf(correctAnswer);
-                q.selected = null;
-            });
+            // نمایش وضعیت پاسخ‌ها
+            document.getElementById('answer-status').style.display = 'flex';
+            updateAnswerStatus();
             
+            // شروع از سوال اول
             currentQuestionIndex = 0;
             createQuestionNumberButtons();
+            
+            // شروع تایمر
             startTimer();
+            
+            // نمایش سوال اول
             showQuestion();
         }
 
-        // شروع دوباره همان آزمون
-        function startSameExamAgain() {
-            startRandomExam(currentExamType);
-        }
-
-        // انتخاب سوالات تصادفی
-        function getRandomQuestions(questionSet, count) {
-            // ایجاد کپی از تمام سوالات
-            const allQuestionsCopy = [...questionSet];
-            const selectedQuestions = [];
+        // تابع انتخاب تصادفی سوالات - نسخه اصلاح شده
+        function getRandomQuestions(allQuestions, count) {
+            // ایجاد یک کپی از آرایه سوالات
+            const shuffled = [...allQuestions];
             
-            // انتخاب تصادفی سوالات
-            for (let i = 0; i < count; i++) {
-                if (allQuestionsCopy.length === 0) break;
-                
-                const randomIndex = Math.floor(Math.random() * allQuestionsCopy.length);
-                selectedQuestions.push(allQuestionsCopy[randomIndex]);
-                allQuestionsCopy.splice(randomIndex, 1);
+            // شافل کردن آرایه (فیشر-یتس)
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
             }
             
-            return selectedQuestions;
+            // انتخاب تعداد مورد نیاز
+            const selected = shuffled.slice(0, count);
+            
+            // شافل کردن گزینه‌های هر سوال
+            selected.forEach(question => {
+                // ایجاد یک کپی از گزینه‌ها
+                const options = [...question.options];
+                const correctAnswer = question.answer;
+                
+                // ذخیره موقعیت اصلی گزینه صحیح
+                const originalCorrectIndex = options.indexOf(correctAnswer);
+                
+                // ایجاد یک آرایه از اندیس‌ها برای شافل کردن
+                const indices = [0, 1, 2, 3];
+                
+                // شافل کردن اندیس‌ها
+                for (let i = indices.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [indices[i], indices[j]] = [indices[j], indices[i]];
+                }
+                
+                // ایجاد آرایه جدید گزینه‌ها با ترتیب جدید
+                const shuffledOptions = [
+                    options[indices[0]],
+                    options[indices[1]],
+                    options[indices[2]],
+                    options[indices[3]]
+                ];
+                
+                // ذخیره گزینه‌های شافل شده
+                question.shuffledOptions = shuffledOptions;
+                
+                // پیدا کردن موقعیت جدید گزینه صحیح
+                question.correctIndex = shuffledOptions.indexOf(correctAnswer);
+                
+                // اطمینان از اینکه گزینه صحیح پیدا شده است
+                if (question.correctIndex === -1) {
+                    console.error("گزینه صحیح پیدا نشد! سوال:", question.question);
+                    // به عنوان راه حل جایگزین، استفاده از شافل ساده
+                    question.shuffledOptions = [...options];
+                    question.correctIndex = originalCorrectIndex;
+                }
+            });
+            
+            return selected;
         }
 
-        // نمایش سوال فعلی
+        // تابع شروع تایمر
+        function startTimer() {
+            let timeLeft = 30 * 60; // 30 دقیقه به ثانیه
+            
+            // توقف تایمر قبلی اگر وجود دارد
+            if (timerInterval) {
+                clearInterval(timerInterval);
+            }
+            
+            // آپدیت اولیه
+            updateTimerDisplay(timeLeft);
+            
+            // تنظیم تایمر جدید
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                
+                // آپدیت نمایش
+                updateTimerDisplay(timeLeft);
+                
+                // تغییر رنگ در زمان‌های حیاتی
+                const timerElement = document.getElementById('timer');
+                if (timeLeft <= 300) { // 5 دقیقه
+                    timerElement.className = 'timer warning';
+                }
+                if (timeLeft <= 60) { // 1 دقیقه
+                    timerElement.className = 'timer danger';
+                }
+                
+                // بررسی پایان زمان
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                    alert('⏰ زمان آزمون به پایان رسید!');
+                    submitQuiz();
+                }
+            }, 1000);
+        }
+
+        // تابع نمایش تایمر
+        function updateTimerDisplay(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            const timerElement = document.getElementById('timer');
+            timerElement.textContent = `⏱️ زمان: ${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+        }
+
+        // تابع نمایش سوال - نسخه اصلاح شده
         function showQuestion() {
-            const question = questions[currentQuestionIndex];
+            if (currentQuestions.length === 0 || currentQuestionIndex >= currentQuestions.length) {
+                return;
+            }
+            
+            const question = currentQuestions[currentQuestionIndex];
+            
+            // نمایش متن سوال
             document.getElementById('question').textContent = question.question;
             
-            const optionButtons = document.querySelectorAll('#options .option-btn');
+            // نمایش گزینه‌ها
+            const optionElements = document.querySelectorAll('#options .option-btn');
+            
+            // اطمینان از اینکه shuffledOptions وجود دارد
+            if (!question.shuffledOptions) {
+                // اگر shuffledOptions وجود ندارد، از options اصلی استفاده کن
+                question.shuffledOptions = [...question.options];
+                question.correctIndex = question.options.indexOf(question.answer);
+            }
+            
             for (let i = 0; i < 4; i++) {
-                optionButtons[i].textContent = question.options[i];
-                optionButtons[i].className = 'option-btn';
-                
-                if (question.selected === i) {
-                    optionButtons[i].classList.add('selected');
+                const btn = optionElements[i];
+                if (question.shuffledOptions[i]) {
+                    btn.textContent = question.shuffledOptions[i];
+                    btn.style.display = 'flex';
+                    
+                    // بررسی اگر قبلاً پاسخ داده شده
+                    if (userAnswers[currentQuestionIndex] === i) {
+                        btn.className = 'option-btn selected';
+                    } else {
+                        btn.className = 'option-btn';
+                    }
+                } else {
+                    // اگر گزینه‌ای وجود ندارد، دکمه را مخفی کن
+                    btn.style.display = 'none';
                 }
+            }
+            
+            // به‌روزرسانی پیشرفت
+            updateProgress();
+            updateQuestionNumberButtons();
+            updateAnswerStatus();
+        }
+
+        // تابع انتخاب گزینه
+        function selectOption(index) {
+            if (currentQuestionIndex >= currentQuestions.length) return;
+            
+            // ذخیره پاسخ کاربر
+            userAnswers[currentQuestionIndex] = index;
+            
+            // آپدیت نمایش
+            showQuestion();
+            
+            // آپدیت وضعیت پاسخ‌ها
+            updateAnswerStatus();
+        }
+
+        // تابع آپدیت وضعیت پاسخ‌ها
+        function updateAnswerStatus() {
+            let correctCount = 0;
+            let incorrectCount = 0;
+            let unansweredCount = 0;
+            
+            for (let i = 0; i < currentQuestions.length; i++) {
+                if (userAnswers[i] === null) {
+                    unansweredCount++;
+                } else {
+                    const question = currentQuestions[i];
+                    if (userAnswers[i] === question.correctIndex) {
+                        correctCount++;
+                    } else {
+                        incorrectCount++;
+                    }
+                }
+            }
+            
+            // آپدیت نمایش
+            document.getElementById('correct-count').textContent = correctCount;
+            document.getElementById('incorrect-count').textContent = incorrectCount;
+            document.getElementById('unanswered-count').textContent = unansweredCount;
+        }
+
+        // تابع ایجاد دکمه‌های شماره سوالات
+        function createQuestionNumberButtons() {
+            const container = document.getElementById('question-numbers');
+            container.innerHTML = '';
+            
+            for (let i = 0; i < currentQuestions.length; i++) {
+                const button = document.createElement('button');
+                button.textContent = i + 1;
+                button.className = 'number-btn';
+                button.onclick = () => {
+                    currentQuestionIndex = i;
+                    showQuestion();
+                };
+                container.appendChild(button);
             }
             
             updateQuestionNumberButtons();
         }
 
-        // انتخاب گزینه
-        function selectOption(index) {
-            questions[currentQuestionIndex].selected = index;
-            showQuestion();
-        }
-
-        // ایجاد دکمه‌های شماره سوالات
-        function createQuestionNumberButtons() {
-            const container = document.getElementById('question-numbers');
-            container.innerHTML = '';
-            
-            for (let i = 0; i < questions.length; i++) {
-                const button = document.createElement('button');
-                button.textContent = i + 1;
-                button.className = 'number-btn';
-                button.onclick = () => goToQuestion(i);
-                container.appendChild(button);
-            }
-        }
-
-        // بروزرسانی دکمه‌های شماره سوالات
+        // تابع آپدیت دکمه‌های شماره سوالات
         function updateQuestionNumberButtons() {
-            const numberButtons = document.querySelectorAll('#question-numbers .number-btn');
+            const buttons = document.querySelectorAll('#question-numbers .number-btn');
             
-            for (let i = 0; i < questions.length; i++) {
-                if (i === currentQuestionIndex) {
-                    numberButtons[i].className = 'number-btn selected';
-                } else if (questions[i].selected !== null) {
-                    numberButtons[i].className = 'number-btn correct';
-                } else {
-                    numberButtons[i].className = 'number-btn';
+            buttons.forEach((btn, index) => {
+                // حذف کلاس‌های قبلی
+                btn.classList.remove('selected', 'correct', 'incorrect');
+                
+                // اگر سوال فعلی است
+                if (index === currentQuestionIndex) {
+                    btn.classList.add('selected');
                 }
-            }
+                // اگر پاسخ داده شده
+                else if (userAnswers[index] !== null) {
+                    const question = currentQuestions[index];
+                    if (userAnswers[index] === question.correctIndex) {
+                        btn.classList.add('correct');
+                    } else {
+                        btn.classList.add('incorrect');
+                    }
+                }
+            });
         }
 
-        // رفتن به سوال مشخص
-        function goToQuestion(index) {
-            currentQuestionIndex = index;
-            showQuestion();
+        // تابع آپدیت نوار پیشرفت
+        function updateProgress() {
+            const progress = ((currentQuestionIndex + 1) / currentQuestions.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
         }
 
-        // سوال بعدی
+        // تابع سوال بعدی
         function nextQuestion() {
-            if (currentQuestionIndex < questions.length - 1) {
+            if (currentQuestionIndex < currentQuestions.length - 1) {
                 currentQuestionIndex++;
                 showQuestion();
             }
         }
 
-        // سوال قبلی
+        // تابع سوال قبلی
         function prevQuestion() {
             if (currentQuestionIndex > 0) {
                 currentQuestionIndex--;
@@ -1598,120 +2329,135 @@
             }
         }
 
-        // شروع تایمر
-        function startTimer() {
-            clearInterval(timerInterval);
-            timerSeconds = 30 * 60;
-            
-            timerInterval = setInterval(() => {
-                if (timerSeconds >= 0) {
-                    const minutes = Math.floor(timerSeconds / 60);
-                    const seconds = timerSeconds % 60;
-                    document.getElementById('timer').textContent = `زمان: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                    timerSeconds--;
-                } else {
-                    clearInterval(timerInterval);
-                    alert('زمان آزمون به پایان رسید!');
-                    submitQuiz();
-                }
-            }, 1000);
-        }
-
-        // ارسال آزمون
+        // تابع ارسال آزمون
         function submitQuiz() {
-            clearInterval(timerInterval);
+            // توقف تایمر
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
             
             // بررسی سوالات بی‌پاسخ
             const unanswered = [];
-            for (let i = 0; i < questions.length; i++) {
-                if (questions[i].selected === null) {
+            for (let i = 0; i < userAnswers.length; i++) {
+                if (userAnswers[i] === null) {
                     unanswered.push(i + 1);
                 }
             }
             
             if (unanswered.length > 0) {
-                if (!confirm(`به ${unanswered.length} سوال پاسخ نداده‌اید. آیا مطمئن هستید که می‌خواهید آزمون را پایان دهید؟`)) {
-                    // اگر کاربر انصراف داد، تایمر را دوباره شروع می‌کنیم
+                const confirmSubmit = confirm(
+                    `⚠️ به ${unanswered.length} سوال پاسخ نداده‌اید:\nسوالات: ${unanswered.join(', ')}\n\nآیا مطمئن هستید که می‌خواهید آزمون را پایان دهید؟`
+                );
+                
+                if (!confirmSubmit) {
+                    // شروع مجدد تایمر
                     startTimer();
                     return;
                 }
             }
             
+            // نمایش نتایج
             showResults();
         }
 
-        // نمایش نتایج
+        // تابع نمایش نتایج
         function showResults() {
+            // مخفی کردن صفحه آزمون و نمایش نتایج
             document.getElementById('quiz-container').style.display = 'none';
             document.getElementById('results-container').style.display = 'block';
             
-            // محاسبه نتایج کلی
+            // محاسبه نتایج
             let correctCount = 0;
-            for (const q of questions) {
-                if (q.selected === q.correctIndex) {
+            const categoryStats = {};
+            
+            for (let i = 0; i < currentQuestions.length; i++) {
+                const question = currentQuestions[i];
+                const userAnswer = userAnswers[i];
+                
+                // شمارش درست/غلط
+                if (userAnswer === question.correctIndex) {
                     correctCount++;
+                }
+                
+                // آمار دسته‌بندی
+                if (!categoryStats[question.category]) {
+                    categoryStats[question.category] = { total: 0, correct: 0 };
+                }
+                categoryStats[question.category].total++;
+                if (userAnswer === question.correctIndex) {
+                    categoryStats[question.category].correct++;
                 }
             }
             
-            const total = questions.length;
-            const percentage = Math.round((correctCount / total) * 100);
+            const totalQuestions = currentQuestions.length;
+            const percentage = Math.round((correctCount / totalQuestions) * 100);
+            const isPassed = correctCount >= 6; // شرط قبولی: حداقل 6 سوال درست
             
-            let resultMessage = `درست: ${correctCount}  غلط: ${total - correctCount}  درصد: ${percentage}%`;
+            // نمایش خلاصه نتایج
+            const summaryElement = document.getElementById('summary');
+            let resultMessage = `🎯 درست: ${correctCount} از ${totalQuestions} | 📊 درصد: ${percentage}%`;
             
-            if (percentage >= 70) {
-                resultMessage += " - قبول شدید! 🎉";
+            if (isPassed) {
+                resultMessage += " ✅ قبول شدید! 🎉";
+                summaryElement.classList.add('pass-animation');
+                
+                // ایجاد کانفتی
+                createConfetti();
             } else {
-                resultMessage += " - مردود شدید! 😔";
+                resultMessage += " ❌ مردود شدید! 💪";
             }
             
-            document.getElementById('summary').textContent = resultMessage;
+            summaryElement.textContent = resultMessage;
             
-            // محاسبه نتایج تفکیکی
-            const categoryResults = calculateCategoryResults();
-            displayCategoryResults(categoryResults);
+            // نمایش نتایج تفکیکی
+            displayCategoryResults(categoryStats);
             
+            // نمایش اولین سوال با پاسخ
             currentQuestionIndex = 0;
             createResultNumberButtons();
             showResultQuestion();
         }
 
-        // محاسبه نتایج تفکیکی
-        function calculateCategoryResults() {
-            const categories = {};
+        // تابع ایجاد کانفتی
+        function createConfetti() {
+            const colors = ['#1a5f7a', '#159895', '#ffc107', '#2ecc71', '#e74c3c', '#3498db'];
             
-            // گروه‌بندی سوالات بر اساس دسته‌بندی
-            questions.forEach(q => {
-                if (!categories[q.category]) {
-                    categories[q.category] = {
-                        total: 0,
-                        correct: 0
-                    };
-                }
-                
-                categories[q.category].total++;
-                if (q.selected === q.correctIndex) {
-                    categories[q.category].correct++;
-                }
-            });
-            
-            return categories;
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = `${Math.random() * 100}vw`;
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    confetti.style.animation = `confettiRain ${Math.random() * 3 + 2}s linear forwards`;
+                    
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 20);
+            }
         }
 
-        // نمایش نتایج تفکیکی
-        function displayCategoryResults(categoryResults) {
+        // تابع نمایش نتایج تفکیکی
+        function displayCategoryResults(categoryStats) {
             const container = document.getElementById('detailed-results');
-            container.innerHTML = '<h3 style="color: var(--primary-color); margin-bottom: 15px;">نتایج تفکیکی:</h3>';
+            container.innerHTML = '<h3 style="color: var(--primary-color); margin-bottom: 20px; font-size: 22px;">📊 نتایج تفکیکی:</h3>';
             
-            for (const category in categoryResults) {
-                const result = categoryResults[category];
-                const percentage = Math.round((result.correct / result.total) * 100);
+            for (const [category, stats] of Object.entries(categoryStats)) {
+                const percentage = Math.round((stats.correct / stats.total) * 100);
+                const color = percentage >= 30 ? '#2ecc71' : '#e74c3c';
                 
                 const categoryElement = document.createElement('div');
                 categoryElement.className = 'category-result';
                 categoryElement.innerHTML = `
-                    <strong>${category}:</strong> ${result.correct} از ${result.total} (${percentage}%)
-                    <div style="height: 10px; background-color: #e9ecef; border-radius: 5px; margin-top: 5px;">
-                        <div style="height: 100%; width: ${percentage}%; background-color: ${percentage >= 70 ? '#28a745' : '#dc3545'}; border-radius: 5px;"></div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <strong style="font-size: 18px;">${category}</strong>
+                        <span style="font-weight: bold; color: ${color};">${percentage}%</span>
+                    </div>
+                    <div style="color: #666; margin-bottom: 10px;">${stats.correct} از ${stats.total} سوال صحیح</div>
+                    <div style="height: 12px; background: #e9ecef; border-radius: 6px; overflow: hidden;">
+                        <div style="height: 100%; width: ${percentage}%; background: ${color};"></div>
                     </div>
                 `;
                 
@@ -1719,74 +2465,99 @@
             }
         }
 
-        // نمایش سوال در صفحه نتایج
+        // تابع نمایش سوال در صفحه نتایج
         function showResultQuestion() {
-            const question = questions[currentQuestionIndex];
+            if (currentQuestionIndex >= currentQuestions.length) return;
+            
+            const question = currentQuestions[currentQuestionIndex];
             document.getElementById('result-question').textContent = question.question;
             
-            const optionButtons = document.querySelectorAll('#result-options .option-btn');
+            // نمایش گزینه‌ها با رنگ‌بندی
+            const optionElements = document.querySelectorAll('#result-options .option-btn');
+            
+            // اطمینان از اینکه shuffledOptions وجود دارد
+            if (!question.shuffledOptions) {
+                question.shuffledOptions = [...question.options];
+                question.correctIndex = question.options.indexOf(question.answer);
+            }
+            
             for (let i = 0; i < 4; i++) {
-                optionButtons[i].textContent = question.options[i];
-                optionButtons[i].className = 'option-btn';
-                
-                if (i === question.correctIndex) {
-                    optionButtons[i].classList.add('correct');
-                } else if (i === question.selected && question.selected !== question.correctIndex) {
-                    optionButtons[i].classList.add('incorrect');
+                const btn = optionElements[i];
+                if (question.shuffledOptions[i]) {
+                    btn.textContent = question.shuffledOptions[i];
+                    btn.style.display = 'flex';
+                    
+                    // حذف کلاس‌های قبلی
+                    btn.classList.remove('correct', 'incorrect');
+                    
+                    // اگر گزینه صحیح است
+                    if (i === question.correctIndex) {
+                        btn.classList.add('correct');
+                    }
+                    // اگر کاربر این گزینه را انتخاب کرده و اشتباه است
+                    else if (userAnswers[currentQuestionIndex] === i && userAnswers[currentQuestionIndex] !== question.correctIndex) {
+                        btn.classList.add('incorrect');
+                    }
+                } else {
+                    btn.style.display = 'none';
                 }
             }
             
             updateResultNumberButtons();
         }
 
-        // ایجاد دکمه‌های شماره سوالات در صفحه نتایج
+        // تابع ایجاد دکمه‌های شماره در صفحه نتایج
         function createResultNumberButtons() {
             const container = document.getElementById('result-numbers');
             container.innerHTML = '';
             
-            for (let i = 0; i < questions.length; i++) {
+            for (let i = 0; i < currentQuestions.length; i++) {
                 const button = document.createElement('button');
                 button.textContent = i + 1;
                 button.className = 'number-btn';
-                button.onclick = () => goToResultQuestion(i);
+                button.onclick = () => {
+                    currentQuestionIndex = i;
+                    showResultQuestion();
+                };
                 container.appendChild(button);
             }
-        }
-
-        // بروزرسانی دکمه‌های شماره سوالات در صفحه نتایج
-        function updateResultNumberButtons() {
-            const numberButtons = document.querySelectorAll('#result-numbers .number-btn');
             
-            for (let i = 0; i < questions.length; i++) {
-                const q = questions[i];
+            updateResultNumberButtons();
+        }
+
+        // تابع آپدیت دکمه‌های شماره در نتایج
+        function updateResultNumberButtons() {
+            const buttons = document.querySelectorAll('#result-numbers .number-btn');
+            
+            buttons.forEach((btn, index) => {
+                // حذف کلاس‌های قبلی
+                btn.classList.remove('selected', 'correct', 'incorrect');
                 
-                if (i === currentQuestionIndex) {
-                    numberButtons[i].className = 'number-btn selected';
-                } else if (q.selected === q.correctIndex) {
-                    numberButtons[i].className = 'number-btn correct';
-                } else if (q.selected !== null) {
-                    numberButtons[i].className = 'number-btn incorrect';
-                } else {
-                    numberButtons[i].className = 'number-btn';
+                // اگر سوال فعلی است
+                if (index === currentQuestionIndex) {
+                    btn.classList.add('selected');
                 }
-            }
+                // اگر پاسخ داده شده
+                else if (userAnswers[index] !== null) {
+                    const question = currentQuestions[index];
+                    if (userAnswers[index] === question.correctIndex) {
+                        btn.classList.add('correct');
+                    } else {
+                        btn.classList.add('incorrect');
+                    }
+                }
+            });
         }
 
-        // رفتن به سوال مشخص در صفحه نتایج
-        function goToResultQuestion(index) {
-            currentQuestionIndex = index;
-            showResultQuestion();
-        }
-
-        // سوال بعدی در صفحه نتایج
+        // تابع سوال بعدی در نتایج
         function nextResultQuestion() {
-            if (currentQuestionIndex < questions.length - 1) {
+            if (currentQuestionIndex < currentQuestions.length - 1) {
                 currentQuestionIndex++;
                 showResultQuestion();
             }
         }
 
-        // سوال قبلی در صفحه نتایج
+        // تابع سوال قبلی در نتایج
         function prevResultQuestion() {
             if (currentQuestionIndex > 0) {
                 currentQuestionIndex--;
@@ -1794,7 +2565,7 @@
             }
         }
 
-        // نمایش راهنما
+        // تابع نمایش راهنما
         function showHelp() {
             document.getElementById('main-menu').style.display = 'none';
             document.getElementById('quiz-container').style.display = 'none';
@@ -1802,45 +2573,118 @@
             document.getElementById('help-container').style.display = 'block';
         }
 
-        // بازگشت به منوی اصلی
+        // تابع بازگشت به منو
         function backToMainMenu() {
+            // توقف تایمر اگر فعال باشد
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+            
+            // بازنشانی متغیرها
+            currentQuestions = [];
+            currentQuestionIndex = 0;
+            userAnswers = [];
+            
+            // نمایش منو
             document.getElementById('main-menu').style.display = 'flex';
             document.getElementById('quiz-container').style.display = 'none';
             document.getElementById('results-container').style.display = 'none';
             document.getElementById('help-container').style.display = 'none';
-            clearInterval(timerInterval);
             
-            // بازگشت به صفحه انتخاب آزمون
+            // بازگشت به انتخاب آزمون
             backToExamSelection();
         }
 
-        // به هم ریختن آرایه (برای تصادفی کردن گزینه‌ها)
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
+        // تابع شروع مجدد آزمون
+        function startSameExamAgain() {
+            backToMainMenu();
+            setTimeout(() => {
+                if (currentExamType) {
+                    startRandomExam(currentExamType);
+                }
+            }, 100);
         }
 
-        // مدیریت کلیدهای صفحه کلید
+        // مدیریت رویدادهای صفحه کلید
         document.addEventListener('keydown', function(event) {
-            // کلیدهای جهت‌دار برای ناوبری
-            if (event.key === 'ArrowRight') {
-                prevQuestion();
-            } else if (event.key === 'ArrowLeft') {
-                nextQuestion();
+            // حرکت بین سوالات با کلیدهای جهت‌دار
+            if (document.getElementById('quiz-container').style.display !== 'none') {
+                if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+                    event.preventDefault();
+                    nextQuestion();
+                } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+                    event.preventDefault();
+                    prevQuestion();
+                }
+                
+                // انتخاب گزینه با اعداد 1-4
+                if (event.key >= '1' && event.key <= '4') {
+                    const index = parseInt(event.key) - 1;
+                    selectOption(index);
+                }
             }
             
-            // کلید Enter در صفحه ورود رمز
-            if (event.key === 'Enter' && document.getElementById('login-container').style.display !== 'none') {
+            // در صفحه نتایج
+            if (document.getElementById('results-container').style.display !== 'none') {
+                if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+                    event.preventDefault();
+                    nextResultQuestion();
+                } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+                    event.preventDefault();
+                    prevResultQuestion();
+                }
+            }
+            
+            // کلید Enter در ورود
+            if (document.getElementById('login-container').style.display !== 'none' && event.key === 'Enter') {
+                event.preventDefault();
                 checkPassword();
+            }
+            
+            // Ctrl+Enter برای پایان آزمون
+            if (event.ctrlKey && event.key === 'Enter' && document.getElementById('quiz-container').style.display !== 'none') {
+                event.preventDefault();
+                submitQuiz();
+            }
+            
+            // Escape برای بازگشت
+            if (event.key === 'Escape') {
+                if (document.getElementById('quiz-container').style.display !== 'none') {
+                    if (confirm('آیا می‌خواهید آزمون را رها کنید؟')) {
+                        backToMainMenu();
+                    }
+                } else if (document.getElementById('help-container').style.display !== 'none') {
+                    backToMainMenu();
+                }
             }
         });
 
-        // بارگذاری رمز از فایل هنگام بارگذاری صفحه
+        // مقداردهی اولیه هنگام بارگذاری صفحه
         document.addEventListener('DOMContentLoaded', function() {
-            loadPasswordFromFile();
+            // بارگذاری رمز
+            loadPassword();
+            
+            // اضافه کردن event listener به دکمه ورود برای کلید Enter
+            document.getElementById('password-input').addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    checkPassword();
+                }
+            });
+            
+            // تنظیم focus روی فیلد رمز
+            document.getElementById('password-input').focus();
+            
+            // نمایش پیغام خوش‌آمدگویی
+            setTimeout(() => {
+                if (document.getElementById('login-container').style.display !== 'none') {
+                    const messageElement = document.getElementById('login-message');
+                    if (messageElement.textContent === '') {
+                        messageElement.textContent = '👋 خوش آمدید! رمز پیش‌فرض: user123';
+                        messageElement.style.color = 'var(--info-color)';
+                    }
+                }
+            }, 2000);
         });
     </script>
 </body>
