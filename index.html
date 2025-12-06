@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>آزمون کاربر و تایپ رایانه - موسسه آموزشی خوارزمی</title>
+    <title>آزمون کاربر - مرکز اموزشی خوارزمی  </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* متغیرهای رنگ و استایل */
@@ -17,10 +17,12 @@
             --danger-color: #e74c3c;
             --warning-color: #f39c12;
             --info-color: #3498db;
+            --answered-color: #6c757d;
             --gradient-primary: linear-gradient(135deg, var(--primary-color), #159895, #57c4b0);
             --gradient-success: linear-gradient(135deg, var(--success-color), #27ae60);
             --gradient-danger: linear-gradient(135deg, var(--danger-color), #c0392b);
             --gradient-accent: linear-gradient(135deg, var(--accent-color), #ff9800);
+            --gradient-answered: linear-gradient(135deg, #6c757d, #495057);
             --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             --box-shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -206,6 +208,11 @@
         button.incorrect {
             background: var(--gradient-danger);
             box-shadow: 0 5px 20px rgba(231, 76, 60, 0.4);
+        }
+        
+        button.answered {
+            background: var(--gradient-answered);
+            box-shadow: 0 5px 20px rgba(108, 117, 125, 0.4);
         }
         
         button.nav-btn {
@@ -1001,7 +1008,7 @@
                         <i class="fas fa-desktop"></i>
                         آزمون کاربر رایانه
                     </button>
-                    <button class="exam-type-btn" id="typing-exam-btn" onclick="selectExamType('typing')">
+                    <button class="exam-type-btn" id="typing-exam-bt" onclick="selectExamType('typing')">
                         <i class="fas fa-keyboard"></i>
                         آزمون تایپ رایانه
                     </button>
@@ -1683,19 +1690,19 @@
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام ابزار می توان قالب‌بندی یک متن را روی متن دیگر کپی کرد？",
+                "question": "با استفاده از کدام ابزار می توان قالب‌بندی یک متن را روی متن دیگر کپی کرد؟",
                 "options": ["Format Painter", "Copy", "Paste", "Style"],
                 "answer": "Format Painter",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام جلوه می‌توان به متن انعکاس داد？",
+                "question": "با استفاده از کدام جلوه می‌توان به متن انعکاس داد؟",
                 "options": ["Reflection", "Shadow", "Glow", "3D Rotation"],
                 "answer": "Reflection",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام قابلیت می‌توان عبارتها را به صورت خلاصه تایپ کرد و تکمیل آن را به برنامه Word سپرد؟",
+                "question": "با استفاده از کدام قابلیت می‌توان عبارتها را به صورت خلاصه تایپ کرد و تکمیل آن را به برنامه Word سپرد？",
                 "options": ["AutoCorrect", "AutoText", "AutoComplete", "Spell Check"],
                 "answer": "AutoCorrect",
                 "category": "Word"
@@ -1737,7 +1744,7 @@
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام گزینه میتوان برای یک Symbol کلید میانبر ایجاد کرد？",
+                "question": "با استفاده از کدام گزینه میتوان برای یک Symbol کلید میانبر ایجاد کرد؟",
                 "options": ["Shortcut Key", "Hotkey", "Quick Access", "Keyboard Shortcut"],
                 "answer": "Shortcut Key",
                 "category": "Word"
@@ -1833,7 +1840,7 @@
                 "category": "Word"
             },
             {
-                "question": "با کدام گزینه میتوان متن های روزنامه ای ایجاد کرد؟",
+                "question": "با کدام گزینه میتوان متن های روزنامه ای ایجاد کرد？",
                 "options": ["Column", "Table", "Text Box", "WordArt"],
                 "answer": "Column",
                 "category": "Word"
@@ -1875,7 +1882,7 @@
                 "category": "Word"
             },
             {
-                "question": "برای اصلاح گرامر و املاء از کدام گزینه استفاده میشود؟",
+                "question": "برای اصلاح گرامر و املاء از کدام گزینه استفاده میشود？",
                 "options": ["Spelling & Grammar", "Thesaurus", "Word Count", "Language"],
                 "answer": "Spelling & Grammar",
                 "category": "Word"
@@ -2207,7 +2214,8 @@
                     btn.textContent = question.shuffledOptions[i];
                     btn.style.display = 'flex';
                     
-                    // بررسی اگر قبلاً پاسخ داده شده
+                    // فقط اگر کاربر پاسخ داده باشد، حالت selected را نمایش بده
+                    // در حین آزمون کلاس correct/incorrect اضافه نمی‌کنیم
                     if (userAnswers[currentQuestionIndex] === i) {
                         btn.className = 'option-btn selected';
                     } else {
@@ -2289,7 +2297,7 @@
             
             buttons.forEach((btn, index) => {
                 // حذف کلاس‌های قبلی
-                btn.classList.remove('selected', 'correct', 'incorrect');
+                btn.classList.remove('selected', 'answered', 'correct', 'incorrect');
                 
                 // اگر سوال فعلی است
                 if (index === currentQuestionIndex) {
@@ -2297,12 +2305,8 @@
                 }
                 // اگر پاسخ داده شده
                 else if (userAnswers[index] !== null) {
-                    const question = currentQuestions[index];
-                    if (userAnswers[index] === question.correctIndex) {
-                        btn.classList.add('correct');
-                    } else {
-                        btn.classList.add('incorrect');
-                    }
+                    // در حین آزمون فقط نشان بده که پاسخ داده شده، نه صحیح/غلط
+                    btn.classList.add('answered');
                 }
             });
         }
@@ -2488,7 +2492,7 @@
                     btn.style.display = 'flex';
                     
                     // حذف کلاس‌های قبلی
-                    btn.classList.remove('correct', 'incorrect');
+                    btn.classList.remove('correct', 'incorrect', 'selected');
                     
                     // اگر گزینه صحیح است
                     if (i === question.correctIndex) {
@@ -2497,6 +2501,10 @@
                     // اگر کاربر این گزینه را انتخاب کرده و اشتباه است
                     else if (userAnswers[currentQuestionIndex] === i && userAnswers[currentQuestionIndex] !== question.correctIndex) {
                         btn.classList.add('incorrect');
+                    }
+                    // اگر کاربر پاسخ درست داده باشد (مشابه رنگ correct)
+                    else if (userAnswers[currentQuestionIndex] === i && userAnswers[currentQuestionIndex] === question.correctIndex) {
+                        btn.classList.add('correct');
                     }
                 } else {
                     btn.style.display = 'none';
