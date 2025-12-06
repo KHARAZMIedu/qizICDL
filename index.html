@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>آزمون کاربر - مرکز اموزشی خوارزمی  </title>
+    <title>Computer User and Typing Test - Khwarizmi Educational Institute</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* متغیرهای رنگ و استایل */
@@ -11,6 +11,8 @@
             --primary-color: #1a5f7a;
             --secondary-color: #159895;
             --accent-color: #ffc107;
+            --nav-prev-color: #2196F3; /* رنگ آبی برای قبلی */
+            --nav-next-color: #9C27B0; /* رنگ بنفش برای بعدی */
             --light-color: #f8f9fa;
             --dark-color: #2c3e50;
             --success-color: #2ecc71;
@@ -23,6 +25,8 @@
             --gradient-danger: linear-gradient(135deg, var(--danger-color), #c0392b);
             --gradient-accent: linear-gradient(135deg, var(--accent-color), #ff9800);
             --gradient-answered: linear-gradient(135deg, #6c757d, #495057);
+            --gradient-nav-prev: linear-gradient(135deg, var(--nav-prev-color), #1976D2); /* گرادیان قبلی */
+            --gradient-nav-next: linear-gradient(135deg, var(--nav-next-color), #7B1FA2); /* گرادیان بعدی */
             --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             --box-shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -40,13 +44,13 @@
             100% { transform: scale(1); }
         }
         
-        @keyframes slideInRight {
-            from { transform: translateX(30px); opacity: 0; }
+        @keyframes slideInLeft {
+            from { transform: translateX(-30px); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
         
-        @keyframes slideInLeft {
-            from { transform: translateX(-30px); opacity: 0; }
+        @keyframes slideInRight {
+            from { transform: translateX(30px); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
         
@@ -87,7 +91,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Vazir', 'Tanha', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
@@ -98,6 +102,7 @@
             animation: fadeIn 0.8s ease-out;
             position: relative;
             overflow-x: hidden;
+            text-align: left;
         }
         
         body::before {
@@ -215,18 +220,48 @@
             box-shadow: 0 5px 20px rgba(108, 117, 125, 0.4);
         }
         
+        /* استایل دکمه‌های ناوبری مخصوص */
         button.nav-btn {
-            background: var(--gradient-primary);
+            padding: 12px 28px;
+            font-size: 17px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 160px;
+        }
+        
+        button.nav-prev-btn {
+            background: var(--gradient-nav-prev) !important;
+            box-shadow: 0 5px 20px rgba(33, 150, 243, 0.4);
+        }
+        
+        button.nav-prev-btn:hover {
+            background: linear-gradient(135deg, #1976D2, #0D47A1) !important;
+            box-shadow: 0 8px 25px rgba(33, 150, 243, 0.6);
+        }
+        
+        button.nav-next-btn {
+            background: var(--gradient-nav-next) !important;
+            box-shadow: 0 5px 20px rgba(156, 39, 176, 0.4);
+        }
+        
+        button.nav-next-btn:hover {
+            background: linear-gradient(135deg, #7B1FA2, #4A148C) !important;
+            box-shadow: 0 8px 25px rgba(156, 39, 176, 0.6);
         }
         
         button.submit-btn {
             background: var(--gradient-success);
             padding: 16px 32px;
             font-size: 18px;
+            min-width: 180px;
         }
         
         button.submit-btn:hover {
             background: linear-gradient(135deg, #27ae60, #219653);
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.6);
         }
         
         /* استایل منوی اصلی */
@@ -376,12 +411,12 @@
             font-size: 26px;
             font-weight: 700;
             margin: 30px 0;
-            text-align: right;
+            text-align: left;
             line-height: 1.8;
             padding: 30px;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border-radius: 15px;
-            border-right: 6px solid var(--primary-color);
+            border-left: 6px solid var(--primary-color);
             box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
             position: relative;
             animation: slideInLeft 0.6s ease-out;
@@ -390,7 +425,7 @@
         .question::after {
             content: '?';
             position: absolute;
-            left: 30px;
+            right: 30px;
             top: 50%;
             transform: translateY(-50%);
             font-size: 50px;
@@ -409,13 +444,13 @@
         .option-btn {
             width: 100%;
             height: 75px;
-            text-align: right;
+            text-align: left;
             font-size: 20px;
-            padding: 0 30px 0 80px;
+            padding: 0 80px 0 30px;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            justify-content: flex-end;
+            justify-content: flex-start;
             border-radius: 12px;
             margin: 12px 0;
             position: relative;
@@ -425,7 +460,7 @@
         .option-btn::before {
             content: attr(data-option);
             position: absolute;
-            left: 25px;
+            right: 25px;
             top: 50%;
             transform: translateY(-50%);
             width: 40px;
@@ -442,7 +477,7 @@
         }
         
         .option-btn:hover {
-            transform: translateX(-10px) translateY(-3px);
+            transform: translateX(10px) translateY(-3px);
             box-shadow: var(--box-shadow-hover);
         }
         
@@ -593,7 +628,7 @@
             padding: 25px;
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
             border-radius: 15px;
-            border-right: 5px solid var(--primary-color);
+            border-left: 5px solid var(--primary-color);
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: var(--transition);
         }
@@ -606,7 +641,7 @@
         /* استایل راهنما */
         .help-container {
             display: none;
-            text-align: right;
+            text-align: left;
             line-height: 2;
             font-size: 20px;
             padding: 40px;
@@ -778,6 +813,11 @@
             .lesson-title {
                 font-size: 28px;
             }
+            
+            button.nav-btn {
+                min-width: 140px;
+                padding: 10px 20px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -808,7 +848,7 @@
             .option-btn {
                 height: 65px;
                 font-size: 16px;
-                padding: 0 25px 0 70px;
+                padding: 0 70px 0 25px;
             }
             
             .option-btn::before {
@@ -848,6 +888,11 @@
                 width: 90%;
                 padding: 30px;
             }
+            
+            button.nav-btn {
+                min-width: 100%;
+                font-size: 16px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -870,13 +915,13 @@
             
             .option-btn {
                 height: 60px;
-                padding: 0 20px 0 60px;
+                padding: 0 60px 0 20px;
             }
             
             .option-btn::before {
                 width: 30px;
                 height: 30px;
-                left: 15px;
+                right: 15px;
                 font-size: 14px;
             }
             
@@ -886,6 +931,11 @@
             
             .summary {
                 font-size: 20px;
+            }
+            
+            button.nav-btn {
+                font-size: 15px;
+                padding: 10px 15px;
             }
         }
         
@@ -979,133 +1029,137 @@
 </head>
 <body>
     <header>
-        <h1><i class="fas fa-laptop-code"></i> آزمون کاربر- مرکز اموزشی خوارزمی </h1>
+        <h1><i class="fas fa-laptop-code"></i> Computer User and Typing Test - Khwarizmi Educational Institute</h1>
     </header>
     
     <div class="container">
-        <!-- صفحه ورود رمز -->
+        <!-- Login Page -->
         <div id="login-container" class="login-container">
             <div class="login-box">
-                <h2><i class="fas fa-lock"></i> ورود به سیستم آزمون</h2>
-                <p style="margin-bottom: 20px; color: #666;">لطفاً رمز عبور را برای دسترسی به آزمون وارد کنید:</p>
-                <input type="password" id="password-input" placeholder="رمز عبور" autocomplete="off">
-                <button id="login-btn" onclick="checkPassword()"><i class="fas fa-sign-in-alt"></i> ورود به سیستم</button>
+                <h2><i class="fas fa-lock"></i> Login to Test System</h2>
+                <p style="margin-bottom: 20px; color: #666;">Please enter the password to access the test:</p>
+                <input type="password" id="password-input" placeholder="Password" autocomplete="off">
+                <button id="login-btn" onclick="checkPassword()"><i class="fas fa-sign-in-alt"></i> Login</button>
                 <p id="login-message" class="login-message"></p>
                 <p id="loading-message" class="loading" style="display: none;">
-                    <i class="fas fa-spinner fa-spin"></i> در حال بارگذاری رمز از فایل...
+                    <i class="fas fa-spinner fa-spin"></i> Loading password from file...
                 </p>
             </div>
         </div>
 
-        <!-- منوی اصلی -->
+        <!-- Main Menu -->
         <div id="main-menu" class="main-menu" style="display: none;">
             <div class="exam-info">
-                <h2><i class="fas fa-info-circle"></i> انتخاب نوع آزمون</h2>
-                <p style="font-size: 18px; margin-bottom: 20px;">لطفاً نوع آزمون مورد نظر خود را انتخاب کنید:</p>
+                <h2><i class="fas fa-info-circle"></i> Select Test Type</h2>
+                <p style="font-size: 18px; margin-bottom: 20px;">Please select the type of test you want to take:</p>
                 
                 <div class="exam-type-selection">
                     <button class="exam-type-btn" id="user-exam-btn" onclick="selectExamType('user')">
                         <i class="fas fa-desktop"></i>
-                        آزمون کاربر رایانه
+                        Computer User Test
+                    </button>
+                    <button class="exam-type-btn" id="typing-exam-btn" onclick="selectExamType('typing')">
+                        <i class="fas fa-keyboard"></i>
+                        Computer Typing Test
                     </button>
                 </div>
             </div>
             
             <div id="user-exam-info" class="exam-info" style="display: none;">
-                <h2><i class="fas fa-info-circle"></i> اطلاعات آزمون کاربر رایانه</h2>
-                <p style="font-size: 18px; margin-bottom: 20px;">این آزمون شامل 20 سوال تصادفی از 60 سوال کاربر رایانه می‌باشد.</p>
+                <h2><i class="fas fa-info-circle"></i> Computer User Test Information</h2>
+                <p style="font-size: 18px; margin-bottom: 20px;">This test includes 20 random questions out of 60 computer user questions.</p>
                 
                 <div class="exam-stats">
                     <div class="stat-item">
                         <div class="stat-value">20</div>
-                        <div class="stat-label">سوال نمایشی</div>
+                        <div class="stat-label">Displayed Questions</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-value">207</div>
-                        <div class="stat-label">سوال موجود</div>
+                        <div class="stat-label">Available Questions</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-value">6</div>
-                        <div class="stat-label">حداقل درست برای قبولی</div>
+                        <div class="stat-label">Minimum Correct to Pass</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-value">30</div>
-                        <div class="stat-label">دقیقه زمان</div>
+                        <div class="stat-label">Minutes Time</div>
                     </div>
                 </div>
                 
-                <p style="margin: 15px 0; font-weight: 600; color: var(--primary-color);">مباحث آزمون: ویندوز، اینترنت، ایمیل، برنامه‌های کاربردی</p>
+                <p style="margin: 15px 0; font-weight: 600; color: var(--primary-color);">Test Topics: Windows, Internet, Email, Applications</p>
                 <p style="color: var(--accent-color); font-weight: bold; margin: 20px 0; padding: 15px; background: rgba(255, 193, 7, 0.1); border-radius: 10px;">
-                    <i class="fas fa-random"></i> در هر بار اجرا، 20 سوال تصادفی از 60 سوال انتخاب می‌شوند
+                    <i class="fas fa-random"></i> Each time you run the test, 20 random questions are selected from 60 questions
                 </p>
                 
                 <button id="start-user-exam-btn" onclick="startRandomExam('user')" style="font-size: 22px; padding: 18px 35px; margin-top: 20px;">
-                    <i class="fas fa-play-circle"></i> شروع آزمون کاربر
+                    <i class="fas fa-play-circle"></i> Start User Test
                 </button>
             </div>
             
             <div id="typing-exam-info" class="exam-info" style="display: none;">
-                <h2><i class="fas fa-info-circle"></i> اطلاعات آزمون تایپ رایانه</h2>
-                <p style="font-size: 18px; margin-bottom: 20px;">این آزمون شامل 20 سوال تصادفی از 60 سوال تایپ رایانه می‌باشد.</p>
+                <h2><i class="fas fa-info-circle"></i> Computer Typing Test Information</h2>
+                <p style="font-size: 18px; margin-bottom: 20px;">This test includes 20 random questions out of 60 computer typing questions.</p>
                 
                 <div class="exam-stats">
                     <div class="stat-item">
                         <div class="stat-value">20</div>
-                        <div class="stat-label">سوال نمایشی</div>
+                        <div class="stat-label">Displayed Questions</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-value">212</div>
-                        <div class="stat-label">سوال موجود</div>
+                        <div class="stat-label">Available Questions</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-value">6</div>
-                        <div class="stat-label">حداقل درست برای قبولی</div>
+                        <div class="stat-label">Minimum Correct to Pass</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-value">30</div>
-                        <div class="stat-label">دقیقه زمان</div>
+                        <div class="stat-label">Minutes Time</div>
                     </div>
                 </div>
                 
-                <p style="margin: 15px 0; font-weight: 600; color: var(--primary-color);">مباحث آزمون: نرم‌افزار Word، تایپ، فرمت‌بندی، جدول‌بندی</p>
+                <p style="margin: 15px 0; font-weight: 600; color: var(--primary-color);">Test Topics: Word Software, Typing, Formatting, Tables</p>
                 <p style="color: var(--accent-color); font-weight: bold; margin: 20px 0; padding: 15px; background: rgba(255, 193, 7, 0.1); border-radius: 10px;">
-                    <i class="fas fa-random"></i> در هر بار اجرا، 20 سوال تصادفی از 60 سوال انتخاب می‌شوند
+                    <i class="fas fa-random"></i> Each time you run the test, 20 random questions are selected from 60 questions
                 </p>
                 
                 <button id="start-typing-exam-btn" onclick="startRandomExam('typing')" style="font-size: 22px; padding: 18px 35px; margin-top: 20px;">
-                    <i class="fas fa-play-circle"></i> شروع آزمون تایپ
+                    <i class="fas fa-play-circle"></i> Start Typing Test
                 </button>
             </div>
             
             <div style="margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
                 <button id="back-to-selection-btn" onclick="backToExamSelection()" style="display: none;">
-                    <i class="fas fa-arrow-right"></i> بازگشت به انتخاب آزمون
+                    <i class="fas fa-arrow-left"></i> Back to Selection
                 </button>
-                <button id="help-btn" onclick="showHelp()"><i class="fas fa-question-circle"></i> راهنمای آزمون</button>
+                <button id="help-btn" onclick="showHelp()"><i class="fas fa-question-circle"></i> Test Guide</button>
                 <button id="logout-btn" onclick="logout()" style="background: var(--gradient-danger);">
-                    <i class="fas fa-sign-out-alt"></i> خروج از سیستم
+                    <i class="fas fa-sign-out-alt"></i> Logout
                 </button>
             </div>
         </div>
 
-        <!-- صفحه آزمون -->
+        <!-- Test Page -->
         <div id="quiz-container" class="quiz-container">
-            <div class="lesson-title" id="lesson-title">آزمون</div>
-            <div class="timer" id="timer">⏱️ زمان: 30:00</div>
+            <div class="lesson-title" id="lesson-title">Test</div>
+            <div class="timer" id="timer">⏱️ Time: 30:00</div>
             
-            <!-- نوار وضعیت پاسخ‌ها -->
+            <!-- Answer Status Bar -->
             <div class="answer-status" id="answer-status" style="display: none;">
                 <div class="status-item">
                     <div class="status-value" id="correct-count">0</div>
-                    <div class="status-label">سوالات درست</div>
+                    <div class="status-label">Correct Questions</div>
                 </div>
                 <div class="status-item">
                     <div class="status-value" id="incorrect-count">0</div>
-                    <div class="status-label">سوالات غلط</div>
+                    <div class="status-label">Wrong Questions</div>
                 </div>
                 <div class="status-item">
                     <div class="status-value" id="unanswered-count">20</div>
-                    <div class="status-label">سوالات بی‌پاسخ</div>
+                    <div class="status-label">Unanswered Questions</div>
                 </div>
             </div>
             
@@ -1121,19 +1175,19 @@
                 <button class="option-btn" id="option-3" onclick="selectOption(3)" data-option="D"></button>
             </div>
             <div class="navigation">
-                <button class="nav-btn" id="next-btn" onclick="nextQuestion()">سوال بعدی <i class="fas fa-arrow-left"></i></button>
-                <button class="nav-btn" id="prev-btn" onclick="prevQuestion()"><i class="fas fa-arrow-right"></i> سوال قبلی</button>
-                <button class="submit-btn" id="submit-btn" onclick="submitQuiz()"><i class="fas fa-check-circle"></i> پایان آزمون</button>
+                <button class="nav-btn nav-prev-btn" id="prev-btn" onclick="prevQuestion()"><i class="fas fa-arrow-left"></i> Previous Question</button>
+                <button class="nav-btn nav-next-btn" id="next-btn" onclick="nextQuestion()">Next Question <i class="fas fa-arrow-right"></i></button>
+                <button class="submit-btn" id="submit-btn" onclick="submitQuiz()"><i class="fas fa-check-circle"></i> Finish Test</button>
             </div>
             <div class="question-numbers" id="question-numbers"></div>
         </div>
 
-        <!-- صفحه نتایج -->
+        <!-- Results Page -->
         <div id="results-container" class="results-container">
             <div class="summary" id="summary"></div>
             
             <div class="detailed-results" id="detailed-results">
-                <!-- نتایج تفکیکی هر بخش در اینجا نمایش داده می‌شود -->
+                <!-- Detailed results for each section will be displayed here -->
             </div>
             
             <div class="question" id="result-question"></div>
@@ -1144,796 +1198,796 @@
                 <button class="option-btn" id="result-option-3" disabled data-option="D"></button>
             </div>
             <div class="navigation">
-                <button class="nav-btn" id="prev-result-btn" onclick="prevResultQuestion()"><i class="fas fa-arrow-right"></i> سوال قبلی</button>
-                <button class="nav-btn" id="next-result-btn" onclick="nextResultQuestion()">سوال بعدی <i class="fas fa-arrow-left"></i></button>
-                <button class="nav-btn" id="back-to-menu-btn" onclick="backToMainMenu()"><i class="fas fa-home"></i> بازگشت به منو</button>
+                <button class="nav-btn nav-prev-btn" id="prev-result-btn" onclick="prevResultQuestion()"><i class="fas fa-arrow-left"></i> Previous Question</button>
+                <button class="nav-btn nav-next-btn" id="next-result-btn" onclick="nextResultQuestion()">Next Question <i class="fas fa-arrow-right"></i></button>
+                <button class="nav-btn" id="back-to-menu-btn" onclick="backToMainMenu()"><i class="fas fa-home"></i> Back to Menu</button>
                 <button class="nav-btn" id="new-exam-btn" onclick="startSameExamAgain()" style="background: var(--gradient-primary);">
-                    <i class="fas fa-redo"></i> آزمون جدید
+                    <i class="fas fa-redo"></i> New Test
                 </button>
             </div>
             <div class="question-numbers" id="result-numbers"></div>
         </div>
 
-        <!-- صفحه راهنما -->
+        <!-- Help Page -->
         <div id="help-container" class="help-container">
-            <h2><i class="fas fa-info-circle"></i> راهنمای استفاده از سیستم آزمون</h2>
+            <h2><i class="fas fa-info-circle"></i> Test System User Guide</h2>
             <p style="margin-bottom: 20px;">
-                <i class="fas fa-check" style="color: var(--success-color);"></i> این سیستم شامل دو نوع آزمون: کاربر رایانه و تایپ رایانه می‌باشد.<br>
-                <i class="fas fa-check" style="color: var(--success-color);"></i> هر آزمون شامل 60 سوال در بانک سوالات می‌باشد.<br>
-                <i class="fas fa-check" style="color: var(--success-color);"></i> در هر بار آزمون، 20 سوال تصادفی از 60 سوال انتخاب می‌شود.<br>
-                <i class="fas fa-check" style="color: var(--success-color);"></i> زمان هر آزمون 30 دقیقه می‌باشد.<br>
-                <i class="fas fa-check" style="color: var(--success-color);"></i> <strong>شرط قبولی: حداقل 6 سوال درست از 20 سوال</strong><br>
-                <i class="fas fa-check" style="color: var(--success-color);"></i> شماره سوال‌ها پایین صفحه برای رفتن به سوال دلخواه است.<br>
-                <i class="fas fa-check" style="color: var(--success-color);"></i> با کلیدهای جهت‌نما می‌توانید بین سوالات حرکت کنید.<br>
-                <i class="fas fa-check" style="color: var(--success-color);"></i> پس از پاسخ دادن به همه سوالات، روی پایان آزمون کلیک کنید.<br>
-                <i class="fas fa-check" style="color: var(--success-color);"></i> در صفحه نتایج می‌توانید پاسخ صحیح و غلط خود را ببینید.<br>
-                <i class="fas fa-check" style="color: var(--success-color);"></i> آزمون کاربر رایانه شامل مباحث: ویندوز، اینترنت، ایمیل، برنامه‌های کاربردی می‌باشد.<br>
-                <i class="fas fa-check" style="color: var(--success-color);"></i> آزمون تایپ رایانه شامل مباحث: نرم‌افزار Word، تایپ، فرمت‌بندی، جدول‌بندی می‌باشد.<br>
-                <i class="fas fa-check" style="color: var(--success-color);"></i> در هر بار اجرا، 20 سوال تصادفی از 60 سوال انتخاب می‌شوند.<br><br>
-                <strong style="color: var(--primary-color);">میانبرهای صفحه کلید:</strong><br>
-                <i class="fas fa-keyboard" style="color: var(--accent-color);"></i> کلیدهای 1-4: انتخاب گزینه‌ها<br>
-                <i class="fas fa-keyboard" style="color: var(--accent-color);"></i> کلیدهای جهت‌دار: حرکت بین سوالات<br>
-                <i class="fas fa-keyboard" style="color: var(--accent-color);"></i> Ctrl+Enter: ثبت پاسخ/پایان آزمون<br>
-                <i class="fas fa-keyboard" style="color: var(--accent-color);"></i> Escape: بازگشت به منو<br><br>
-                <span style="color: var(--success-color); font-weight: bold;">موفق باشید!</span>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> This system includes two types of tests: Computer User and Computer Typing.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> Each test has 60 questions in the question bank.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> Each time you take the test, 20 random questions are selected from 60 questions.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> The time for each test is 30 minutes.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> <strong>Passing condition: Minimum 6 correct answers out of 20 questions</strong><br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> Question numbers at the bottom of the page allow you to go to any question.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> You can navigate between questions using arrow keys.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> After answering all questions, click Finish Test.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> In the results page you can see your correct and incorrect answers.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> Computer User Test includes topics: Windows, Internet, Email, Applications.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> Computer Typing Test includes topics: Word Software, Typing, Formatting, Tables.<br>
+                <i class="fas fa-check" style="color: var(--success-color);"></i> Each time you run the test, 20 random questions are selected from 60 questions.<br><br>
+                <strong style="color: var(--primary-color);">Keyboard Shortcuts:</strong><br>
+                <i class="fas fa-keyboard" style="color: var(--accent-color);"></i> Keys 1-4: Select options<br>
+                <i class="fas fa-keyboard" style="color: var(--accent-color);"></i> Arrow keys: Navigate between questions<br>
+                <i class="fas fa-keyboard" style="color: var(--accent-color);"></i> Ctrl+Enter: Submit answer/Finish test<br>
+                <i class="fas fa-keyboard" style="color: var(--accent-color);"></i> Escape: Return to menu<br><br>
+                <span style="color: var(--success-color); font-weight: bold;">Good luck!</span>
             </p>
-            <button onclick="backToMainMenu()"><i class="fas fa-arrow-right"></i> بازگشت به منو</button>
+            <button onclick="backToMainMenu()"><i class="fas fa-arrow-left"></i> Back to Menu</button>
         </div>
     </div>
     
     <footer>
-        <p>© 2025 آزمون کاربر و تایپ رایانه - مرکز اموزشی خوارزمی . تمام حقوق محفوظ است.</p>
-        <p>SAY4s | طراحی و توسعه: تیم فنی خوارزمی</p>
+        <p>© 2025 Computer User and Typing Test - Khwarizmi Educational Institute. All rights reserved.</p>
+        <p>SAY4s | Design and Development: Khwarizmi Technical Team</p>
     </footer>
 
     <script>
-        // داده‌های کامل سوالات کاربر رایانه (60 سوال)
+        // Complete computer user questions data (60 questions)
         const userQuestions = [
             {
-                "question": "ابر سایت هایی که برای جستجوی اطلاعات استفاده می شوند چه نام دارند؟",
-                "options": ["مرورگر", "موتور جستجو", "اینترنت اکسپلورر", "پست الکترونیکی"],
-                "answer": "موتور جستجو",
-                "category": "اینترنت"
+                "question": "What are the cloud sites called that are used for searching information?",
+                "options": ["Browser", "Search Engine", "Internet Explorer", "Email"],
+                "answer": "Search Engine",
+                "category": "Internet"
             },
             {
-                "question": "آدرس گیرندگانی مخفی در کدام کادر نوشته می شود؟",
+                "question": "In which field are hidden recipient addresses written?",
                 "options": ["To", "Cc", "Bcc", "Subject"],
                 "answer": "Bcc",
-                "category": "ایمیل"
+                "category": "Email"
             },
             {
-                "question": "از کدام منوی IE برای انجام تنظیمات استفاده میشود؟",
+                "question": "Which IE menu is used for settings?",
                 "options": ["File", "Edit", "View", "Tools"],
                 "answer": "Tools",
-                "category": "اینترنت"
+                "category": "Internet"
             },
             {
-                "question": "اعتبار و اشتراکی که یک ISP به مشتری ارائه می کند، چه نام دارد؟",
+                "question": "What is the credit and subscription that an ISP provides to a customer called?",
                 "options": ["Username", "Password", "Account", "Domain"],
                 "answer": "Account",
-                "category": "اینترنت"
+                "category": "Internet"
             },
             {
-                "question": "انتخاب کدام گزینه در پنجره Option Folder سبب میشود تا فایلها و پوشه های مخفی نمایش داده شوند؟",
+                "question": "Which option in the Folder Options window causes hidden files and folders to be displayed?",
                 "options": ["Show hidden files & Folders", "Hide protected operating system files", "Display file size information", "Hide extensions for known file types"],
                 "answer": "Show hidden files & Folders",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "انتخاب کدام گزینه در کادر Print باعث چاپ ناحیه انتخابی میشود؟",
+                "question": "Which option in the Print dialog box prints the selected area?",
                 "options": ["All", "Current Page", "Selection", "Pages"],
                 "answer": "Selection",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "انتخاب کدام گزینه سبب میشود تا رایانه به طور کامل خاموش شود و تمام اطالعات موجود در حافظه RAM پاک شود؟",
+                "question": "Which option causes the computer to shut down completely and clear all information in RAM?",
                 "options": ["Sleep", "Hibernate", "Restart", "Shut Down"],
                 "answer": "Shut Down",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "اولین پنجره یا اساسی ترین پنجره ی ویندوز کدام گزینه می باشد؟",
+                "question": "What is the first or most basic window of Windows?",
                 "options": ["My Computer", "Desktop", "Taskbar", "Start Menu"],
                 "answer": "Desktop",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "با Drop & Drag یک آیکن به پنجرهای دیگر، در همان درایو چه عملی انجام میشود؟",
+                "question": "What operation is performed when dragging and dropping an icon to another window in the same drive?",
                 "options": ["Copy/Paste", "Cut/Paste", "Move", "Delete"],
                 "answer": "Cut/Paste",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "با استفاده از کدام برنامه میتوان از اطلاعات سیستم نسخه ی پشتیبان تهیه کرد？",
+                "question": "Which program can be used to create a backup of system information?",
                 "options": ["System Restore", "Backup & Restore", "Disk Cleanup", "Defragment"],
                 "answer": "Backup & Restore",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "با استفاده از کدام دستگاه می توان تصاویر و متن ها را به کامپیوتر انتقال داد？",
+                "question": "Which device can be used to transfer images and text to a computer?",
                 "options": ["Printer", "Scanner", "Monitor", "Keyboard"],
                 "answer": "Scanner",
-                "category": "سخت افزار"
+                "category": "Hardware"
             },
             {
-                "question": "با استفاده از کدام دستور میتوان نام یک پوشه یا فایل را تغییر داد？",
+                "question": "Which command can be used to rename a folder or file?",
                 "options": ["Move", "Copy", "Ren", "Del"],
                 "answer": "Ren",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "با استفاده از کدام دکمه میتوان شکل آیکن های میزکار را تغییر داد？",
+                "question": "Which button can be used to change the shape of desktop icons?",
                 "options": ["Change Desktop Background", "Change Icon", "Screen Resolution", "Personalize"],
                 "answer": "Change Icon",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "با استفاده از کدام کلید می توان نوارمنو را در پنجره ها نمایش داد？",
+                "question": "Which key can be used to display the menu bar in windows?",
                 "options": ["Ctrl", "Alt", "Shift", "F10"],
                 "answer": "Alt",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "با استفاده از کدام گزینه در برنامه Paint می توان ناحیه ی انتخاب شده را برعکس کرد？",
+                "question": "Which option in Paint can be used to invert the selected area?",
                 "options": ["Rotate", "Flip", "Invert Selection", "Resize"],
                 "answer": "Invert Selection",
-                "category": "برنامه‌های کاربردی"
+                "category": "Applications"
             },
             {
-                "question": "با استفاده از کدام گزینه می توان جهت صفحه نمایش را تنظیم کرد？",
+                "question": "Which option can be used to set the screen orientation?",
                 "options": ["Resolution", "Orientation", "Color", "Brightness"],
                 "answer": "Orientation",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "با استفاده از کدام گزینه می توان یک نامه را به شخص ثالث ارجاع داد？",
+                "question": "Which option can be used to forward an email to a third party?",
                 "options": ["Reply", "Reply All", "Forward", "Send"],
                 "answer": "Forward",
-                "category": "ایمیل"
+                "category": "Email"
             },
             {
-                "question": "با انتخاب کدام گزینه آیکن های روی نوار وظیفه بصورت کوچک نمایش داده می شوند？",
+                "question": "Which option causes taskbar icons to be displayed in small size?",
                 "options": ["Use small taskbar buttons", "Auto-hide the taskbar", "Lock the taskbar", "Show desktop icons"],
                 "answer": "Use small taskbar buttons",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "با انتخاب کدام گزینه تصویر با اندازه واقعی در مرکز desktop قرار میگیرد？",
+                "question": "Which option places the image at actual size in the center of the desktop?",
                 "options": ["Stretch", "Tile", "Center", "Fit"],
                 "answer": "Center",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "با انتخاب کدام گزینه درمنوی کلیک راست آیکن های روی میز کار به صورت اتوماتیک مرتب نمایش داده می شود？",
+                "question": "Which option in the right-click menu automatically arranges desktop icons?",
                 "options": ["Auto arrange icons", "Align icons to grid", "Show desktop icons", "Refresh"],
                 "answer": "Auto arrange icons",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "با انتخاب کدام گزینه عمل جابجایی بین کاربران با بسته شدن برنامه های در حال اجرا اتفاق می افتد？",
+                "question": "Which option switches between users with closing running programs?",
                 "options": ["Switch User", "Log off", "Lock", "Sleep"],
                 "answer": "Log off",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "با انتخاب کدام گزینه عمل جابه جایی بین کاربران بدون بستن برنامه های در حال اجرا اتفاق می افتد？",
+                "question": "Which option switches between users without closing running programs?",
                 "options": ["Switch User", "Log off", "Lock", "Sleep"],
                 "answer": "Switch User",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "با انتخاب کدام گزینه می توان نوار وظیفه را قفل کرد؟",
+                "question": "Which option can lock the taskbar?",
                 "options": ["Auto-hide the taskbar", "Use small taskbar buttons", "Lock the taskbar", "Show taskbar on all displays"],
                 "answer": "Lock the taskbar",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "با انتخاب کدام گزینه می توانید چاپگر را در شبکه ای که به آن متصل هستید به اشتراک بگذارید？",
+                "question": "Which option allows you to share the printer on the network you are connected to?",
                 "options": ["Print Test Page", "Set as Default Printer", "Share this printer", "Printer Properties"],
                 "answer": "Share this printer",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "با کلیک راست بر روی چاپگر موردنظر، با انتخاب کدام گزینه چاپگر به عنوان پیشفرض در نظر گرفته میشود？",
+                "question": "Which option in the right-click menu on a printer sets it as default?",
                 "options": ["Printing Preferences", "Set as Default Printer", "Pause Printing", "See What's Printing"],
                 "answer": "Set as Default Printer",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "با کلیک راست و انتخاب گزینه New کدام گزینه جهت ساخت پوشه می باشد？",
+                "question": "Which option in the New right-click menu creates a folder?",
                 "options": ["Shortcut", "Text Document", "Folder", "Bitmap Image"],
                 "answer": "Folder",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برای اجرای برنامه ها از کدام دستور استفاده می کنیم？",
+                "question": "Which command is used to run programs?",
                 "options": ["Start", "Search", "Run", "Execute"],
                 "answer": "Run",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برای اضافه کردن نام سایت به لیست علاقه مندی خود از کدام گزینه استفاده می کنیم？",
+                "question": "Which option is used to add a site name to favorites?",
                 "options": ["Add to Favorites", "Subscribe", "Bookmark", "Save Page"],
                 "answer": "Add to Favorites",
-                "category": "اینترنت"
+                "category": "Internet"
             },
             {
-                "question": "برای اندازه گیری حافظه هایی مانند CD از کدام واحد حافظه استفاده می شود？",
+                "question": "Which memory unit is used to measure memory like CD?",
                 "options": ["KB", "MB", "GB", "TB"],
                 "answer": "MB",
-                "category": "مبانی کامپیوتر"
+                "category": "Computer Basics"
             },
             {
-                "question": "برای اندازه گیری حافظه هایی مانند انواع کلیپ های صوتی و تصویری از کدام واحد می توان استفاده کرد？",
+                "question": "Which unit can be used to measure memory like audio and video clips?",
                 "options": ["KB", "MB", "GB", "TB"],
                 "answer": "MB",
-                "category": "مبانی کامپیوتر"
+                "category": "Computer Basics"
             },
             {
-                "question": "برای ایجاد امضا از کدام گزینه می توان استفاده نمود？",
+                "question": "Which option can be used to create a signature?",
                 "options": ["Theme", "Signature", "Stationery", "Font"],
                 "answer": "Signature",
-                "category": "ایمیل"
+                "category": "Email"
             },
             {
-                "question": "برای ایجاد یک صفحه ی جدید در برنامه Pad Word از کدام کلید میان بر می توان استفاده نمود？",
+                "question": "Which shortcut key can be used to create a new page in WordPad?",
                 "options": ["Ctrl+O", "Ctrl+N", "Ctrl+S", "Ctrl+P"],
                 "answer": "Ctrl+N",
-                "category": "برنامه‌های کاربردی"
+                "category": "Applications"
             },
             {
-                "question": "برای بازکردن سایت هایی که دامنه ی آن ها .com می باشد، بعد از وارد کردن نام سایت از کدام کلید باید استفاده شود？",
+                "question": "Which key should be used after entering the site name for .com domains?",
                 "options": ["Ctrl+Enter", "Alt+Enter", "Shift+Enter", "F5"],
                 "answer": "Ctrl+Enter",
-                "category": "اینترنت"
+                "category": "Internet"
             },
             {
-                "question": "برای پاسخ دادن به نامه ی رسیده کدام گزینه به کار می رود？",
+                "question": "Which option is used to reply to a received email?",
                 "options": ["Reply", "Forward", "Send", "New"],
                 "answer": "Reply",
-                "category": "ایمیل"
+                "category": "Email"
             },
             {
-                "question": "برای پرش و جابه جایی بین گزینههای موجود در پنجرهها و کادرهای محاورهای و یا فاصلهگذاریهای معین در محیط تایپ، از کدام کلید استفاده میشود？",
+                "question": "Which key is used to jump between options in windows and dialog boxes?",
                 "options": ["Enter", "Tab", "Space", "Shift"],
                 "answer": "Tab",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برای پیوست کردن یک فایل به یک نامه کدام دکمه به کار میرود？",
+                "question": "Which button is used to attach a file to an email?",
                 "options": ["Attach", "Insert", "Link", "Embed"],
                 "answer": "Attach",
-                "category": "ایمیل"
+                "category": "Email"
             },
             {
-                "question": "برای ترسیم اشکال مختلف در برنامه نقاشی از کدام ابزار میتوان استفاده نمود？",
+                "question": "Which tool can be used to draw various shapes in Paint?",
                 "options": ["Brush", "Pencil", "Shapes", "Eraser"],
                 "answer": "Shapes",
-                "category": "برنامه‌های کاربردی"
+                "category": "Applications"
             },
             {
-                "question": "برای تصادفی پخش شدن آهنگ ها کدام گزینه در WINDOWS MEDIA باید فعال باشد？",
+                "question": "Which option in WINDOWS MEDIA should be active for random playback of songs?",
                 "options": ["Repeat", "Shuffle", "Play", "Stop"],
                 "answer": "Shuffle",
-                "category": "برنامه‌های کاربردی"
+                "category": "Applications"
             },
             {
-                "question": "برای تصادفی پخش شدن آهنگها از کدام گزینه استفاده میشود？",
+                "question": "Which option is used for random playback of songs?",
                 "options": ["Repeat", "Shuffle", "Playlist", "Library"],
                 "answer": "Shuffle",
-                "category": "برنامه‌های کاربردی"
+                "category": "Applications"
             },
             {
-                "question": "برای تعیین فاصله ی افقی آیکن ها، کدام گزینه کاربرد دارد？",
+                "question": "Which option is used to determine horizontal spacing of icons?",
                 "options": ["Icon Spacing Horizontally", "Icon Spacing Vertically", "Auto Arrange", "Align to Grid"],
                 "answer": "Icon Spacing Horizontally",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برای تغییر تصویر کاربر از کدام گزینه استفاده می شود？",
+                "question": "Which option is used to change user picture?",
                 "options": ["Change Password", "Change Picture", "Change Account Type", "Remove Account"],
                 "answer": "Change Picture",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برای تغییر رمز عبور از کدام گزینه در پنجره Accounts User استفاده میشود？",
+                "question": "Which option in User Accounts is used to change password?",
                 "options": ["Change the password", "Remove the password", "Change the account type", "Change the account name"],
                 "answer": "Change the password",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برای تغییر نوع کاربری از کدام گزینه استفاده می شود？",
+                "question": "Which option is used to change user type?",
                 "options": ["Change the password", "Remove the password", "Change the account type", "Change the account name"],
                 "answer": "Change the account type",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برای توقف چاپ به صورت موقت از کدام گزینه میتوان استفاده نمود？",
+                "question": "Which option can be used to temporarily pause printing?",
                 "options": ["Cancel", "Pause", "Resume", "Restart"],
                 "answer": "Pause",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برای ثبت و یا تأیید اطالعات، اجرای فرمانها و رفتن به خط بعدی در محیط های تایپی از کدام کلید میتوان استفاده کرد？",
+                "question": "Which key can be used to confirm information and go to next line?",
                 "options": ["Enter", "Tab", "Space", "Shift"],
                 "answer": "Enter",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برای حذف رمز کاربر، از کدام گزینه استفاده می شود？",
+                "question": "Which option is used to remove user password?",
                 "options": ["Change the password", "Remove my Password", "Change the account type", "Change the account name"],
                 "answer": "Remove my Password",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برای حذف کردن یک آیکن و یا پاک کردن کاراکترهای جلوی مکان نما از کدام کلید استفاده میشود？",
+                "question": "Which key is used to delete an icon or characters in front of cursor?",
                 "options": ["Backspace", "Delete", "Insert", "Home"],
                 "answer": "Delete",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برای حذف گزینه های منوی Start از کدام گزینه می توان استفاده نمود？",
+                "question": "Which option can be used to remove items from Start menu?",
                 "options": ["Pin to Start Menu", "Remove from this list", "Add to Quick Launch", "Properties"],
                 "answer": "Remove from this list",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برای حذف یک برنامه از صف چاپ کدام گزینه استفاده می شود؟",
+                "question": "Which option is used to delete a program from print queue?",
                 "options": ["Pause", "Resume", "Cancel", "Restart"],
                 "answer": "Cancel",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برای خروج از محیط Dos کدام گزینه کاربرد دارد？",
+                "question": "Which option is used to exit DOS environment?",
                 "options": ["Quit", "Exit", "Close", "End"],
                 "answer": "Exit",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برای دسترسی سریع به یک برنامه از کدام آیکن میتوان استفاده کرد？",
+                "question": "Which icon can be used for quick access to a program?",
                 "options": ["Folder", "Shortcut", "File", "Program"],
                 "answer": "Shortcut",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برای ذخیره یک عکس اینترنتی کدام گزینه از منوی میان بر انتخاب می شود？",
+                "question": "Which option from context menu is used to save an internet picture?",
                 "options": ["Save Picture As", "Copy", "Set as Background", "Print Picture"],
                 "answer": "Save Picture As",
-                "category": "اینترنت"
+                "category": "Internet"
             },
             {
-                "question": "برای فعال شدن کلیدهای بخش ماشین حسابی، کدام کلید باید فعال باشد？",
+                "question": "Which key must be active for calculator keys to work?",
                 "options": ["Caps Lock", "Num Lock", "Scroll Lock", "Insert"],
                 "answer": "Num Lock",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برای کمینه کردن پنجره و قرار دادن آن بر روی نوار وظیفه از کدام گزینه استفاده میشود？",
+                "question": "Which option minimizes window and places it on taskbar?",
                 "options": ["Maximize", "Minimize", "Restore", "Close"],
                 "answer": "Minimize",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برای نصب برنامه ها از کدام نوع حساب کاربری میتوان استفاده کرد？",
+                "question": "Which type of user account can be used to install programs?",
                 "options": ["Standard", "Guest", "Administrator", "User"],
                 "answer": "Administrator",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برای نمایش محتویات یک فهرست به صورت ساختار درختی، کدام دستور استفاده میشود？",
+                "question": "Which command is used to display directory contents as tree structure?",
                 "options": ["Dir", "Cd", "Tree", "List"],
                 "answer": "Tree",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "برنامه ای که بر روی سیستم اجرا شده و به رایانه صدمه واردکند، چه نام دارد？",
-                "options": ["نرم افزار کاربردی", "برنامه کمکی", "برنامه مخرب", "سیستم عامل"],
-                "answer": "برنامه مخرب",
-                "category": "امنیت"
+                "question": "What is a program that runs on system and damages computer called?",
+                "options": ["Application Software", "Utility Program", "Malicious Program", "Operating System"],
+                "answer": "Malicious Program",
+                "category": "Security"
             },
             {
-                "question": "برنامه مدیریت وظیفه در ویندوز چه نام دارد？",
+                "question": "What is Windows task manager called?",
                 "options": ["File Manager", "Task Manager", "System Manager", "Process Manager"],
                 "answer": "Task Manager",
-                "category": "ویندوز"
+                "category": "Windows"
             },
             {
-                "question": "بزرگترین دکمه روی صفحه کلید که با هر بار فشردن یک فاصله ی خالی ایجاد میشود، چه نام دارد？",
+                "question": "What is the largest key on keyboard that creates a space when pressed?",
                 "options": ["Enter", "Space", "Tab", "Shift"],
                 "answer": "Space",
-                "category": "سخت افزار"
+                "category": "Hardware"
             },
             {
-                "question": "بزرگترین کلید روی کیبورد که با فشردن آن یک فاصله خالی ایجاد میشود، چیست؟",
+                "question": "What is the largest key on keyboard that creates a space?",
                 "options": ["Enter", "Space", "Tab", "Shift"],
                 "answer": "Space",
-                "category": "سخت افزار"
+                "category": "Hardware"
             },
             {
-                "question": "به بارگزاری فایل برروی اینترنت چه گویند؟",
+                "question": "What is uploading a file to the internet called?",
                 "options": ["Download", "Upload", "Copy", "Paste"],
                 "answer": "Upload",
-                "category": "اینترنت"
+                "category": "Internet"
             },
             {
-                "question": "به دریافت فایل از اینترنت چه می گویند？",
+                "question": "What is receiving a file from the internet called?",
                 "options": ["Download", "Upload", "Copy", "Paste"],
                 "answer": "Download",
-                "category": "اینترنت"
+                "category": "Internet"
             }
         ];
 
-        // داده‌های کامل سوالات تایپ رایانه (60 سوال)
+        // Complete computer typing questions data (60 questions)
         const typingQuestions = [
             {
-                "question": "از کدام حالت نمایش برای طراحی صفحه وب در محیط Word استفاده میشود؟",
+                "question": "Which view mode is used for web page design in Word?",
                 "options": ["Web Layout", "Print Layout", "Outline", "Draft"],
                 "answer": "Web Layout",
                 "category": "Word"
             },
             {
-                "question": "از کدام دکمه جهت اعمال Tab استفاده میشود？",
+                "question": "Which button is used to apply Tab?",
                 "options": ["Set", "Clear", "Default", "OK"],
                 "answer": "Set",
                 "category": "Word"
             },
             {
-                "question": "از کدام گزینه برای باز کردن یک فایل از قبل ذخیره شده استفاده میشود？",
+                "question": "Which option is used to open a previously saved file?",
                 "options": ["Open", "New", "Save", "Save As"],
                 "answer": "Open",
                 "category": "Word"
             },
             {
-                "question": "از کدام گزینه برای تعیین نحوه ی نمایش و قالب بندی شماره ها استفاده میشود？",
+                "question": "Which option is used to determine display and formatting of numbers?",
                 "options": ["Number Format", "Bullet Format", "Paragraph", "Style"],
                 "answer": "Number Format",
                 "category": "Word"
             },
             {
-                "question": "از کدام منوی IE برای انجام تنظیمات استفاده میشود？",
+                "question": "Which IE menu is used for settings?",
                 "options": ["Tools", "File", "Edit", "View"],
                 "answer": "Tools",
-                "category": "اینترنت"
+                "category": "Internet"
             },
             {
-                "question": "اشکال مربوط به طراحی فلوچارت در کدام قسمت وجود دارد？",
+                "question": "Which section contains flowchart design shapes?",
                 "options": ["Flowchart", "Basic Shapes", "Block Arrows", "Callouts"],
                 "answer": "Flowchart",
                 "category": "Word"
             },
             {
-                "question": "اشکال هندسی پایه در کدام قسمت از ابزار Shape قرار دارند？",
+                "question": "Which section of Shape tool contains basic geometric shapes?",
                 "options": ["Basic Shapes", "Flowchart", "Block Arrows", "Stars and Banners"],
                 "answer": "Basic Shapes",
                 "category": "Word"
             },
             {
-                "question": "اگر بخواهیم صفحات ۲ و ۳ و ۴ از یک سند چاپ شوند از کدام عملگر استفاده میکنیم？",
+                "question": "Which operator is used to print pages 2, 3 and 4 of a document?",
                 "options": ["2,3,4", "2-4", "2;3;4", "2 3 4"],
                 "answer": "2,3,4",
                 "category": "Word"
             },
             {
-                "question": "اگر بخواهیم کاغذ چاپ به صورت افقی و خوابیده باشد کدام گزینه باید در نظر گرفته شود？",
+                "question": "Which option should be considered for landscape paper orientation?",
                 "options": ["Landscape", "Portrait", "Margins", "Size"],
                 "answer": "Landscape",
                 "category": "Word"
             },
             {
-                "question": "اگر بخواهیم هنگام طراحی، شکل دایره رسم کنیم کدام کلید را باید نگه داریم？",
+                "question": "Which key should be held when drawing a circle shape?",
                 "options": ["Shift", "Ctrl", "Alt", "Tab"],
                 "answer": "Shift",
                 "category": "Word"
             },
             {
-                "question": "اگر در هنگام حذف یک سلول در جدول بخواهیم سطر شامل‌کننده آن خانه را حذف کنیم، چه گزینه‌ای باید انتخاب شود？",
+                "question": "If deleting a cell in a table, which option should be selected to delete the containing row?",
                 "options": ["Delete entire row", "Delete entire column", "Delete cells", "Delete table"],
                 "answer": "Delete entire row",
                 "category": "Word"
             },
             {
-                "question": "اگر زیر واژه‌ای که به لاتین نوشته شده است، خط موج‌دار قرمز کشیده شود، به چه معناست？",
-                "options": ["غلط املایی دارد", "غلط گرامری دارد", "معنی ندارد", "تکرار شده است"],
-                "answer": "غلط املایی دارد",
+                "question": "If a red wavy line appears under a Latin word, what does it mean?",
+                "options": ["Spelling error", "Grammar error", "No meaning", "Repeated"],
+                "answer": "Spelling error",
                 "category": "Word"
             },
             {
-                "question": "انتخاب کدام گزینه در منوی View سبب نمایش خطوط شبکه در صفحه می‌شود？",
+                "question": "Which option in View menu displays gridlines on page?",
                 "options": ["Gridlines", "Ruler", "Navigation Pane", "Thumbnails"],
                 "answer": "Gridlines",
                 "category": "Word"
             },
             {
-                "question": "انتخاب کدام گزینه سبب ادغام خانه‌های جدول می‌شود？",
+                "question": "Which option merges table cells?",
                 "options": ["Merge", "Split", "Combine", "Join"],
                 "answer": "Merge",
                 "category": "Word"
             },
             {
-                "question": "انتخاب کدام گزینه سبب ضخیم شدن متن می‌شود？",
+                "question": "Which option makes text bold?",
                 "options": ["Bold", "Italic", "Underline", "Strikethrough"],
                 "answer": "Bold",
                 "category": "Word"
             },
             {
-                "question": "انتخاب کدام گزینه سبب میشود تا متن از هر دو جهت عمودی و افقی در وسط سلول قرار گیرد？",
+                "question": "Which option centers text both vertically and horizontally in a cell?",
                 "options": ["Align Center", "Align Left", "Align Right", "Justify"],
                 "answer": "Align Center",
                 "category": "Word"
             },
             {
-                "question": "انتخاب کدام گزینه سبب میشود کلمه خطادار به فرهنگ لغات اضافه شود？",
+                "question": "Which option adds misspelled word to dictionary?",
                 "options": ["Add to Dictionary", "Ignore All", "Ignore Once", "Change All"],
                 "answer": "Add to Dictionary",
                 "category": "Word"
             },
             {
-                "question": "انتخاب کدام گزینه سبب نادیده گرفتن خطاهای یک کلمه در سند می‌شود？",
+                "question": "Which option ignores all errors of a word in document?",
                 "options": ["Ignore All", "Add to Dictionary", "Change", "Change All"],
                 "answer": "Ignore All",
                 "category": "Word"
             },
             {
-                "question": "اندازه پیش‌فرض Tab چند سانتی‌متر می‌باشد？",
+                "question": "What is the default Tab size in centimeters?",
                 "options": ["1.27", "2.54", "1.0", "1.5"],
                 "answer": "1.27",
                 "category": "Word"
             },
             {
-                "question": "آیکن در گوشه پایین جدول چه عملی انجام می‌دهد？",
-                "options": ["گزینه 1 و 2", "پاک کردن جدول", "انتخاب جدول", "هیچکدام"],
-                "answer": "گزینه 1 و 2",
+                "question": "What does the icon in bottom corner of table do?",
+                "options": ["Options 1 and 2", "Delete table", "Select table", "None"],
+                "answer": "Options 1 and 2",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام ابزار می توان قالب‌بندی یک متن را روی متن دیگر کپی کرد؟",
+                "question": "Which tool can copy formatting from one text to another?",
                 "options": ["Format Painter", "Copy", "Paste", "Style"],
                 "answer": "Format Painter",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام جلوه می‌توان به متن انعکاس داد؟",
+                "question": "Which effect gives reflection to text?",
                 "options": ["Reflection", "Shadow", "Glow", "3D Rotation"],
                 "answer": "Reflection",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام قابلیت می‌توان عبارتها را به صورت خلاصه تایپ کرد و تکمیل آن را به برنامه Word سپرد？",
+                "question": "Which feature allows typing abbreviations and letting Word complete them?",
                 "options": ["AutoCorrect", "AutoText", "AutoComplete", "Spell Check"],
                 "answer": "AutoCorrect",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام کلید میتوان حروف بعد از مکان نما را حذف نمود？",
+                "question": "Which key deletes characters after cursor?",
                 "options": ["Delete", "Backspace", "Insert", "Home"],
                 "answer": "Delete",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام کلیدها میتوان در خانه های جدول به سمت عقب برگشت？",
+                "question": "Which keys move backward in table cells?",
                 "options": ["Shift + Tab", "Ctrl + Tab", "Alt + Tab", "Tab"],
                 "answer": "Shift + Tab",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام گزینه می توان اشکال را به صورت افقی قرینه کرد？",
+                "question": "Which option flips shapes horizontally?",
                 "options": ["Flip Horizontal", "Flip Vertical", "Rotate", "Align"],
                 "answer": "Flip Horizontal",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام گزینه می توان سطری را که مکان نما در آن قرار دارد انتخاب نمود？",
+                "question": "Which option selects the row where cursor is located?",
                 "options": ["Select Row", "Select Column", "Select Table", "Select All"],
                 "answer": "Select Row",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام گزینه می توان یک صفحه ی جدید با طرح خاص ایجاد کرد？",
+                "question": "Which option creates a new page with specific design?",
                 "options": ["Cover Page", "Blank Page", "Page Break", "Section Break"],
                 "answer": "Cover Page",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام گزینه میتوان اشکال را گروه بندی کرد？",
+                "question": "Which option groups shapes?",
                 "options": ["Group", "Combine", "Merge", "Attach"],
                 "answer": "Group",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام گزینه میتوان برای یک Symbol کلید میانبر ایجاد کرد؟",
+                "question": "Which option creates shortcut key for a Symbol?",
                 "options": ["Shortcut Key", "Hotkey", "Quick Access", "Keyboard Shortcut"],
                 "answer": "Shortcut Key",
                 "category": "Word"
             },
             {
-                "question": "با استفاده از کدام گزینه میتوان عمل جایگزینی را به صورت یکجا بر روی کلیه ی كلمات متن انجام داد？",
+                "question": "Which option replaces all occurrences of words in text at once?",
                 "options": ["Replace All", "Replace", "Find All", "Change All"],
                 "answer": "Replace All",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه از Wrap Text تصویر زیر نوشته ها قرار میگیرد？",
+                "question": "Which Wrap Text option places image behind text?",
                 "options": ["Behind Text", "In Front of Text", "Square", "Tight"],
                 "answer": "Behind Text",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه از قسمت Section Breaks، بخش جدید در صفحه های فرد تولید میشود？",
+                "question": "Which Section Breaks option creates new section on odd pages?",
                 "options": ["Odd Page", "Even Page", "Next Page", "Continuous"],
                 "answer": "Odd Page",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه تمام حروف لاتین به صورت کوچک نمایش داده میشود？",
+                "question": "Which option displays all Latin letters in lowercase?",
                 "options": ["Lowercase", "Uppercase", "Sentence case", "Capitalize Each Word"],
                 "answer": "Lowercase",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه فقط صفحه ای که در آن هستید چاپ می شود？",
+                "question": "Which option prints only the current page?",
                 "options": ["Print Current Page", "Print All", "Print Selection", "Print Range"],
                 "answer": "Print Current Page",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه متن در وسط و چپ خانه جدول قرار می گیرد？",
+                "question": "Which option aligns text to center left in table cell?",
                 "options": ["Align Center Left", "Align Center", "Align Left", "Align Top Left"],
                 "answer": "Align Center Left",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه می توان برای صفحه ی اول سرصفحه یا پاصفحه متفاوت ایجاد کرد？",
+                "question": "Which option creates different header/footer for first page?",
                 "options": ["Different First Page", "Different Odd & Even Pages", "Show Document Text", "Header from Top"],
                 "answer": "Different First Page",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه میتوان جهت کاغذ را به صورت خوابیده نمایش داد？",
+                "question": "Which option displays paper in landscape orientation?",
                 "options": ["Landscape", "Portrait", "Margins", "Size"],
                 "answer": "Landscape",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه میتوان متن را به صورت اندیس پایین نمایش داد？",
+                "question": "Which option displays text as subscript?",
                 "options": ["Subscript", "Superscript", "Strikethrough", "Double strikethrough"],
                 "answer": "Subscript",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه میتوان یک طیف رنگی را روی پس زمینه صفحه قرار داد؟",
+                "question": "Which option places gradient color on page background?",
                 "options": ["Gradient", "Texture", "Pattern", "Picture"],
                 "answer": "Gradient",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه نوار Ribbon حداقل یا مینیمم می شود？",
+                "question": "Which option minimizes the Ribbon?",
                 "options": ["Minimize Ribbon", "Auto-hide Ribbon", "Close Ribbon", "Hide Ribbon"],
                 "answer": "Minimize Ribbon",
                 "category": "Word"
             },
             {
-                "question": "با فشردن کدام دکمه مکان نما به انتهای سطر منتقل میشود؟",
+                "question": "Which button moves cursor to end of line?",
                 "options": ["End", "Home", "Page Down", "Page Up"],
                 "answer": "End",
                 "category": "Word"
             },
             {
-                "question": "با فشردن کدام دکمه میتوان به ابتدای سطر جاری منتقل شد？",
+                "question": "Which button moves to beginning of current line?",
                 "options": ["Home", "End", "Page Up", "Page Down"],
                 "answer": "Home",
                 "category": "Word"
             },
             {
-                "question": "با فشردن کدام کلید محتویات جدول پاک میشود？",
+                "question": "Which key clears table contents?",
                 "options": ["Delete", "Backspace", "Space", "Enter"],
                 "answer": "Delete",
                 "category": "Word"
             },
             {
-                "question": "با فشردن کدام کلیدها می توان به اولین صفحه فایل یا سند رفت？",
+                "question": "Which keys go to first page of file or document?",
                 "options": ["Ctrl + Home", "Ctrl + End", "Home", "End"],
                 "answer": "Ctrl + Home",
                 "category": "Word"
             },
             {
-                "question": "با کدام گزینه میتوان متن های روزنامه ای ایجاد کرد？",
+                "question": "Which option creates newspaper-style columns?",
                 "options": ["Column", "Table", "Text Box", "WordArt"],
                 "answer": "Column",
                 "category": "Word"
             },
             {
-                "question": "با کدام گزینه میتوان مشخصات و ویژگیهای یک جدول را مشاهده کرد？",
+                "question": "Which option shows table properties and characteristics?",
                 "options": ["Properties", "Table Properties", "Format Table", "Table Options"],
                 "answer": "Properties",
                 "category": "Word"
             },
             {
-                "question": "با کدام گزینه یا ابزار می توان فاصله ی بین خطوط را تنظیم کرد？",
+                "question": "Which option or tool adjusts line spacing?",
                 "options": ["Line Spacing", "Paragraph Spacing", "Indentation", "Alignment"],
                 "answer": "Line Spacing",
                 "category": "Word"
             },
             {
-                "question": "با کلیک بر روی کدام ابزار متن به صورت اندیس بالا نوشته میشود？",
+                "question": "Which tool writes text as superscript?",
                 "options": ["Superscript", "Subscript", "Strikethrough", "Underline"],
                 "answer": "Superscript",
                 "category": "Word"
             },
             {
-                "question": "با کلیک بر روی کدام گزینه متن در بالا و سمت راست خانه در جدول قرار میگیرد？",
+                "question": "Which option aligns text to top right in table cell?",
                 "options": ["Align Top Right", "Align Top Left", "Align Bottom Right", "Align Center Right"],
                 "answer": "Align Top Right",
                 "category": "Word"
             },
             {
-                "question": "با نگه داشتن کدام کلید و دابل کلیک کردن در خانه خالی کل جدول انتخاب می شود？",
+                "question": "Which key with double-click in empty cell selects entire table?",
                 "options": ["Alt", "Ctrl", "Shift", "Tab"],
                 "answer": "Alt",
                 "category": "Word"
             },
             {
-                "question": "برای از بین بردن رنگ زمینه کدام گزینه مناسب است؟",
+                "question": "Which option removes background color?",
                 "options": ["No Color", "Transparent", "White", "Automatic"],
                 "answer": "No Color",
                 "category": "Word"
             },
             {
-                "question": "برای اصلاح گرامر و املاء از کدام گزینه استفاده میشود？",
+                "question": "Which option corrects grammar and spelling?",
                 "options": ["Spelling & Grammar", "Thesaurus", "Word Count", "Language"],
                 "answer": "Spelling & Grammar",
                 "category": "Word"
             },
             {
-                "question": "برای اعمال تورفتگی به سطرهای دوم به بعد یک پاراگراف کدام گزینه مناسب است？",
+                "question": "Which option applies hanging indent to second and subsequent lines?",
                 "options": ["Hanging Indent", "First Line Indent", "Left Indent", "Right Indent"],
                 "answer": "Hanging Indent",
                 "category": "Word"
             },
             {
-                "question": "برای ایجاد پیوند بین فایلها و آدرسهای اینترنتی از کدام گزینه می توان استفاده نمود？",
+                "question": "Which option creates links between files and internet addresses?",
                 "options": ["Hyperlink", "Bookmark", "Cross-reference", "Caption"],
                 "answer": "Hyperlink",
                 "category": "Word"
             },
             {
-                "question": "برای ایجاد سبک از کدام گزینه باید استفاده کرد？",
+                "question": "Which option should be used to create style?",
                 "options": ["Style", "Format", "Template", "Theme"],
                 "answer": "Style",
                 "category": "Word"
             },
             {
-                "question": "برای ایجاد سبکهای عادی از کدام گزینه باید استفاده کرد？",
+                "question": "Which option should be used to create normal styles?",
                 "options": ["Normal", "Heading 1", "Title", "Subtitle"],
                 "answer": "Normal",
                 "category": "Word"
             },
             {
-                "question": "برای ایجاد سرصفحه و پاصفحه ی مشترک برای تمام صفحه های سند کدام گزینه مناسب است？",
+                "question": "Which option creates common header/footer for all pages?",
                 "options": ["Header & Footer", "Page Number", "Footer", "Header"],
                 "answer": "Header & Footer",
                 "category": "Word"
             },
             {
-                "question": "برای ایجاد شماره صفحه در محل مکان نما، از کدام گزینه استفاده می شود？",
+                "question": "Which option inserts page number at cursor position?",
                 "options": ["Current Position", "Page Margins", "Top of Page", "Bottom of Page"],
                 "answer": "Current Position",
                 "category": "Word"
             },
             {
-                "question": "برای ایجاد شیرازه جهت سیمی یا صحافی کردن صفحات باید ........ را تنظیم کنیم",
+                "question": "What should be adjusted for binding or wire binding margin?",
                 "options": ["Gutter", "Margins", "Orientation", "Size"],
                 "answer": "Gutter",
                 "category": "Word"
             },
             {
-                "question": "برای ایجاد فاصله خالی به اندازه یک کاراکتر در متن کدام کلید مناسب است？",
+                "question": "Which key creates one character space in text?",
                 "options": ["Space", "Tab", "Enter", "Shift"],
                 "answer": "Space",
                 "category": "Word"
             }
         ];
 
-        // متغیرهای جهانی
+        // Global variables
         let currentQuestions = [];
         let currentQuestionIndex = 0;
         let timerInterval = null;
@@ -1942,7 +1996,7 @@
         let userAnswers = [];
         let totalQuestions = 20;
 
-        // تابع بارگذاری رمز
+        // Password loading function
         async function loadPassword() {
             const loadingMessage = document.getElementById('loading-message');
             const loginMessage = document.getElementById('login-message');
@@ -1950,27 +2004,27 @@
             loadingMessage.style.display = 'block';
             
             try {
-                // شبیه‌سازی بارگذاری
+                // Simulate loading
                 await new Promise(resolve => setTimeout(resolve, 800));
                 
                 loadingMessage.style.display = 'none';
-                loginMessage.textContent = '✅ سیستم آماده است';
+                loginMessage.textContent = '✅ System ready';
                 loginMessage.style.color = 'var(--success-color)';
                 
             } catch (error) {
                 loadingMessage.style.display = 'none';
-                loginMessage.textContent = '⚠️ استفاده از رمز پیش‌فرض';
+                loginMessage.textContent = '⚠️ Using default password';
                 loginMessage.style.color = 'var(--warning-color)';
             }
         }
 
-        // تابع بررسی رمز
+        // Password check function
         function checkPassword() {
             const inputPassword = document.getElementById('password-input').value;
             const messageElement = document.getElementById('login-message');
             
             if (inputPassword === correctPassword) {
-                messageElement.textContent = '✅ ورود موفق!';
+                messageElement.textContent = '✅ Login successful!';
                 messageElement.style.color = 'var(--success-color)';
                 
                 setTimeout(() => {
@@ -1979,36 +2033,36 @@
                     messageElement.textContent = '';
                 }, 500);
             } else {
-                messageElement.textContent = '❌ رمز عبور اشتباه است';
+                messageElement.textContent = '❌ Wrong password';
                 messageElement.style.color = 'var(--danger-color)';
                 
-                // انیمیشن لرزش
+                // Shake animation
                 const loginBox = document.querySelector('.login-box');
                 loginBox.style.animation = 'shake 0.5s';
                 setTimeout(() => loginBox.style.animation = '', 500);
             }
         }
 
-        // تابع انتخاب نوع آزمون
+        // Select exam type function
         function selectExamType(type) {
             currentExamType = type;
             
-            // مخفی کردن همه بخش‌ها
+            // Hide all sections
             document.getElementById('user-exam-info').style.display = 'none';
             document.getElementById('typing-exam-info').style.display = 'none';
             
-            // نمایش بخش مربوطه
+            // Show relevant section
             if (type === 'user') {
                 document.getElementById('user-exam-info').style.display = 'block';
             } else if (type === 'typing') {
                 document.getElementById('typing-exam-info').style.display = 'block';
             }
             
-            // نمایش دکمه بازگشت
+            // Show back button
             document.getElementById('back-to-selection-btn').style.display = 'inline-block';
         }
 
-        // تابع بازگشت به انتخاب آزمون
+        // Back to exam selection function
         function backToExamSelection() {
             currentExamType = "";
             document.getElementById('user-exam-info').style.display = 'none';
@@ -2016,20 +2070,20 @@
             document.getElementById('back-to-selection-btn').style.display = 'none';
         }
 
-        // تابع خروج
+        // Logout function
         function logout() {
-            // توقف تایمر اگر فعال باشد
+            // Stop timer if active
             if (timerInterval) {
                 clearInterval(timerInterval);
                 timerInterval = null;
             }
             
-            // بازنشانی متغیرها
+            // Reset variables
             currentQuestions = [];
             currentQuestionIndex = 0;
             userAnswers = [];
             
-            // نمایش صفحه ورود
+            // Show login page
             document.getElementById('main-menu').style.display = 'none';
             document.getElementById('quiz-container').style.display = 'none';
             document.getElementById('results-container').style.display = 'none';
@@ -2037,81 +2091,84 @@
             document.getElementById('login-container').style.display = 'flex';
             document.getElementById('password-input').value = '';
             
-            // بازگشت به حالت اولیه
+            // Return to initial state
             backToExamSelection();
         }
 
-        // تابع شروع آزمون
+        // Start test function
         function startRandomExam(type) {
             if (type) {
                 currentExamType = type;
             }
             
-            // مخفی کردن منو و نمایش صفحه آزمون
+            // Hide menu and show test page
             document.getElementById('main-menu').style.display = 'none';
             document.getElementById('quiz-container').style.display = 'block';
             
-            // تنظیم عنوان
+            // Set title
             const title = currentExamType === 'user' ? 
-                "🎯 آزمون کاربر رایانه" : 
-                "⌨️ آزمون تایپ رایانه";
+                "🎯 Computer User Test" : 
+                "⌨️ Computer Typing Test";
             document.getElementById('lesson-title').textContent = title;
             
-            // انتخاب سوالات
+            // Select questions
             const allQuestions = currentExamType === 'user' ? userQuestions : typingQuestions;
             currentQuestions = getRandomQuestions(allQuestions, 20);
             
-            // مقداردهی اولیه پاسخ‌ها
+            // Initialize answers
             userAnswers = new Array(currentQuestions.length).fill(null);
             
-            // نمایش وضعیت پاسخ‌ها
+            // Show answer status
             document.getElementById('answer-status').style.display = 'flex';
             updateAnswerStatus();
             
-            // شروع از سوال اول
+            // Start from first question
             currentQuestionIndex = 0;
             createQuestionNumberButtons();
             
-            // شروع تایمر
+            // Start timer
             startTimer();
             
-            // نمایش سوال اول
+            // Show first question
             showQuestion();
+            
+            // Update navigation buttons status
+            updateNavButtons();
         }
 
-        // تابع انتخاب تصادفی سوالات - نسخه اصلاح شده
+        // Random question selection function - fixed version
         function getRandomQuestions(allQuestions, count) {
-            // ایجاد یک کپی از آرایه سوالات
+            // Create a copy of questions array
             const shuffled = [...allQuestions];
             
-            // شافل کردن آرایه (فیشر-یتس)
+            // Shuffle array (Fisher-Yates)
             for (let i = shuffled.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
             }
             
-            // انتخاب تعداد مورد نیاز
+            // Select required number
             const selected = shuffled.slice(0, count);
             
-            // شافل کردن گزینه‌های هر سوال
+            // Shuffle options for each question
             selected.forEach(question => {
-                // ایجاد یک کپی از گزینه‌ها
+                // Create a copy of options
                 const options = [...question.options];
                 const correctAnswer = question.answer;
                 
-                // ذخیره موقعیت اصلی گزینه صحیح
+                // Store original correct position
                 const originalCorrectIndex = options.indexOf(correctAnswer);
                 
-                // ایجاد یک آرایه از اندیس‌ها برای شافل کردن
+                // Create array of indices for shuffling
                 const indices = [0, 1, 2, 3];
                 
-                // شافل کردن اندیس‌ها
+                // Shuffle indices
                 for (let i = indices.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [indices[i], indices[j]] = [indices[j], indices[i]];
                 }
                 
-                // ایجاد آرایه جدید گزینه‌ها با ترتیب جدید
+                // Create new options array with new order
                 const shuffledOptions = [
                     options[indices[0]],
                     options[indices[1]],
@@ -2119,16 +2176,16 @@
                     options[indices[3]]
                 ];
                 
-                // ذخیره گزینه‌های شافل شده
+                // Store shuffled options
                 question.shuffledOptions = shuffledOptions;
                 
-                // پیدا کردن موقعیت جدید گزینه صحیح
+                // Find new correct position
                 question.correctIndex = shuffledOptions.indexOf(correctAnswer);
                 
-                // اطمینان از اینکه گزینه صحیح پیدا شده است
+                // Ensure correct option is found
                 if (question.correctIndex === -1) {
-                    console.error("گزینه صحیح پیدا نشد! سوال:", question.question);
-                    // به عنوان راه حل جایگزین، استفاده از شافل ساده
+                    console.error("Correct option not found! Question:", question.question);
+                    // As fallback solution, use simple shuffle
                     question.shuffledOptions = [...options];
                     question.correctIndex = originalCorrectIndex;
                 }
@@ -2137,53 +2194,53 @@
             return selected;
         }
 
-        // تابع شروع تایمر
+        // Start timer function
         function startTimer() {
-            let timeLeft = 30 * 60; // 30 دقیقه به ثانیه
+            let timeLeft = 30 * 60; // 30 minutes in seconds
             
-            // توقف تایمر قبلی اگر وجود دارد
+            // Stop previous timer if exists
             if (timerInterval) {
                 clearInterval(timerInterval);
             }
             
-            // آپدیت اولیه
+            // Initial update
             updateTimerDisplay(timeLeft);
             
-            // تنظیم تایمر جدید
+            // Set new timer
             timerInterval = setInterval(() => {
                 timeLeft--;
                 
-                // آپدیت نمایش
+                // Update display
                 updateTimerDisplay(timeLeft);
                 
-                // تغییر رنگ در زمان‌های حیاتی
+                // Change color at critical times
                 const timerElement = document.getElementById('timer');
-                if (timeLeft <= 300) { // 5 دقیقه
+                if (timeLeft <= 300) { // 5 minutes
                     timerElement.className = 'timer warning';
                 }
-                if (timeLeft <= 60) { // 1 دقیقه
+                if (timeLeft <= 60) { // 1 minute
                     timerElement.className = 'timer danger';
                 }
                 
-                // بررسی پایان زمان
+                // Check time end
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
                     timerInterval = null;
-                    alert('⏰ زمان آزمون به پایان رسید!');
+                    alert('⏰ Test time is over!');
                     submitQuiz();
                 }
             }, 1000);
         }
 
-        // تابع نمایش تایمر
+        // Timer display function
         function updateTimerDisplay(seconds) {
             const minutes = Math.floor(seconds / 60);
             const remainingSeconds = seconds % 60;
             const timerElement = document.getElementById('timer');
-            timerElement.textContent = `⏱️ زمان: ${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+            timerElement.textContent = `⏱️ Time: ${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
         }
 
-        // تابع نمایش سوال - نسخه اصلاح شده
+        // Show question function - fixed version
         function showQuestion() {
             if (currentQuestions.length === 0 || currentQuestionIndex >= currentQuestions.length) {
                 return;
@@ -2191,15 +2248,15 @@
             
             const question = currentQuestions[currentQuestionIndex];
             
-            // نمایش متن سوال
+            // Show question text
             document.getElementById('question').textContent = question.question;
             
-            // نمایش گزینه‌ها
+            // Show options
             const optionElements = document.querySelectorAll('#options .option-btn');
             
-            // اطمینان از اینکه shuffledOptions وجود دارد
+            // Ensure shuffledOptions exists
             if (!question.shuffledOptions) {
-                // اگر shuffledOptions وجود ندارد، از options اصلی استفاده کن
+                // If shuffledOptions doesn't exist, use original options
                 question.shuffledOptions = [...question.options];
                 question.correctIndex = question.options.indexOf(question.answer);
             }
@@ -2210,40 +2267,41 @@
                     btn.textContent = question.shuffledOptions[i];
                     btn.style.display = 'flex';
                     
-                    // فقط اگر کاربر پاسخ داده باشد، حالت selected را نمایش بده
-                    // در حین آزمون کلاس correct/incorrect اضافه نمی‌کنیم
+                    // Only show selected state if user answered
+                    // During test, correct/incorrect classes are not added
                     if (userAnswers[currentQuestionIndex] === i) {
                         btn.className = 'option-btn selected';
                     } else {
                         btn.className = 'option-btn';
                     }
                 } else {
-                    // اگر گزینه‌ای وجود ندارد، دکمه را مخفی کن
+                    // If option doesn't exist, hide button
                     btn.style.display = 'none';
                 }
             }
             
-            // به‌روزرسانی پیشرفت
+            // Update progress
             updateProgress();
             updateQuestionNumberButtons();
             updateAnswerStatus();
+            updateNavButtons();
         }
 
-        // تابع انتخاب گزینه
+        // Select option function
         function selectOption(index) {
             if (currentQuestionIndex >= currentQuestions.length) return;
             
-            // ذخیره پاسخ کاربر
+            // Save user answer
             userAnswers[currentQuestionIndex] = index;
             
-            // آپدیت نمایش
+            // Update display
             showQuestion();
             
-            // آپدیت وضعیت پاسخ‌ها
+            // Update answer status
             updateAnswerStatus();
         }
 
-        // تابع آپدیت وضعیت پاسخ‌ها
+        // Update answer status function
         function updateAnswerStatus() {
             let correctCount = 0;
             let incorrectCount = 0;
@@ -2262,13 +2320,13 @@
                 }
             }
             
-            // آپدیت نمایش
+            // Update display
             document.getElementById('correct-count').textContent = correctCount;
             document.getElementById('incorrect-count').textContent = incorrectCount;
             document.getElementById('unanswered-count').textContent = unansweredCount;
         }
 
-        // تابع ایجاد دکمه‌های شماره سوالات
+        // Create question number buttons function
         function createQuestionNumberButtons() {
             const container = document.getElementById('question-numbers');
             container.innerHTML = '';
@@ -2287,33 +2345,61 @@
             updateQuestionNumberButtons();
         }
 
-        // تابع آپدیت دکمه‌های شماره سوالات
+        // Update question number buttons function
         function updateQuestionNumberButtons() {
             const buttons = document.querySelectorAll('#question-numbers .number-btn');
             
             buttons.forEach((btn, index) => {
-                // حذف کلاس‌های قبلی
+                // Remove previous classes
                 btn.classList.remove('selected', 'answered', 'correct', 'incorrect');
                 
-                // اگر سوال فعلی است
+                // If current question
                 if (index === currentQuestionIndex) {
                     btn.classList.add('selected');
                 }
-                // اگر پاسخ داده شده
+                // If answered
                 else if (userAnswers[index] !== null) {
-                    // در حین آزمون فقط نشان بده که پاسخ داده شده، نه صحیح/غلط
+                    // During test only show answered, not correct/wrong
                     btn.classList.add('answered');
                 }
             });
         }
 
-        // تابع آپدیت نوار پیشرفت
+        // Update progress bar function
         function updateProgress() {
             const progress = ((currentQuestionIndex + 1) / currentQuestions.length) * 100;
             document.getElementById('progress-bar').style.width = `${progress}%`;
         }
 
-        // تابع سوال بعدی
+        // Update navigation buttons status function
+        function updateNavButtons() {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            // Previous button
+            if (currentQuestionIndex === 0) {
+                prevBtn.disabled = true;
+                prevBtn.style.opacity = '0.5';
+                prevBtn.style.cursor = 'not-allowed';
+            } else {
+                prevBtn.disabled = false;
+                prevBtn.style.opacity = '1';
+                prevBtn.style.cursor = 'pointer';
+            }
+            
+            // Next button
+            if (currentQuestionIndex === currentQuestions.length - 1) {
+                nextBtn.disabled = true;
+                nextBtn.style.opacity = '0.5';
+                nextBtn.style.cursor = 'not-allowed';
+            } else {
+                nextBtn.disabled = false;
+                nextBtn.style.opacity = '1';
+                nextBtn.style.cursor = 'pointer';
+            }
+        }
+
+        // Next question function
         function nextQuestion() {
             if (currentQuestionIndex < currentQuestions.length - 1) {
                 currentQuestionIndex++;
@@ -2321,7 +2407,7 @@
             }
         }
 
-        // تابع سوال قبلی
+        // Previous question function
         function prevQuestion() {
             if (currentQuestionIndex > 0) {
                 currentQuestionIndex--;
@@ -2329,15 +2415,15 @@
             }
         }
 
-        // تابع ارسال آزمون
+        // Submit test function
         function submitQuiz() {
-            // توقف تایمر
+            // Stop timer
             if (timerInterval) {
                 clearInterval(timerInterval);
                 timerInterval = null;
             }
             
-            // بررسی سوالات بی‌پاسخ
+            // Check unanswered questions
             const unanswered = [];
             for (let i = 0; i < userAnswers.length; i++) {
                 if (userAnswers[i] === null) {
@@ -2347,27 +2433,27 @@
             
             if (unanswered.length > 0) {
                 const confirmSubmit = confirm(
-                    `⚠️ به ${unanswered.length} سوال پاسخ نداده‌اید:\nسوالات: ${unanswered.join(', ')}\n\nآیا مطمئن هستید که می‌خواهید آزمون را پایان دهید؟`
+                    `⚠️ You haven't answered ${unanswered.length} questions:\nQuestions: ${unanswered.join(', ')}\n\nAre you sure you want to finish the test?`
                 );
                 
                 if (!confirmSubmit) {
-                    // شروع مجدد تایمر
+                    // Restart timer
                     startTimer();
                     return;
                 }
             }
             
-            // نمایش نتایج
+            // Show results
             showResults();
         }
 
-        // تابع نمایش نتایج
+        // Show results function
         function showResults() {
-            // مخفی کردن صفحه آزمون و نمایش نتایج
+            // Hide test page and show results
             document.getElementById('quiz-container').style.display = 'none';
             document.getElementById('results-container').style.display = 'block';
             
-            // محاسبه نتایج
+            // Calculate results
             let correctCount = 0;
             const categoryStats = {};
             
@@ -2375,12 +2461,12 @@
                 const question = currentQuestions[i];
                 const userAnswer = userAnswers[i];
                 
-                // شمارش درست/غلط
+                // Count correct/wrong
                 if (userAnswer === question.correctIndex) {
                     correctCount++;
                 }
                 
-                // آمار دسته‌بندی
+                // Category statistics
                 if (!categoryStats[question.category]) {
                     categoryStats[question.category] = { total: 0, correct: 0 };
                 }
@@ -2392,36 +2478,36 @@
             
             const totalQuestions = currentQuestions.length;
             const percentage = Math.round((correctCount / totalQuestions) * 100);
-            const isPassed = correctCount >= 6; // شرط قبولی: حداقل 6 سوال درست
+            const isPassed = correctCount >= 6; // Passing condition: minimum 6 correct answers
             
-            // نمایش خلاصه نتایج
+            // Show summary results
             const summaryElement = document.getElementById('summary');
-            let resultMessage = `🎯 درست: ${correctCount} از ${totalQuestions} | 📊 درصد: ${percentage}%`;
+            let resultMessage = `🎯 Correct: ${correctCount} out of ${totalQuestions} | 📊 Percentage: ${percentage}%`;
             
             if (isPassed) {
-                resultMessage += " ✅ قبول شدید! 🎉";
+                resultMessage += " ✅ You passed! 🎉";
                 summaryElement.classList.add('pass-animation');
                 
-                // ایجاد کانفتی
+                // Create confetti
                 createConfetti();
             } else {
-                resultMessage += " ❌ مردود شدید! 💪";
+                resultMessage += " ❌ You failed! 💪";
             }
             
             summaryElement.textContent = resultMessage;
             
-            // نمایش نتایج تفکیکی
+            // Show detailed results
             displayCategoryResults(categoryStats);
             
-            // نمایش اولین سوال با پاسخ
+            // Show first question with answer
             currentQuestionIndex = 0;
             createResultNumberButtons();
             showResultQuestion();
         }
 
-        // تابع ایجاد کانفتی
+        // Create confetti function
         function createConfetti() {
-            const colors = ['#1a5f7a', '#159895', '#ffc107', '#2ecc71', '#e74c3c', '#3498db'];
+            const colors = ['#1a5f7a', '#159895', '#ffc107', '#2ecc71', '#e74c3c', '#3498db', '#2196F3', '#9C27B0'];
             
             for (let i = 0; i < 100; i++) {
                 setTimeout(() => {
@@ -2439,10 +2525,10 @@
             }
         }
 
-        // تابع نمایش نتایج تفکیکی
+        // Display category results function
         function displayCategoryResults(categoryStats) {
             const container = document.getElementById('detailed-results');
-            container.innerHTML = '<h3 style="color: var(--primary-color); margin-bottom: 20px; font-size: 22px;">📊 نتایج تفکیکی:</h3>';
+            container.innerHTML = '<h3 style="color: var(--primary-color); margin-bottom: 20px; font-size: 22px;">📊 Detailed Results:</h3>';
             
             for (const [category, stats] of Object.entries(categoryStats)) {
                 const percentage = Math.round((stats.correct / stats.total) * 100);
@@ -2455,7 +2541,7 @@
                         <strong style="font-size: 18px;">${category}</strong>
                         <span style="font-weight: bold; color: ${color};">${percentage}%</span>
                     </div>
-                    <div style="color: #666; margin-bottom: 10px;">${stats.correct} از ${stats.total} سوال صحیح</div>
+                    <div style="color: #666; margin-bottom: 10px;">${stats.correct} correct out of ${stats.total} questions</div>
                     <div style="height: 12px; background: #e9ecef; border-radius: 6px; overflow: hidden;">
                         <div style="height: 100%; width: ${percentage}%; background: ${color};"></div>
                     </div>
@@ -2465,17 +2551,17 @@
             }
         }
 
-        // تابع نمایش سوال در صفحه نتایج
+        // Show question in results page function
         function showResultQuestion() {
             if (currentQuestionIndex >= currentQuestions.length) return;
             
             const question = currentQuestions[currentQuestionIndex];
             document.getElementById('result-question').textContent = question.question;
             
-            // نمایش گزینه‌ها با رنگ‌بندی
+            // Show options with coloring
             const optionElements = document.querySelectorAll('#result-options .option-btn');
             
-            // اطمینان از اینکه shuffledOptions وجود دارد
+            // Ensure shuffledOptions exists
             if (!question.shuffledOptions) {
                 question.shuffledOptions = [...question.options];
                 question.correctIndex = question.options.indexOf(question.answer);
@@ -2487,18 +2573,18 @@
                     btn.textContent = question.shuffledOptions[i];
                     btn.style.display = 'flex';
                     
-                    // حذف کلاس‌های قبلی
+                    // Remove previous classes
                     btn.classList.remove('correct', 'incorrect', 'selected');
                     
-                    // اگر گزینه صحیح است
+                    // If option is correct
                     if (i === question.correctIndex) {
                         btn.classList.add('correct');
                     }
-                    // اگر کاربر این گزینه را انتخاب کرده و اشتباه است
+                    // If user selected this option and it's wrong
                     else if (userAnswers[currentQuestionIndex] === i && userAnswers[currentQuestionIndex] !== question.correctIndex) {
                         btn.classList.add('incorrect');
                     }
-                    // اگر کاربر پاسخ درست داده باشد (مشابه رنگ correct)
+                    // If user gave correct answer (same color as correct)
                     else if (userAnswers[currentQuestionIndex] === i && userAnswers[currentQuestionIndex] === question.correctIndex) {
                         btn.classList.add('correct');
                     }
@@ -2510,7 +2596,7 @@
             updateResultNumberButtons();
         }
 
-        // تابع ایجاد دکمه‌های شماره در صفحه نتایج
+        // Create number buttons in results page function
         function createResultNumberButtons() {
             const container = document.getElementById('result-numbers');
             container.innerHTML = '';
@@ -2529,19 +2615,19 @@
             updateResultNumberButtons();
         }
 
-        // تابع آپدیت دکمه‌های شماره در نتایج
+        // Update number buttons in results function
         function updateResultNumberButtons() {
             const buttons = document.querySelectorAll('#result-numbers .number-btn');
             
             buttons.forEach((btn, index) => {
-                // حذف کلاس‌های قبلی
+                // Remove previous classes
                 btn.classList.remove('selected', 'correct', 'incorrect');
                 
-                // اگر سوال فعلی است
+                // If current question
                 if (index === currentQuestionIndex) {
                     btn.classList.add('selected');
                 }
-                // اگر پاسخ داده شده
+                // If answered
                 else if (userAnswers[index] !== null) {
                     const question = currentQuestions[index];
                     if (userAnswers[index] === question.correctIndex) {
@@ -2553,7 +2639,7 @@
             });
         }
 
-        // تابع سوال بعدی در نتایج
+        // Next question in results function
         function nextResultQuestion() {
             if (currentQuestionIndex < currentQuestions.length - 1) {
                 currentQuestionIndex++;
@@ -2561,7 +2647,7 @@
             }
         }
 
-        // تابع سوال قبلی در نتایج
+        // Previous question in results function
         function prevResultQuestion() {
             if (currentQuestionIndex > 0) {
                 currentQuestionIndex--;
@@ -2569,7 +2655,7 @@
             }
         }
 
-        // تابع نمایش راهنما
+        // Show help function
         function showHelp() {
             document.getElementById('main-menu').style.display = 'none';
             document.getElementById('quiz-container').style.display = 'none';
@@ -2577,30 +2663,30 @@
             document.getElementById('help-container').style.display = 'block';
         }
 
-        // تابع بازگشت به منو
+        // Back to menu function
         function backToMainMenu() {
-            // توقف تایمر اگر فعال باشد
+            // Stop timer if active
             if (timerInterval) {
                 clearInterval(timerInterval);
                 timerInterval = null;
             }
             
-            // بازنشانی متغیرها
+            // Reset variables
             currentQuestions = [];
             currentQuestionIndex = 0;
             userAnswers = [];
             
-            // نمایش منو
+            // Show menu
             document.getElementById('main-menu').style.display = 'flex';
             document.getElementById('quiz-container').style.display = 'none';
             document.getElementById('results-container').style.display = 'none';
             document.getElementById('help-container').style.display = 'none';
             
-            // بازگشت به انتخاب آزمون
+            // Back to exam selection
             backToExamSelection();
         }
 
-        // تابع شروع مجدد آزمون
+        // Start same test again function
         function startSameExamAgain() {
             backToMainMenu();
             setTimeout(() => {
@@ -2610,9 +2696,9 @@
             }, 100);
         }
 
-        // مدیریت رویدادهای صفحه کلید
+        // Keyboard events management
         document.addEventListener('keydown', function(event) {
-            // حرکت بین سوالات با کلیدهای جهت‌دار
+            // Navigate between questions with arrow keys
             if (document.getElementById('quiz-container').style.display !== 'none') {
                 if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
                     event.preventDefault();
@@ -2622,14 +2708,14 @@
                     prevQuestion();
                 }
                 
-                // انتخاب گزینه با اعداد 1-4
+                // Select options with numbers 1-4
                 if (event.key >= '1' && event.key <= '4') {
                     const index = parseInt(event.key) - 1;
                     selectOption(index);
                 }
             }
             
-            // در صفحه نتایج
+            // In results page
             if (document.getElementById('results-container').style.display !== 'none') {
                 if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
                     event.preventDefault();
@@ -2640,22 +2726,22 @@
                 }
             }
             
-            // کلید Enter در ورود
+            // Enter key in login
             if (document.getElementById('login-container').style.display !== 'none' && event.key === 'Enter') {
                 event.preventDefault();
                 checkPassword();
             }
             
-            // Ctrl+Enter برای پایان آزمون
+            // Ctrl+Enter to finish test
             if (event.ctrlKey && event.key === 'Enter' && document.getElementById('quiz-container').style.display !== 'none') {
                 event.preventDefault();
                 submitQuiz();
             }
             
-            // Escape برای بازگشت
+            // Escape to return
             if (event.key === 'Escape') {
                 if (document.getElementById('quiz-container').style.display !== 'none') {
-                    if (confirm('آیا می‌خواهید آزمون را رها کنید؟')) {
+                    if (confirm('Do you want to leave the test?')) {
                         backToMainMenu();
                     }
                 } else if (document.getElementById('help-container').style.display !== 'none') {
@@ -2664,27 +2750,27 @@
             }
         });
 
-        // مقداردهی اولیه هنگام بارگذاری صفحه
+        // Initialize when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            // بارگذاری رمز
+            // Load password
             loadPassword();
             
-            // اضافه کردن event listener به دکمه ورود برای کلید Enter
+            // Add event listener for Enter key on login button
             document.getElementById('password-input').addEventListener('keypress', function(event) {
                 if (event.key === 'Enter') {
                     checkPassword();
                 }
             });
             
-            // تنظیم focus روی فیلد رمز
+            // Set focus on password field
             document.getElementById('password-input').focus();
             
-            // نمایش پیغام خوش‌آمدگویی
+            // Show welcome message
             setTimeout(() => {
                 if (document.getElementById('login-container').style.display !== 'none') {
                     const messageElement = document.getElementById('login-message');
                     if (messageElement.textContent === '') {
-                        messageElement.textContent = '👋 خوش آمدید! رمز پیش‌فرض: user123';
+                        messageElement.textContent = '👋 Welcome! Default password: 1452';
                         messageElement.style.color = 'var(--info-color)';
                     }
                 }
