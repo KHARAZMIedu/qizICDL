@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="ltr">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,13 +44,13 @@
             100% { transform: scale(1); }
         }
         
-        @keyframes slideInLeft {
-            from { transform: translateX(-30px); opacity: 0; }
+        @keyframes slideInRight {
+            from { transform: translateX(30px); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
         
-        @keyframes slideInRight {
-            from { transform: translateX(30px); opacity: 0; }
+        @keyframes slideInLeft {
+            from { transform: translateX(-30px); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
         
@@ -108,7 +108,7 @@
             content: '';
             position: fixed;
             top: 0;
-            left: 0;
+            right: 0;
             width: 100%;
             height: 100%;
             background-image: 
@@ -141,7 +141,7 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            right: 0;
             width: 100%;
             height: 100%;
             background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
@@ -178,7 +178,7 @@
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+            right: -100%;
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
@@ -186,7 +186,7 @@
         }
         
         button:hover::before {
-            left: 100%;
+            right: 100%;
         }
         
         button:hover {
@@ -283,7 +283,7 @@
             width: 100%;
             max-width: 800px;
             text-align: center;
-            animation: slideInLeft 0.6s ease-out;
+            animation: slideInRight 0.6s ease-out;
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             position: relative;
@@ -294,7 +294,7 @@
             content: '';
             position: absolute;
             top: 0;
-            right: 0;
+            left: 0;
             width: 8px;
             height: 100%;
             background: var(--gradient-primary);
@@ -353,7 +353,7 @@
             padding: 30px;
             box-shadow: var(--box-shadow);
             margin-bottom: 40px;
-            animation: slideInLeft 0.6s ease-out;
+            animation: slideInRight 0.6s ease-out;
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             position: relative;
@@ -364,7 +364,7 @@
             content: '';
             position: absolute;
             top: 0;
-            right: 0;
+            left: 0;
             width: 8px;
             height: 100%;
             background: var(--gradient-primary);
@@ -415,16 +415,16 @@
             padding: 30px;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border-radius: 15px;
-            border-left: 6px solid var(--primary-color);
+            border-right: 6px solid var(--primary-color);
             box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
             position: relative;
-            animation: slideInRight 0.6s ease-out;
+            animation: slideInLeft 0.6s ease-out;
         }
         
         .question::after {
             content: '?';
             position: absolute;
-            right: 30px;
+            left: 30px;
             top: 50%;
             transform: translateY(-50%);
             font-size: 50px;
@@ -445,7 +445,7 @@
             height: 75px;
             text-align: right;
             font-size: 20px;
-            padding: 0 80px 0 30px;
+            padding: 0 30px 0 80px;
             transition: var(--transition);
             display: flex;
             align-items: center;
@@ -459,7 +459,7 @@
         .option-btn::before {
             content: attr(data-option);
             position: absolute;
-            right: 25px;
+            left: 25px;
             top: 50%;
             transform: translateY(-50%);
             width: 40px;
@@ -476,7 +476,7 @@
         }
         
         .option-btn:hover {
-            transform: translateX(-10px) translateY(-3px);
+            transform: translateX(10px) translateY(-3px);
             box-shadow: var(--box-shadow-hover);
         }
         
@@ -517,7 +517,7 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            right: 0;
             width: 100%;
             height: 100%;
             background: rgba(255,255,255,0.1);
@@ -554,7 +554,7 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            right: 0;
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
@@ -569,7 +569,7 @@
             padding: 30px;
             box-shadow: var(--box-shadow);
             margin-bottom: 40px;
-            animation: slideInLeft 0.6s ease-out;
+            animation: slideInRight 0.6s ease-out;
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             position: relative;
@@ -580,7 +580,7 @@
             content: '';
             position: absolute;
             top: 0;
-            right: 0;
+            left: 0;
             width: 8px;
             height: 100%;
             background: var(--gradient-primary);
@@ -604,7 +604,7 @@
             content: '';
             position: absolute;
             top: -50%;
-            left: -50%;
+            right: -50%;
             width: 200%;
             height: 200%;
             background: radial-gradient(circle, rgba(255,255,255,0.1) 1%, transparent 1%);
@@ -627,7 +627,7 @@
             padding: 25px;
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
             border-radius: 15px;
-            border-left: 5px solid var(--primary-color);
+            border-right: 5px solid var(--primary-color);
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: var(--transition);
         }
@@ -648,7 +648,7 @@
             border-radius: 20px;
             box-shadow: var(--box-shadow);
             margin-bottom: 40px;
-            animation: slideInLeft 0.6s ease-out;
+            animation: slideInRight 0.6s ease-out;
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             position: relative;
@@ -659,7 +659,7 @@
             content: '';
             position: absolute;
             top: 0;
-            right: 0;
+            left: 0;
             width: 8px;
             height: 100%;
             background: var(--gradient-primary);
@@ -692,7 +692,7 @@
             width: 100%;
             max-width: 450px;
             text-align: center;
-            animation: slideInLeft 0.6s ease-out;
+            animation: slideInRight 0.6s ease-out;
             transform-style: preserve-3d;
             perspective: 1000px;
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -705,7 +705,7 @@
             content: '';
             position: absolute;
             top: 0;
-            right: 0;
+            left: 0;
             width: 8px;
             height: 100%;
             background: var(--gradient-primary);
@@ -847,7 +847,7 @@
             .option-btn {
                 height: 65px;
                 font-size: 16px;
-                padding: 0 70px 0 25px;
+                padding: 0 25px 0 70px;
             }
             
             .option-btn::before {
@@ -914,13 +914,13 @@
             
             .option-btn {
                 height: 60px;
-                padding: 0 60px 0 20px;
+                padding: 0 20px 0 60px;
             }
             
             .option-btn::before {
                 width: 30px;
                 height: 30px;
-                right: 15px;
+                left: 15px;
                 font-size: 14px;
             }
             
@@ -942,7 +942,7 @@
         .notification {
             position: fixed;
             top: 20px;
-            right: 20px;
+            left: 20px;
             padding: 18px 28px;
             border-radius: 12px;
             box-shadow: var(--box-shadow-hover);
@@ -966,7 +966,7 @@
         #loading-screen {
             position: fixed;
             top: 0;
-            left: 0;
+            right: 0;
             width: 100%;
             height: 100%;
             background: rgba(255, 255, 255, 0.95);
@@ -1028,7 +1028,7 @@
 </head>
 <body>
     <header>
-        <h1><i class="fas fa-laptop-code"></i> آزمون کاربر - موسسه آموزشی خوارزمی</h1>
+        <h1><i class="fas fa-laptop-code"></i> آزمون کاربر - مرکز آموزشی خوارزمی</h1>
     </header>
     
     <div class="container">
@@ -1128,7 +1128,7 @@
             
             <div style="margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
                 <button id="back-to-selection-btn" onclick="backToExamSelection()" style="display: none;">
-                    <i class="fas fa-arrow-left"></i> بازگشت به انتخاب آزمون
+                    <i class="fas fa-arrow-right"></i> بازگشت به انتخاب آزمون
                 </button>
                 <button id="help-btn" onclick="showHelp()"><i class="fas fa-question-circle"></i> راهنمای آزمون</button>
                 <button id="logout-btn" onclick="logout()" style="background: var(--gradient-danger);">
@@ -1145,11 +1145,11 @@
             <!-- نوار وضعیت پاسخ‌ها -->
             <div class="answer-status" id="answer-status" style="display: none;">
                 <div class="status-item">
-                    <div class="status-value" id="correct-count">0</div>
+                    <div class="status-value" id="correct-count">?</div>
                     <div class="status-label">سوالات درست</div>
                 </div>
                 <div class="status-item">
-                    <div class="status-value" id="incorrect-count">0</div>
+                    <div class="status-value" id="incorrect-count">?</div>
                     <div class="status-label">سوالات غلط</div>
                 </div>
                 <div class="status-item">
@@ -1170,8 +1170,8 @@
                 <button class="option-btn" id="option-3" onclick="selectOption(3)" data-option="د"></button>
             </div>
             <div class="navigation">
-                <button class="nav-btn nav-next-btn" id="next-btn" onclick="nextQuestion()">سوال بعد <i class="fas fa-arrow-right"></i></button>
-                 <button class="nav-btn nav-prev-btn" id="prev-btn" onclick="prevQuestion()"><i class="fas fa-arrow-left"></i> سوال قبل</button>
+                <button class="nav-btn nav-prev-btn" id="prev-btn" onclick="prevQuestion()"><i class="fas fa-arrow-right"></i> سوال قبل</button>
+                <button class="nav-btn nav-next-btn" id="next-btn" onclick="nextQuestion()">سوال بعد <i class="fas fa-arrow-left"></i></button>
                 <button class="submit-btn" id="submit-btn" onclick="submitQuiz()"><i class="fas fa-check-circle"></i> پایان آزمون</button>
             </div>
             <div class="question-numbers" id="question-numbers"></div>
@@ -1193,8 +1193,8 @@
                 <button class="option-btn" id="result-option-3" disabled data-option="د"></button>
             </div>
             <div class="navigation">
-                <button class="nav-btn nav-prev-btn" id="prev-result-btn" onclick="prevResultQuestion()"><i class="fas fa-arrow-left"></i> سوال قبل</button>
-                <button class="nav-btn nav-next-btn" id="next-result-btn" onclick="nextResultQuestion()">سوال بعد <i class="fas fa-arrow-right"></i></button>
+                <button class="nav-btn nav-prev-btn" id="prev-result-btn" onclick="prevResultQuestion()"><i class="fas fa-arrow-right"></i> سوال قبل</button>
+                <button class="nav-btn nav-next-btn" id="next-result-btn" onclick="nextResultQuestion()">سوال بعد <i class="fas fa-arrow-left"></i></button>
                 <button class="nav-btn" id="back-to-menu-btn" onclick="backToMainMenu()"><i class="fas fa-home"></i> بازگشت به منو</button>
                 <button class="nav-btn" id="new-exam-btn" onclick="startSameExamAgain()" style="background: var(--gradient-primary);">
                     <i class="fas fa-redo"></i> آزمون جدید
@@ -1226,12 +1226,12 @@
                 <i class="fas fa-keyboard" style="color: var(--accent-color);"></i> Escape: بازگشت به منو<br><br>
                 <span style="color: var(--success-color); font-weight: bold;">موفق باشید!</span>
             </p>
-            <button onclick="backToMainMenu()"><i class="fas fa-arrow-left"></i> بازگشت به منو</button>
+            <button onclick="backToMainMenu()"><i class="fas fa-arrow-right"></i> بازگشت به منو</button>
         </div>
     </div>
     
     <footer>
-        <p>© 2025 آزمون کاربر و تایپ رایانه - موسسه آموزشی خوارزمی. تمام حقوق محفوظ است.</p>
+        <p>© 2025 آزمون کاربر - مرکز آموزشی خوارزمی. تمام حقوق محفوظ است.</p>
         <p>SAY4s | طراحی و توسعه: تیم فنی خوارزمی</p>
     </footer>
 
@@ -1329,61 +1329,61 @@
                 "category": "برنامه‌های کاربردی"
             },
             {
-                "question": "با استفاده از کدام گزینه می توان جهت صفحه نمایش را تنظیم کرد؟",
+                "question": "با استفاده از کدام گزینه می توان جهت صفحه نمایش را تنظیم کرد？",
                 "options": ["Resolution", "Orientation", "Color", "Brightness"],
                 "answer": "Orientation",
                 "category": "ویندوز"
             },
             {
-                "question": "با استفاده از کدام گزینه می توان یک نامه را به شخص ثالث ارجاع داد؟",
+                "question": "با استفاده از کدام گزینه می توان یک نامه را به شخص ثالث ارجاع داد？",
                 "options": ["Reply", "Reply All", "Forward", "Send"],
                 "answer": "Forward",
                 "category": "ایمیل"
             },
             {
-                "question": "با انتخاب کدام گزینه آیکن های روی نوار وظیفه بصورت کوچک نمایش داده می شوند؟",
+                "question": "با انتخاب کدام گزینه آیکن های روی نوار وظیفه بصورت کوچک نمایش داده می شوند？",
                 "options": ["Use small taskbar buttons", "Auto-hide the taskbar", "Lock the taskbar", "Show desktop icons"],
                 "answer": "Use small taskbar buttons",
                 "category": "ویندوز"
             },
             {
-                "question": "با انتخاب کدام گزینه تصویر با اندازه واقعی در مرکز desktop قرار میگیرد؟",
+                "question": "با انتخاب کدام گزینه تصویر با اندازه واقعی در مرکز desktop قرار میگیرد？",
                 "options": ["Stretch", "Tile", "Center", "Fit"],
                 "answer": "Center",
                 "category": "ویندوز"
             },
             {
-                "question": "با انتخاب کدام گزینه درمنوی کلیک راست آیکن های روی میز کار به صورت اتوماتیک مرتب نمایش داده می شود؟",
+                "question": "با انتخاب کدام گزینه درمنوی کلیک راست آیکن های روی میز کار به صورت اتوماتیک مرتب نمایش داده می شود？",
                 "options": ["Auto arrange icons", "Align icons to grid", "Show desktop icons", "Refresh"],
                 "answer": "Auto arrange icons",
                 "category": "ویندوز"
             },
             {
-                "question": "با انتخاب کدام گزینه عمل جابجایی بین کاربران با بسته شدن برنامه های در حال اجرا اتفاق می افتد؟",
+                "question": "با انتخاب کدام گزینه عمل جابجایی بین کاربران با بسته شدن برنامه های در حال اجرا اتفاق می افتد？",
                 "options": ["Switch User", "Log off", "Lock", "Sleep"],
                 "answer": "Log off",
                 "category": "ویندوز"
             },
             {
-                "question": "با انتخاب کدام گزینه عمل جابه جایی بین کاربران بدون بستن برنامه های در حال اجرا اتفاق می افتد؟",
+                "question": "با انتخاب کدام گزینه عمل جابه جایی بین کاربران بدون بستن برنامه های در حال اجرا اتفاق می افتد？",
                 "options": ["Switch User", "Log off", "Lock", "Sleep"],
                 "answer": "Switch User",
                 "category": "ویندوز"
             },
             {
-                "question": "با انتخاب کدام گزینه می توان نوار وظیفه را قفل کرد؟",
+                "question": "با انتخاب کدام گزینه می توان نوار وظیفه را قفل کرد？",
                 "options": ["Auto-hide the taskbar", "Use small taskbar buttons", "Lock the taskbar", "Show taskbar on all displays"],
                 "answer": "Lock the taskbar",
                 "category": "ویندوز"
             },
             {
-                "question": "با انتخاب کدام گزینه می توانید چاپگر را در شبکه ای که به آن متصل هستید به اشتراک بگذارید؟",
+                "question": "با انتخاب کدام گزینه می توانید چاپگر را در شبکه ای که به آن متصل هستید به اشتراک بگذارید？",
                 "options": ["Print Test Page", "Set as Default Printer", "Share this printer", "Printer Properties"],
                 "answer": "Share this printer",
                 "category": "ویندوز"
             },
             {
-                "question": "با کلیک راست بر روی چاپگر موردنظر، با انتخاب کدام گزینه چاپگر به عنوان پیشفرض در نظر گرفته میشود؟",
+                "question": "با کلیک راست بر روی چاپگر موردنظر، با انتخاب کدام گزینه چاپگر به عنوان پیشفرض در نظر گرفته میشود？",
                 "options": ["Printing Preferences", "Set as Default Printer", "Pause Printing", "See What's Printing"],
                 "answer": "Set as Default Printer",
                 "category": "ویندوز"
@@ -1395,145 +1395,145 @@
                 "category": "ویندوز"
             },
             {
-                "question": "برای اجرای برنامه ها از کدام دستور استفاده می کنیم؟",
+                "question": "برای اجرای برنامه ها از کدام دستور استفاده می کنیم？",
                 "options": ["Start", "Search", "Run", "Execute"],
                 "answer": "Run",
                 "category": "ویندوز"
             },
             {
-                "question": "برای اضافه کردن نام سایت به لیست علاقه مندی خود از کدام گزینه استفاده می کنیم؟",
+                "question": "برای اضافه کردن نام سایت به لیست علاقه مندی خود از کدام گزینه استفاده می کنیم？",
                 "options": ["Add to Favorites", "Subscribe", "Bookmark", "Save Page"],
                 "answer": "Add to Favorites",
                 "category": "اینترنت"
             },
             {
-                "question": "برای اندازه گیری حافظه هایی مانند CD از کدام واحد حافظه استفاده می شود؟",
+                "question": "برای اندازه گیری حافظه هایی مانند CD از کدام واحد حافظه استفاده می شود？",
                 "options": ["KB", "MB", "GB", "TB"],
                 "answer": "MB",
                 "category": "مبانی کامپیوتر"
             },
             {
-                "question": "برای اندازه گیری حافظه هایی مانند انواع کلیپ های صوتی و تصویری از کدام واحد می توان استفاده کرد؟",
+                "question": "برای اندازه گیری حافظه هایی مانند انواع کلیپ های صوتی و تصویری از کدام واحد می توان استفاده کرد？",
                 "options": ["KB", "MB", "GB", "TB"],
                 "answer": "MB",
                 "category": "مبانی کامپیوتر"
             },
             {
-                "question": "برای ایجاد امضا از کدام گزینه می توان استفاده نمود؟",
+                "question": "برای ایجاد امضا از کدام گزینه می توان استفاده نمود？",
                 "options": ["Theme", "Signature", "Stationery", "Font"],
                 "answer": "Signature",
                 "category": "ایمیل"
             },
             {
-                "question": "برای ایجاد یک صفحه ی جدید در برنامه Pad Word از کدام کلید میان بر می توان استفاده نمود؟",
+                "question": "برای ایجاد یک صفحه ی جدید در برنامه Pad Word از کدام کلید میان بر می توان استفاده نمود？",
                 "options": ["Ctrl+O", "Ctrl+N", "Ctrl+S", "Ctrl+P"],
                 "answer": "Ctrl+N",
                 "category": "برنامه‌های کاربردی"
             },
             {
-                "question": "برای بازکردن سایت هایی که دامنه ی آن ها .com می باشد، بعد از وارد کردن نام سایت از کدام کلید باید استفاده شود؟",
+                "question": "برای بازکردن سایت هایی که دامنه ی آن ها .com می باشد، بعد از وارد کردن نام سایت از کدام کلید باید استفاده شود？",
                 "options": ["Ctrl+Enter", "Alt+Enter", "Shift+Enter", "F5"],
                 "answer": "Ctrl+Enter",
                 "category": "اینترنت"
             },
             {
-                "question": "برای پاسخ دادن به نامه ی رسیده کدام گزینه به کار می رود؟",
+                "question": "برای پاسخ دادن به نامه ی رسیده کدام گزینه به کار می رود？",
                 "options": ["Reply", "Forward", "Send", "New"],
                 "answer": "Reply",
                 "category": "ایمیل"
             },
             {
-                "question": "برای پرش و جابه جایی بین گزینههای موجود در پنجرهها و کادرهای محاورهای و یا فاصلهگذاریهای معین در محیط تایپ، از کدام کلید استفاده میشود؟",
+                "question": "برای پرش و جابه جایی بین گزینههای موجود در پنجرهها و کادرهای محاورهای و یا فاصلهگذاریهای معین در محیط تایپ، از کدام کلید استفاده میشود？",
                 "options": ["Enter", "Tab", "Space", "Shift"],
                 "answer": "Tab",
                 "category": "ویندوز"
             },
             {
-                "question": "برای پیوست کردن یک فایل به یک نامه کدام دکمه به کار میرود؟",
+                "question": "برای پیوست کردن یک فایل به یک نامه کدام دکمه به کار میرود？",
                 "options": ["Attach", "Insert", "Link", "Embed"],
                 "answer": "Attach",
                 "category": "ایمیل"
             },
             {
-                "question": "برای ترسیم اشکال مختلف در برنامه نقاشی از کدام ابزار میتوان استفاده نمود؟",
+                "question": "برای ترسیم اشکال مختلف در برنامه نقاشی از کدام ابزار میتوان استفاده نمود？",
                 "options": ["Brush", "Pencil", "Shapes", "Eraser"],
                 "answer": "Shapes",
                 "category": "برنامه‌های کاربردی"
             },
             {
-                "question": "برای تصادفی پخش شدن آهنگ ها کدام گزینه در WINDOWS MEDIA باید فعال باشد؟",
+                "question": "برای تصادفی پخش شدن آهنگ ها کدام گزینه در WINDOWS MEDIA باید فعال باشد？",
                 "options": ["Repeat", "Shuffle", "Play", "Stop"],
                 "answer": "Shuffle",
                 "category": "برنامه‌های کاربردی"
             },
             {
-                "question": "برای تصادفی پخش شدن آهنگها از کدام گزینه استفاده میشود؟",
+                "question": "برای تصادفی پخش شدن آهنگها از کدام گزینه استفاده میشود？",
                 "options": ["Repeat", "Shuffle", "Playlist", "Library"],
                 "answer": "Shuffle",
                 "category": "برنامه‌های کاربردی"
             },
             {
-                "question": "برای تعیین فاصله ی افقی آیکن ها، کدام گزینه کاربرد دارد؟",
+                "question": "برای تعیین فاصله ی افقی آیکن ها، کدام گزینه کاربرد دارد？",
                 "options": ["Icon Spacing Horizontally", "Icon Spacing Vertically", "Auto Arrange", "Align to Grid"],
                 "answer": "Icon Spacing Horizontally",
                 "category": "ویندوز"
             },
             {
-                "question": "برای تغییر تصویر کاربر از کدام گزینه استفاده می شود؟",
+                "question": "برای تغییر تصویر کاربر از کدام گزینه استفاده می شود？",
                 "options": ["Change Password", "Change Picture", "Change Account Type", "Remove Account"],
                 "answer": "Change Picture",
                 "category": "ویندوز"
             },
             {
-                "question": "برای تغییر رمز عبور از کدام گزینه در پنجره Accounts User استفاده میشود؟",
+                "question": "برای تغییر رمز عبور از کدام گزینه در پنجره Accounts User استفاده میشود？",
                 "options": ["Change the password", "Remove the password", "Change the account type", "Change the account name"],
                 "answer": "Change the password",
                 "category": "ویندوز"
             },
             {
-                "question": "برای تغییر نوع کاربری از کدام گزینه استفاده می شود؟",
+                "question": "برای تغییر نوع کاربری از کدام گزینه استفاده می شود？",
                 "options": ["Change the password", "Remove the password", "Change the account type", "Change the account name"],
                 "answer": "Change the account type",
                 "category": "ویندوز"
             },
             {
-                "question": "برای توقف چاپ به صورت موقت از کدام گزینه میتوان استفاده نمود؟",
+                "question": "برای توقف چاپ به صورت موقت از کدام گزینه میتوان استفاده نمود？",
                 "options": ["Cancel", "Pause", "Resume", "Restart"],
                 "answer": "Pause",
                 "category": "ویندوز"
             },
             {
-                "question": "برای ثبت و یا تأیید اطالعات، اجرای فرمانها و رفتن به خط بعدی در محیط های تایپی از کدام کلید میتوان استفاده کرد؟",
+                "question": "برای ثبت و یا تأیید اطالعات، اجرای فرمانها و رفتن به خط بعدی در محیط های تایپی از کدام کلید میتوان استفاده کرد？",
                 "options": ["Enter", "Tab", "Space", "Shift"],
                 "answer": "Enter",
                 "category": "ویندوز"
             },
             {
-                "question": "برای حذف رمز کاربر، از کدام گزینه استفاده می شود؟",
+                "question": "برای حذف رمز کاربر، از کدام گزینه استفاده می شود？",
                 "options": ["Change the password", "Remove my Password", "Change the account type", "Change the account name"],
                 "answer": "Remove my Password",
                 "category": "ویندوز"
             },
             {
-                "question": "برای حذف کردن یک آیکن و یا پاک کردن کاراکترهای جلوی مکان نما از کدام کلید استفاده میشود؟",
+                "question": "برای حذف کردن یک آیکن و یا پاک کردن کاراکترهای جلوی مکان نما از کدام کلید استفاده میشود？",
                 "options": ["Backspace", "Delete", "Insert", "Home"],
                 "answer": "Delete",
                 "category": "ویندوز"
             },
             {
-                "question": "برای حذف گزینه های منوی Start از کدام گزینه می توان استفاده نمود؟",
+                "question": "برای حذف گزینه های منوی Start از کدام گزینه می توان استفاده نمود？",
                 "options": ["Pin to Start Menu", "Remove from this list", "Add to Quick Launch", "Properties"],
                 "answer": "Remove from this list",
                 "category": "ویندوز"
             },
             {
-                "question": "برای حذف یک برنامه از صف چاپ کدام گزینه استفاده می شود؟",
+                "question": "برای حذف یک برنامه از صف چاپ کدام گزینه استفاده می شود？",
                 "options": ["Pause", "Resume", "Cancel", "Restart"],
                 "answer": "Cancel",
                 "category": "ویندوز"
             },
             {
-                "question": "برای خروج از محیط Dos کدام گزینه کاربرد دارد؟",
+                "question": "برای خروج از محیط Dos کدام گزینه کاربرد دارد？",
                 "options": ["Quit", "Exit", "Close", "End"],
                 "answer": "Exit",
                 "category": "ویندوز"
@@ -1569,7 +1569,7 @@
                 "category": "ویندوز"
             },
             {
-                "question": "برای نمایش محتویات یک فهرست به صورت ساختار درختی، کدام دستور استفاده میشود؟",
+                "question": "برای نمایش محتویات یک فهرست به صورت ساختار درختی، کدام دستور استفاده میشود？",
                 "options": ["Dir", "Cd", "Tree", "List"],
                 "answer": "Tree",
                 "category": "ویندوز"
@@ -1587,7 +1587,7 @@
                 "category": "ویندوز"
             },
             {
-                "question": "بزرگترین دکمه روی صفحه کلید که با هر بار فشردن یک فاصله ی خالی ایجاد میشود، چه نام دارد？",
+                "question": "بزرگترین دکمه روی صفحه کلید که با هر بار فشردن یک فاصله ی خالی ایجاد میشود، چه نام دارد؟",
                 "options": ["Enter", "Space", "Tab", "Shift"],
                 "answer": "Space",
                 "category": "سخت افزار"
@@ -1651,7 +1651,7 @@
                 "category": "Word"
             },
             {
-                "question": "از کدام گزینه برای باز کردن یک فایل از قبل ذخیره شده استفاده میشود？",
+                "question": "از کدام گزینه برای باز کردن یک فایل از قبل ذخیره شده استفاده میشود؟",
                 "options": ["Open", "New", "Save", "Save As"],
                 "answer": "Open",
                 "category": "Word"
@@ -1831,13 +1831,13 @@
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه از قسمت Section Breaks، بخش جدید در صفحه های فرد تولید میشود？",
+                "question": "با انتخاب کدام گزینه از قسمت Section Breaks، بخش جدید در صفحه های فرد تولید میشود؟",
                 "options": ["Odd Page", "Even Page", "Next Page", "Continuous"],
                 "answer": "Odd Page",
                 "category": "Word"
             },
             {
-                "question": "با انتخاب کدام گزینه تمام حروف لاتین به صورت کوچک نمایش داده میشود？",
+                "question": "با انتخاب کدام گزینه تمام حروف لاتین به صورت کوچک نمایش داده میشود؟",
                 "options": ["Lowercase", "Uppercase", "Sentence case", "Capitalize Each Word"],
                 "answer": "Lowercase",
                 "category": "Word"
@@ -1897,19 +1897,19 @@
                 "category": "Word"
             },
             {
-                "question": "با فشردن کدام کلید محتویات جدول پاک میشود؟",
+                "question": "با فشردن کدام کلید محتویات جدول پاک میشود？",
                 "options": ["Delete", "Backspace", "Space", "Enter"],
                 "answer": "Delete",
                 "category": "Word"
             },
             {
-                "question": "با فشردن کدام کلیدها می توان به اولین صفحه فایل یا سند رفت؟",
+                "question": "با فشردن کدام کلیدها می توان به اولین صفحه فایل یا سند رفت？",
                 "options": ["Ctrl + Home", "Ctrl + End", "Home", "End"],
                 "answer": "Ctrl + Home",
                 "category": "Word"
             },
             {
-                "question": "با کدام گزینه میتوان متن های روزنامه ای ایجاد کرد؟",
+                "question": "با کدام گزینه میتوان متن های روزنامه ای ایجاد کرد？",
                 "options": ["Column", "Table", "Text Box", "WordArt"],
                 "answer": "Column",
                 "category": "Word"
@@ -1921,7 +1921,7 @@
                 "category": "Word"
             },
             {
-                "question": "با کدام گزینه یا ابزار می توان فاصله ی بین خطوط را تنظیم کرد؟",
+                "question": "با کدام گزینه یا ابزار می توان فاصله ی بین خطوط را تنظیم کرد？",
                 "options": ["Line Spacing", "Paragraph Spacing", "Indentation", "Alignment"],
                 "answer": "Line Spacing",
                 "category": "Word"
@@ -1963,7 +1963,7 @@
                 "category": "Word"
             },
             {
-                "question": "برای ایجاد پیوند بین فایلها و آدرسهای اینترنتی از کدام گزینه می توان استفاده نمود؟",
+                "question": "برای ایجاد پیوند بین فایلها و آدرسهای اینترنتی از کدام گزینه می توان استفاده نمود？",
                 "options": ["Hyperlink", "Bookmark", "Cross-reference", "Caption"],
                 "answer": "Hyperlink",
                 "category": "Word"
@@ -2539,7 +2539,7 @@
                 setTimeout(() => {
                     const confetti = document.createElement('div');
                     confetti.className = 'confetti';
-                    confetti.style.left = `${Math.random() * 100}vw`;
+                    confetti.style.right = `${Math.random() * 100}vw`;
                     confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                     confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
                     confetti.style.animation = `confettiRain ${Math.random() * 3 + 2}s linear forwards`;
@@ -2724,10 +2724,10 @@
         document.addEventListener('keydown', function(event) {
             // حرکت بین سوالات با کلیدهای جهت‌دار
             if (document.getElementById('quiz-container').style.display !== 'none') {
-                if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+                if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') {
                     event.preventDefault();
                     nextQuestion();
-                } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+                } else if (event.key === 'ArrowRight' || event.key === 'ArrowUp') {
                     event.preventDefault();
                     prevQuestion();
                 }
@@ -2741,10 +2741,10 @@
             
             // در صفحه نتایج
             if (document.getElementById('results-container').style.display !== 'none') {
-                if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+                if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') {
                     event.preventDefault();
                     nextResultQuestion();
-                } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+                } else if (event.key === 'ArrowRight' || event.key === 'ArrowUp') {
                     event.preventDefault();
                     prevResultQuestion();
                 }
