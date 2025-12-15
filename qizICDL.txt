@@ -195,7 +195,7 @@ Telnet
 ب
 
 شبکه ها از نظر توزیع جغرافیایی به چند دسته تقسیم می شود؟
-Wan و Lan
+Wan و Man و Lan
 LAN و Wan و Star
 Bus و Star و Ring
 Ring و LAN و Star
